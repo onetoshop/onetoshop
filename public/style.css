@@ -798,7 +798,13 @@ ul.notika-menu-wrap li a{
 /*  11.  Footer CSS
 /*----------------------------------------*/
 .footer-copyright-area {
-    margin-top:40px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #535562;
+    color: white;
+    text-align: center;
 }
 .footer-copyright-area p {
     margin: 0;

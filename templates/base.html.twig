@@ -29,12 +29,7 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}
-
-        <body>
-        <!--[if lt IE 8]>
-        <p class="browserupgrade">You are piemel an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        {% block navbar %}
         <!-- Start Header Top Area -->
         <div class="header-top-area">
             <div class="container">
@@ -73,7 +68,7 @@
                                 <ul class="mobile-menu-nav">
                                     <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
                                         <ul class="collapse dropdown-header-top">
-                                            <li><a href="#l">Dashboard One</a></li>
+                                            <li><a href="#">Dashboard One</a></li>
                                             <li><a href="#">Dashboard Two</a></li>
                                             <li><a href="#">Dashboard Three</a></li>
                                             <li><a href="#">Dashboard Four</a></li>
@@ -312,6 +307,9 @@
         <!-- Form Examples area start-->
                 <!-- hier moet de content -->
         <!-- Form Examples area End-->
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}
         <!-- Start Footer area-->
         <div class="footer-copyright-area">
             <div class="container">
