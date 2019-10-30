@@ -6434,3 +6434,24 @@ input[type=submit]:hover {
 }
 .container1{ width: 900px; margin: auto; padding-top: 1em; }
 .container1 .ism-slider { margin-left: auto; margin-right: auto; }
+
+.myButton {
+    background-color:#768d87;
+    border-radius:7px;
+    border:2px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding: 8px 23px;
+    text-decoration:none;
+}
+.myButton:hover {
+    background-color:#6c7c7c;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
