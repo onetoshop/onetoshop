@@ -5994,7 +5994,7 @@ body{background-color:#eee;}
     color: #fff;
 }
 #generic_price_table{
-    margin: 80px 0 50px 0;
+    margin: 40px 0 50px 0;
     font-family: 'Raleway', sans-serif;
 }
 .row .table{
@@ -6105,7 +6105,7 @@ body{background-color:#eee;}
     padding: 0 10px;
 }
 #generic_price_table .generic_content .generic_price_btn{
-    margin: 120px 0 40px;
+    margin: 20px 0 40px;
 }
 
 #generic_price_table .generic_content .generic_price_btn a{
@@ -6394,7 +6394,7 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-.container1 {
+.container2 {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
