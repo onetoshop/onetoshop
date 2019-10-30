@@ -32,4 +32,14 @@ class Controller extends AbstractController
     {
         return $this->render('contact/contact.html.twig');
     }
+
+// functionaliteit
+
+    /**
+     * @Route("/functionaliteit", name="functionaliteit",)
+     */
+    public function functionaliteit()
+    {
+        return $this->render('functionaliteit/functionaliteit.html.twig');
+    }
 }
