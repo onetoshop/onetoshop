@@ -5994,7 +5994,7 @@ body{background-color:#eee;}
     color: #fff;
 }
 #generic_price_table{
-    margin: 80px 0 50px 0;
+    margin: 40px 0 50px 0;
     font-family: 'Raleway', sans-serif;
 }
 .row .table{
@@ -6105,7 +6105,7 @@ body{background-color:#eee;}
     padding: 0 10px;
 }
 #generic_price_table .generic_content .generic_price_btn{
-    margin: 120px 0 40px;
+    margin: 20px 0 40px;
 }
 
 #generic_price_table .generic_content .generic_price_btn a{
@@ -6394,7 +6394,7 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-.container1 {
+.container2 {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -6434,3 +6434,24 @@ input[type=submit]:hover {
 }
 .container1{ width: 900px; margin: auto; padding-top: 1em; }
 .container1 .ism-slider { margin-left: auto; margin-right: auto; }
+
+.myButton {
+    background-color:#768d87;
+    border-radius:7px;
+    border:2px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding: 8px 23px;
+    text-decoration:none;
+}
+.myButton:hover {
+    background-color:#6c7c7c;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}

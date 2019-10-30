@@ -1,10 +1,17 @@
 <?php
 namespace App\Entity;
+<<<<<<< HEAD
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GegevenRepository")
+=======
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+>>>>>>> 96e9ec988bbb5dcfceb91616689dde46a107c2ce
  */
 class Gegeven
 {

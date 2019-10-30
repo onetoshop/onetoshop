@@ -55,7 +55,7 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul class="mobile-menu-nav">
-                                    <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
+                                    <li><a data-toggle="collapse" data-target="#Charts" href="{{ path('homepage')}}">Home</a>
                                         <ul class="collapse dropdown-header-top">
                                             <li><a href="#">Dashboard One</a></li>
                                             <li><a href="#">Dashboard Two</a></li>
@@ -157,22 +157,18 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                            <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Home</a>
+                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-house"></i> Home</a>
                             </li>
-                            <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-mail"></i> Email</a>
+                            <li><a href="{{ path('service')}}"><i class="notika-icon notika-bar-chart"></i> Service</a>
                             </li>
-                            <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Interface</a>
+                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-edit"></i> Functionaliteit</a>
                             </li>
-                            <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> Charts</a>
+                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-bar-chart"></i> Apps</a>
                             </li>
-                            <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Tables</a>
+                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-windows"></i> Blogs</a>
                             </li>
-                            <li class="active"><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i> Forms</a>
-                            </li>
-                            <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a>
-                            </li>
-                            <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Pages</a>
-                            </li>
+                            <li><a href="{{ path('contact')}}"><i class="notika-icon notika-mail"></i> Contact</a>
+
                         </ul>
                         <div class="tab-content custom-menu-content">
                             <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
@@ -237,16 +233,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div id="Forms" class="tab-pane active notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="#">Form Elements</a>
-                                    </li>
-                                    <li><a href="#">Form Components</a>
-                                    </li>
-                                    <li><a href="#">Form Examples</a>
-                                    </li>
-                                </ul>
-                            </div>
+
                             <div id="Appviews" class="tab-pane notika-tab-menu-bg animated flipInX">
                                 <ul class="notika-main-menu-dropdown">
                                     <li><a href="#">Notifications</a>
@@ -336,6 +323,23 @@
             <!-- slider JS
                 ============================================ -->
             <script src="ism/js/ism-2.2.min.js"></script>
+
+            <script>
+                const card = document.querySelector('.card'),
+                    input = document.querySelector('.input'),
+                    line2 = document.querySelector('.line2');
+                document.querySelector('.form').addEventListener('submit', function(e) {
+                    input.blur();
+                    card.classList.add('saving');
+                    e.preventDefault();
+                });
+                line2.addEventListener('animationend', function(e) {
+                    setTimeout(() => {
+                        card.classList.add('done');
+                    }, 1000);
+                });
+
+            </script>
         {% endblock %}
     </body>
 </html>
