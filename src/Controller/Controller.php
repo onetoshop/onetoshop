@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-
+use App\Entity\Gegeven;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -33,13 +33,34 @@ class Controller extends AbstractController
         return $this->render('contact/contact.html.twig');
     }
 
+    /**
+     * @Route("/functionaliteit/{slug}", name="article_show")
+     */
+    public function show($slug)
+    {
+//
+        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findOneBy([
+            'slug' => $slug
+        ]);
+
+
+        return $this->render('show.html.twig', [
+            'gegevens' => $gegeven
+        ]);
+    }
+
+
+
 // functionaliteit
 
     /**
      * @Route("/functionaliteit", name="functionaliteit",)
      */
-    public function functionaliteit()
-    {
-        return $this->render('functionaliteit/functionaliteit.html.twig');
+    public function index() {
+        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
+
+        return $this->render('functionaliteit/functionaliteit.html.twig', [
+            'gegevens' => $gegeven
+        ]);
     }
 }
