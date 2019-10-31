@@ -51,25 +51,39 @@ class Controller extends AbstractController
 
 
 
-// functionaliteit
+// functionaliteit fout
 
     /**
-     * @Route("/functionaliteit", name="functionaliteit",)
+     * @Route("/", name="",)
      */
     public function index() {
         $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
 
-        return $this->render('functionaliteit/functionaliteit.html.twig', [
+        return $this->render('functionaliteit/.html.twig', [
             'gegevens' => $gegeven
         ]);
+    }
+
+
+    // functionaliteit
+    /**
+     * @Route("/functionaliteit", name="functionaliteit",)
+     */
+    public function functionaliteit()
+    {
+        return $this->render('functionaliteit/functionaliteit.html.twig');
     }
 
     // klantbeheer pagina
     /**
      * @Route("/klantbeheer", name="klantbeheer",)
      */
-    public function klantbeheer()
-    {
-        return $this->render('functionaliteit/klantbeheer.html.twig');
+    public function klantbeheer() {
+        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
+
+        return $this->render('functionaliteit/klantbeheer.html.twig', [
+            'gegevens' => $gegeven
+        ]);
     }
+
 }
