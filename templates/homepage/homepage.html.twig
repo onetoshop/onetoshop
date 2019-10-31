@@ -4,16 +4,17 @@
     <div class="breadcomb-area">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcomb-list">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="breadcomb-wp">
                                     <div class="breadcomb-icon">
                                         <i class="notika-icon notika-house"></i>
                                     </div>
                                     <div class="breadcomb-ctn">
                                         <h2>Home</h2>
+                                        <p>Onetoshop heeft alle oplossingen. Of u nu een startende webwinkelier bent, <span class="bread-ntd"> of al jaren vele producten verhandelt; wij hebben het pakket dat bij uw bedrijf past</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
 
 {#                      flip card#}
 
-
+                    <div class="row">
                         <div class="cmp-tb-hd">
                             <div class="col-sm-10 col-sm-offset-1">
                                 <div class="col-md-4 col-sm-6">
@@ -121,7 +122,7 @@
                                             </div> <!-- end front panel -->
                                             <div class="back">
                                                 <div class="header">
-                                                    <h5 class="motto">TrailerPlus</h5>
+                                                    <h2 class="motto">TrailerPlus</h2>
                                                 </div>
                                                 <div class="content">
                                                     <div class="main">
@@ -164,7 +165,7 @@
                                             </div> <!-- end front panel -->
                                             <div class="back">
                                                 <div class="header">
-                                                    <h5 class="motto">Een GroeneWereld</h5>
+                                                    <h2 class="motto">Een GroeneWereld</h2>
                                                 </div>
                                                 <div class="content">
                                                     <div class="main">
@@ -200,14 +201,14 @@
                                                 <div class="content">
                                                     <div class="main">
                                                         <h3 class="name">Oskar van der Stege</h3>
-                                                        <p class="profession">Campersalon</p>
+                                                        <p class="profession">CamperSalon</p>
                                                         <p class="text-center">"De service is laagdrempelig en bij problemen, lees uitdagingen, hebben we direct een ontwikkelaar aan de lijn die ons kan helpen. Zo blijft de continuïteit gewaarborgd."</p>
                                                     </div>
                                                 </div>
                                             </div> <!-- end front panel -->
                                             <div class="back">
                                                 <div class="header">
-                                                    <h5 class="motto">Campersalon</h5>
+                                                    <h2 class="motto">Campersalon</h2>
                                                 </div>
                                                 <div class="content">
                                                     <div class="main">
@@ -229,32 +230,41 @@
                         </div>
                     </div>
                 </div>
-
+                </div>
 
 
 {#                      end flip card#}
-                        <section>
-                        <div class="cmp-tb-hd">
-                            <div class="nk-form">
-                                <div class="container">
-                                    <h2><br><br>Meld je nu aan!</h2>
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-mail"></i></span>
-                                        <div class="nk-int-st">
-                                            <input type="text" class="form-control" placeholder="Email Address">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-element-list">
+                                <div class="basic-tb-hd">
+                                    <div class="cmp-tb-hd">
+                                        <div class="form-v5-content">
+                                            <form class="form-detail" action="#" method="post">
+                                                <h2>Meld u nu aan!</h2>
+                                                <div class="form-row">
+                                                    <label for="your-email">Email</label>
+                                                    <input type="text" name="your-email" id="your-email" class="input-text" placeholder="Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+                                                </div>
+                                                <div class="form-row-last">
+                                                    <input type="submit" name="start" class="register" value="Start">
+                                                </div>
+                                            </form>
                                         </div>
-                                </div>
-                                <div class="container" style="margin-top: 10px;">
-                                    <a href="#" class="myButton">Start nu</a>
+                                    </div>
                                 </div>
                             </div>
-                        </section>
                         </div>
                     </div>
                 </div>
+
+
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock %}
