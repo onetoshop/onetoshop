@@ -39,13 +39,13 @@ class Controller extends AbstractController
     public function show($slug)
     {
 //
-        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findOneBy([
+        $gegeven = $this->getDoctrine()->getRepository(Gegeven::class)->findOneBy([
             'slug' => $slug
         ]);
 
 
         return $this->render('show.html.twig', [
-            'gegevens' => $gegeven
+            'gegeven' => $gegeven
         ]);
     }
 
