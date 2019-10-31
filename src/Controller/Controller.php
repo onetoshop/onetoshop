@@ -63,4 +63,13 @@ class Controller extends AbstractController
             'gegevens' => $gegeven
         ]);
     }
+
+    // klantbeheer pagina
+    /**
+     * @Route("/klantbeheer", name="klantbeheer",)
+     */
+    public function klantbeheer()
+    {
+        return $this->render('functionaliteit/klantbeheer.html.twig');
+    }
 }

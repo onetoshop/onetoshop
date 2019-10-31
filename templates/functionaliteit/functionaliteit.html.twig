@@ -1,129 +1,286 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Symphart Articles{% endblock %}
 
 {% block body %}
-    <div class="form-element-area">
+<div class="breadcomb-area">
     <div class="container">
-    <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-element-list">
-            <div class="basic-tb-hd">
-                <h2>Klantbeheer</h2>
-                <p>Van sociale media tot e-mailcampagnes, ons platform stelt jou in staat om de betrokkenheid van klanten te vergroten. Door middel van volledige automatisering en realtime feedback leer je jouw klanten beter begrijpen en jouw producten en berichten hierop aan te passen. Ook kun je met behulp van onze klantsegmentatie optie B2B en B2C klanten scheiden en deze klantgroepen eigen kortingen, prijzen en opties toewijzen.</p>
-                <div class="line"></div>
-                <h2>Wie zijn je klanten?</h2>
-                <p>Heb jij inzicht in wie je klanten zijn? Waar ze wonen, hoeveel ze besteden en waar hun interesses liggen? Met het klantbeheersysteem van Onetoshop krijg je antwoorden op je vragen en kun je doelgericht je producten aanpassen aan de wensen van je klant. Door alle tools te bieden om de relatie met je klanten te verbeteren, beschik je over de handvaten om jouw conversie te verhogen.</p>
-                <p>Daarnaast heb je de mogelijkheid om jouw klanten actief te helpen bij het plaatsen van hun bestelling. Je kunt achteraf artikelen toevoegen aan een order en hulp bieden bij het wijzigen van wachtwoorden en gegevens.</p>
-                <div class="line"></div>
-                <h2>Beloon je klanten met spaarsystemen en e-mails op maat</h2>
-                <p>Zonder klanten geen webshop! Natuurlijk wil je jouw klanten belonen en in de watten leggen, want zonder hen zou jouw webshop niet kunnen bestaan. Het Onetoshop platform biedt alle mogelijkheden om jouw klanten te belonen, door middel van coupons, spaarsystemen en gerichte kortingsmogelijkheden. Daarnaast heeft Onetoshop een ingebouwd email-marketing systeem waarmee je gericht een klant, groep klanten, of al je klanten op de hoogte kunt houden van het laatste nieuws en (persoonlijke) kortingsacties. Je kunt daarnaast kiezen om je webshop te integreren met een bestaande e-mailmarketing app.</p>
-                <div class="line"></div>
-                <h2>B2B en/of B2C klanten</h2>
-                <p>Heb je te maken met zowel particuliere als zakelijke klanten? Onder de optie Klantsegmentatie maak je zakelijke of particuliere klantgroepen aan en ken je deze een mailinglijst en aparte prijs en kortingsopties toe. Deze groepen verschijnen op de individuele klantpagina binnen de administratieve omgeving, waardoor je gemakkelijk de klant een groep kunt toekennen.</p>
-                <div class="line"></div>
-                <section id="tabs" class="project-tab">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <nav>
-                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Klantbeheer</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Productbeheer</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Integratie</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Voorraadbeheer</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Orderbeheer</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Rapportages</a>
-                                    </div>
-                                </nav>
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-                                        {% if gegevens %}
-                                            <table class="table" cellspacing="0" style="align-items: center;">
-                                                <thead>
-                                                <tr>
-                                                    <th>Onderwerp</th>
-                                                    <th style="float: right;"></th>
-                                                </tr
-                                                </thead>
-                                                <tbody>
-                                                {% for gegeven in gegevens %}
-                                                    <tr>
-                                                        <td width="30px">{{ gegeven.title }}</td>
-                                                        <td>
-                                                            <a style="float: right;" href="{{ path('article_show', {'slug' : gegeven.slug}) }}" class="btn btn-grey">Bekijk {{ gegeven.title }}</a>
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-
-                                            </table>
-                                        {% else %}
-                                            <p>No articles</p>
-                                        {% endif %}
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                        <table class="table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <th>Project Name</th>
-                                                <th>Employer</th>
-                                                <th>Time</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td><a href="#">Work 1</a></td>
-                                                <td>Doe</td>
-                                                <td>john@example.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Work 2</a></td>
-                                                <td>Moe</td>
-                                                <td>mary@example.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Work 3</a></td>
-                                                <td>Dooley</td>
-                                                <td>july@example.com</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                        <table class="table" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <th>Contest Name</th>
-                                                <th>Date</th>
-                                                <th>Award Position</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td><a href="#">Work 1</a></td>
-                                                <td>Doe</td>
-                                                <td>john@example.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Work 2</a></td>
-                                                <td>Moe</td>
-                                                <td>mary@example.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Work 3</a></td>
-                                                <td>Dooley</td>
-                                                <td>july@example.com</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcomb-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="notika-icon notika-edit"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Functionaliteit</h2>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+
+                        </div>
                     </div>
+                </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="form-element-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list">
+                    <div class="basic-tb-hd">
+                    <div class="cmp-tb-hd">
+                        <h1>Daarom Onetoshop!</h1>
+                        <p>
+                            Het Onetoshop-platform is een volledige en veelzijdige webshopservice, die past binnen elk budget en alle functies en meer! bevat die je van een
+                            webshopplatform verwacht. Test om te zien wat werkt, zonder grote investeringen vooraf te hoeven doen, identificeer je sterke punten met realtime
+                            informatie en rapportage, optimaliseer je bedrijf met geïntegreerde beheertools en geautomatiseerde processen en bouw je bedrijf op met onze steun en
+                            kennis, van startup tot multinational.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Integratie</h2>
+                        <p>
+                            Door jouw bedrijfsprocessen aan elkaar te koppelen haal je extra waarde uit je webshop. Het platform kan naadloos worden geïntegreerd met je huidige website, of een nieuwe,
+                            frisse uitstraling geven aan je huidige online omgeving. Daarnaast integreert Onetoshop alle gewenste betaal- en verzendkoppelingen met je site en automatiseert het platform
+                            het onderhoud van externe relaties. Zo houd jij tijd over om jouw bedrijf te ontwikkelen.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Klantbeheer</h2>
+                        <p>
+                            Van sociale media tot e-mailcampagnes, ons platform stelt jou in staat om de betrokkenheid van klanten te vergroten. Door middel van volledige
+                            automatisering en realtime feedback leer je jouw klanten beter begrijpen en jouw producten en berichten hierop aan te passen. Ook kun je met behulp
+                            van onze klantsegmentatie optie B2B en B2C klanten scheiden en deze klantgroepen eigen kortingen, prijzen en opties toewijzen.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Orderbeheer</h2>
+                        <p>
+                            Door middel van de klantsegmentatie optie van Onetoshop is het systeem geschikt voor zowel B2B als B2C verkoop (of beide). Zo wordt,
+                            na inlog, altijd het juiste BTW tarief zichtbaar. Daarnaast bespaar je tijd en geld met onze volledig geïntegreerde managementtool die jou in
+                            real-time een volledig overzicht van je orders geeft, van de eerste bestelling tot en met de levering.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Voorraadbeheer</h2>
+                        <p>
+                            Zijn je producten nog op voorraad? Moet je bijbestellen? Met het Onetoshop platform heb je de volledige controle over je inventaris,
+                            zodat je nooit zonder voorraad komt te zitten. Daarnaast kun je een dropshipmentoptie toevoegen en heb je controle over de voorraad van je leveranciers.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Productbeheer</h2>
+                        <p>
+                            Onetoshop geeft je inzicht in de prestaties van jouw site, door je real-time rapportages te verschaffen van elk proces: van webverkeer tot
+                            conversiepercentages, zodat je in staat bent om succes te simuleren en obstakels uit de weg te ruimen.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Webshopbeheer</h2>
+                        <p>
+                            Met een webwinkel verkoop je naast producten ook een ‘merk’, namelijk jezelf, je eigen webshop. Om te zorgen dat jouw webshop opvalt tussen alle
+                            andere shops, kun je jouw webwinkel op vele manieren customizen en heb je opties om de voorpagina zo in te richten dat mensen jouw ‘brand’ herkennen.
+                            Daarnaast geef je jouw voorkeuren aan voor de afhandeling van orders, facturen, nieuwsbrieven, etc.
+                        </p>
+                    </div>
+                    <div class="cmp-tb-hd">
+                        <h2>Zoekmachine optimalisatie</h2>
+                        <p>De meeste nieuwe bezoekers komen op jouw website terecht via een zoekmachine. Een webshop of website komt echter niet zomaar in de zoekresultaten
+                            van een zoekmachine naar boven. De afgelopen jaren is er veel veranderd op het gebied van indexatie en verificatie. Ons platform is geoptimaliseerd
+                            voor SEO, zodat jouw site een hoge ranking krijgt in de zoekmachines.
+                        </p>
+                        <p>
+                            Vragen? Neem contact op om meer informatie te krijgen over hoe je jouw positie kunt verbeteren en nieuwe klanten kunt vinden die op zoek zijn naar
+                            jouw producten.
+                        </p>
+                    </div>
+                        <div class="cmp-tb-hd">
+                             <h1>Meer informatie</h1>
+                        </div>
+                        <div class="dialog-area">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="dialog-inner">
+                                            <div class="contact-hd dialog-hd">
+                                                <h2>Klantbeheer</h2>
+                                            </div>
+                                            <div class="dialog-pro dialog">
+                                            <a href="{{ path('klantbeheer') }}"   class="btn btn-info" id="sa-basic">Bekijk </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="dialog-inner sm-res-mg-t-30">
+                                            <div class="contact-hd dialog-hd">
+                                                <h2>Productbeheer</h2>
+                                            </div>
+                                            <div class="dialog-pro dialog">
+                                                <button class="btn btn-info" id="sa-basic">Bekijk</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="dialog-inner mg-t-30">
+                                            <div class="contact-hd dialog-hd">
+                                                <h2>Integratie</h2>
+                                            </div>
+                                            <div class="dialog-pro dialog">
+                                                <button class="btn btn-info" id="sa-basic">Bekijk</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="dialog-inner mg-t-30">
+                                            <div class="contact-hd dialog-hd">
+                                                <h2>Voorraadbeheer</h2>
+                                            </div>
+                                            <div class="dialog-pro dialog">
+                                                <button class="btn btn-info" id="sa-basic">Bekijk</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="dialog-inner mg-t-30">
+                                            <div class="contact-hd dialog-hd">
+                                                <h2>Orderbeheer</h2>
+                                            </div>
+                                            <div class="dialog-pro dialog">
+                                                <button class="btn btn-info" id="sa-basic">Bekijk</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="dialog-inner mg-t-30">
+                                            <div class="contact-hd dialog-hd">
+                                                <h2>Rapportages</h2>
+                                            </div>
+                                            <div class="dialog-pro dialog">
+                                                <button class="btn btn-info" id="sa-basic">Bekijk</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+{#                <section id="tabs" class="project-tab">#}
+{#                    <div class="container">#}
+{#                        <div class="row">#}
+{#                            <div class="col-md-12">#}
+{#                                <nav>#}
+{#                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">#}
+{#                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Klantbeheer</a>#}
+{#                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Productbeheer</a>#}
+{#                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Integratie</a>#}
+{#                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Voorraadbeheer</a>#}
+{#                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Orderbeheer</a>#}
+{#                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Rapportages</a>#}
+{#                                    </div>#}
+{#                                </nav>#}
+{#                                <div class="tab-content" id="nav-tabContent">#}
+{#                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">#}
+
+{#                                        {% if gegevens %}#}
+{#                                            <table class="table" cellspacing="0" style="align-items: center;">#}
+{#                                                <thead>#}
+{#                                                <tr>#}
+{#                                                    <th>Onderwerp</th>#}
+{#                                                    <th style="float: right;"></th>#}
+{#                                                </tr#}
+{#                                                </thead>#}
+{#                                                <tbody>#}
+{#                                                {% for gegeven in gegevens %}#}
+{#                                                    <tr>#}
+{#                                                        <td width="30px">{{ gegeven.title }}</td>#}
+{#                                                        <td>#}
+{#                                                            <a style="float: right;" href="{{ path('article_show', {'slug' : gegeven.slug}) }}" class="btn btn-grey">Bekijk {{ gegeven.title }}</a>#}
+{#                                                        </td>#}
+{#                                                    </tr>#}
+{#                                                {% endfor %}#}
+{#                                                </tbody>#}
+
+{#                                            </table>#}
+{#                                        {% else %}#}
+{#                                            <p>No articles</p>#}
+{#                                        {% endif %}#}
+{#                                    </div>#}
+{#                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">#}
+{#                                        <table class="table" cellspacing="0">#}
+{#                                            <thead>#}
+{#                                            <tr>#}
+{#                                                <th>Project Name</th>#}
+{#                                                <th>Employer</th>#}
+{#                                                <th>Time</th>#}
+{#                                            </tr>#}
+{#                                            </thead>#}
+{#                                            <tbody>#}
+{#                                            <tr>#}
+{#                                                <td><a href="#">Work 1</a></td>#}
+{#                                                <td>Doe</td>#}
+{#                                                <td>john@example.com</td>#}
+{#                                            </tr>#}
+{#                                            <tr>#}
+{#                                                <td><a href="#">Work 2</a></td>#}
+{#                                                <td>Moe</td>#}
+{#                                                <td>mary@example.com</td>#}
+{#                                            </tr>#}
+{#                                            <tr>#}
+{#                                                <td><a href="#">Work 3</a></td>#}
+{#                                                <td>Dooley</td>#}
+{#                                                <td>july@example.com</td>#}
+{#                                            </tr>#}
+{#                                            </tbody>#}
+{#                                        </table>#}
+{#                                    </div>#}
+{#                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">#}
+{#                                        <table class="table" cellspacing="0">#}
+{#                                            <thead>#}
+{#                                            <tr>#}
+{#                                                <th>Contest Name</th>#}
+{#                                                <th>Date</th>#}
+{#                                                <th>Award Position</th>#}
+{#                                            </tr>#}
+{#                                            </thead>#}
+{#                                            <tbody>#}
+{#                                            <tr>#}
+{#                                                <td><a href="#">Work 1</a></td>#}
+{#                                                <td>Doe</td>#}
+{#                                                <td>john@example.com</td>#}
+{#                                            </tr>#}
+{#                                            <tr>#}
+{#                                                <td><a href="#">Work 2</a></td>#}
+{#                                                <td>Moe</td>#}
+{#                                                <td>mary@example.com</td>#}
+{#                                            </tr>#}
+{#                                            <tr>#}
+{#                                                <td><a href="#">Work 3</a></td>#}
+{#                                                <td>Dooley</td>#}
+{#                                                <td>july@example.com</td>#}
+{#                                            </tr>#}
+{#                                            </tbody>#}
+{#                                        </table>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </section>#}
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
         </div>
     </div>
     </section>
