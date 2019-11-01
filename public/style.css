@@ -2654,8 +2654,6 @@ hr {
 }
 .basic-tb-hd p{
     margin-bottom: 0px;
-    padding-left: 30px;
-    padding-right: 30px;
 }
 .basic-tb-hd{
 	margin-bottom:20px;
@@ -6567,4 +6565,18 @@ input:-moz-placeholder { /* Firefox 18- */
     background: #535562;
     color: #fff;
     font-weight:600;
+}
+
+.homeh1{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.homeh2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
