@@ -511,7 +511,7 @@ ul.notika-menu-wrap li a{
 	display:flex;
 }
 .website-traffic-ctn h2, .curved-ctn h2, .past-day-statis h2, .email-ctn-round h2, .recent-post-title h2, .recent-items-title h2, .realtime-title h2, .contact-hd h2, .animation-ctn-hd h2, .alert-hd h2, .color-hd h2, .tab-hd h2, .wizard-hd h2, .dropdown-trig-hd h2, .modals-hd h2, .accordion-hd h2, .tooltips-hd h2, .popovers-hd h2, .typography-list h2, .typography-heading h2, .typography-in-hd h2, .tpgp-hp-hd h2, .view-mail-hrd h2, .multiupload-sys h2, .basic-tb-hd h2{
-	font-size:20px;
+	font-size:25px;
 	color:#333;
 }
 .website-traffic-ctn p, .curved-ctn p, .recent-post-title p, .recent-post-it-ctn p, .view-ml-rl p, .mail-ads p, .multiupload-sys p{
@@ -1633,7 +1633,7 @@ ul.wizard-nav-ac li .disabled{
 	color:#333;
 }
 .modal-inner-pro p, .modals-default .modal-body p, .modal-sm .modal-body p, .modal-large .modal-body p, .accordion-hd p, .tooltips-hd p, .tooltips-ctn p, .tooltips-static p, .popovers-hd p, .typography-list p, .tpgp-ele-tx p, .view-mail-atn p, .basic-tb-hd p{
-	font-size:14px;
+	font-size:16px;
 	color:#333;
 	line-height:24px;
 }
@@ -2653,7 +2653,7 @@ hr {
 	color:#fff;
 }
 .basic-tb-hd p{
-	margin-bottom:0px;
+    margin-bottom: 0px;
 }
 .basic-tb-hd{
 	margin-bottom:20px;
@@ -6401,60 +6401,7 @@ input[type=submit]:hover {
 }
 
 /*style aanmelden*/
-.newsletter {
-    padding: 80px 0;
-
-}
-
-.newsletter .content {
-    max-width: 650px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 2; }
-.newsletter .content h2 {
-    color: #535562;
-    margin-bottom: 40px; }
-.newsletter .content .form-control {
-    height: 50px;
-    border: 4px solid #535562;
-
-    border-radius:0;
-}
-.newsletter .content.form-control:focus {
-    box-shadow: none;
-    border: 2px solid #243c4f;
-}
-.newsletter .content .btn {
-    min-height: 50px;
-    border-radius:0;
-    background: #535562;
-    color: #fff;
-    font-weight:600;
-}
-.container1{ width: 900px; margin: auto; padding-top: 1em; }
-.container1 .ism-slider { margin-left: auto; margin-right: auto; }
-
-.myButton {
-    background-color:#768d87;
-    border-radius:7px;
-    border:2px solid #566963;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:15px;
-    font-weight:bold;
-    padding: 8px 23px;
-    text-decoration:none;
-}
-.myButton:hover {
-    background-color:#6c7c7c;
-}
-.myButton:active {
-    position:relative;
-    top:1px;
-}
+=
 
 
 .form-v5-content  {
@@ -6588,46 +6535,46 @@ input:-moz-placeholder { /* Firefox 18- */
     font-size: 16px;
 }
 
-.p30{
+
+.newsletter {
+    padding: 80px 0;
+}
+
+.newsletter .content {
+    max-width: 650px;
+    margin: 0 auto;
     text-align: center;
-}
+    position: relative;
+    z-index: 2; }
 
-.p30 .soundest-subscribe-input{
-    width: 100%;
-    height: 34px;
-    display: block;
-    color: black;
-    font-size: 14px;
-    padding: 6px;
+.newsletter .content h2 {
+    color: #243c4f;
+    margin-bottom: 40px; }
+.newsletter .content .form-control {
+    height: 50px;
+    border-color: #535562;
+    border-radius:0;
+}
+.newsletter .content.form-control:focus {
+    box-shadow: none;
     border: 2px solid #535562;
-    outline-width: 0px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+}
+.newsletter .content .btn {
+    min-height: 50px;
+    border-radius:0;
+    background: #535562;
+    color: #fff;
+    font-weight:600;
 }
 
-.p30 .submit{
-    width : 100%;
-    height: 34px;
-    display: block;
-    color: white;
-    font-size: 14px;
-    font-family: Verdana, sans-serif;
-    padding: 8px;
-    margin-top: 5px;
-    background-color: #535562;
-    border-width: 0px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    outline-width: 0px;
-    cursor: pointer;
+.homeh1{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
-input[type="submit"]:hover{
-    background-color: white;
-    color: #535562;
-    border: 2px solid #535562;
 
+<<<<<<< HEAD
 }
 
 body {
@@ -6731,4 +6678,11 @@ svg {
 .card:hover .stroke {
     stroke-dashoffset: 100;
     transition: 0.6s ease-out;
+=======
+.homeh2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+>>>>>>> de91600a497c4ace4561c632f702a371f1f67e99
 }
