@@ -66,93 +66,23 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul class="mobile-menu-nav">
-                                    <li><a data-toggle="collapse" data-target="#Charts" href="{{ path('homepage')}}">Home</a>
-                                        <ul class="collapse dropdown-header-top">
-                                            <li><a href="#">Dashboard One</a></li>
-                                            <li><a href="#">Dashboard Two</a></li>
-                                            <li><a href="#">Dashboard Three</a></li>
-                                            <li><a href="#">Dashboard Four</a></li>
-                                            <li><a href="#">Analytics</a></li>
-                                            <li><a href="#">Widgets</a></li>
-                                        </ul>
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#Charts" href="{{ path('homepage')}}">Home</a>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demoevent" href="#">Email</a>
-                                        <ul id="demoevent" class="collapse dropdown-header-top">
-                                            <li><a href="#">Inbox</a></li>
-                                            <li><a href="#">View Email</a></li>
-                                            <li><a href="#">Compose Email</a></li>
-                                        </ul>
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#demoevent" href="{{ path('service')}}">service</a>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#democrou" href="#">Interface</a>
-                                        <ul id="democrou" class="collapse dropdown-header-top">
-                                            <li><a href="#">Animations</a></li>
-                                            <li><a href="#">Google Map</a></li>
-                                            <li><a href="#">Data Maps</a></li>
-                                            <li><a href="#">Code Editor</a></li>
-                                            <li><a href="#">Images Cropper</a></li>
-                                            <li><a href="#">Wizard</a></li>
-                                        </ul>
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#democrou" href="{{ path('functionaliteit')}}">functionaliteit</a>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demolibra" href="#">Charts</a>
-                                        <ul id="demolibra" class="collapse dropdown-header-top">
-                                            <li><a href="#">Flot Charts</a></li>
-                                            <li><a href="#">Bar Charts</a></li>
-                                            <li><a href="#">Line Charts</a></li>
-                                            <li><a href="#">Area Charts</a></li>
-                                        </ul>
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#demolibra" href="{{ path('homepage')}}">Apps</a>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demodepart" href="#">Tables</a>
-                                        <ul id="demodepart" class="collapse dropdown-header-top">
-                                            <li><a href="#">Normal Table</a></li>
-                                            <li><a href="#">Data Table</a></li>
-                                        </ul>
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#demodepart" href="{{ path('homepage')}}">Blogs</a>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Forms</a>
-                                        <ul id="demo" class="collapse dropdown-header-top">
-                                            <li><a href="#">Form Elements</a></li>
-                                            <li><a href="#">Form Components</a></li>
-                                            <li><a href="#">Form Examples</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">App views</a>
-                                        <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                            <li><a href="#">Notifications</a>
-                                            </li>
-                                            <li><a href="#">Alerts</a>
-                                            </li>
-                                            <li><a href="#">Modals</a>
-                                            </li>
-                                            <li><a href="#">Buttons</a>
-                                            </li>
-                                            <li><a href="#">Tabs</a>
-                                            </li>
-                                            <li><a href="#">Accordion</a>
-                                            </li>
-                                            <li><a href="#">Dialogs</a>
-                                            </li>
-                                            <li><a href="#">Popovers</a>
-                                            </li>
-                                            <li><a href="#">Tooltips</a>
-                                            </li>
-                                            <li><a href="#">Dropdowns</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages</a>
-                                        <ul id="Pagemob" class="collapse dropdown-header-top">
-                                            <li><a href="contact.html">Contact</a>
-                                            </li>
-                                            <li><a href="#">Invoice</a>
-                                            </li>
-                                            <li><a href="#">Typography</a>
-                                            </li>
-                                            <li><a href="#">Color</a>
-                                            </li>
-                                            <li><a href="#">Login Register</a>
-                                            </li>
-                                            <li><a href="#">404 Page</a>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <a data-toggle="collapse" data-target="#Miscellaneousmob" href="{{ path('contact')}}">Contact</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -168,123 +98,25 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-house"></i> Home</a>
+                            <li>
+                                <a href="{{ path('homepage')}}"><i class="notika-icon notika-house"></i> Home</a>
                             </li>
-                            <li><a href="{{ path('service')}}"><i class="notika-icon notika-bar-chart"></i> Service</a>
+                            <li>
+                                <a href="{{ path('service')}}"><i class="notika-icon notika-bar-chart"></i> Service</a>
                             </li>
-                            <li><a href="{{ path('functionaliteit')}}"><i class="notika-icon notika-edit"></i> Functionaliteit</a>
+                            <li>
+                                <a href="{{ path('functionaliteit')}}"><i class="notika-icon notika-edit"></i> Functionaliteit</a>
                             </li>
-                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-app"></i> Apps</a>
+                            <li>
+                                <a href="{{ path('homepage')}}"><i class="notika-icon notika-app"></i> Apps</a>
                             </li>
-                            <li><a href="{{ path('homepage')}}"><i class="notika-icon notika-windows"></i> Blogs</a>
+                            <li>
+                                <a href="{{ path('homepage')}}"><i class="notika-icon notika-windows"></i> Blogs</a>
                             </li>
-                            <li><a href="{{ path('contact')}}"><i class="notika-icon notika-mail"></i> Contact</a>
-
+                            <li>
+                                <a href="{{ path('contact')}}"><i class="notika-icon notika-mail"></i> Contact</a>
+                            </li>
                         </ul>
-                        <div class="tab-content custom-menu-content">
-                            <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="#">Dashboard One</a>
-                                    </li>
-                                    <li><a href="#">Dashboard Two</a>
-                                    </li>
-                                    <li><a href="#">Dashboard Three</a>
-                                    </li>
-                                    <li><a href="#">Dashboard Four</a>
-                                    </li>
-                                    <li><a href="#">Analytics</a>
-                                    </li>
-                                    <li><a href="#">Widgets</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="inbox.html">Inbox</a>
-                                    </li>
-                                    <li><a href="#">View Email</a>
-                                    </li>
-                                    <li><a href="#">Compose Email</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="animations.html">Animations</a>
-                                    </li>
-                                    <li><a href="#">Google Map</a>
-                                    </li>
-                                    <li><a href="#">Data Maps</a>
-                                    </li>
-                                    <li><a href="#">Code Editor</a>
-                                    </li>
-                                    <li><a href="#">Images Cropper</a>
-                                    </li>
-                                    <li><a href="#">Wizard</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="#">Flot Charts</a>
-                                    </li>
-                                    <li><a href="#">Bar Charts</a>
-                                    </li>
-                                    <li><a href="#">Line Charts</a>
-                                    </li>
-                                    <li><a href="#">Area Charts</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="#">Normal Table</a>
-                                    </li>
-                                    <li><a href="#">Data Table</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div id="Appviews" class="tab-pane notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="#">Notifications</a>
-                                    </li>
-                                    <li><a href="#">Alerts</a>
-                                    </li>
-                                    <li><a href="#">Modals</a>
-                                    </li>
-                                    <li><a href="#">Buttons</a>
-                                    </li>
-                                    <li><a href="#">Tabs</a>
-                                    </li>
-                                    <li><a href="#">Accordion</a>
-                                    </li>
-                                    <li><a href="#">Dialogs</a>
-                                    </li>
-                                    <li><a href="#">Popovers</a>
-                                    </li>
-                                    <li><a href="#">Tooltips</a>
-                                    </li>
-                                    <li><a href="#">Dropdowns</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="Page" class="tab-pane notika-tab-menu-bg animated flipInX">
-                                <ul class="notika-main-menu-dropdown">
-                                    <li><a href="#">Contact</a>
-                                    </li>
-                                    <li><a href="#">Invoice</a>
-                                    </li>
-                                    <li><a href="#">Typography</a>
-                                    </li>
-                                    <li><a href="#">Color</a>
-                                    </li>
-                                    <li><a href="#">Login Register</a>
-                                    </li>
-                                    <li><a href="#">404 Page</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
