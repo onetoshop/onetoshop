@@ -6678,11 +6678,4 @@ svg {
 .card:hover .stroke {
     stroke-dashoffset: 100;
     transition: 0.6s ease-out;
-=======
-.homeh2{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
->>>>>>> de91600a497c4ace4561c632f702a371f1f67e99
 }
