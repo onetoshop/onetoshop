@@ -1,5 +1,4 @@
 body {
-	margin-top: 60px;
 	font-size: 14px;
 	font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
 	background-color: #E5E9ED;
@@ -56,7 +55,7 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: #FFF;
+	background-color: #f0f0f0;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
 }
 
