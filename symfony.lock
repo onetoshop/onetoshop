@@ -102,13 +102,11 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-<<<<<<< HEAD
     "nesbot/carbon": {
         "version": "2.25.3"
-=======
+    },
     "nikic/php-parser": {
         "version": "v4.2.5"
->>>>>>> fa37badd982ca095106c27133021d6cdea70f17a
     },
     "ocramius/package-versions": {
         "version": "1.5.1"

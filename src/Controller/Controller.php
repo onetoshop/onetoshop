@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Entity\Card;
 use App\Entity\Gegeven;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,11 @@ class Controller extends AbstractController
      */
     public function homepage()
     {
-        return $this->render('homepage/homepage.html.twig');
+        $card = $this->getDoctrine()->getRepository(Card::class)->findAll();
+
+        return $this->render('homepage/homepage.html.twig',[
+        'cards' => $card
+        ]);
     }
 
 //    service pagina
@@ -51,18 +56,18 @@ class Controller extends AbstractController
 
 
 
-// functionaliteit fout
-
-    /**
-     * @Route("/", name="",)
-     */
-    public function index() {
-        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
-
-        return $this->render('functionaliteit/.html.twig', [
-            'gegevens' => $gegeven
-        ]);
-    }
+//// functionaliteit fout
+//
+//    /**
+//     * @Route("/", name="",)
+//     */
+//    public function index() {
+//        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
+//
+//        return $this->render('functionaliteit/.html.twig', [
+//            'gegevens' => $gegeven
+//        ]);
+//    }
 
 
     // functionaliteit
