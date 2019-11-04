@@ -3,10 +3,10 @@
 {% block body %}
     <div class="breadcomb-area">
         <div class="container">
-            <div class="row">
+            <div id="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcomb-list">
-                        <div class="row">
+                        <div id="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="breadcomb-wp">
                                     <div class="breadcomb-icon">
@@ -26,14 +26,14 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-            <div class="row">
+            <div id="row">
                 <div class="col-xs-12">
                     <div class="form-element-list">
                         <div class="basic-tb-hd">
                             <div class="col-xs-12 col-sm-12 col-md-6">
                                 <img src="images/saas_laptop.png"/>
                             </div>
-                            <div class="row">
+                            <div id="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <h1 class="home">
                                         Ontdek de voordelen van een SaaS-webshop
@@ -51,11 +51,11 @@
     </div>
     <div class="form-element-area">
         <div class="container">
-            <div class="row">
+            <div id="row">
                 <div class="col-xs-12">
                     <div class="form-element-list">
                         <div class="basic-tb-hd">
-                            <div class="row">
+                            <div id="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <h1 class="home">Boost uw traffic, omzet en winst met Onetoshop</h1>
                                     <p class="home">
@@ -84,7 +84,7 @@
     {#    card GorillaGrip#}
     <div class="form-element-area">
         <div class="container">
-            <div class="row">
+            <div id="row">
                 <div class="col-xs-12">
                     <div class="form-element-list">
                         <div class="basic-tb-hd">
@@ -94,200 +94,75 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div id="row">
+                            {% if cards %}
+                            {% for card in cards %}
                             <div class="cmp-tb-hd">
-                                <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="card-container">
-                                            <div class="card">
-                                                <div class="front">
-                                                    <div class="cover">
-                                                        <img src="images/GorillaGrip_background.png"/>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="card-container">
+                                        <div class="card">
+                                            <div class="front">
+                                                <div class="cover">
+                                                    <img src="images/GorillaGrip_background.png"/>
+                                                </div>
+                                                <div class="user">
+                                                    <a href="{{ card.link }}" target="_blank">
+                                                        <img class="img-circle" src="images/GorillaGrip.png"/>
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="main">
+                                                        <h3 class="name">{{ card.title }}</h3>
+                                                        <p class="profession">{{ card.customer }}</p>
+                                                        <p class="text-center">{{ card.body }}</p>
                                                     </div>
-                                                    <div class="user">
-                                                        <a href="http://www.gorillagrip.nl" target="_blank">
-                                                            <img class="img-circle" src="images/GorillaGrip.png"/>
-                                                        </a>
+                                                </div>
+                                            </div> <!-- end front panel -->
+                                            <div class="back">
+                                                <div class="header">
+                                                    <h2 class="motto">{{ card.title }}</h2>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="main">
+                                                        <p class="text-center">Ga naar direct naar de website!</p>
+                                                        <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>
                                                     </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <h3 class="name">Mark Veldman</h3>
-                                                            <p class="profession">GorillaGrip</p>
-                                                            <p class="text-center">"Uitermate tevreden over de manier van werken en gang van zaken bij Onetoshop!"</p>
-                                                        </div>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="social-links text-center">
+                                                        {{ card.footer | raw }}
                                                     </div>
-                                                </div> <!-- end front panel -->
-                                                <div class="back">
-                                                    <div class="header">
-                                                        <h2 class="motto">GorillaGrip</h2>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <p class="text-center">Ga naar direct naar de website!</p>
-                                                            <p class="text-center"><a href="https://www.gorillagrip.nl" target="_blank">https://www.gorillagrip.nl</a></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="footer">
-                                                        <div class="social-links text-center">
-                                                            <a href="https://www.facebook.com/gorillagripequipment" target="_blank" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                                                            <a href="https://www.instagram.com/gorillagripnl" target="_blank"class="instagram"><i class="fa fa-instagram fa-fw"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end back panel -->
-                                            </div> <!-- end card -->
-                                        </div> <!-- end card-container -->
-                                    </div> <!-- end col sm 3 -->
-                                    {#einde card GorillaGrip#}
-                                    {#card TrailerPlus#}
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="card-container">
-                                            <div class="card">
-                                                <div class="front">
-                                                    <div class="cover">
-                                                        <a href="https://www.trailerplus.nl" target="_blank">
-                                                            <img src="images/trailerplus_background.png"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="user">
-                                                        <img class="img-circle" src="images/trailerplus.png"/>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <h3 class="name">Patrick Strijker</h3>
-                                                            <p class="profession">TrailerPlus</p>
-                                                            <p class="text-center">"Het is dit laagdrempelige contact wat samenwerking zo plezierig maakt. Het is niet voor niets dat we al 10 jaar samenwerken met Onetoshop!"</p>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end front panel -->
-                                                <div class="back">
-                                                    <div class="header">
-                                                        <h2 class="motto">TrailerPlus</h2>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <p class="text-center">Ga naar direct naar de website!</p>
-                                                            <p class="text-center"><a href="https://www.trailerplus.nl" target="_blank">https://www.trailerplus.nl</a></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="footer">
-                                                        <div class="social-links text-center">
-                                                            <a href="https://www.facebook.com/aanhangeronderdelen" target="_blank" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                                                            <a href="https://www.instagram.com/trailerplus.nl" target="_blank" class="instagram"><i class="fa fa-instagram fa-fw"></i></a>
-                                                        </div>
-                                                    </div> <!-- end back panel -->
-                                                </div> <!-- end card -->
-                                            </div> <!-- end card-container -->
-                                        </div> <!-- end col sm 3 -->
-                                    </div>
-                                    {#einde card TrailerPlus#}
-                                    {#card Een Groenere Wereld#}
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="card-container">
-                                            <div class="card">
-                                                <div class="front">
-                                                    <div class="cover">
-                                                        <img src="images/een_groene_wereld_background.png"/>
-                                                    </div>
-                                                    <div class="user">
-                                                        <a href="https://www.een-groenewereld.nl" target="_blank">
-                                                            <img class="img-circle" src="images/een_groene_wereld.png"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <h3 class="name">John van Os</h3>
-                                                            <p class="profession">Een GroeneWereld</p>
-                                                            <p class="text-center">"Ik werk inmiddels al zeven jaar samen met Onetoshop en we hebben die zeven jaar veel intensief contact gehad. Als er iets is kan ik altijd bellen en wordt het probleem direct opgelost."</p>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end front panel -->
-                                                <div class="back">
-                                                    <div class="header">
-                                                        <h2 class="motto">Een GroeneWereld</h2>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <p class="text-center">Ga naar direct naar de website!</p>
-                                                            <p class="text-center"><a href="https://www.een-groenewereld.nl" target="_blank">https://www.een-groenewereld.nl</a></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="footer">
-                                                        <div class="social-links text-center">
-                                                            <a href="https://www.facebook.com/EenGroeneWereld" class="facebook" target="_blank"><i class="fa fa-facebook fa-fw"></i></a>
-                                                            <a href="https://www.instagram.com/1groenewereld" class="instagram" target="_blank"><i class="fa fa-instagram fa-fw"></i></a>
-                                                            <a href="https://twitter.com/eengroenewereld" class="twitter" target="_blank"><i class="fa fa-twitter fa-fw"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end back panel -->
-                                            </div> <!-- end card -->
-                                        </div> <!-- end card-container -->
-                                    </div> <!-- end col sm 3 -->
-                                    {#einde card Een Groenere Wereld#}
-                                    {#card CamperSalon#}
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="card-container">
-                                            <div class="card">
-                                                <div class="front">
-                                                    <div class="cover">
-                                                        <img src="images/campersalon_background.png"/>
-                                                    </div>
-                                                    <div class="user">
-                                                        <a href="https://www.campersalon.nl" target="_blank">
-                                                            <img class="img-circle" src="images/campersalon.png"/>
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <h3 class="name">Oskar van der Stege</h3>
-                                                            <p class="profession">CamperSalon</p>
-                                                            <p class="text-center">"De service is laagdrempelig en bij problemen, lees uitdagingen, hebben we direct een ontwikkelaar aan de lijn die ons kan helpen. Zo blijft de continuïteit gewaarborgd."</p>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end front panel -->
-                                                <div class="back">
-                                                    <div class="header">
-                                                        <h2 class="motto">Campersalon</h2>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="main">
-                                                            <p class="text-center">Ga naar direct naar de website!</p>
-                                                            <p class="text-center"><a href="https://www.campersalon.nl" target="_blank">https://www.campersalon.nl</a></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="footer">
-                                                        <div class="social-links text-center">
-                                                            <a href="https://www.facebook.com/campersalon" class="facebook" target="_blank"><i class="fa fa-facebook fa-fw"></i></a>
-                                                            <a href="https://twitter.com/campersalon" class="twitter" target="_blank"><i class="fa fa-twitter fa-fw"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end back panel -->
-                                            </div> <!-- end card -->
-                                        </div> <!-- end card-container -->
-                                    </div> <!-- end col sm 3 -->
-                                </div>
+                                                </div>
+                                            </div> <!-- end back panel -->
+                                        </div> <!-- end card -->
+                                    </div> <!-- end card-container -->
+                                </div> <!-- end col sm 3 -->
                             </div>
-                        </div>
-                        {#einde card CamperSalon#}
-                        {#end flip card#}
-                        <section class="newsletter">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="content">
-                                        <h3>Boost uw traffic, omzet en winst met Onetoshop</h3>
-                                        <p>SAAS Webshop oplossingen</p>
-                                        <div class="input-group">
-                                            <input type="email" class="form-control" placeholder="Wat is uw e-mailadres?">
-                                            <span class="input-group-btn">
-                                                    <button class="btn" type="submit">Start Nu</button>
-                                                </span>
+                                {% endfor %}
+                                {% else %}
+                                    <p>Er zijn Geen Gegevens gevonden</p>
+                                {% endif %}
+                            <section class="newsletter">
+                                    <div class="cmp-tb-hd">
+                                        <div class="col-sm-12">
+                                            <div class="content">
+                                                <h3>Boost uw traffic, omzet en winst met Onetoshop</h3>
+                                                <p>SAAS Webshop oplossingen</p>
+                                                <div class="input-group">
+                                                    <input type="email" class="form-control" placeholder="Wat is uw e-mailadres?">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn" type="submit">Start Nu</button>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
