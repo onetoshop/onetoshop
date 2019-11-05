@@ -17,32 +17,20 @@ class Image
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Card", cascade={"persist", "remove"})
-     */
-    private $name;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $bg_img;
 
     private $fr_img;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Card", inversedBy="Images")
+     */
+    private $card;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?Card
-    {
-        return $this->name;
-    }
-
-    public function setName(?Card $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getBgImg(): ?string
@@ -65,6 +53,18 @@ class Image
     public function setFrImg(string $fr_img): self
     {
         $this->fr_img = $fr_img;
+
+        return $this;
+    }
+
+    public function getCard(): ?Card
+    {
+        return $this->card;
+    }
+
+    public function setCard(?Card $card): self
+    {
+        $this->card = $card;
 
         return $this;
     }

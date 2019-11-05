@@ -19,6 +19,11 @@ class Card
     private $id;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $imageId;
+
+    /**
      * @ORM\Column(type="text", length=100)
      */
     private $title;
@@ -43,6 +48,15 @@ class Card
      */
     private $footer;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="card")
+     */
+    private $Images;
+
+    public function __construct()
+    {
+        $this->Images = new ArrayCollection();
+    }
 
     public function getId() {
         return $this->id;
@@ -85,5 +99,35 @@ class Card
         $this->footer = $footer;
     }
 
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->Images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->Images->contains($image)) {
+            $this->Images[] = $image;
+            $image->setCard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->Images->contains($image)) {
+            $this->Images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getCard() === $this) {
+                $image->setCard(null);
+            }
+        }
+
+        return $this;
+    }
 
 }
