@@ -30,11 +30,9 @@
             ============================================ -->
         <link rel="stylesheet" href="ism/css/my-slider.css"/>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
             <!-- flip card CSS
                 ============================================ -->
@@ -48,22 +46,38 @@
         {% endblock %}
         {% block navbar %}
 
-            <nav class="navbar navbar-inverse nav">
+            <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a href="#" class="navbar-left"><img src="img/logo/logo3.png"></a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img  style="max-width:120px; margin-top: -22px;" src="img/logo/logo3.png"></a>
+                        <a href="#" class="navbar-left"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        </ul>
+                            <li>
+                                <a class="active" href="{{ path('homepage')}}">Home</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('service')}}">service</a>
+                            </li>
+                            <li>
+                                <a  href="{{ path('functionaliteit')}}">functionaliteit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('homepage')}}">Apps</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('homepage')}}">Blogs</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('contact')}}">Contact</a>
+                            </li>
+
                     </div>
                 </div>
             </nav>
@@ -159,7 +173,7 @@
             <script src="js/vendor/jquery-1.12.4.min.js"></script>
             <!-- bootstrap JS
                 ============================================ -->
-            <script src="js/bootstrap.min.js"></script>
+{#            <script src="js/bootstrap.min.js"></script>#}
             <!-- meanmenu JS
                 ============================================ -->
             <script src="js/meanmenu/jquery.meanmenu.js"></script>
