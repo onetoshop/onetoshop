@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,12 +24,12 @@ class Card
     private $title;
 
     /**
-     * @ORM\Column(type="text", length=100)
+     * @ORM\Column(type="text")
      */
     private $background_img;
 
     /**
-     * @ORM\Column(type="text", length=100)
+     * @ORM\Column(type="text")
      */
     private $frond_img;
 
@@ -50,7 +52,6 @@ class Card
      * @ORM\Column(type="text")
      */
     private $footer;
-
 
 
     public function getId() {
@@ -109,5 +110,6 @@ class Card
     public function setFooter($footer) {
         $this->footer = $footer;
     }
+
 
 }
