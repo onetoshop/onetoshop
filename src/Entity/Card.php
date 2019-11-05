@@ -24,16 +24,6 @@ class Card
     private $title;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    private $background_img;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $frond_img;
-
-    /**
      * @ORM\Column(type="text", length=100)
      */
     private $customer;
@@ -64,22 +54,6 @@ class Card
 
     public function setTitle($title) {
         $this->title = $title;
-    }
-
-    public function getBackground_img(){
-        return $this->background_img;
-    }
-
-    public  function setBackground_img($background_img){
-        return $this->background_img = $background_img;
-    }
-
-    public function getFront_img(){
-        return $this->frond_img;
-    }
-
-    public  function setFrond_img($frond_img){
-        return $this->frond_img = $frond_img;
     }
 
     public function getCustomer(){

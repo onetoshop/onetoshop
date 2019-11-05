@@ -310,6 +310,9 @@
     "symfony/twig-pack": {
         "version": "v1.0.0"
     },
+    "symfony/var-dumper": {
+        "version": "v4.3.6"
+    },
     "symfony/var-exporter": {
         "version": "v4.3.5"
     },
