@@ -18,10 +18,10 @@ class Card
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $imageId;
+//    /**
+//     * @ORM\Column(type="integer")
+//     */
+//    private $imageId;
 
     /**
      * @ORM\Column(type="text", length=100)

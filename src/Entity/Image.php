@@ -21,6 +21,9 @@ class Image
      */
     private $bg_img;
 
+    /**
+     * @ORM\Column(type="text")
+     */
     private $fr_img;
 
     /**
@@ -67,5 +70,10 @@ class Image
         $this->card = $card;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->bg_img;
     }
 }
