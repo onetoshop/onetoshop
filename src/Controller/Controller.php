@@ -6,7 +6,6 @@ use App\Entity\Gegeven;
 use App\Repository\GegevenRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\ApplicationHandler;
 
 class Controller extends AbstractController
 {
@@ -86,7 +85,7 @@ class Controller extends AbstractController
 
 
         ]);
-        
+
     }
 
     //categoriefunctionalteit
@@ -112,15 +111,4 @@ class Controller extends AbstractController
     }
 
 
-    public function groupquery()
-    {
-        $result = $em->getRepository(gegeven::class)->createQueryBuilder('g')
-            ->where('g.group = :klantbeheer')
-//            ->andWhere('o.Product LIKE :product')
-//            ->setParameter('email', 'some@mail.com')
-//            ->setParameter('product', 'My Products%')
-            ->getQuery()
-            ->getResult();
-
-    }
 }
