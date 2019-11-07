@@ -27,26 +27,22 @@ class File
     private $filename;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Card")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Card", inversedBy="background_image")
      */
     private $image;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Card", inversedBy="background_image")
-     */
-    private $card;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(?string $name): self
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -65,6 +61,11 @@ class File
         return $this;
     }
 
+    public function __toString()
+    {
+        return (string)$this->getId();
+    }
+
     public function getImage(): ?Card
     {
         return $this->image;
@@ -75,22 +76,5 @@ class File
         $this->image = $image;
 
         return $this;
-    }
-
-    public function getCard(): ?Card
-    {
-        return $this->card;
-    }
-
-    public function setCard(?Card $card): self
-    {
-        $this->card = $card;
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        return (string)$this->getId();
     }
 }

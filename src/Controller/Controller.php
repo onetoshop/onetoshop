@@ -1,12 +1,16 @@
 <?php
 namespace App\Controller;
+
 use App\Entity\Card;
 use App\Entity\Categorie;
+use App\Entity\File;
 use App\Entity\Gegeven;
+use App\Form\UploadType;
 use App\Repository\GegevenRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\ApplicationHandler;
+use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends AbstractController
 {
@@ -120,4 +124,32 @@ class Controller extends AbstractController
             ->getResult();
 
     }
+
+    /**
+     * @Route("/upload", name="upload")
+     */
+    public function upload(Request $request)
+    {
+        $upload = new File();
+        $form = $this->createForm(UploadType::class, $upload);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $file = $upload->getName();
+            $filename = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('upload'),
+                $filename
+            );
+
+            $this->addFlash('notice', 'Post Submitted Successfully!!!');
+
+            return $this->redirectToRoute('upload');
+        }
+
+        return $this->render('upload/upload.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
 }
