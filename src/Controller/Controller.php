@@ -72,7 +72,7 @@ class Controller extends AbstractController
 //        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
 //
 //        return $this->render('functionaliteit/.html.twig', [
-//            'gegevens' => $gegeven
+//            'gegevens' => $gegevenf
 //        ]);
 //    }
 
