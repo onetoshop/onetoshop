@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Illuminate\Support\Facades\App;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CardRepository")
@@ -18,116 +19,139 @@ class Card
      */
     private $id;
 
-//    /**
-//     * @ORM\Column(type="integer")
-//     */
-//    private $imageId;
-
     /**
-     * @ORM\Column(type="text", length=100)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text", length=100)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $customer;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $body;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $link;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $footer;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="card")
+     * @ORM\OneToMany(targetEntity="App\Entity\File", mappedBy="card")
      */
-    private $Images;
+    private $background_image;
 
     public function __construct()
     {
-        $this->Images = new ArrayCollection();
+        $this->background_image = new ArrayCollection();
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getTitle() {
+    public function getTitle(): ?string
+    {
         return $this->title;
     }
 
-    public function setTitle($title) {
+    public function setTitle(?string $title): self
+    {
         $this->title = $title;
+
+        return $this;
     }
 
-    public function getCustomer(){
+    public function getCustomer(): ?string
+    {
         return $this->customer;
     }
 
-    public  function setCustomer($customer){
-        return $this->customer = $customer;
+    public function setCustomer(?string $customer): self
+    {
+        $this->customer = $customer;
+
+        return $this;
     }
 
-    public function getBody() {
+    public function getBody(): ?string
+    {
         return $this->body;
     }
-    public function setBody($body) {
+
+    public function setBody(?string $body): self
+    {
         $this->body = $body;
+
+        return $this;
     }
 
-    public function getLink() {
+    public function getLink(): ?string
+    {
         return $this->link;
     }
-    public function setLink($link) {
+
+    public function setLink(?string $link): self
+    {
         $this->link = $link;
+
+        return $this;
     }
 
-    public function getFooter() {
+    public function getFooter(): ?string
+    {
         return $this->footer;
     }
-    public function setFooter($footer) {
+
+    public function setFooter(?string $footer): self
+    {
         $this->footer = $footer;
+
+        return $this;
     }
 
     /**
-     * @return Collection|Image[]
+     * @return Collection|File[]
      */
-    public function getImages(): Collection
+    public function getBackgroundImage(): Collection
     {
-        return $this->Images;
+        return $this->background_image;
     }
 
-    public function addImage(Image $image): self
+    public function addBackgroundImage(File $backgroundImage): self
     {
-        if (!$this->Images->contains($image)) {
-            $this->Images[] = $image;
-            $image->setCard($this);
+        if (!$this->background_image->contains($backgroundImage)) {
+            $this->background_image[] = $backgroundImage;
+            $backgroundImage->setCard($this);
         }
 
         return $this;
     }
 
-    public function removeImage(Image $image): self
+    public function removeBackgroundImage(File $backgroundImage): self
     {
-        if ($this->Images->contains($image)) {
-            $this->Images->removeElement($image);
+        if ($this->background_image->contains($backgroundImage)) {
+            $this->background_image->removeElement($backgroundImage);
             // set the owning side to null (unless already changed)
-            if ($image->getCard() === $this) {
-                $image->setCard(null);
+            if ($backgroundImage->getCard() === $this) {
+                $backgroundImage->setCard(null);
             }
         }
 
         return $this;
     }
 
+    public function __toString()
+    {
+        return (string)$this->getId();
+    }
 }
