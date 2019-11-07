@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -91,6 +94,9 @@
             "./config/routes/easy_admin.yaml"
         ]
     },
+    "gedmo/doctrine-extensions": {
+        "version": "v2.4.37"
+    },
     "illuminate/container": {
         "version": "v6.4.1"
     },
@@ -120,6 +126,12 @@
     },
     "nikic/php-parser": {
         "version": "v4.2.5"
+    },
+    "nilportugues/sql-query-builder": {
+        "version": "1.7.0"
+    },
+    "nilportugues/sql-query-formatter": {
+        "version": "v1.2.2"
     },
     "ocramius/package-versions": {
         "version": "1.5.1"
@@ -156,6 +168,18 @@
     },
     "spatie/laravel-query-builder": {
         "version": "2.3.0"
+    },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "./config/packages/stof_doctrine_extensions.yaml"
+        ]
     },
     "symfony/asset": {
         "version": "v4.3.6"

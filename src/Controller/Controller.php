@@ -1,9 +1,12 @@
 <?php
 namespace App\Controller;
 use App\Entity\Card;
+use App\Entity\Categorie;
 use App\Entity\Gegeven;
+use App\Repository\GegevenRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\ApplicationHandler;
 
 class Controller extends AbstractController
 {
@@ -76,19 +79,45 @@ class Controller extends AbstractController
      */
     public function functionaliteit()
     {
-        return $this->render('functionaliteit/functionaliteit.html.twig');
+        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
+
+        return $this->render('functionaliteit/functionaliteit.html.twig', [
+            'articles' => $categorie    
+        ]);
     }
 
-    // klantbeheer pagina
+    //categoriefunctionalteit
     /**
-     * @Route("/klantbeheer", name="klantbeheer",)
+     *
      */
-    public function klantbeheer() {
-        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
+
+    // Gegeven pagina
+    /**
+     * @Route("/klantbeheer", name="gegeven",)
+     * @param GegevenRepository $gegevenRepository
+     */
+    public function klantbeheer(GegevenRepository $gegevenRepository    ) {
+//        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
+        $gegeven = $gegevenRepository->findby(
+        ['group' => 'Klantbeheer']
+    );
+
 
         return $this->render('functionaliteit/klantbeheer.html.twig', [
             'gegevens' => $gegeven
         ]);
     }
 
+
+    public function groupquery()
+    {
+        $result = $em->getRepository(gegeven::class)->createQueryBuilder('g')
+            ->where('g.group = :klantbeheer')
+//            ->andWhere('o.Product LIKE :product')
+//            ->setParameter('email', 'some@mail.com')
+//            ->setParameter('product', 'My Products%')
+            ->getQuery()
+            ->getResult();
+
+    }
 }
