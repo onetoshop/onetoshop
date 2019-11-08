@@ -44,16 +44,6 @@ class Card
      */
     private $footer;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\File", mappedBy="image")
-     */
-    private $background_image;
-
-    public function __construct()
-    {
-        $this->background_image = new ArrayCollection();
-    }
-
     public function getId()
     {
         return $this->id;
@@ -122,36 +112,5 @@ class Card
     public function __toString()
     {
         return (string)$this->getId();
-    }
-
-    /**
-     * @return Collection|File[]
-     */
-    public function getBackgroundImage(): Collection
-    {
-        return $this->background_image;
-    }
-
-    public function addBackgroundImage(File $backgroundImage): self
-    {
-        if (!$this->background_image->contains($backgroundImage)) {
-            $this->background_image[] = $backgroundImage;
-            $backgroundImage->setImage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBackgroundImage(File $backgroundImage): self
-    {
-        if ($this->background_image->contains($backgroundImage)) {
-            $this->background_image->removeElement($backgroundImage);
-            // set the owning side to null (unless already changed)
-            if ($backgroundImage->getImage() === $this) {
-                $backgroundImage->setImage(null);
-            }
-        }
-
-        return $this;
     }
 }

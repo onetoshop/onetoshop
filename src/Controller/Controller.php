@@ -16,7 +16,7 @@ class Controller extends AbstractController
 {
 //    home pagina
     /**
-     * @Route("/", name="homepage",)
+     * @Route("/", name="homepage")
      */
     public function homepage()
     {
@@ -29,7 +29,7 @@ class Controller extends AbstractController
 
 //    service pagina
     /**
-     * @Route("/service", name="service",)
+     * @Route("/service", name="service")
      */
     public function service()
     {
@@ -79,7 +79,7 @@ class Controller extends AbstractController
 
     // functionaliteit
     /**
-     * @Route("/functionaliteit", name="functionaliteit",)
+     * @Route("/functionaliteit", name="functionaliteit")
      */
     public function functionaliteit()
     {
@@ -128,31 +128,5 @@ class Controller extends AbstractController
 
     }
 
-    /**
-     * @Route("/upload", name="upload")
-     */
-    public function upload(Request $request)
-    {
-        $upload = new File();
-        $form = $this->createForm(UploadType::class, $upload);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
-            $file = $upload->getName();
-            $filename = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $this->getParameter('upload'),
-                $filename
-            );
-
-            $this->addFlash('notice', 'Post Submitted Successfully!!!');
-
-            return $this->redirectToRoute('upload');
-        }
-
-        return $this->render('upload/upload.html.twig',[
-            'form' => $form->createView(),
-        ]);
-    }
 
 }
