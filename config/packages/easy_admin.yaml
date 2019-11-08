@@ -1,5 +1,9 @@
 easy_admin:
     entities:
-        - App\Entity\Card
-        - App\Entity\Gegeven
-        - App\Entity\File
+        Card:
+            class: App\Entity\Card
+        Categorie:
+             class: App\Entity\Categorie
+        Gegeven:
+              class: App\Entity\Gegeven
+

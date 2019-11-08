@@ -63,18 +63,7 @@ class Controller extends AbstractController
 
 
 
-//// functionaliteit fout
-//
-//    /**
-//     * @Route("/", name="",)
-//     */
-//    public function index() {
-//        $gegeven = $this->getDoctrine()->getRepository(gegeven::class)->findAll();
-//
-//        return $this->render('functionaliteit/.html.twig', [
-//            'gegevens' => $gegevenfff
-//        ]);
-//    }
+
 
 
     // functionaliteit
@@ -100,7 +89,7 @@ class Controller extends AbstractController
 
     // Gegeven pagina
     /**
-     * @Route("{slug}", name="article_show")
+     * @Route("/functionaliteit/{slug}", name="article_show")
      */
     public function gegeven($slug) {
 //
@@ -116,17 +105,7 @@ class Controller extends AbstractController
     }
 
 
-    public function groupquery()
-    {
-        $result = $em->getRepository(gegeven::class)->createQueryBuilder('g')
-            ->where('g.group = :klantbeheer')
-//            ->andWhere('o.Product LIKE :product')
-//            ->setParameter('email', 'some@mail.com')
-//            ->setParameter('product', 'My Products%')
-            ->getQuery()
-            ->getResult();
 
-    }
 
 
 }

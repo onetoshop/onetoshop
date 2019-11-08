@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\File;
 use App\Entity\Image;
 use App\Form\ImageUploadType;
-use App\Form\UploadType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

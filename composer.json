@@ -16,15 +16,17 @@
         "symfony/form": "4.3.*",
         "symfony/framework-bundle": "4.3.*",
         "symfony/orm-pack": "^1.0",
+        "symfony/security-bundle": "4.3.*",
         "symfony/twig-pack": "^1.0",
         "symfony/var-dumper": "4.3.*",
         "symfony/web-server-bundle": "4.3.*",
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.14",
+        "doctrine/doctrine-fixtures-bundle": "^3.2",
         "easycorp/easy-log-handler": "^1.0.7",
         "symfony/debug-bundle": "*",
+        "symfony/maker-bundle": "^1.14",
         "symfony/monolog-bundle": "^3.0",
         "symfony/profiler-pack": "*",
         "symfony/var-dumper": "*"
