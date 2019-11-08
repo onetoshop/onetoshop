@@ -11,17 +11,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/admin/post", name="post")
+     * @Route("/post", name="post")
      */
     public function index()
     {
+        $image = $this->getDoctrine()
+            ->getRepository(Image::class)
+            ->findAll();
+
+        $build['image'] = $image;
+
         return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
+            'image' => $build,
         ]);
     }
 
     /**
-     * @Route("/admin/image", name="image_upload")
+     * @Route("/image", name="image_upload")
      */
     public function indexAction(Request $request)
     {
