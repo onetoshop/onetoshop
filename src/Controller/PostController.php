@@ -19,10 +19,8 @@ class PostController extends AbstractController
             ->getRepository(Image::class)
             ->findAll();
 
-        $build['image'] = $image;
-
         return $this->render('post/index.html.twig', [
-            'image' => $build,
+            'image' => $image,
         ]);
     }
 
@@ -43,7 +41,7 @@ class PostController extends AbstractController
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
             $file = $imageEn->getImage();
-            dump($imageEn->getImage());
+            ($imageEn->getImage());
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
 
@@ -60,7 +58,6 @@ class PostController extends AbstractController
         }
 
         return $this->render('upload/upload.html.twig', array(
-
             'form' => $form->createView()
         ));
     }

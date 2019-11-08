@@ -4,7 +4,52 @@
 
 {% block body %}
     {% for image in image %}
-        <img src="{{ asset('/public/image/' ~ image.image) }}"/>
+{#        <img src="{{ asset('/image/' ~ image.image | raw) }}"/>#}
 {#        {{ dump(image) }}#}
+{#    {% endfor %}#}
+
+    <div class="cmp-tb-hd">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="{{ asset('/image/' ~ image.image | raw) }}"/>
+                        </div>
+                        <div class="user">
+                            <a href="" target="_blank">
+                                {#                                                        <img src="{{ asset('bundles/appbundle/Resources/public/images/' getoneby="image_id" }}" alt="Example"/>#}
+{#                                <img src="{{ asset('/image/' ~ image.image_1 | raw) }}"/>#}
+                                {#                                                        {{ dump(card) }}#}
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">test</h3>
+                                <p class="profession">test</p>
+                                <p class="text-center">test</p>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h2 class="motto">test</h2>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <p class="text-center">Ga naar direct naar de website!</p>
+                                <p class="text-center"><a href="test" target="_blank">test</a></p>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="social-links text-center">
+                                <p>test</p>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+    </div>
     {% endfor %}
-{% endblock body%}
+{% endblock %}
