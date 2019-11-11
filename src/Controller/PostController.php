@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Card;
 use App\Entity\Image;
+use App\Form\CardType;
 use App\Form\ImageUploadType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,14 +27,14 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/image", name="image_upload")
+     * @Route("/card", name="card_upload")
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $imageEn = new Image();
+        $imageEn = new Card();
 
-        $form = $this->createForm(ImageUploadType::class, $imageEn);
+        $form = $this->createForm(CardType::class, $imageEn);
 
         $form->handleRequest($request);
 
@@ -40,10 +42,10 @@ class PostController extends AbstractController
 
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
-            $file = $imageEn->getImage();
-            ($imageEn->getImage());
-            $file1 = $imageEn->getImage1();
-            ($imageEn->getImage1());
+            $file = $imageEn->getBackgroundimage();
+            ($imageEn->getBackgroundimage());
+            $file1 = $imageEn->getFrondimage();
+            ($imageEn->getFrondimage());
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
             $fileName1 = md5(uniqid()).'.'.$file1->guessExtension();
@@ -51,14 +53,14 @@ class PostController extends AbstractController
             $file->move($this->getParameter('upload'), $fileName);
             $file1->move($this->getParameter('upload'), $fileName1);
 
-            $imageEn->setImage($fileName);
-            $imageEn->setImage1($fileName1);
+            $imageEn->setBackgroundimage($fileName);
+            $imageEn->setFrondimage($fileName1);
             $em->persist($imageEn);
             $em->flush();
 
             $this->addFlash('notice', 'Post Submitted Successfully!!!');
 
-            return $this->redirectToRoute('image_upload');
+            return $this->redirectToRoute('card_upload');
 
         }
 

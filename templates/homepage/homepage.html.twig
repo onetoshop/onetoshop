@@ -101,13 +101,11 @@
                                         <div class="card">
                                             <div class="front">
                                                 <div class="cover">
-                                                    <img src="images/GorillaGrip_background.png"/>
+                                                    <img src="{{ asset('/image/card/' ~ card.backgroundimage) }}"/>
                                                 </div>
                                                 <div class="user">
                                                     <a href="{{ card.link }}" target="_blank">
-{#                                                        <img src="{{ asset('bundles/appbundle/Resources/public/images/' getoneby="image_id" }}" alt="Example"/>#}
-                                                        <img src="images/GorillaGrip.png"/>
-{#                                                        {{ dump(card) }}#}
+                                                        <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>
                                                     </a>
                                                 </div>
                                                 <div class="content">

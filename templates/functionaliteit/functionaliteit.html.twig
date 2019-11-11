@@ -117,42 +117,48 @@
 
 
 
-
+<div class="form-element-area">
+    <div class="container">
+        <div id="row">
+            <div class="col-xs-12">
+                <div class="form-element-list">
+                    <div class="basic-tb-hd">
+                        <div class="cmp-tb-hd">
+                            <div class="cmp-tb-hd">
                         {% if namen %}
 
                         {% for categorie in namen %}
 
                         <div class="dialog-area">
-
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6 col-lg-4">
-                                        <div class="dialog-inner">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <div class="dialog-inner">
                                             <div class="contact-hd dialog-hd">
                                                 <h2>{{ categorie.naam }}</h2>
-
                                             <div class="dialog-pro dialog">
                                             <a href="{{ path('article_show', {'slug' : categorie.naam}) }}"  class="btn btn-info" id="sa-basic">Bekijk </a>
-
-
-                                            </div>
-                                            </div>
+                                        </div>
                                         </div>
                                     </div>
+                                </div>
+                        </div>
 
                         {% endfor %}
 
-                            </div>
-                            </div>
-
-                            </div>
-                            </div>
 
                 {% else %}
                     <p>No articles</p>
                 {% endif %}
+                                <div>
+                                    <p>Voor meer informatie kan u altijd bellen, gegevens staan op de contact pagina.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-{% endblock %}
+{% endblock body %}
 

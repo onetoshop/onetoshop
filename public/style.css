@@ -194,7 +194,6 @@ body {}
 }
 .nav.notika-top-nav .open>a, .nav.notika-top-nav .open>a:focus, .nav.notika-top-nav .open>a:hover {
     background: #535562;
-    border-color: 0px solid #535562;
 
 }
 .nav.notika-top-nav>li>a:focus, .nav.notika-top-nav>li>a:hover {
@@ -4563,9 +4562,6 @@ body.box-layout {
 /*----------------------------------------*/
 /*  57. Breadcomb CSS
 /*----------------------------------------*/
-.breadcomb-area{
-    margin-bottom:30px;
-}
 .breadcomb-wp{
     display:flex;
 }
@@ -4966,7 +4962,7 @@ body.box-layout {
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
-    .container {width:300px}
+    .container {width:100%}
     .main-menu-area{
         display:none;
     }
@@ -6398,8 +6394,6 @@ input[type=submit]:hover {
 }
 
 /*style aanmelden*/
-=
-
 
 .form-v5-content  {
     background: #fff;
