@@ -22,9 +22,10 @@ class UserFixtures extends Fixture
     $user = new User();
     // ...
 
-             $user->setPassword($this->passwordEncoder->encodePassword(
-                     $user,
-                     'the_new_password'
+             $user->setPassword($this->passwordEncoder-> encodePassword(
+                     $user, 'the_new_password'
+
+
                  ));
 
 
