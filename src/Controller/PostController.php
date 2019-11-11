@@ -42,12 +42,17 @@ class PostController extends AbstractController
 
             $file = $imageEn->getImage();
             ($imageEn->getImage());
+            $file1 = $imageEn->getImage1();
+            ($imageEn->getImage1());
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName1 = md5(uniqid()).'.'.$file1->guessExtension();
 
             $file->move($this->getParameter('upload'), $fileName);
+            $file1->move($this->getParameter('upload'), $fileName1);
 
             $imageEn->setImage($fileName);
+            $imageEn->setImage1($fileName1);
             $em->persist($imageEn);
             $em->flush();
 
@@ -62,35 +67,4 @@ class PostController extends AbstractController
         ));
     }
 
-
-
-
-
-    //    /**
-//     * @Route("/admin/upload", name="upload")
-//     */
-//    public function upload(Request $request)
-//    {
-//        $upload = new File();
-//        $form = $this->createForm(UploadType::class, $upload);
-//
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()){
-//            $file = $upload->getName();
-//            $filename = md5(uniqid()) .'.'. $file->
-//                guessExtension();
-//            $file->move(
-//                $this->getParameter('upload'),
-//                $filename
-//            );
-//
-//            $this->addFlash('notice', 'Post Submitted Successfully!!!');
-//
-//            return $this->redirectToRoute('upload');
-//        }
-//
-//        return $this->render('upload/upload.html.twig',[
-//            'form' => $form->createView(),
-//        ]);
-//    }
 }

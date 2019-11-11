@@ -4,9 +4,7 @@
 
 {% block body %}
     {% for image in image %}
-{#        <img src="{{ asset('/image/' ~ image.image) }}"/>#}
-{#        {{ dump(image) }}#}
-{#    {% endfor %}#}
+
 
     <div class="cmp-tb-hd">
         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -18,9 +16,7 @@
                         </div>
                         <div class="user">
                             <a href="" target="_blank">
-{#                                                                                        <img src="{{ asset('bundles/appbundle/Resources/public/images/' getoneby="image_id" }}" alt="Example"/>#}
-{#                                <img src="{{ asset('/image/' ~ image.image1 | raw) }}"/>#}
-{#                                                                                        {{ dump(card) }}#}
+                                <img src="{{ asset('/image/' ~ image.image1) }}"/>
                             </a>
                         </div>
                         <div class="content">
