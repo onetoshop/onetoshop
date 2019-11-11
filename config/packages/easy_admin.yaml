@@ -7,3 +7,6 @@ easy_admin:
         Gegeven:
               class: App\Entity\Gegeven
 
+        User:
+          class: App\Entity\User
+

@@ -15,7 +15,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            provider: app_user_provider
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
@@ -34,8 +38,9 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # require ROLE_ADMIN for /admin*
-        - { path: '^/admin', roles: ROLE_ADMIN }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
         # the 'path' value can be any valid regular expression
         # (this one will match URLs like /api/post/7298 and /api/comment/528491)
         - { path: ^/api/(post|comment)/\d+$, roles: ROLE_USER }
+
