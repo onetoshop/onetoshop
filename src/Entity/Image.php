@@ -23,16 +23,20 @@ class Image
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Please upload image")
+     * @Assert\File(mimeTypes={"image/png"})
+     * @ORM\OneToOne(targetEntity="Card", mappedBy="backgroundimage")
      */
-    private $description;
+    private $image;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Please upload image")
      * @Assert\File(mimeTypes={"image/png"})
+     * @ORM\OneToOne(targetEntity="Card", mappedBy="frondimage")
      */
-    private $image;
+    private $image1;
 
     public function getId()
     {
@@ -51,17 +55,6 @@ class Image
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
 
     public function getImage()
     {
@@ -73,5 +66,22 @@ class Image
         $this->image = $image;
 
         return $this;
+    }
+
+    public function getImage1()
+    {
+        return $this->image1;
+    }
+
+    public function setImage1($image1)
+    {
+        $this->image1 = $image1;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getImage();
     }
 }

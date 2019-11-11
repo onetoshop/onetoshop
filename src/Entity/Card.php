@@ -44,6 +44,18 @@ class Card
      */
     private $footer;
 
+    /**
+     * @ORM\Column(type="text")
+     * @ORM\OneToOne(targetEntity="Image", mappedBy="image")
+     */
+    private $backgroundimage;
+
+    /**
+     * @ORM\Column(type="text")
+     * @ORM\OneToOne(targetEntity="Image", mappedBy="image1")
+     */
+    private $frondimage;
+
     public function getId()
     {
         return $this->id;
@@ -112,5 +124,29 @@ class Card
     public function __toString()
     {
         return (string)$this->getId();
+    }
+
+    public function getBackgroundimage()
+    {
+        return $this->backgroundimage;
+    }
+
+    public function setBackgroundimage($backgroundimage)
+    {
+        $this->backgroundimage = $backgroundimage;
+
+        return $this;
+    }
+
+    public function getFrondimage()
+    {
+        return $this->frondimage;
+    }
+
+    public function setFrondimage($frondimage)
+    {
+        $this->frondimage = $frondimage;
+
+        return $this;
     }
 }

@@ -11,17 +11,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/admin/post", name="post")
+     * @Route("/post", name="post")
      */
     public function index()
     {
+        $image = $this->getDoctrine()
+            ->getRepository(Image::class)
+            ->findAll();
+
         return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
+            'image' => $image,
         ]);
     }
 
     /**
-     * @Route("/admin/image", name="image_upload")
+     * @Route("/image", name="image_upload")
      */
     public function indexAction(Request $request)
     {
@@ -37,13 +41,18 @@ class PostController extends AbstractController
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
             $file = $imageEn->getImage();
-            dump($imageEn->getImage());
+            ($imageEn->getImage());
+            $file1 = $imageEn->getImage1();
+            ($imageEn->getImage1());
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName1 = md5(uniqid()).'.'.$file1->guessExtension();
 
             $file->move($this->getParameter('upload'), $fileName);
+            $file1->move($this->getParameter('upload'), $fileName1);
 
             $imageEn->setImage($fileName);
+            $imageEn->setImage1($fileName1);
             $em->persist($imageEn);
             $em->flush();
 
@@ -54,40 +63,8 @@ class PostController extends AbstractController
         }
 
         return $this->render('upload/upload.html.twig', array(
-
             'form' => $form->createView()
         ));
     }
 
-
-
-
-
-    //    /**
-//     * @Route("/admin/upload", name="upload")
-//     */
-//    public function upload(Request $request)
-//    {
-//        $upload = new File();
-//        $form = $this->createForm(UploadType::class, $upload);
-//
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()){
-//            $file = $upload->getName();
-//            $filename = md5(uniqid()) .'.'. $file->
-//                guessExtension();
-//            $file->move(
-//                $this->getParameter('upload'),
-//                $filename
-//            );
-//
-//            $this->addFlash('notice', 'Post Submitted Successfully!!!');
-//
-//            return $this->redirectToRoute('upload');
-//        }
-//
-//        return $this->render('upload/upload.html.twig',[
-//            'form' => $form->createView(),
-//        ]);
-//    }
 }
