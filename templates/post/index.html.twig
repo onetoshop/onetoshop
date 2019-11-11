@@ -4,7 +4,7 @@
 
 {% block body %}
     {% for image in image %}
-{#        <img src="{{ asset('/image/' ~ image.image | raw) }}"/>#}
+{#        <img src="{{ asset('/image/' ~ image.image) }}"/>#}
 {#        {{ dump(image) }}#}
 {#    {% endfor %}#}
 
@@ -14,13 +14,13 @@
                 <div class="card">
                     <div class="front">
                         <div class="cover">
-                            <img src="{{ asset('/image/' ~ image.image | raw) }}"/>
+                            <img src="{{ asset('/image/' ~ image.image) }}"/>
                         </div>
                         <div class="user">
                             <a href="" target="_blank">
-                                {#                                                        <img src="{{ asset('bundles/appbundle/Resources/public/images/' getoneby="image_id" }}" alt="Example"/>#}
-{#                                <img src="{{ asset('/image/' ~ image.image_1 | raw) }}"/>#}
-                                {#                                                        {{ dump(card) }}#}
+{#                                                                                        <img src="{{ asset('bundles/appbundle/Resources/public/images/' getoneby="image_id" }}" alt="Example"/>#}
+{#                                <img src="{{ asset('/image/' ~ image.image1 | raw) }}"/>#}
+{#                                                                                        {{ dump(card) }}#}
                             </a>
                         </div>
                         <div class="content">
