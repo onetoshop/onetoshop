@@ -139,7 +139,7 @@
         "version": "2.25.3"
     },
     "nikic/php-parser": {
-        "version": "v4.2.5"
+        "version": "v4.3.0"
     },
     "nilportugues/sql-query-builder": {
         "version": "1.7.0"
