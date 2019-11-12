@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
     <div class="breadcomb-area">
         <div class="container">
             <div class="row">
@@ -12,16 +11,11 @@
                                     <div class="breadcomb-icon">
                                         <i class="notika-icon notika-edit"></i>
                                     </div>
-
-
                                     <div class="breadcomb-ctn">
-                                        <h3>test</h3>
+                                        <h3>Klantbeheer</h3>
                                     </div>
-
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -29,40 +23,29 @@
         </div>
     </div>
 
-    <div class="form-example-area">
+    <div class="form-element-area">
     <div class="container">
-    <div class="">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="form-example-wrap">
+    <div id="row">
+    <div class="col-xs-12">
+    <div class="form-element-list">
+    <div class="basic-tb-hd">
     <div class="cmp-tb-hd">
-
-
+    <div class="cmp-tb-hd">
     {% if gegevens %}
         {% for gegeven in gegevens %}
-
-
-
-                            <h3>{{ gegeven.title }}</h3>
-
-
-                        <p style="font-size: 14px;">{{ gegeven.body | raw }}</p>
+            <h3>{{ gegeven.title }}</h3>
+            <p style="font-size: 14px;">{{ gegeven.body | raw }}</p>
             <hr style="color: black;">
-
-                    {% endfor %}
-        </div>
-
-
+        {% endfor %}
         </div>
         </div>
         </div>
         </div>
         </div>
-
-                    {% else %}
-                        <p>No articles</p>
-                    {% endif %}
-
-
-
-
-{% endblock %}
+        </div>
+        </div>
+        </div>
+    {% else %}
+        <p>No articles</p>
+    {% endif %}
+{% endblock body %}
