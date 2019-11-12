@@ -49,6 +49,8 @@ class Controller extends AbstractController
 
 
 
+
+
     /**
      * @Route("/functionaliteit/{slug}", name="article_show")
      */

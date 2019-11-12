@@ -1,6 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_end(form) }}
+    <div class="form-element-area">
+        <div class="container">
+            <div id="row">
+                <div class="col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd">
+                            <div class="cmp-tb-hd">
+                                <div class="cmp-tb-hd">
+                                    <div class="breadcomb-wp">
+                                        <div class="breadcomb-icon">
+                                            <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="breadcomb-ctn">
+                                            <h2>Aanmelden</h2>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="col-4 col-offset-4 text-center">
+                                            {{ form_start(form) }}
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

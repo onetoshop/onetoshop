@@ -2,16 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Illuminate\Support\Facades\App;
-
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AanmeldingRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AanmeldRepository")
  */
-class Aanmelding
+class Aanmeld
 {
     /**
      * @ORM\Id()
@@ -21,7 +17,7 @@ class Aanmelding
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $voornaam;
 
@@ -38,12 +34,12 @@ class Aanmelding
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $bereik;
+    private $doel;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $keuz;
+    private $contact;
 
     public function getId(): ?int
     {
@@ -86,26 +82,26 @@ class Aanmelding
         return $this;
     }
 
-    public function getBereik(): ?string
+    public function getDoel(): ?string
     {
-        return $this->bereik;
+        return $this->doel;
     }
 
-    public function setBereik(string $bereik): self
+    public function setDoel(string $doel): self
     {
-        $this->bereik = $bereik;
+        $this->doel = $doel;
 
         return $this;
     }
 
-    public function getKeuz(): ?string
+    public function getContact(): ?string
     {
-        return $this->keuz;
+        return $this->contact;
     }
 
-    public function setKeuz(string $keuz): self
+    public function setContact(string $contact): self
     {
-        $this->keuz = $keuz;
+        $this->contact = $contact;
 
         return $this;
     }
