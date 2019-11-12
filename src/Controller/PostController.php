@@ -13,21 +13,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/post", name="post")
+     * @Route("/card", name="card")
      */
     public function index()
     {
-        $image = $this->getDoctrine()
-            ->getRepository(Image::class)
-            ->findAll();
-
-        return $this->render('post/register.html.twig', [
-            'image' => $image,
+        $cards = $this->getDoctrine()->getRepository(Card::class)->findAll();
+        return $this->render('upload/card.html.twig', [
+            'cards' => $cards
         ]);
     }
 
+
     /**
-     * @Route("/card", name="card_upload")
+     * @Route("/add_card", name="add_card")
      */
     public function indexAction(Request $request)
     {

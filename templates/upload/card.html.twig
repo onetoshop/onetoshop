@@ -1,0 +1,44 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+    <div class="form-element-area">
+        <div class="container">
+            <div id="row">
+                <div class="col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd">
+                            <div class="cmp-tb-hd">
+                                <div class="cmp-tb-hd">
+                                    {% if cards %}
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th><h4>Card Title</h4></th>
+                                                    <th><h4>Card Options</h4></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for card in cards %}
+                                                    <tr>
+                                                        <td>{{ card.title }}</td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-success">Show</a>
+                                                            <a href="#" class="btn btn-light">Edit</a>
+                                                            <a href="#" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <p>Niks gevonden om weer te geven.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
