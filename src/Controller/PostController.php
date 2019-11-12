@@ -21,7 +21,7 @@ class PostController extends AbstractController
             ->getRepository(Image::class)
             ->findAll();
 
-        return $this->render('post/index.html.twig', [
+        return $this->render('post/register.html.twig', [
             'image' => $image,
         ]);
     }
