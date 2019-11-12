@@ -27,6 +27,10 @@ class UserFixtures extends Fixture
                      $user, 'test123'));
             $user->setEmail('jesse@gmail.com');
 
+    $user->setPassword($this->passwordEncoder-> encodePassword(
+        $user, 'onetoshop'));
+    $user->setEmail('gernand@gmail.com');
+
     $manager->persist($user);
 
     // add more products
