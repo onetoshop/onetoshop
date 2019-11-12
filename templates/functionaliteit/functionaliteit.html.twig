@@ -120,7 +120,7 @@
 <div class="form-element-area">
     <div class="container">
         <div id="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12"  style="background: white;">
                 <div class="form-element-list">
                     <div class="basic-tb-hd">
                         <div class="cmp-tb-hd">
@@ -130,7 +130,7 @@
                         {% for categorie in namen %}
 
                         <div class="dialog-area">
-                                <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="col-12 col-sm-6 col-md-6">
                                     <div class="dialog-inner">
                                             <div class="contact-hd dialog-hd">
                                                 <h2>{{ categorie.naam }}</h2>
@@ -148,9 +148,6 @@
                 {% else %}
                     <p>No articles</p>
                 {% endif %}
-                                <div>
-                                    <p>Voor meer informatie kan u altijd bellen, gegevens staan op de contact pagina.</p>
-                                </div>
                             </div>
                         </div>
                     </div>

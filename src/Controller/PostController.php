@@ -58,8 +58,6 @@ class PostController extends AbstractController
             $em->persist($imageEn);
             $em->flush();
 
-            $this->addFlash('notice', 'Post Submitted Successfully!!!');
-
             return $this->redirectToRoute('card_upload');
 
         }
