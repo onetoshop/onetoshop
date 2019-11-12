@@ -1,10 +1,12 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Aanmelding;
 use App\Entity\Card;
 use App\Entity\Categorie;
 use App\Entity\File;
 use App\Entity\Gegeven;
+use App\Form\CardType;
 use App\Form\UploadType;
 use App\Repository\GegevenRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,14 +47,7 @@ class Controller extends AbstractController
         return $this->render('contact/contact.html.twig');
     }
 
-    // mogelijkheden pagina
-    /**
-     * @Route("/mogelijkheden", name="mogelijkheden",)
-     */
-    public function mogelijkheden()
-    {
-        return $this->render('mogelijkheden/mogelijkheden.html.twig');
-    }
+
 
     /**
      * @Route("/functionaliteit/{slug}", name="article_show")
