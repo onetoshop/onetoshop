@@ -45,6 +45,15 @@ class Controller extends AbstractController
         return $this->render('contact/contact.html.twig');
     }
 
+    // mogelijkheden pagina
+    /**
+     * @Route("/mogelijkheden", name="mogelijkheden",)
+     */
+    public function mogelijkheden()
+    {
+        return $this->render('mogelijkheden/mogelijkheden.html.twig');
+    }
+
     /**
      * @Route("/functionaliteit/{slug}", name="article_show")
      */
