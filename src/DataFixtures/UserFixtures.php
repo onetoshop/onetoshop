@@ -23,13 +23,17 @@ class UserFixtures extends Fixture
     $user = new User();
     // ...
 
-             $user->setPassword($this->passwordEncoder-> encodePassword(
-                     $user, 'test123'));
-            $user->setEmail('jesse@gmail.com');
-
-    $user->setPassword($this->passwordEncoder-> encodePassword(
-        $user, 'onetoshop'));
-    $user->setEmail('gernand@gmail.com');
+//             $user->setPassword($this->passwordEncoder-> encodePassword(
+//                     $user, 'test123'));
+//            $user->setEmail('jesse@gmail.com');
+//
+//    $user->setPassword($this->passwordEncoder-> encodePassword(
+//        $user, 'onetoshop'));
+//    $user->setEmail('gernand@gmail.com');
+        $user->setPassword($this->passwordEncoder-> encodePassword(
+            $user, 'test123'));
+        $user->setEmail('jessestoel@gmail.com');
+        $user->setUsername('Jesse');
 
     $manager->persist($user);
 
