@@ -41,6 +41,16 @@ class Aanmeld
      */
     private $contact;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Email;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Voorkeur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +112,30 @@ class Aanmeld
     public function setContact(string $contact): self
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->Email;
+    }
+
+    public function setEmail(string $Email): self
+    {
+        $this->Email = $Email;
+
+        return $this;
+    }
+
+    public function getVoorkeur(): ?string
+    {
+        return $this->Voorkeur;
+    }
+
+    public function setVoorkeur(?string $Voorkeur): self
+    {
+        $this->Voorkeur = $Voorkeur;
 
         return $this;
     }

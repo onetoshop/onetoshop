@@ -1,0 +1,56 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+    <div class="form-element-area">
+        <div class="container">
+            <div id="row">
+                <div class="col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd">
+                            <div class="cmp-tb-hd">
+                                <div class="cmp-tb-hd">
+                                    {% if aanmeldingen %}
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th><h4>Voornaam</h4></th>
+                                                <th><h4>Achternaam</h4></th>
+                                                <th><h4>Telefoonnumer</h4></th>
+                                                <th><h4>Doel</h4></th>
+                                                <th><h4>Contact opnemen</h4></th>
+                                                <th><h4>Email</h4></th>
+                                                <th><h4>Voorkeur</h4></th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for aanmeld in aanmeldingen %}
+                                                <tr>
+                                                    <td>{{ aanmeld.voornaam }}</td>
+                                                    <td>{{ aanmeld.achternaam }}</td>
+                                                    <td>{{ aanmeld.telefoon }}</td>
+                                                    <td>{{ aanmeld.doel }}</td>
+                                                    <td>{{ aanmeld.contact }}</td>
+                                                    <td>{{ aanmeld.email }}</td>
+                                                    <td>{{ aanmeld.voorkeur }}</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-success">Show</a>
+                                                        <a href="#" class="btn btn-light">Edit</a>
+                                                        <a href="#" class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <p>Niks gevonden om weer te geven.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,12 +1,23 @@
-easy_admin:
-    entities:
-        Card:
-            class: App\Entity\Card
-        Categorie:
-             class: App\Entity\Categorie
-        Gegeven:
-              class: App\Entity\Gegeven
-
-        User:
-          class: App\Entity\User
-
+#easy_admin:
+#  entities:
+#    Card:
+#      class: App\Entity\Card
+#    Categorie:
+#      class: App\Entity\Categorie
+#    Gegeven:
+#      class: App\Entity\Gegeven
+#
+#    User:
+#      class: App\Entity\User
+#
+#  design:
+#    assets:
+#      # all kinds of assets are supported and linked accordingly
+#      css:
+#        - '//example.org/css/admin1.css'
+#        - 'http://example.org/css/admin2.css'
+#        - 'https://example.org/css/admin3.css'
+#        - '/bundles/user/css/admin4.css'
+#        - 'bundles/app/css/admin5.css'
+#
+#

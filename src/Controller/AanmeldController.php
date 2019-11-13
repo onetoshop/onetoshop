@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Aanmeld;
+use App\Entity\Card;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,5 +37,16 @@ class AanmeldController extends AbstractController
                 'form' => $form->createView(),
         ]);
 
+    }
+
+    /**
+     * @Route("/aanmeldingen", name="aanmeldingen")
+     */
+    public function index()
+    {
+        $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
+        return $this->render('mogelijkheden/aanmeldingen.html.twig', [
+            'aanmeldingen' => $aanmeld
+        ]);
     }
 }
