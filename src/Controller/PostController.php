@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Card;
-use App\Entity\Image;
 use App\Form\CardType;
-use App\Form\ImageUploadType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +13,7 @@ class PostController extends AbstractController
     /**
      * @Route("/card", name="card")
      */
-    public function index()
+    public function card()
     {
         $cards = $this->getDoctrine()->getRepository(Card::class)->findAll();
         return $this->render('upload/card.html.twig', [
@@ -23,9 +21,24 @@ class PostController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/card/show/{slug}", name="show_card")
+     */
+    public function show_card($slug)
+    {
+    $cards = $this->getDoctrine()->getRepository(Card::class)->findBy([
+        'title' => $slug
+    ]);
+
+
+    return $this->render('upload/cardshow.html.twig', [
+    'cards' => $cards
+    ]);
+    }
+
 
     /**
-     * @Route("/add_card", name="add_card")
+     * @Route("/card/add_card", name="add_card")
      */
     public function indexAction(Request $request)
     {
@@ -56,7 +69,7 @@ class PostController extends AbstractController
             $em->persist($imageEn);
             $em->flush();
 
-            return $this->redirectToRoute('card_upload');
+            return $this->redirectToRoute('card');
 
         }
 

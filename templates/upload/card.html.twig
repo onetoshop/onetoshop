@@ -14,7 +14,6 @@
                                             <thead>
                                                 <tr>
                                                     <th><h4>Card Title</h4></th>
-                                                    <th><h4>Card Options</h4></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -22,7 +21,7 @@
                                                     <tr>
                                                         <td>{{ card.title }}</td>
                                                         <td>
-                                                            <a href="#" class="btn btn-success">Show</a>
+                                                            <a href="{{ path('show_card', {'slug' : card.title}) }}" class="btn btn-success">Show</a>
                                                             <a href="#" class="btn btn-light">Edit</a>
                                                             <a href="#" class="btn btn-danger">Delete</a>
                                                         </td>
