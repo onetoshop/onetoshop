@@ -21,6 +21,9 @@
                                         <h2>Voeg een flip card toe op de Home pagina.</h2>
                                         <div class="col-4 col-offset-4 text-center">
                                             {{ form_start(form) }}
+                                                {{ form_widget(form) }}
+                                            <hr>
+                                            <button type="submit" style="width: 100%;" class="btn btn-primary">Add Card!</button>
                                             {{ form_end(form) }}
                                         </div>
                                     </div>

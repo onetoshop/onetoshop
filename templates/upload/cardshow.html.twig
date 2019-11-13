@@ -1,0 +1,67 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+
+<div class="form-element-area">
+    <div class="container">
+        <div id="row">
+            <div class="col-xs-12">
+                <div class="form-element-list">
+                    <div id="row">
+                        {% if cards %}
+                            {% for card in cards %}
+                                <div class="cmp-tb-hd">
+                                    <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 15px; padding-right: 15px">
+                                        <div class="card-container">
+                                            <div class="card">
+                                                <div class="front">
+                                                    <div class="cover">
+                                                        <img src="{{ asset('/image/card/' ~ card.backgroundimage) }}"/>
+                                                    </div>
+                                                    <div class="user">
+                                                        <a href="{{ card.link }}" target="_blank">
+                                                            <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="main">
+                                                            <h3 class="name">{{ card.title }}</h3>
+                                                            <p class="profession">{{ card.customer }}</p>
+                                                            <p class="text-center">{{ card.body }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end front panel -->
+                                                <div class="back">
+                                                    <div class="header">
+                                                        <h2 class="motto">{{ card.title }}</h2>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="main">
+                                                            <p class="text-center">Ga naar direct naar de website!</p>
+                                                            <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="footer">
+                                                        <div class="social-links text-center">
+                                                            {{ card.footer | raw }}
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end back panel -->
+                                            </div> <!-- end card -->
+                                        </div> <!-- end card-container -->
+                                        <div>
+                                            <a href="{{ path('card') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+                                        </div>
+                                    </div> <!-- end col sm 3 -->
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Er zijn Geen Gegevens gevonden</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
