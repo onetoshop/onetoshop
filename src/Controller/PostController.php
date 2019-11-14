@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/card", name="card")
+     * @Route("/admin/card", name="card")
      */
     public function card()
     {
@@ -22,7 +22,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/card/show/{slug}", name="show_card")
+     * @Route("/admin/card/show/{slug}", name="show_card")
      */
     public function show_card($slug)
     {
@@ -38,7 +38,7 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("/card/add_card", name="add_card")
+     * @Route("/admin/card/add_card", name="add_card")
      */
     public function indexAction(Request $request)
     {
