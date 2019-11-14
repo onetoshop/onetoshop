@@ -6,11 +6,14 @@ use App\Entity\Aanmeld;
 use App\Entity\Card;
 use App\Entity\Gegeven;
 use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AanmeldType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Form\GegevenType;
 
 class BackendController extends AbstractController
 {
@@ -53,8 +56,81 @@ class BackendController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/aanmeldingen", name="aanmeldingen")
+     *  @IsGranted("ROLE_USER")
+     */
+    public function mogelijkheden(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $aanmeld = new Aanmeld();
 
-//
+        $form = $this->createForm(AanmeldType::class, $aanmeld);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($aanmeld);
+            $em->flush();
+
+
+            return $this->redirectToRoute('aanmeldingen');
+        }
+
+        $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
+
+        return $this->render('admin/aanmeldingen.html.twig', [
+            'aanmeldingen' => $aanmeld,
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    /**
+     * @Route("/informatie", name="informatie")
+     *  @IsGranted("ROLE_USER")
+     */
+    public function informatie(Request $request)
+    {
+
+
+        $gegeven = $this->getDoctrine()->getRepository(Gegeven::class)->findAll();
+
+        $em = $this->getDoctrine()->getManager();
+        $aanmeld = new Gegeven();
+
+        $form = $this->createForm(GegevenType::class, $aanmeld);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($aanmeld);
+            $em->flush();
+
+
+            return $this->redirectToRoute('informatie');
+        }
+
+        return $this->render('admin/informatie.html.twig', [
+                'gegeven' => $gegeven,
+                'form' => $form->createView()
+            ]);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
 
 

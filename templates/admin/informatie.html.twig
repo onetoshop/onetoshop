@@ -1,0 +1,74 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+
+{% block body %}
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Informatiepagina's</li>
+            </ol>
+
+            <h1>Informatiepagina's</h1>
+            <hr>
+            <!-- DataTables Example -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Overzicht</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if gegeven %}
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Titel</th>
+                                    <th>Slug</th>
+                                    <th>Groep</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Titel</th>
+                                    <th>Slug</th>
+                                    <th>Groep</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                {% for gegeven in gegeven %}
+                                    <tr>
+                                        <td>{{ gegeven.id }}</td>
+                                        <td>{{ gegeven.title }}</td>
+                                        <td>{{ gegeven.slug }}</td>
+                                        <td>{{ gegeven.group }}</td>
+                                        {#                                    <td>#}
+                                        {#                                        <a href="#" class="btn btn-success">Show</a>#}
+                                        {#                                        <a href="#" class="btn btn-light">Edit</a>#}
+                                        {#                                        <a href="#" class="btn btn-danger">Delete</a>#}
+                                        {#                                    </td>#}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p>Niks gevonden om weer te geven.</p>
+                        {% endif %}
+                    </div>
+                    <h1>Aanmelding toevoegen</h1>
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

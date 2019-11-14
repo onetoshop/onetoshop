@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,6 +19,8 @@ class AanmeldType extends AbstractType
             ->add('telefoon', TextType::class)
             ->add('doel', TextType::class)
             ->add('contact', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('voorkeur', TextType::class)
             ->add('Verzend', SubmitType::class)
         ;
     }
