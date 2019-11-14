@@ -1,30 +1,37 @@
 {% extends 'admin/adminbase.html.twig' %}
+
 {% block body %}
-    <div class="form-element-area">
-        <div class="container">
-            <div id="row">
-                <div class="col-xs-12">
-                    <div class="form-element-list">
-                        <div class="basic-tb-hd">
-                            <div class="cmp-tb-hd">
-                                <div class="cmp-tb-hd">
-                                    <div class="breadcomb-wp">
-                                        <div class="breadcomb-icon">
-                                            <i class="fa fa-id-card-o" aria-hidden="true"></i>
-{#                                            moet nog een icon komen#}
-                                        </div>
-                                        <div class="breadcomb-ctn">
-                                            <h2>Card</h2>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h2>Voeg een flip card toe op de Home pagina.</h2>
-                                        <div class="col-4 col-offset-4 text-center">
-                                            {{ form_start(form) }}
-                                                {{ form_widget(form) }}
-                                            <hr>
-                                            <button type="submit" style="width: 100%;" class="btn btn-primary">Add Card!</button>
-                                            {{ form_end(form) }}
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Card</li>
+                <li class="breadcrumb-item active">Add Card</li>
+            </ol>
+            <!-- Page Content -->
+            <h1>Add Card</h1>
+            <!-- DataTables Example -->
+                <div class="form-element-area">
+                    <div class="container">
+                        <div id="row">
+                            <div class="col-xs-12">
+                                <div class="form-element-list">
+                                    <div class="basic-tb-hd">
+                                        <div class="cmp-tb-hd">
+                                            <div class="cmp-tb-hd">
+                                                <div style="text-align: center;">
+                                                    {{ form_start(form) }}
+                                                    {{ form_widget(form) }}
+                                                    <hr>
+                                                    <button type="submit" style="width: 100%;" class="btn btn-primary">Add Card!</button>
+                                                    {{ form_end(form) }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +39,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-{% endblock body %}
+{% endblock %}

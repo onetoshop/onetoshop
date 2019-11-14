@@ -1,43 +1,62 @@
 {% extends 'admin/adminbase.html.twig' %}
 
 {% block body %}
-    <div class="form-element-area">
-        <div class="container">
-            <div id="row">
-                <div class="col-xs-12">
-                    <div class="form-element-list">
-                        <div class="basic-tb-hd">
-                            <div class="cmp-tb-hd">
-                                <div class="cmp-tb-hd">
-                                    {% if cards %}
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th><h4>Card Title</h4></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for card in cards %}
-                                                    <tr>
-                                                        <td>{{ card.title }}</td>
-                                                        <td>
-                                                            <a href="{{ path('show_card', {'slug' : card.title}) }}" class="btn btn-success">Show</a>
-                                                            <a href="#" class="btn btn-light">Edit</a>
-                                                            <a href="#" class="btn btn-danger">Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    {% else %}
-                                        <p>Niks gevonden om weer te geven.</p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ path('admin') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Card</li>
+        </ol>
+        <!-- Page Content -->
+        <h1>Card Overzicht</h1>
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-address-card"></i>
+                Card
+                <a href="{{ path('add_card') }}" type="button" class="btn btn-primary" style="float: right;">Add Card</a>
+            </div>
+
+            <div class="table-responsive">
+                {% if cards %}
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Show</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for card in cards %}
+                            <tr>
+                                <td>{{ card.id }}</td>
+                                <td>{{ card.title }}</td>
+                                <td>
+                                    <a href="{{ path('show_card', {'slug' : card.title}) }}" class="btn btn-success" style="width: 100%;">Show</a>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-light" style="width: 100%;">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-danger" style="width: 100%;">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>Niks gevonden om weer te geven.</p>
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
