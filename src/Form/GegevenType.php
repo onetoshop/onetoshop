@@ -15,9 +15,8 @@ class GegevenType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('slug', TextType::class)
             ->add('body', TextType::class)
-            ->add('group', TextType::class)
+            ->add('groep', TextType::class)
             ->add('Verzend', SubmitType::class)
         ;
     }

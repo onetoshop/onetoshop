@@ -100,7 +100,7 @@ class Controller extends AbstractController
     public function gegeven($slug) {
 //
         $categorie = $this->getDoctrine()->getRepository(Gegeven::class)->Findby([
-            'group' => $slug
+            'groep' => $slug
         ]);
 
 

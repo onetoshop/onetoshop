@@ -98,15 +98,15 @@ class BackendController extends AbstractController
         $gegeven = $this->getDoctrine()->getRepository(Gegeven::class)->findAll();
 
         $em = $this->getDoctrine()->getManager();
-        $aanmeld = new Gegeven();
+        $gegeven1 = new Gegeven();
 
-        $form = $this->createForm(GegevenType::class, $aanmeld);
+        $form = $this->createForm(GegevenType::class, $gegeven1);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
 
-            $em->persist($aanmeld);
+            $em->persist($gegeven1);
             $em->flush();
 
 

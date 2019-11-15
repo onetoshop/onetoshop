@@ -38,7 +38,6 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Titel</th>
-                                    <th>Slug</th>
                                     <th>Groep</th>
                                 </tr>
                                 </tfoot>
@@ -47,8 +46,7 @@
                                     <tr>
                                         <td>{{ gegeven.id }}</td>
                                         <td>{{ gegeven.title }}</td>
-                                        <td>{{ gegeven.slug }}</td>
-                                        <td>{{ gegeven.group }}</td>
+                                        <td>{{ gegeven.groep }}</td>
                                         {#                                    <td>#}
                                         {#                                        <a href="#" class="btn btn-success">Show</a>#}
                                         {#                                        <a href="#" class="btn btn-light">Edit</a>#}
@@ -62,7 +60,7 @@
                             <p>Niks gevonden om weer te geven.</p>
                         {% endif %}
                     </div>
-                    <h1>Aanmelding toevoegen</h1>
+                    <h1>Informatie toevoegen</h1>
                     {{ form_start(form) }}
                     {{ form_end(form) }}
                 </div>

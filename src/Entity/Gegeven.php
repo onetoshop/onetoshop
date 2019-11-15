@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GegevenRepository")
@@ -17,62 +17,58 @@ class Gegeven
     private $id;
 
     /**
-     * @ORM\Column(type="text", length=100)
+     * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
-     * @Gedmo\Slug(fields={"name"})
-     * @ORM\Column(length=128, unique=true)
-     */
-    private $slug;
-
-    /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=500)
      */
     private $body;
 
-    // Getters & Setters
-    public function getId() {
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $groep;
+
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function getTitle() {
+    public function getTitle(): ?string
+    {
         return $this->title;
     }
 
-    public function setSlug($slug) {
-        $this->slug = $slug;
-    }
-
-    public function getSlug() {
-        return $this->slug;
-    }
-
-    public function setTitle($title) {
+    public function setTitle(string $title): self
+    {
         $this->title = $title;
+
+        return $this;
     }
 
-    public function getBody() {
+    public function getBody(): ?string
+    {
         return $this->body;
     }
-    public function setBody($body) {
+
+    public function setBody(string $body): self
+    {
         $this->body = $body;
+
+        return $this;
     }
 
-
-    /**
-     * @ORM\Column(type="text", length=100)
-     */
-
-    private  $group;
-
-    public function getGroup() {
-        return $this->group;
+    public function getGroep(): ?string
+    {
+        return $this->groep;
     }
 
+    public function setGroep(string $groep): self
+    {
+        $this->groep = $groep;
 
-    public function setGroup($group) {
-        $this->group = $group;
+        return $this;
     }
 }

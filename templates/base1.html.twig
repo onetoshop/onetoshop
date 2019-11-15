@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Business Frontpage - Start Bootstrap Template</title>
+
+    <link href="fronttemplate/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="fronttemplatecss/business-frontpage.css" rel="stylesheet">
+
+    <link href='../css/rotating-card.css' rel='stylesheet' />
+
+</head>
+
+<body>
+{% block navbar %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-item" href="{{ path('homepage')}}"><img  style="max-width:120px; margin-top: -22px;" src="../img/logo/logo3.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% endblock %}
+
+{% block header %}
+
+<header class="bg-primary py-5 mb-5">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="display-5 text-white mt-5 mb-2">Boost uw traffic, omzet en winst met Onetoshop</h1>
+                <p class="lead mb-5 text-white">Het Onetoshop-platform is een volledige en veelzijdige webshopservice, die past binnen elk budget en alle functies en meer! bevat die je van een webshopplatform verwacht. Test om te zien wat werkt, zonder grote investeringen vooraf te hoeven doen, identificeer je sterke punten met realtime informatie en rapportage, optimaliseer je bedrijf met geïntegreerde beheertools en geautomatiseerde processen en bouw je bedrijf op met onze steun en kennis, van startup tot multinational..</p>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block body %}{% endblock %}
+
+
+{% block footer %}
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+
+</footer>
+{% endblock %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="fronttemplate/jquery/jquery.min.js"></script>
+<script src="fronttemplate/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../ism/js/ism-2.2.min.js"></script>
+</body>
+
+</html>

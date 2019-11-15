@@ -5,9 +5,6 @@ namespace App\Repository;
 use App\Entity\Gegeven;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\ActivityRegistrations;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method Gegeven|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,24 +14,9 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class GegevenRepository extends ServiceEntityRepository
 {
-    /**
-     * Entity manager
-     */
-    private $entityManager;
-
-
-
-    public function __construct(RegistryInterface $registry, EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Gegeven::class);
-
-
-        $this->entityManager = $entityManager;
-    }
-
-    public function getGroup($query)
-    {
-        return $this->getEntityManager()->createQuery('SELECT g FROM App\Entity\Gegeven g WHERE (\'g.group = :Klantbeheer\')')->getResult();
     }
 
     // /**
