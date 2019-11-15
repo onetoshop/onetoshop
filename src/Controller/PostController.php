@@ -7,11 +7,13 @@ use App\Form\CardType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class PostController extends AbstractController
 {
     /**
      * @Route("/admin/card", name="card")
+     *  @IsGranted("ROLE_USER")
      */
     public function card()
     {
@@ -23,6 +25,7 @@ class PostController extends AbstractController
 
     /**
      * @Route("/admin/card/show/{slug}", name="show_card")
+     *  @IsGranted("ROLE_USER")
      */
     public function show_card($slug)
     {
@@ -39,6 +42,7 @@ class PostController extends AbstractController
 
     /**
      * @Route("/admin/card/add_card", name="add_card")
+     *  @IsGranted("ROLE_USER")
      */
     public function indexAction(Request $request)
     {
