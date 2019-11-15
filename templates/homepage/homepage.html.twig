@@ -1,4 +1,17 @@
 {% extends 'base1.html.twig' %}
+
+{% block header %}
+    <header class="bg-primary py-5 mb-5">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-12">
+                    <h1 class="display-4 text-white mt-5 mb-2">Boost uw traffic, omzet en winst met Onetoshop</h1>
+                    <p class="lead mb-5 text-white-50">Het Onetoshop-platform is een volledige en veelzijdige webshopservice, die past binnen elk budget en alle functies en meer! bevat die je van een webshopplatform verwacht. Test om te zien wat werkt, zonder grote investeringen vooraf te hoeven doen, identificeer je sterke punten met realtime informatie en rapportage, optimaliseer je bedrijf met geïntegreerde beheertools en geautomatiseerde processen en bouw je bedrijf op met onze steun en kennis, van startup tot multinational..</p>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
 {% block body %}
 <div class="container">
 
@@ -64,72 +77,128 @@
 
 
 
-    <div class=" text-black bg-white my-5 py-4 text-center">
-            <h1  class="font-weight-light">Wat zeggen klanten</h1>
-    </div>
+{#    <div class=" text-black bg-white my-5 py-4 text-center">#}
+{#            <h1  class="font-weight-light">Wat zeggen klanten</h1>#}
+{#    </div>#}
+
+{#    <div class="section">#}
+{#                {% if cards %}#}
+{#                {% for card in cards %}#}
+{#        <div class="col-sm-10 ">#}
+{#            <div class="col-md-4 col-sm-6">#}
+{#                <div class="card-container">#}
+{#                    <div class="card">#}
+{#                        <div class="front">#}
+{#                            <div class="cover">#}
+{#                                <img src="{{ asset('/image/card/' ~ card.backgroundimage) }}"/>#}
+{#                            </div>#}
+{#                            <div class="user">#}
+{#                                <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <div class="main">#}
+{#                                    <h3 class="name">{{ card.title }}</h3>#}
+{#                                    <p class="profession">{{ card.customer }}</p>#}
+{#                                    <p class="text-center">{{ card.body }}</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div> <!-- end front panel -->#}
+{#                        <div class="back">#}
+{#                            <div class="header">#}
+{#                                <h2 class="motto">{{ card.title }}</h2>#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <div class="main">#}
+{#                                    <p class="text-center">Ga naar direct naar de website!</p>#}
+{#                                    <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="footer">#}
+{#                                <div class="social-links text-center">#}
+{#                                    {{ card.footer | raw }}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div> <!-- end back panel -->#}
+{#                        {% endfor %}#}
+{#                        <!--         <div class="col-sm-1"></div> -->#}
+{#                        {% else %}#}
+{#                            <p>Er zijn Geen Gegevens gevonden</p>#}
+{#                        {% endif %}#}
+
+
+{#                    </div> <!-- end card -->#}
+
+{#                </div> <!-- end card-container -->#}
+
+{#            </div> <!-- end col sm 3 -->#}
+{#        </div>#}
+
+{#        </div> <!-- end col-sm-10 -->#}
+{#    </div>#}
+</div>
 
 
     <!-- Content Row -->
 
-<div class="container">
-    <div id="row"></div>
+{#<div class="container">#}
+{#    <div id="row"></div>#}
 
-        {% if cards %}
-        {% for card in cards %}
+{#        {% if cards %}#}
+{#        {% for card in cards %}#}
 
-                                <div class="col-4">
-
-
-                                    <div class="card-container">
+{#                                <div class="col-4">#}
 
 
-                                        <div class="card">
-                                            <div class="front">
-                                                <div class="cover">
-
-                                                    <img src="{{ asset('/image/card/' ~ card.backgroundimage) }}"/>
-                                                </div>
-                                                <div class="user">
-                                                    <a href="{{ card.link }}" target="_blank">
-                                                        <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="main">
-                                                        <h3 class="name">{{ card.title }}</h3>
-                                                        <p class="profession">{{ card.customer }}</p>
-                                                        <p class="text-center">{{ card.body }}</p>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end front panel -->
-                                            <div class="back">
-                                                <div class="header">
-                                                    <h2 class="motto">{{ card.title }}</h2>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="main">
-                                                        <p class="text-center">Ga naar direct naar de website!</p>
-                                                        <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>
-                                                    </div>
-                                                </div>
-                                                <div class="footer">
-                                                    <div class="social-links text-center">
-                                                        {{ card.footer | raw }}
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end back panel -->
-                                        </div> <!-- end card -->
-        {% endfor %}
-                                    </div> <!-- end card-container -->
+{#                                    <div class="card-container">#}
 
 
+{#                                        <div class="card">#}
+{#                                            <div class="front">#}
+{#                                                <div class="cover">#}
 
-            </div> <!-- end col sm 3 -->
+{#                                                    <img src="{{ asset('/image/card/' ~ card.backgroundimage) }}"/>#}
+{#                                                </div>#}
+{#                                                <div class="user">#}
+{#                                                    <a href="{{ card.link }}" target="_blank">#}
+{#                                                        <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>#}
+{#                                                    </a>#}
+{#                                                </div>#}
+{#                                                <div class="content">#}
+{#                                                    <div class="main">#}
+{#                                                        <h3 class="name">{{ card.title }}</h3>#}
+{#                                                        <p class="profession">{{ card.customer }}</p>#}
+{#                                                        <p class="text-center">{{ card.body }}</p>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div> <!-- end front panel -->#}
+{#                                            <div class="back">#}
+{#                                                <div class="header">#}
+{#                                                    <h2 class="motto">{{ card.title }}</h2>#}
+{#                                                </div>#}
+{#                                                <div class="content">#}
+{#                                                    <div class="main">#}
+{#                                                        <p class="text-center">Ga naar direct naar de website!</p>#}
+{#                                                        <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <div class="footer">#}
+{#                                                    <div class="social-links text-center">#}
+{#                                                        {{ card.footer | raw }}#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div> <!-- end back panel -->#}
+{#                                        </div> <!-- end card -->#}
+{#        {% endfor %}#}
+{#                                    </div> <!-- end card-container -->#}
 
-        {% else %}
-            <p>Er zijn Geen Gegevens gevonden</p>
-        {% endif %}
-</div>
+
+
+{#            </div> <!-- end col sm 3 -->#}
+
+{#        {% else %}#}
+{#            <p>Er zijn Geen Gegevens gevonden</p>#}
+{#        {% endif %}#}
+{#</div>#}
 {#    </div>#}
 
 {#    </div>#}
