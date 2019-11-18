@@ -10,10 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
+use Doctrine\ORM\EntityManagerInterface;
 class PostController extends AbstractController
 {
     /**
@@ -34,14 +33,14 @@ class PostController extends AbstractController
      */
     public function show_card($slug)
     {
-    $cards = $this->getDoctrine()->getRepository(Card::class)->findBy([
-        'title' => $slug
-    ]);
+        $cards = $this->getDoctrine()->getRepository(Card::class)->findBy([
+            'title' => $slug
+        ]);
 
 
-    return $this->render('upload/cardshow.html.twig', [
-    'cards' => $cards
-    ]);
+        return $this->render('upload/cardshow.html.twig', [
+            'cards' => $cards
+        ]);
     }
 
 
@@ -80,7 +79,7 @@ class PostController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
@@ -89,8 +88,8 @@ class PostController extends AbstractController
             $file1 = $imageEn->getFrondimage();
             ($imageEn->getFrondimage());
 
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $fileName1 = md5(uniqid()).'.'.$file1->guessExtension();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $fileName1 = md5(uniqid()) . '.' . $file1->guessExtension();
 
             $file->move($this->getParameter('upload'), $fileName);
             $file1->move($this->getParameter('upload'), $fileName1);
@@ -116,33 +115,29 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/admin/card/edit/{title}", name="edit_card", methods={"GET", "POST"})
+     * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
      */
-    public function edit_card($title, Request $request){
-       $card = new Card();
-       $card = $this->getDoctrine()->getRepository(Card::class)->find($title);
+    public function edit_card($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $card = $em->getRepository(Card::class)->findBy(['id' => $id]);
+        $form = $this->createForm(CardType::class, $card);
 
-       $form = $this->createFormBuilder($card)
-           ->add('title', TextType::class)
-           ->add('customer', TextType::class)
-           ->add('body', TextareaType::class)
-           ->add('link', TextareaType::class)
-           ->add('footer', TextareaType::class)
-           ->add('backgroundimage', FileType::class, array('label'=>'Upload Background Image'))
-           ->add('frondimage', FileType::class, array('label'=>'Upload Frond Image'))
-           ->getform();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
 
-       $form->handleRequest($request);
-       if($form->isSubmitted() && $form->isValid()) {
+            $card = $form->getData($card);
 
-           $em = $this->getDoctrine()->getManager();
-           $em->flush();
+            $em->persist($card);
+            $em->flush();
 
-           return $this->redirectToRoute('card');
-       }
-       return $this->render('upload/editcard.html.twig', [
-          'form' => $form->createView(),
-           'title' => $title
-       ]);
+//            $this->addFlash('success', 'Article Created! Knowledge is power!');
+            return $this->redirectToRoute('edit_card',[
+                'id' =>$card->getId(),
+            ]);
+        }
+        return $this->render('upload/editcard.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }

@@ -16,10 +16,10 @@
             <a href="{{ path('admin') }}">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Card</li>
-        <li class="breadcrumb-item active">Edit Card</li>
+        <li class="breadcrumb-item active">Add Card</li>
     </ol>
     <!-- Page Content -->
-    <h1>Edit Card</h1>
+    <h1>Add Card</h1>
     <!-- DataTables Example -->
     <div class="form-element-area">
         <div class="container">
@@ -30,6 +30,7 @@
                             <div class="cmp-tb-hd">
                                 <div class="cmp-tb-hd">
                                     <div style="text-align: center;">
+{#                                        {{ dump(form) }}#}
                                         {{ form_start(form) }}
                                         {{ form_widget(form) }}
                                         <hr>
