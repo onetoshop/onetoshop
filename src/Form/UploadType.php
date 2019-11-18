@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\File;
+use App\Entity\Card;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,7 +27,7 @@ class UploadType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => File::class,
+            'data_class' => Card::class,
         ]);
     }
 }
