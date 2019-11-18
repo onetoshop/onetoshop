@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Aanmeld;
 use App\Entity\Aanmelding;
 use App\Entity\Card;
 use App\Entity\Categorie;
@@ -23,9 +24,13 @@ class Controller extends AbstractController
     public function homepage()
     {
         $card = $this->getDoctrine()->getRepository(Card::class)->findAll();
+        $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
+
+
 
         return $this->render('homepage/homepage.html.twig',[
-        'cards' => $card
+        'cards' => $card,
+        'aanmeldingen' => $aanmeld
         ]);
     }
 

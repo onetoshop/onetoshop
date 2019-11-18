@@ -3,6 +3,24 @@
 {% block header %}
 
 {% endblock %}
+{% block navbar %}
+
+<div class="col-12 col-md-10 d-none d-xl-block">
+    <nav class="site-navigation position-relative text-right" role="navigation">
+
+        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+            <li><a href="#home-section" class="nav-link">Home</a></li>
+            <li><a href="#products-section" class="nav-link">Mogelijkheden</a></li>
+            <li><a href="#about-section" class="nav-link">Services</a></li>
+            <li><a href="#special-section" class="nav-link">Aanmelden</a></li>
+            <li><a href="#testimonials-section" class="nav-link">Recensies</a></li>
+            <li><a href="#blog-section" class="nav-link">Blog</a></li>
+            <li><a href="#contact-section" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}
 {% block body %}
     <div class="site-blocks-cover overlay" style="background-image: url(images/backgroundfront.png);" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
@@ -328,73 +346,64 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h3 class="section-sub-title">People Says</h3>
-                    <h2 class="section-title mb-3">Testimonials</h2>
+                    <h3 class="section-sub-title">Mensen zeggen</h3>
+                    <h2 class="section-title mb-3">Recensies</h2>
                 </div>
             </div>
         </div>
-        <div class="slide-one-item home-slider owl-carousel">
-            <div>
-                <div class="testimonial">
-                    <figure class="mb-4 d-block align-items-center justify-content-center">
-                        <div><img src="images/person_3.jpg" alt="Image" class="w-100 img-fluid mb-3"></div>
-                    </figure>
-                    <blockquote class="mb-3">
-                        <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
-                    </blockquote>
-                    <p class="text-black"><strong>John Smith</strong></p>
-
-
-                </div>
-            </div>
-            <div>
-                <div class="testimonial">
-
-                    <figure class="mb-4 d-block align-items-center justify-content-center">
-                        <div><img src="images/person_2.jpg" alt="Image" class="w-100 img-fluid mb-3"></div>
-                    </figure>
-
-                    <blockquote class="mb-3">
-                        <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
-                    </blockquote>
-
-                    <p class="text-black"><strong>Robert Aguilar</strong></p>
-
-
-                </div>
-            </div>
-
-            <div>
-                <div class="testimonial">
-                    <figure class="mb-4 d-block align-items-center justify-content-center">
-                        <div><img src="images/person_4.jpg" alt="Image" class="w-100 img-fluid mb-3"></div>
-                    </figure>
-                    <blockquote class="mb-3">
-                        <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
-                    </blockquote>
-                    <p class="text-black"><strong>Roger Spears</strong></p>
-
-
-                </div>
-
-            </div>
-
-            <div>
-                <div class="testimonial">
-                    <figure class="mb-4 d-block align-items-center justify-content-center">
-                        <div><img src="images/person_1.jpg" alt="Image" class="w-100 img-fluid mb-3"></div>
-                    </figure>
-                    <blockquote class="mb-3">
-                        <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
-                    </blockquote>
-                    <p class="text-black"><strong>Kyle McDonald</strong></p>
-
-
-                </div>
-
-            </div>
-
+        <div class="container"
+        <div id="row">
+            {% if cards %}
+                {% for card in cards %}
+                    <div class="">
+                        <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 15px; padding-right: 15px">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="front">
+                                        <div class="cover">
+                                            <img src="{{ asset('/image/card/' ~ card.backgroundimage) }}"/>
+                                        </div>
+                                        <div class="user">
+                                            <a href="{{ card.link }}" target="_blank">
+                                                <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="main">
+                                                <h3 class="name">{{ card.title }}</h3>
+                                                <p class="profession">{{ card.customer }}</p>
+                                                <p class="text-center">{{ card.body }}</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end front panel -->
+                                    <div class="back">
+                                        <div class="header">
+                                            <h2 class="motto">{{ card.title }}</h2>
+                                        </div>
+                                        <div class="content">
+                                            <div class="main">
+                                                <p class="text-center">Ga naar direct naar de website!</p>
+                                                <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <div class="social-links text-center">
+                                                {{ card.footer | raw }}
+                                            </div>
+                                        </div>
+                                    </div> <!-- end back panel -->
+                                </div> <!-- end card -->
+                            </div> <!-- end card-container -->
+                            <div>
+                            </div>
+                        </div> <!-- end col sm 3 -->
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Er zijn Geen Gegevens gevonden</p>
+            {% endif %}
         </div>
+    </div>
     </div>
 
 

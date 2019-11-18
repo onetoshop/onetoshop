@@ -27,6 +27,12 @@
 
     <link rel="stylesheet" href="css/pricetable.css">
 
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/rotating-card.css">
+
+    <link rel="stylesheet" href="css/pre-icon-7-stroke.css">
+
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -68,23 +74,9 @@
             <div class="row align-items-center">
 
                 <div class="col-6 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0">Onetoshop<span class="text-primary"></span> </a></h1>
+                    <h1 class="mb-0 site-logo"><a href="{{ path('homepage') }}" class="text-black mb-0">Onetoshop<span class="text-primary"></span> </a></h1>
                 </div>
-                <div class="col-12 col-md-10 d-none d-xl-block">
-                    <nav class="site-navigation position-relative text-right" role="navigation">
-
-                        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                            <li><a href="#home-section" class="nav-link">Home</a></li>
-                            <li><a href="#products-section" class="nav-link">Mogelijkheden</a></li>
-                            <li><a href="#about-section" class="nav-link">Services</a></li>
-                            <li><a href="#special-section" class="nav-link">Aanmelden</a></li>
-                            <li><a href="#testimonials-section" class="nav-link">Recensies</a></li>
-                            <li><a href="#blog-section" class="nav-link">Blog</a></li>
-                            <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-
+                {% block navbar %} {% endblock %}
 
                 <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
 
@@ -92,6 +84,7 @@
         </div>
 
     </header>
+
     {% block body %} {% endblock %}
 
     <footer class="site-footer bg-white">
@@ -112,9 +105,14 @@
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="footer-heading mb-4">Social</h2>
-                            <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                            <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                            <h2 class="footer-heading mb-4">Contact</h2>
+                            <li>Oudestraat 216 K</li>
+                            <li> CA Kampen</li>
+                            <li>038-711 03 08</li>
+                            <li>info@onetoshop.com</li>
+                            <br>
+                            <h2 class="footer-heading mb-4">Openingstijden</h2>
+                            <li>ma / vr 09:00 - 17:00</li>
                         </div>
                     </div>
                 </div>
