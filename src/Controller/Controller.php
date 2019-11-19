@@ -79,15 +79,19 @@ class Controller extends AbstractController
 
     // functionaliteit
     /**
-     * @Route("/functionaliteit", name="functionaliteit")
+     * @Route("/{slug}", name="functionaliteit")
      */
-    public function functionaliteit()
+    public function functionaliteit($slug)
     {
-        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
+//        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
+
+        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->Findby([
+            'categorie' => $slug
+        ]);
+
 
         return $this->render('functionaliteit/functionaliteit.html.twig', [
             'namen' => $categorie
-
 
         ]);
         
