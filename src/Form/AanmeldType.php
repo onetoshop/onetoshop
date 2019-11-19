@@ -29,13 +29,13 @@ class AanmeldType extends AbstractType
                 'label' => 'Emailadres',
             ])
             ->add('doel', TextareaType::class, [
-                'label' => 'Doel',
+                'label' => 'Wat wil je bereiken met je webshop?',
             ])
             ->add('voorkeur', TextareaType::class, [
-                'label' => 'Doel van je webshop',
+                'label' => 'Wat voor webshops vind je mooi?',
             ])
             ->add('contact', TextType::class, [
-                'label' => 'Contact opnemen?',
+                'label' => 'Mogen wij contact opnemen?',
             ])
             ->add('Verzend', SubmitType::class)
         ;

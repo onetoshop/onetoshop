@@ -29,8 +29,10 @@ class AanmeldController extends AbstractController
             $em->persist($aanmeld);
             $em->flush();
 
+            $this->addFlash('succes', 'Aanmelding succesvol! U hoort van ons');
 
-            return $this->redirectToRoute('homepage');
+
+            return $this->redirectToRoute('mogelijkheden');
         }
 
             return $this->render('mogelijkheden/mogelijkheden.html.twig', [
