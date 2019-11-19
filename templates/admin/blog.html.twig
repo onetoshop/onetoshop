@@ -1,6 +1,7 @@
 {% extends 'admin/adminbase.html.twig' %}
 
 
+
 {% block body %}
 
 <div id="content-wrapper">
@@ -10,15 +11,17 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                    <a href="{{ path('user') }}">Gebruiker</a>
+                <a href="{{ path('admin') }}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Instellingen</li>
+            <li class="breadcrumb-item active">Blog</li>
         </ol>
 
-    <h1>Instellingen</h1>
-    <hr>
-    {{ form_start(form) }}
-    {{ form_end(form) }}
+        <h1>Blog aanmaken</h1>
+        <hr>
 
 
-        {% endblock %}
+
+{% endblock %}
+
+
+

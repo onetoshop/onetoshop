@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Aanmeld;
+use App\Entity\Blog;
 use App\Entity\Card;
 use App\Entity\Gegeven;
 use App\Entity\User;
+use App\Form\BlogType;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -121,6 +123,17 @@ class BackendController extends AbstractController
 
 
     }
+//    /**
+//     * @Route("/admin/blog", name="blog")
+//     *  @IsGranted("ROLE_USER")
+//     */
+//    public function blog()
+//    {
+//        return $this->render('admin/blog.html.twig', array(
+//            'form' => $form->createView()
+//        ));
+//    }
+
 
 
 
