@@ -36,12 +36,12 @@ class BlogController extends AbstractController
 
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
-            $file = $imageEn->getImage();
+            $file = $form->get('image')->getData();
             ($imageEn->getImage());
 
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
-            $file->move($this->getParameter('upload'), $fileName);
+            $file->move($this->getParameter('blog'), $fileName);
 
             $imageEn->setImage($fileName);
             $em->persist($imageEn);
