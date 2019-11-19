@@ -120,20 +120,20 @@ class PostController extends AbstractController
     public function edit_card($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $card = $em->getRepository(Card::class)->findBy(['id' => $id]);
-        $form = $this->createForm(CardType::class, $card);
+        $card1 = $em->getRepository(Card::class)->findBy(['id' => $id]);
+        $form = $this->createForm(CardType::class, $card1);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $card = $form->getData($card);
+            $card = $form->getData();
 
             $em->persist($card);
             $em->flush();
 
 //            $this->addFlash('success', 'Article Created! Knowledge is power!');
             return $this->redirectToRoute('edit_card',[
-                'id' =>$card->getId(),
+                'id' => $card->getId(),
             ]);
         }
         return $this->render('upload/editcard.html.twig', [
