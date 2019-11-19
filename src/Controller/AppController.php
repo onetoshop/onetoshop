@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\App;
+use App\Entity\Appinfo;
+use App\Entity\Appinformatie;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,15 +23,31 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/app/{slug}", name="apps")
+     * @Route("/app/{slug}", name="appinfo")
      */
-    public function apps($slug){
-        $apps = $this->getDoctrine()->getRepository(App::class)->findBy([
-            'naam' => $slug
-    ]);
+    public function appinfo($slug){
+        $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findBy([
+            'groep' => $slug
+        ]);
+
+        $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findBy([
+            'groep' => $slug
+        ]);
 
         return $this->render('app/apps.html.twig',[
-          'apps' => $apps
+          'appinfo' => $appinfo,
+          'appinformatie' => $appinformatie
         ]);
     }
+
+    /**
+     * @Route("/app/{slug}/{title}", name="apps")
+     */
+    public function apps($slug, $title)
+    {
+        return $this->render('app/appsinfo.html.twig',[
+
+        ]);
+    }
+
 }

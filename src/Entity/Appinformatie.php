@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AppinfoRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AppinformatieRepository")
  */
-class Appinfo
+class Appinformatie
 {
     /**
      * @ORM\Id()
@@ -19,17 +19,12 @@ class Appinfo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $naam;
+    private $title;
 
     /**
      * @ORM\Column(type="text")
      */
     private $body;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $url;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,14 +36,14 @@ class Appinfo
         return $this->id;
     }
 
-    public function getNaam(): ?string
+    public function getTitle(): ?string
     {
-        return $this->naam;
+        return $this->title;
     }
 
-    public function setNaam(string $naam): self
+    public function setTitle(string $title): self
     {
-        $this->naam = $naam;
+        $this->title = $title;
 
         return $this;
     }
@@ -61,18 +56,6 @@ class Appinfo
     public function setBody(string $body): self
     {
         $this->body = $body;
-
-        return $this;
-    }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(string $url): self
-    {
-        $this->url = $url;
 
         return $this;
     }
