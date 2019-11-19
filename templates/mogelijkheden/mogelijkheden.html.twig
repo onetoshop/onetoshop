@@ -23,20 +23,14 @@
 
 
                     <div class="p-5 bg-white">
+                    {{ form_start(form) }}
+
                         {{ form_start(form) }}
-
-                        <div class="row">
-                            <div class="col">
-                                {{ form_row(form.voornaam) }}
-                            </div>
-                            <div class="col" id="some-custom-id">
-                                {{ form_row(form.achternaam) }}
-                            </div>
-
-                        </div>
+                        {{ form_row(form.voornaam, {label_attr: {class: 'col-md-6 mb-3 mb-md-0'} }) }}
+                        {{ form_row(form.achternaam, {label_attr: {class: 'col-md-6 '} }) }}
                         {{ form_end(form) }}
 
-
+                    {{ form_end(form) }}
                     </div>
                 </div>
 
