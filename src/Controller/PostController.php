@@ -6,13 +6,9 @@ use App\Entity\Card;
 use App\Form\CardType;
 use App\Form\UploadType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Doctrine\ORM\EntityManagerInterface;
 class PostController extends AbstractController
 {
     /**

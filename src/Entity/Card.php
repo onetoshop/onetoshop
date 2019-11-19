@@ -46,13 +46,11 @@ class Card
 
     /**
      * @ORM\Column(type="text")
-     * @ORM\OneToOne(targetEntity="Image", mappedBy="image")
      */
     private $backgroundimage;
 
     /**
      * @ORM\Column(type="text")
-     * @ORM\OneToOne(targetEntity="Image", mappedBy="image1")
      */
     private $frondimage;
 

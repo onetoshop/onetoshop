@@ -13,7 +13,7 @@ class AanmeldController extends AbstractController
 {
     // mogelijkheden pagina
     /**
-     * @Route("/mogelijkheden", name="mogelijkheden",)
+     * @Route("/home/mogelijkheden", name="mogelijkheden",)
      */
     public function mogelijkheden(Request $request)
     {
@@ -40,7 +40,7 @@ class AanmeldController extends AbstractController
     }
 
     /**
-     * @Route("/aanmeldingen", name="aanmeldingen")
+     * @Route("/home/aanmeldingen", name="aanmeldingen")
      */
     public function index()
     {

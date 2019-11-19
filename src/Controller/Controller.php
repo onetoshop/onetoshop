@@ -87,8 +87,6 @@ class Controller extends AbstractController
 
         return $this->render('functionaliteit/functionaliteit.html.twig', [
             'namen' => $categorie
-
-
         ]);
         
     }

@@ -1,0 +1,42 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Hello AppController!{% endblock %}
+
+{% block body %}
+    <div class="site-section bg-light" id="contact-section">
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Heading Row -->
+        <div class="row align-items-center my-5">
+            <!-- /.col-lg-8 -->
+            <div class="col-12">
+                <h1 class="font-weight-light">Welke Apps kies jij?</h1>
+                <p>Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren, snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.</p>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+
+        <div class="row">
+            {% for app in app %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ app.naam | raw }}</h3>
+                        <p class="card-text">{{ app.body | raw }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ path('apps', {'slug' : app.url}) }}" class="btn btn-primary btn-sm">Lees Verder</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- /.col-md-4 -->
+        </div>
+
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+{% endblock %}
