@@ -56,40 +56,40 @@ class Controller extends AbstractController
 
 
 
-    /**
-     * @Route("/functionaliteit/{slug}", name="article_show")
-     */
-    public function show($slug)
-    {
+//    /**
+//     * @Route("/functionaliteit/{slug}", name="article_show")
+//     */
+//    public function show($slug)
+//    {
+////
+//        $gegeven = $this->getDoctrine()->getRepository(Gegeven::class)->findOneBy([
+//            'slug' => $slug
+//        ]);
 //
-        $gegeven = $this->getDoctrine()->getRepository(Gegeven::class)->findOneBy([
-            'slug' => $slug
-        ]);
-
-
-        return $this->render('show.html.twig', [
-            'gegeven' => $gegeven
-        ]);
-    }
+//
+//        return $this->render('show.html.twig', [
+//            'gegeven' => $gegeven
+//        ]);
+//    }
 
 
 
 
 
 
-    // functionaliteit
-    /**
-     * @Route("/functionaliteit", name="functionaliteit")
-     */
-    public function functionaliteit()
-    {
-        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
-
-        return $this->render('functionaliteit/functionaliteit.html.twig', [
-            'namen' => $categorie
-        ]);
-        
-    }
+//    // functionaliteit
+//    /**
+//     * @Route("/functionaliteit", name="functionaliteit")
+//     */
+//    public function functionaliteit()
+//    {
+//        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
+//
+//        return $this->render('functionaliteit/functionaliteit.html.twig', [
+//            'namen' => $categorie
+//        ]);
+//
+//    }
 
     //categoriefunctionalteit
     /**
