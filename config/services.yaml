@@ -6,6 +6,7 @@
 parameters:
     upload: '%kernel.project_dir%\public\image\card'
     blog: '%kernel.project_dir%\public\image\blog'
+    apps: '%kernel.project_dir%\public\image\apps'
 
 services:
     # default configuration for services in *this* file

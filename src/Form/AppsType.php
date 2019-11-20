@@ -17,6 +17,8 @@ class AppsType extends AbstractType
             ->add('image', FileType::class, array('label'=>'Upload Image'))
             ->add('title', TextType::class)
             ->add('body', TextareaType::class)
+            ->add('groep', TextType::class)
+            ->add('naam', TextType::class)
         ;
     }
 
