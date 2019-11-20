@@ -8,6 +8,7 @@
         "doctrine/annotations": "^1.8",
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "easycorp/easyadmin-bundle": "^2.3",
+        "liip/imagine-bundle": "^2.2",
         "nilportugues/sql-query-builder": "^1.7",
         "sensio/framework-extra-bundle": "^5.5",
         "spatie/laravel-query-builder": "^2.3",

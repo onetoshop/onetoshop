@@ -1,0 +1,44 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+                <br>
+                <br>
+                <br>
+                {% if blog %}
+                {% for blog in blog %}
+                <!-- Title -->
+                <h1 class="mt-4">{{ blog.title }}</h1>
+
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img src="{{ asset('/image/blog/' ~ blog.image) | imagine_filter('big') }}" />
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">{{ blog.beschrijving }}</p>
+
+                <p>{{ blog.body }}</p>
+
+
+                <hr>
+
+                {% endfor %}
+                {% else %}
+                    <p>Er zijn Geen Gegevens gevonden</p>
+                {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock %}

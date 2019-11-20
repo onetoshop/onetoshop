@@ -18,7 +18,9 @@ class BlogType extends AbstractType
         $builder
 
             ->add('title', TextType::class)
+            ->add('beschrijving', TextareaType::class)
             ->add('body', TextareaType::class)
+            ->add('slug', TextareaType::class)
             ->add('image', FileType::class, array('label'=>'Upload  Image'))
             ->add('Verzend', SubmitType::class)
         ;
