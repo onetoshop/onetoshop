@@ -34,7 +34,7 @@
                                     <p class="card-text">{{ appinfo.body | raw }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="" class="btn btn-primary btn-sm">Lees Verder</a>
+                                    <a href="{{ path('apps', {'slug' : appinfo.groep, 'naam' : appinfo.naam} ) }}" class="btn btn-primary btn-sm">Lees Verder</a>
                                 </div>
                             </div>
                         </div>

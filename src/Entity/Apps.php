@@ -31,6 +31,16 @@ class Apps
      */
     private $body;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $groep;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $naam;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +78,30 @@ class Apps
     public function setBody(string $body): self
     {
         $this->body = $body;
+
+        return $this;
+    }
+
+    public function getGroep(): ?string
+    {
+        return $this->groep;
+    }
+
+    public function setGroep(string $groep): self
+    {
+        $this->groep = $groep;
+
+        return $this;
+    }
+
+    public function getNaam(): ?string
+    {
+        return $this->naam;
+    }
+
+    public function setNaam(string $naam): self
+    {
+        $this->naam = $naam;
 
         return $this;
     }
