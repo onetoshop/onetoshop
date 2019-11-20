@@ -29,15 +29,15 @@ class BlogController extends AbstractController
     public function show($slug)
     {
 //
-        $gegeven = $this->getDoctrine()->getRepository(Blog::class)->findOneBy([
-            'title' => $slug
+        $blogs = $this->getDoctrine()->getRepository(Blog::class)->findBy([
+            'slug' => $slug
         ]);
-        $blog = $this->getDoctrine()->getRepository(Blog::class)->findAll();
+
 
         return $this->render('blog/showblog.html.twig', [
-            'blog' => $gegeven,
-            'blogs' => $blog
+            'blogs' => $blogs
         ]);
+
     }
 
     /**

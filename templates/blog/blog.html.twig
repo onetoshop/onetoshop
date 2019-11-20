@@ -19,11 +19,11 @@
                 {% if blogs %}
                 {% for blog in blogs %}
                 <div class="card mb-4">
-                    <img src="{{ asset('/image/blog/' ~ blog.image) | imagine_filter('big') }}" />
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/blog/' ~ blog.image) | imagine_filter('big') }}" />
                     <div class="card-body">
                         <h2 class="card-title">{{ blog.title }}</h2>
                         <p class="card-text">{{ blog.beschrijving }}</p>
-                        <a href="{{ path('blogshow', {'slug' : blog.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
+                        <a  href="{{ path('blogshow', {'slug' : blog.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
                     </div>
                 </div>
                 {% endfor %}
