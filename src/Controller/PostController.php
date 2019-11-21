@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Card;
 use App\Form\CardType;
 use App\Form\UploadType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 class PostController extends AbstractController
 {
     /**
@@ -113,22 +115,27 @@ class PostController extends AbstractController
     /**
      * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
      */
-    public function edit_card($id, Request $request)
+    public function edit_card(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $card1 = $em->getRepository(Card::class)->findBy(['id' => $id]);
-        $form = $this->createForm(CardType::class, $card1);
+        $card = $this->getDoctrine()->getRepository(Card::class)->findOneBy([
+            'id' => $id,
+        ]);
 
+//        $card->setBackgroundimage($card->getBackgroundimage());
+//        $card->setFrondimage($card->getFrondimage());
+
+        $form = $this->createForm(CardType::class, $card);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $card = $form->getData();
 
+            $em = $this->getDoctrine()->getManager();
             $em->persist($card);
             $em->flush();
 
-//            $this->addFlash('success', 'Article Created! Knowledge is power!');
-            return $this->redirectToRoute('edit_card',[
+            return $this->redirectToRoute('card',[
                 'id' => $card->getId(),
             ]);
         }
@@ -136,4 +143,8 @@ class PostController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+
+
 }

@@ -19,8 +19,8 @@ class CardType extends AbstractType
             ->add('body', TextareaType::class)
             ->add('link', TextareaType::class)
             ->add('footer', TextareaType::class)
-            ->add('backgroundimage', FileType::class, array('label'=>'Upload Background Image'))
-            ->add('frondimage', FileType::class, array('label'=>'Upload Frond Image'))
+            //->add('backgroundimage', FileType::class, array('label'=>'Upload Background Image'))
+            //->add('frondimage', FileType::class, array('label'=>'Upload Frond Image'))
         ;
     }
 
