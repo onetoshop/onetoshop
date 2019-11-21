@@ -45,14 +45,20 @@ class Card
     private $footer;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\OneToMany(targetEntity="App\Entity\Upload", mappedBy="image", orphanRemoval=true)
      */
-    private $backgroundimage;
+    private $bgimage;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\OneToMany(targetEntity="App\Entity\Upload", mappedBy="image", orphanRemoval=true)
      */
-    private $frondimage;
+    private $frimage;
+
+    public function __construct()
+    {
+        $this->bgimage = new ArrayCollection();
+        $this->frimage = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -123,27 +129,73 @@ class Card
     {
         return (string)$this->getId();
     }
+    
 
-    public function getBackgroundimage()
+
+
+
+
+
+
+    /**
+     * @return Collection|Upload[]
+     */
+    public function getBgimage(): Collection
     {
-        return $this->backgroundimage;
+        return $this->bgimage;
     }
 
-    public function setBackgroundimage($backgroundimage)
+    public function addBgimage(Upload $bgimage): self
     {
-        $this->backgroundimage = $backgroundimage;
+        if (!$this->bgimage->contains($bgimage)) {
+            $this->bgimage[] = $bgimage;
+            $bgimage->setImage($this);
+        }
 
         return $this;
     }
 
-    public function getFrondimage()
+    public function removeBgimage(Upload $bgimage): self
     {
-        return $this->frondimage;
+        if ($this->bgimage->contains($bgimage)) {
+            $this->bgimage->removeElement($bgimage);
+            // set the owning side to null (unless already changed)
+            if ($bgimage->getImage() === $this) {
+                $bgimage->setImage(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setFrondimage($frondimage)
+    /**
+     * @return Collection|Upload[]
+     */
+
+    public function getFrimage(): Collection
     {
-        $this->frondimage = $frondimage;
+        return $this->frimage;
+    }
+
+    public function addFrimage(Upload $frimage): self
+    {
+        if (!$this->frimage->contains($frimage)) {
+            $this->frimage[] = $frimage;
+            $frimage->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFrimage(Upload $frimage): self
+    {
+        if ($this->frimage->contains($frimage)) {
+            $this->frimage->removeElement($frimage);
+            // set the owning side to null (unless already changed)
+            if ($frimage->getImage() === $this) {
+                $frimage->setImage(null);
+            }
+        }
 
         return $this;
     }

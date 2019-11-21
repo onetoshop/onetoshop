@@ -112,37 +112,37 @@ class PostController extends AbstractController
         ));
     }
 
-    /**
-     * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
-     */
-    public function edit_card(Request $request, $id)
-    {
-        $card = $this->getDoctrine()->getRepository(Card::class)->findOneBy([
-            'id' => $id,
-        ]);
-
+//    /**
+//     * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
+//     */
+//    public function edit_card(Request $request, $id)
+//    {
+//        $card = $this->getDoctrine()->getRepository(Card::class)->findOneBy([
+//            'id' => $id,
+//        ]);
+//
 //        $card->setBackgroundimage($card->getBackgroundimage());
 //        $card->setFrondimage($card->getFrondimage());
-
-        $form = $this->createForm(CardType::class, $card);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $card = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($card);
-            $em->flush();
-
-            return $this->redirectToRoute('card',[
-                'id' => $card->getId(),
-            ]);
-        }
-        return $this->render('upload/editcard.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
+//
+//        $form = $this->createForm(CardType::class, $card);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            $card = $form->getData();
+//
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($card);
+//            $em->flush();
+//
+//            return $this->redirectToRoute('card',[
+//                'id' => $card->getId(),
+//            ]);
+//        }
+//        return $this->render('upload/editcard.html.twig', [
+//            'form' => $form->createView()
+//        ]);
+//    }
 
 
 
