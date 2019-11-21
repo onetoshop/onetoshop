@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UploadRepository")
  */
@@ -22,7 +23,7 @@ class Upload
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\card", inversedBy="bgimage, frimage")
+     * @ORM\ManyToOne(targetEntity="App\Entity\card", inversedBy="bgimage", inversedBy="frimage")
      * @ORM\JoinColumn(nullable=false)
      */
     private $image;
@@ -55,4 +56,5 @@ class Upload
 
         return $this;
     }
+
 }

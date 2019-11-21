@@ -81,10 +81,10 @@ class PostController extends AbstractController
 
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
-            $file = $imageEn->getBackgroundimage();
-            ($imageEn->getBackgroundimage());
-            $file1 = $imageEn->getFrondimage();
-            ($imageEn->getFrondimage());
+            $file = $imageEn->getBgimage()();
+            ($imageEn->getBgimage());
+            $file1 = $imageEn->getFrimage();
+            ($imageEn->getFrimage());
 
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
             $fileName1 = md5(uniqid()) . '.' . $file1->guessExtension();
@@ -92,8 +92,8 @@ class PostController extends AbstractController
             $file->move($this->getParameter('card'), $fileName);
             $file1->move($this->getParameter('card'), $fileName1);
 
-            $imageEn->setBackgroundimage($fileName);
-            $imageEn->setFrondimage($fileName1);
+            $imageEn->setBgimage($fileName);
+            $imageEn->setFrimage($fileName1);
             $em->persist($imageEn);
             $em->flush();
 

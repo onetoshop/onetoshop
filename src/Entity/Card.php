@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Support\Facades\App;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CardRepository")
  */
@@ -45,6 +46,11 @@ class Card
     private $footer;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageFilename;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Upload", mappedBy="image", orphanRemoval=true)
      */
     private $bgimage;
@@ -59,6 +65,7 @@ class Card
         $this->bgimage = new ArrayCollection();
         $this->frimage = new ArrayCollection();
     }
+
 
     public function getId()
     {
@@ -125,17 +132,25 @@ class Card
         return $this;
     }
 
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+    public function setImageFilename(?string $imageFilename): self
+    {
+        $this->imageFilename = $imageFilename;
+        return $this;
+    }
+
+    public function getImagePath()
+    {
+        return 'images/'.$this->getImageFilename();
+    }
+
     public function __toString()
     {
         return (string)$this->getId();
     }
-    
-
-
-
-
-
-
 
     /**
      * @return Collection|Upload[]
@@ -171,7 +186,6 @@ class Card
     /**
      * @return Collection|Upload[]
      */
-
     public function getFrimage(): Collection
     {
         return $this->frimage;
