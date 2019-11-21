@@ -66,8 +66,37 @@
                             Vragen? Neem contact op om meer informatie te krijgen over hoe je jouw positie kunt verbeteren en nieuwe klanten kunt vinden die op zoek zijn naar
                             jouw producten.
                         </p>
+                <h2>Meer informatie</h2>
+
                     </div>
                     </div>
+
+        <!-- Content Row -->
+
+        <div class="row">
+            {% if functionaliteit %}
+                {% for functionaliteit in functionaliteit %}
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ functionaliteit.naam | raw }}</h3>
+{#                                <p class="card-text">{{ functionaliteit.url | raw }}</p>#}
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ path('functionaliteitinfo', {'slug' : functionaliteit.url}) }}" class="btn btn-primary btn-sm">Lees Verder</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Er Zijn Geen Gegevens Gevonden!</p>
+            {% endif %}
+            <!-- /.col-md-4 -->
+        </div>
+        <div>
+            <input type="button" class="btn btn-primary btn-sm" value="<-- Terug" onClick="history.back()">
+        </div>
+        <!-- /.row -->
                 </div>
             </div>
         </div>

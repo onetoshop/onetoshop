@@ -1,0 +1,54 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Hello AppController!{% endblock %}
+
+{% block body %}
+    <div class="site-section bg-light" id="contact-section">
+        <!-- Page Content -->
+        <div class="container">
+            <!-- Heading Row -->
+            <div class="row align-items-center my-5">
+                <!-- /.col-lg-8 -->
+                <div class="col-12">
+                    {% if functionaliteitinfo %}
+                        {% for functionaliteitinfo in functionaliteitinfo %}
+                            <h1 class="font-weight-light">{{ functionaliteitinfo.title | raw }}</h1>
+                            <p>{{ functionaliteitinfo.body | raw }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>Er Zijn Geen Gegevens Gevonden!</p>
+                    {% endif %}
+                </div>
+                <!-- /.col-md-4 -->
+            </div>
+            <!-- /.row -->
+{#            <!-- Content Row -->#}
+
+{#            <div class="row">#}
+{#                {% if appinfo %}#}
+{#                    {% for appinfo in appinfo %}#}
+{#                        <div class="col-md-4 mb-5">#}
+{#                            <div class="card h-100">#}
+{#                                <div class="card-body">#}
+{#                                    <h3 class="card-title">{{ appinfo.naam | raw }}</h3>#}
+{#                                    <p class="card-text">{{ appinfo.body | raw }}</p>#}
+{#                                </div>#}
+{#                                <div class="card-footer">#}
+{#                                    <a href="{{ path('apps', {'slug' : appinfo.groep, 'naam' : appinfo.url} ) }}" class="btn btn-primary btn-sm">Lees Verder</a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                {% else %}#}
+{#                    <p>Er Zijn Geen Gegevens Gevonden!</p>#}
+{#                {% endif %}#}
+{#                <!-- /.col-md-4 -->#}
+            </div>
+            <div>
+                <input type="button" class="btn btn-primary btn-sm" value="<-- Terug" onClick="history.back()">
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+{% endblock %}

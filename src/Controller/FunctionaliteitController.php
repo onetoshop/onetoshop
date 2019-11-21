@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Functionaliteit;
+use App\Entity\Functionaliteitinfo;
+use App\Form\FunctionaliteitinfoType;
+use App\Form\FunctionaliteitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class FunctionaliteitController extends AbstractController
@@ -13,14 +18,103 @@ class FunctionaliteitController extends AbstractController
      */
     public function index()
     {
-        return $this->render('functionaliteit/functionaliteit.html.twig');
+        $functionaliteit = $this->getDoctrine()->getRepository(Functionaliteit::class)->findAll();
+
+        return $this->render('functionaliteit/functionaliteit.html.twig', [
+            'functionaliteit' => $functionaliteit
+        ]);
+    }
+
+    /**
+     * @Route("/functionaliteit/{slug}", name="functionaliteitinfo")
+     */
+    public function functionaliteitinfo($slug){
+        $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteit::class)->findBy([
+            'url' => $slug
+        ]);
+
+        $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findBy([
+            'groep' => $slug
+        ]);
+
+        return $this->render('app/apps.html.twig',[
+            'functionaliteitinfo' => $functionaliteitinfo,
+            'appinformatie' => $appinformatie
+        ]);
     }
 
     /**
      * @Route("/admin/functionaliteit", name="functionaliteitadmin")
      */
-    public function adminfunctionaliteit()
+    public function adminfunctionaliteit(Request $request)
     {
-        return $this->render('admin/functionaliteit.html.twig');
+
+
+        $em = $this->getDoctrine()->getManager();
+        $imageEn = new Functionaliteit();
+
+        $form = $this->createForm(FunctionaliteitType::class, $imageEn);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+
+            $em->persist($imageEn);
+            $em->flush();
+
+
+            $this->addFlash(
+                'info',
+                'Functionaliteit Succesvol Aangemaakt!'
+            );
+
+            return $this->redirectToRoute('functionaliteitadmin');
+
+
+        }
+        return $this->render('admin/functionaliteit.html.twig', array(
+            'form' => $form->createView()
+        ));
+}
+
+
+    /**
+     * @Route("/admin/functionaliteit/info", name="functionaliteitinfoadmin")
+     */
+    public function functionaliteitadmininfo(Request $request)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $imageEn = new Functionaliteitinfo();
+
+        $form = $this->createForm(FunctionaliteitinfoType::class, $imageEn);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+
+            $em->persist($imageEn);
+            $em->flush();
+
+
+            $this->addFlash(
+                'info',
+                'Functionaliteit Succesvol Aangemaakt!'
+            );
+
+            return $this->redirectToRoute('functionaliteitadmin');
+
+
+        }
+        return $this->render('admin/functionaliteitinfo.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }
