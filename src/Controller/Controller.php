@@ -100,18 +100,18 @@ class Controller extends AbstractController
     /**
      * @Route("/functionaliteit/{slug}", name="article_show")
      */
-    public function gegeven($slug) {
+//    public function gegeven($slug) {
+////
+//        $categorie = $this->getDoctrine()->getRepository(Gegeven::class)->Findby([
+//            'groep' => $slug
+//        ]);
 //
-        $categorie = $this->getDoctrine()->getRepository(Gegeven::class)->Findby([
-            'groep' => $slug
-        ]);
-
-
-
-        return $this->render('functionaliteit/klantbeheer.html.twig', [
-            'gegevens' => $categorie
-        ]);
-    }
+//
+//
+////        return $this->render('functionaliteit/klantbeheer.html.twig', [
+////            'gegevens' => $categorie
+////        ]);
+//    }
 
 
 

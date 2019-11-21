@@ -29,17 +29,13 @@ class FunctionaliteitController extends AbstractController
      * @Route("/functionaliteit/{slug}", name="functionaliteitinfo")
      */
     public function functionaliteitinfo($slug){
-        $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteit::class)->findBy([
+        $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteitinfo::class)->findBy([
             'url' => $slug
         ]);
 
-        $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findBy([
-            'groep' => $slug
-        ]);
 
-        return $this->render('app/apps.html.twig',[
-            'functionaliteitinfo' => $functionaliteitinfo,
-            'appinformatie' => $appinformatie
+        return $this->render('functionaliteit/functionaliteitinfo.html.twig',[
+            'functionaliteitinfo' => $functionaliteitinfo
         ]);
     }
 
