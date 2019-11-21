@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Functionaliteit;
+use App\Entity\Functionaliteitcard;
 use App\Entity\Functionaliteitinfo;
+use App\Form\FunctionaliteitcardType;
 use App\Form\FunctionaliteitinfoType;
 use App\Form\FunctionaliteitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,10 +34,14 @@ class FunctionaliteitController extends AbstractController
         $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteitinfo::class)->findBy([
             'url' => $slug
         ]);
+        $functionaliteitcard = $this->getDoctrine()->getRepository(Functionaliteitcard::class)->findBy([
+            'url' => $slug
+            ]);
 
 
         return $this->render('functionaliteit/functionaliteitinfo.html.twig',[
-            'functionaliteitinfo' => $functionaliteitinfo
+            'functionaliteitinfo' => $functionaliteitinfo,
+            'functionaliteitcard' => $functionaliteitcard
         ]);
     }
 
@@ -110,6 +116,43 @@ class FunctionaliteitController extends AbstractController
 
         }
         return $this->render('admin/functionaliteitinfo.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/admin/functionaliteit/card", name="functionaliteitcardadmin")
+     */
+    public function functionaliteitadmincard(Request $request)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $imageEn = new Functionaliteitcard();
+
+        $form = $this->createForm(FunctionaliteitcardType::class, $imageEn);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+
+            $em->persist($imageEn);
+            $em->flush();
+
+
+            $this->addFlash(
+                'info',
+                'Functionaliteitcard Succesvol Aangemaakt!'
+            );
+
+            return $this->redirectToRoute('functionaliteitcardadmin');
+
+
+        }
+        return $this->render('admin/functionaliteitcard.html.twig', array(
             'form' => $form->createView()
         ));
     }
