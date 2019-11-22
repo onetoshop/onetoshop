@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Blog;
 use App\Form\BlogType;
+use App\Repository\BlogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class BlogController extends AbstractController
 {
@@ -18,9 +21,37 @@ class BlogController extends AbstractController
     {
         $blog = $this->getDoctrine()->getRepository(Blog::class)->findAll();
 
+
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('handleSearch'))
+            ->add('Zoek', TextType::class)
+            ->add('submit', SubmitType::class)
+            ->getForm()
+        ;
+
         return $this->render('blog/blog.html.twig', [
-            'blogs' => $blog
+            'blogs' => $blog,
+            'form' => $form->createView()
+
         ]);
+    }
+
+    /**
+     * @Route("/blog/handleSearch", name="handleSearch")
+     */
+    public function handleSearch(Request $request, BlogRepository $blogRepository)
+    {
+//        $query = $request->request->get('form')['query'];
+//        if ($query) {
+//            $blog = $blogRepository->findBlogsByName($query);
+//        }
+
+        dump($request->request->get('form')['Zoek']); die();
+//        return $this->render('blog/results.html.twig', [
+//
+//
+//        ]);
+
     }
 
     /**

@@ -8,9 +8,12 @@ use App\Entity\Categorie;
 use App\Entity\File;
 use App\Entity\Gegeven;
 use App\Form\CardType;
+use App\Form\ContactType;
 use App\Form\UploadType;
 use App\Repository\GegevenRepository;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\ApplicationHandler;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,16 +24,35 @@ class Controller extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function homepage()
+    public function homepage(Request $request, \Swift_Mailer $mailer)
     {
         $card = $this->getDoctrine()->getRepository(Card::class)->findAll();
         $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
+//        $form = $this->createForm(ContactType::class);
+//
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            $contactFormData = $form->getData();
+//            $message = (new \Swift_Message('Hello'))
+//                ->setFrom($contactFormData['email'])
+//                ->setTo('jesseonetoweb@gmail.com')
+//                ->setBody(
+//                    $contactFormData['message'],
+//                    'text/plain'
+//                );
+//
+//            };
+
+//        $mailer->send($message);
 
 
 
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
         'aanmeldingen' => $aanmeld
+//
         ]);
     }
 
