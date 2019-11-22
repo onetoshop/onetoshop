@@ -46,26 +46,14 @@ class Card
     private $footer;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $imageFilename;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Upload", mappedBy="image", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
      */
     private $bgimage;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Upload", mappedBy="image", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
      */
     private $frimage;
-
-    public function __construct()
-    {
-        $this->bgimage = new ArrayCollection();
-        $this->frimage = new ArrayCollection();
-    }
-
 
     public function getId()
     {
@@ -132,85 +120,31 @@ class Card
         return $this;
     }
 
-    public function getImageFilename(): ?string
+    public function getBgimage(): ?Image
+{
+    return $this->bgimage;
+}
+
+    public function setBgimage($bgimage): void
     {
-        return $this->imageFilename;
-    }
-    public function setImageFilename(?string $imageFilename): self
-    {
-        $this->imageFilename = $imageFilename;
-        return $this;
+        $this->bgimage = $bgimage;
     }
 
-    public function getImagePath()
+    public function getFrimage(): ?Image
     {
-        return 'images/'.$this->getImageFilename();
+        return $this->frimage;
     }
+
+    public function setFrimage($frimage): void
+    {
+        $this->frimage = $frimage;
+    }
+
+
 
     public function __toString()
     {
         return (string)$this->getId();
     }
 
-    /**
-     * @return Collection|Upload[]
-     */
-    public function getBgimage(): Collection
-    {
-        return $this->bgimage;
-    }
-
-    public function addBgimage(Upload $bgimage): self
-    {
-        if (!$this->bgimage->contains($bgimage)) {
-            $this->bgimage[] = $bgimage;
-            $bgimage->setImage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBgimage(Upload $bgimage): self
-    {
-        if ($this->bgimage->contains($bgimage)) {
-            $this->bgimage->removeElement($bgimage);
-            // set the owning side to null (unless already changed)
-            if ($bgimage->getImage() === $this) {
-                $bgimage->setImage(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Upload[]
-     */
-    public function getFrimage(): Collection
-    {
-        return $this->frimage;
-    }
-
-    public function addFrimage(Upload $frimage): self
-    {
-        if (!$this->frimage->contains($frimage)) {
-            $this->frimage[] = $frimage;
-            $frimage->setImage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFrimage(Upload $frimage): self
-    {
-        if ($this->frimage->contains($frimage)) {
-            $this->frimage->removeElement($frimage);
-            // set the owning side to null (unless already changed)
-            if ($frimage->getImage() === $this) {
-                $frimage->setImage(null);
-            }
-        }
-
-        return $this;
-    }
 }

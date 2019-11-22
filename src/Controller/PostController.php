@@ -4,9 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Card;
 use App\Form\CardType;
-use App\Form\UploadType;
 use Doctrine\ORM\EntityManagerInterface;
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -68,48 +69,42 @@ class PostController extends AbstractController
      * @Route("/admin/card/add_card", name="add_card")
      * @IsGranted("ROLE_USER")
      */
-    public function indexAction(Request $request)
+    public function indexAction(EntityManagerInterface $manager, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $imageEn = new Card();
-
-        $form = $this->createForm(CardType::class, $imageEn);
-
+        $form = $this->createForm(CardType::Class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()){
 
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $card = $form->getData();
 
-            $file = $imageEn->getBgimage()();
-            ($imageEn->getBgimage());
-            $file1 = $imageEn->getFrimage();
-            ($imageEn->getFrimage());
+            $image = $card->getBgimage();
+            $image1 = $card->getFrimage();
 
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-            $fileName1 = md5(uniqid()) . '.' . $file1->guessExtension();
+            $bgimage = $image->getFile();
+            $frimage = $image1->getFile();
 
-            $file->move($this->getParameter('card'), $fileName);
-            $file1->move($this->getParameter('card'), $fileName1);
+            $fileName = md5(uniqid()) . '.' . $bgimage->guessExtension();
+            $fileName1 = md5(uniqid()) . '.' . $frimage->guessExtension();
 
-            $imageEn->setBgimage($fileName);
-            $imageEn->setFrimage($fileName1);
-            $em->persist($imageEn);
-            $em->flush();
+            $bgimage->move($this->getParameter('card'), $fileName);
+            $frimage->move($this->getParameter('card'), $fileName1);
+            $image->setName($fileName);
+            
 
+
+            $manager->persist($card);
+            $manager->flush();
 
             $this->addFlash(
-                'info',
-                'Card Succesvol Aangemaakt!'
+                'notice',
+                "Card is toegevoed"
             );
-
             return $this->redirectToRoute('card');
-
         }
-
-        return $this->render('upload/upload.html.twig', array(
-            'form' => $form->createView()
-        ));
+        return $this->render('upload/upload.html.twig', [
+        'form' => $form->createView(),
+        ]);
     }
 
 //    /**

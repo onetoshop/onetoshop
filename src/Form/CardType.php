@@ -2,14 +2,12 @@
 
 namespace App\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Card;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Card;
 
 class CardType extends AbstractType
 {
@@ -21,19 +19,15 @@ class CardType extends AbstractType
             ->add('body', TextareaType::class)
             ->add('link', TextareaType::class)
             ->add('footer', TextareaType::class)
-            ->add('card', EntityType::class, [
-                'class' => 'app\Entity\Card',
-
-            ])
-//            ->add('bgimage', FileType::class, array('label'=>'Upload Background Image'))
-//            ->add('frimage', FileType::class, array('label'=>'Upload Frond Image'))
+            ->add('bgimage', ImageType::class, ['label' => 'Upload Background Foto'])
+            ->add('frimage', ImageType::class, ['label' => 'Upload Frond Foto'])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Card::class,
         ]);
     }
 }
