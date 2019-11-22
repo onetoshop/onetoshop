@@ -87,9 +87,11 @@ class PostController extends AbstractController
             $fileName = md5(uniqid()) . '.' . $bgimage->guessExtension();
             $fileName1 = md5(uniqid()) . '.' . $frimage->guessExtension();
 
-            $bgimage->move($this->getParameter('card'), $fileName);
-            $frimage->move($this->getParameter('card'), $fileName1);
+            $bgimage->move($this->getParameter('upload'), $fileName);
+            $frimage->move($this->getParameter('upload'), $fileName1);
+
             $image->setName($fileName);
+            $image1->setName($fileName1);
 
 
 

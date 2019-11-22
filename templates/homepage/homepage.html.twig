@@ -361,11 +361,16 @@
                                 <div class="card">
                                     <div class="front">
                                         <div class="cover">
-                                            <img src="{{ asset('/image/card/' ~ card.bgimage) }}"/>
+                                            {% if card.bgimage is defined %}
+                                                <img src="{{ asset('/image/card/' ~ card.bgimage.name) }}"/>
+                                            {% endif %}
                                         </div>
                                         <div class="user">
+                                            {% if card.frimage is defined %}
+                                                <a href="{{ card.link }}" target="_blank">
+                                                <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+                                            {% endif %}
                                             <a href="{{ card.link }}" target="_blank">
-{#                                                <img src="{{ asset('/image/card/' ~ card.frondimage) }}"/>#}
                                             </a>
                                         </div>
                                         <div class="content">
