@@ -78,7 +78,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete_app/{id}", name="delete_app")
+     * @Route("/admin/app_overzicht/delete_app/{id}", name="delete_app")
      * @IsGranted("ROLE_USER")
      */
     public function delete_app(Request $request, $id)
@@ -175,7 +175,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete_appinformatie/{id}", name="delete_appinformatie")
+     * @Route("/admin/appinformatie_overzicht/delete_appinformatie/{id}", name="delete_appinformatie")
      * @IsGranted("ROLE_USER")
      */
     public function delete_appinformatie(Request $request, $id)
@@ -272,7 +272,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete_appinfo/{id}", name="delete_appinfo")
+     * @Route("/admin/appinfo_overzicht/delete_appinfo/{id}", name="delete_appinfo")
      * @IsGranted("ROLE_USER")
      */
     public function delete_appinfo(Request $request, $id)
@@ -354,56 +354,156 @@ class AppController extends AbstractController
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
+    //admin
     //apps
     /**
-     * @Route("/admin/apps/add_apps", name="add_apps")
+     * @Route("/admin/apps_overzicht", name="apps_overzicht")
      * @IsGranted("ROLE_USER")
      */
-    public function indexAction(Request $request)
+    public function apps_show()
+    {
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findAll();
+        return $this->render('app/apps_show.html.twig', [
+            'apps' => $apps
+        ]);
+    }
+
+    /**
+     * @Route("/admin/apps_overzicht/delete_apps/{id}", name="delete_apps")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_apps(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $imageEn = new Apps();
 
-        $form = $this->createForm(AppsType::class, $imageEn);
+        $apps = $em->getRepository(Apps::class)->find($id);
 
+        $em->remove($apps);
+        $em->flush();
+
+        return $this->redirectToRoute('apps_overzicht');
+    }
+
+    /**
+     * @Route("/admin/apps_overzicht/show/{slug}", name="show_apps")
+     * @IsGranted("ROLE_USER")
+     */
+    public function show_apps($slug)
+    {
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+            'title' => $slug
+        ]);
+
+        return $this->render('app/show_apps.html.twig', [
+            'apps' => $apps
+        ]);
+    }
+
+    /**
+     * @Route("/admin/apps_overzicht/add_apps", name="add_apps")
+     * @IsGranted("ROLE_USER")
+     */
+    public function add_apps(EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(AppsType::Class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $apps = $form->getData();
 
-            $file = $form->get('image')->getData();
-            ($imageEn->getImage());
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move($this->getParameter('apps'), $fileName);
+            $file = $apps->getImage();
 
+            $image = $file->getFile();
 
-            $imageEn->setImage($fileName);
-            $em->persist($imageEn);
+            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+
+            $image->move($this->getParameter('apps'), $fileName);
+
+            $file->setName($fileName);
+
+            $manager->persist($apps);
+            $manager->flush();
+
+            return $this->redirectToRoute('apps_overzicht');
+        }
+        return $this->render('app/add_apps.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+        /**
+         * @Route("/admin/apps_overzicht/edit_apps/{id}", name="edit_apps", methods={"GET","POST"})
+         */
+        public function edit_apps(Request $request, $id)
+    {
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $apps->setImage($apps->getImage());
+
+        $form = $this->createForm(AppsType::class, $apps);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $apps = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($apps);
             $em->flush();
 
-
-            $this->addFlash(
-                'info',
-                'Card Succesvol Aangemaakt!'
-            );
-
-            return $this->redirectToRoute('add_apps');
-
+            return $this->redirectToRoute('apps_overzicht',[
+                'id' => $apps->getId(),
+            ]);
         }
-
-        return $this->render('app/add_apps.html.twig', array(
+        return $this->render('app/edit_apps.html.twig', [
             'form' => $form->createView()
-        ));
+        ]);
     }
+
+
+
+
+
+
+
+
+//    //apps
+//    /**
+//     * @Route("/admin/apps/add_apps", name="add_apps")
+//     * @IsGranted("ROLE_USER")
+//     */
+//    public function indexAction(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $imageEn = new Apps();
+//
+//        $form = $this->createForm(AppsType::class, $imageEn);
+//
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+//
+//            $file = $form->get('image')->getData();
+//            ($imageEn->getImage());
+//            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+//            $file->move($this->getParameter('apps'), $fileName);
+//
+//
+//            $imageEn->setImage($fileName);
+//            $em->persist($imageEn);
+//            $em->flush();
+//
+//            return $this->redirectToRoute('add_apps');
+//
+//        }
+//
+//        return $this->render('app/add_apps.html.twig', array(
+//            'form' => $form->createView()
+//        ));
+//    }
 }

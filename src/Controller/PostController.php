@@ -15,19 +15,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/admin/card", name="card")
+     * @Route("/admin/card_overzicht", name="card_overzicht")
      * @IsGranted("ROLE_USER")
      */
     public function card()
     {
         $cards = $this->getDoctrine()->getRepository(Card::class)->findAll();
-        return $this->render('upload/card.html.twig', [
+        return $this->render('upload/card_show.html.twig', [
             'cards' => $cards
         ]);
     }
 
     /**
-     * @Route("/admin/card/show/{slug}", name="show_card")
+     * @Route("/admin/card_overzicht/card_overzicht/show_card/{slug}", name="show_card")
      * @IsGranted("ROLE_USER")
      */
     public function show_card($slug)
@@ -37,17 +37,17 @@ class PostController extends AbstractController
         ]);
 
 
-        return $this->render('upload/cardshow.html.twig', [
+        return $this->render('upload/show_card.html.twig', [
             'cards' => $cards
         ]);
     }
 
 
     /**
-     * @Route("/admin/delete_card/{id}", name="delete_card")
+     * @Route("/admin/card_overzicht/delete_card/{id}", name="delete_card")
      * @IsGranted("ROLE_USER")
      */
-    public function delete(Request $request, $id)
+    public function delete_card(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -56,12 +56,12 @@ class PostController extends AbstractController
         $em->remove($card);
         $em->flush();
 
-        return $this->redirectToRoute('card');
+        return $this->redirectToRoute('card_overzicht');
     }
 
 
     /**
-     * @Route("/admin/card/add_card", name="add_card")
+     * @Route("/admin/card_overzicht/add_card", name="add_card")
      * @IsGranted("ROLE_USER")
      */
     public function indexAction(EntityManagerInterface $manager, Request $request)
@@ -93,15 +93,15 @@ class PostController extends AbstractController
             $manager->persist($card);
             $manager->flush();
 
-            return $this->redirectToRoute('card');
+            return $this->redirectToRoute('card_overzicht');
         }
-        return $this->render('upload/add_apps.html.twig', [
+        return $this->render('upload/add_card.html.twig', [
         'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
+     * @Route("/admin/card_overzicht/edit_card/{id}", name="edit_card", methods={"GET","POST"})
      */
     public function edit_card(Request $request, $id)
     {
@@ -123,11 +123,11 @@ class PostController extends AbstractController
             $em->persist($card);
             $em->flush();
 
-            return $this->redirectToRoute('card',[
+            return $this->redirectToRoute('card_overzicht',[
                 'id' => $card->getId(),
             ]);
         }
-        return $this->render('upload/editcard.html.twig', [
+        return $this->render('upload/edit_card.html.twig', [
             'form' => $form->createView()
         ]);
     }

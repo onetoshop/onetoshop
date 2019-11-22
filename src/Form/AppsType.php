@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Apps;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,7 +14,7 @@ class AppsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', FileType::class, array('label'=>'Upload Image'))
+            ->add('image', ImageType::class, array('label'=>'Upload Image'))
             ->add('title', TextType::class)
             ->add('body', TextareaType::class)
             ->add('groep', TextType::class)
@@ -25,7 +25,7 @@ class AppsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Apps::class,
         ]);
     }
 }
