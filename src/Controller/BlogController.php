@@ -25,7 +25,7 @@ class BlogController extends AbstractController
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
             ->add('Zoek', TextType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->getForm()
         ;
 
@@ -41,17 +41,21 @@ class BlogController extends AbstractController
      */
     public function handleSearch(Request $request, BlogRepository $blogRepository)
     {
-//        $query = $request->request->get('form')['query'];
-//        if ($query) {
-//            $blog = $blogRepository->findBlogsByName($query);
-//        }
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('handleSearch'))
+            ->add('Zoek', TextType::class, ['label' => false])
+            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+            ->getForm()
+        ;
 
-        dump($request->request->get('form')['Zoek']); die();
-//        return $this->render('blog/results.html.twig', [
-//
-//
-//        ]);
-
+        $zoek = $request->request->get('form')['Zoek'];
+        if ($zoek) {
+        $blogs = $blogRepository->findBlogsByName($zoek);
+     }
+        return $this->render('blog/results.html.twig', [
+            'form' => $form->createView(),
+            'blogs' => $blogs,
+            ]);
     }
 
     /**

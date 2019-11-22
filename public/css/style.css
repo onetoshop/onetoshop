@@ -555,11 +555,11 @@ h1, h2, h3, h4, h5,
           padding-left: 15px !important; }
 
 .sticky-wrapper {
-  position: absolute;
+  position: relative;
   z-index: 100;
   width: 100%; }
-  .sticky-wrapper + .site-blocks-cover {
-    margin-top: 96px; }
+  /*.sticky-wrapper + .site-blocks-cover {*/
+  /*  !*margin-top: 96px; }*!*/
   .sticky-wrapper .site-navbar {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;

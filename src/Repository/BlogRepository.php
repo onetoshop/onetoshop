@@ -20,20 +20,20 @@ class BlogRepository extends ServiceEntityRepository
         parent::__construct($registry, Blog::class);
     }
 
-    public function findBlogsByName(string $query)
+    public function findBlogsByName(string $zoek)
     {
         $qb = $this->createQueryBuilder('b');
         $qb
             ->where(
                 $qb->expr()->andX(
                     $qb->expr()->orX(
-                        $qb->expr()->like('b.title', ':query'),
-                        $qb->expr()->like('b.beschrijving', ':query')
+                        $qb->expr()->like('b.title', ':Zoek'),
+                        $qb->expr()->like('b.beschrijving', ':Zoek')
                     ),
                     $qb->expr()->isNotNull('b.body')
                 )
             )
-            ->setParameter('query', '%' . $query . '%')
+            ->setParameter('Zoek', '%' . $zoek . '%')
             ;
         return $qb
             ->getQuery()

@@ -7,21 +7,61 @@
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <br>
-            <br>
-            <br>
-            <br>
             <h1 class="my-4">Resultaat
             </h1>
-            <hr>
-{#            {% if blogs %}#}
-{#{% for blogs in blogs %}#}
-{#{% endfor %}#}
-{#            {% else %}#}
-{#                <p>Er zijn Geen Gegevens gevonden</p>#}
-{#            {% endif %}#}
-{#            {{ dump(query) }}#}
+            {% if blogs %}
+{% for blogs in blogs %}
+    <div class="card mb-4">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" />
+        <div class="card-body">
+            <h2 class="card-title">{{ blogs.title }}</h2>
+            <p class="card-text">{{ blogs.beschrijving }}</p>
+            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
         </div>
     </div>
+{% endfor %}
+            {% else %}
+                <p>Geen resultaat</p>
+            {% endif %}
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Zoek</h5>
+                <div class="card-body">
+                    <div class="input-group">
+
+                        {{ form_start(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Ga naar</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="{{ path('functionaliteit') }}">Functionaliteit</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="{{ path('app') }}">Apps</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 </div>
 {% endblock %}
