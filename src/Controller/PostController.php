@@ -56,11 +56,6 @@ class PostController extends AbstractController
         $em->remove($card);
         $em->flush();
 
-        $this->addFlash(
-            'info',
-            'Card Succesvol Verwijderd'
-        );
-
         return $this->redirectToRoute('card');
     }
 
@@ -98,10 +93,6 @@ class PostController extends AbstractController
             $manager->persist($card);
             $manager->flush();
 
-            $this->addFlash(
-                'notice',
-                "Card is toegevoed"
-            );
             return $this->redirectToRoute('card');
         }
         return $this->render('upload/upload.html.twig', [
@@ -109,37 +100,37 @@ class PostController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
-//     */
-//    public function edit_card(Request $request, $id)
-//    {
-//        $card = $this->getDoctrine()->getRepository(Card::class)->findOneBy([
-//            'id' => $id,
-//        ]);
-//
-//        $card->setBackgroundimage($card->getBackgroundimage());
-//        $card->setFrondimage($card->getFrondimage());
-//
-//        $form = $this->createForm(CardType::class, $card);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-//            $card = $form->getData();
-//
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($card);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('card',[
-//                'id' => $card->getId(),
-//            ]);
-//        }
-//        return $this->render('upload/editcard.html.twig', [
-//            'form' => $form->createView()
-//        ]);
-//    }
+    /**
+     * @Route("/admin/card/edit/{id}", name="edit_card", methods={"GET","POST"})
+     */
+    public function edit_card(Request $request, $id)
+    {
+        $card = $this->getDoctrine()->getRepository(Card::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $card->setBgimage($card->getBgimage());
+        $card->setFrimage($card->getFrimage());
+
+        $form = $this->createForm(CardType::class, $card);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $card = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($card);
+            $em->flush();
+
+            return $this->redirectToRoute('card',[
+                'id' => $card->getId(),
+            ]);
+        }
+        return $this->render('upload/editcard.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
 
 
