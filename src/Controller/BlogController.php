@@ -24,8 +24,8 @@ class BlogController extends AbstractController
 
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
-            ->add('Zoek', TextType::class)
-            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
+            ->add('Zoek', TextType::class, ['label' => false])
+            ->add('submit', SubmitType::class, ['label' => 'Ga'])
             ->getForm()
         ;
 
