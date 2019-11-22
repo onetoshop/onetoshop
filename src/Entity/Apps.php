@@ -17,7 +17,7 @@ class Apps
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
      */
     private $image;
 
@@ -46,16 +46,14 @@ class Apps
         return $this->id;
     }
 
-    public function getImage(): ?string
+    public function getImage(): ?Image
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image): void
     {
         $this->image = $image;
-
-        return $this;
     }
 
     public function getTitle(): ?string

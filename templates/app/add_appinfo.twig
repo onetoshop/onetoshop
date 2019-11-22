@@ -1,0 +1,40 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+    <div id="content-wrapper">
+    <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Appinfo</li>
+        <li class="breadcrumb-item active">Add Appinfo</li>
+    </ol>
+    <!-- Page Content -->
+    <h1>Add Apprinf</h1>
+    <!-- DataTables Example -->
+    <div class="form-element-area">
+        <div class="container">
+            <div id="row">
+                <div class="col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd">
+                            <div class="cmp-tb-hd">
+                                <div class="cmp-tb-hd">
+                                    <div style="text-align: center;">
+                                        {{ form_start(form) }}
+                                        {{ form_widget(form) }}
+                                        <hr>
+                                        <button type="submit" style="width: 100%;" class="btn btn-primary">Add Appinfo!</button>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

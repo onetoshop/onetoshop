@@ -1,0 +1,41 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Appinfo</li>
+                <li class="breadcrumb-item active">Show Appinfo</li>
+            </ol>
+            <!-- Page Content -->
+            <h1>Appinfo Overzicht</h1>
+            <div class="row">
+                {% if appinfo %}
+                    {% for appinfo in appinfo %}
+                        <div class="col-md-3 mb-5">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{ appinfo.naam | raw }}</h3>
+                                    <p class="card-text">{{ appinfo.body | raw }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="btn btn-primary btn-sm">Lees Verder</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
+            </div>
+            <div>
+                <a href="{{ path('appinfo_overzicht') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

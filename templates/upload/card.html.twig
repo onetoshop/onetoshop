@@ -21,15 +21,7 @@
                 Card
                 <a href="{{ path('add_card') }}" type="button" class="btn btn-primary" style="float: right;">Add Card</a>
             </div>
-
             <div class="table-responsive">
-
-                {% for message in app.flashes('info') %}
-                    <div class="alert alert-danger">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-
                 {% if cards %}
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -53,7 +45,7 @@
                                     <a href="{{ path('edit_card', {'id' : card.id}) }}" class="btn btn-light" style="width: 100%;">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="{{ path('delete', {'id' : card.id}) }}" class="btn btn-danger" style="width: 100%;">Delete</a>
+                                    <a href="{{ path('delete_card', {'id' : card.id}) }}" class="btn btn-danger" style="width: 100%;">Delete</a>
                                 </td>
                             </tr>
                         {% endfor %}

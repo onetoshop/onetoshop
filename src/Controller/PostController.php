@@ -44,7 +44,7 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("/admin/delete/{id}", name="delete")
+     * @Route("/admin/delete_card/{id}", name="delete_card")
      * @IsGranted("ROLE_USER")
      */
     public function delete(Request $request, $id)
@@ -95,7 +95,7 @@ class PostController extends AbstractController
 
             return $this->redirectToRoute('card');
         }
-        return $this->render('upload/upload.html.twig', [
+        return $this->render('upload/add_apps.html.twig', [
         'form' => $form->createView(),
         ]);
     }
