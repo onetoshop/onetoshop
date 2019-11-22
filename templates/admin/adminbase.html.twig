@@ -10,16 +10,16 @@
     <meta name="author" content="">
 
     {% block title %}<title>Onetoshop Admin</title>{% endblock %}
-{% block style %}
-    <!-- Custom fonts for this template-->
-    <link href="../../../adminmap/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    {% block style %}
+        <!-- Custom fonts for this template-->
+        <link href="../../../adminmap/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Page level plugin CSS-->
-    <link href="../../../adminmap/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <!-- Page level plugin CSS-->
+        <link href="../../../adminmap/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="../../../css/sb-admin.css" rel="stylesheet">
-{% endblock %}
+        <!-- Custom styles for this template-->
+        <link href="../../../css/sb-admin.css" rel="stylesheet">
+    {% endblock %}
 </head>
 {% block navbar %}
 <body id="page-top">
@@ -106,11 +106,11 @@
                 <i class="fas fa-fw fa-book"></i>
                 <span>Functionaliteit</span>
             </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Opties:</h6>
-            <a class="dropdown-item" href="{{ path('functionaliteitcardadmin') }}">Functionaliteit main</a>
-            <a class="dropdown-item" href="{{ path('functionaliteitinfoadmin') }}">Functionaliteit info</a>
-        </div>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <h6 class="dropdown-header">Opties:</h6>
+                <a class="dropdown-item" href="{{ path('functionaliteitcardadmin') }}">Functionaliteit main</a>
+                <a class="dropdown-item" href="{{ path('functionaliteitinfoadmin') }}">Functionaliteit info</a>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ path('add_apps') }}">
@@ -148,50 +148,50 @@
 </div>
 {% endblock %}
 {% block scroll %}
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 {% endblock %}
 {% block logout %}
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Zeker weten?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Wilt u zeker weten uitloggen?</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleer</button>
-                <a class="btn btn-primary"  href="{{ path('app_logout') }}">Uitloggen</a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Zeker weten?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Wilt u zeker weten uitloggen?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleer</button>
+                    <a class="btn btn-primary"  href="{{ path('app_logout') }}">Uitloggen</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 <!-- Bootstrap core JavaScript-->
 {% block js %}
-<script type="text/javascript" src="../../../adminmap/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../../../adminmap/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../../adminmap/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../adminmap/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script type="text/javascript" src="../../../adminmap/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script type="text/javascript" src="../../../adminmap/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Page level plugin JavaScript-->
-<script type="text/javascript" src="../../../adminmap/chart.js/Chart.min.js"></script>
-<script type="text/javascript" src="../../../adminmap/datatables/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../../../adminmap/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script type="text/javascript" src="../../../adminmap/chart.js/Chart.min.js"></script>
+    <script type="text/javascript" src="../../../adminmap/datatables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../../../adminmap/datatables/dataTables.bootstrap4.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script type="text/javascript" src="../../../jsadmin/sb-admin.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script type="text/javascript" src="../../../jsadmin/sb-admin.min.js"></script>
 
-<!-- Demo scripts for this page-->
-<script type="text/javascript" src="../../../jsadmin/demo/datatables-demo.js"></script>
-<script type="text/javascript" src="../../../jsadmin/demo/chart-area-demo.js"></script>
+    <!-- Demo scripts for this page-->
+    <script type="text/javascript" src="../../../jsadmin/demo/datatables-demo.js"></script>
+    <script type="text/javascript" src="../../../jsadmin/demo/chart-area-demo.js"></script>
 {% endblock %}
 </body>
 </html>

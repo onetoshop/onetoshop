@@ -90,7 +90,7 @@ class PostController extends AbstractController
             $bgimage->move($this->getParameter('card'), $fileName);
             $frimage->move($this->getParameter('card'), $fileName1);
             $image->setName($fileName);
-            
+
 
 
             $manager->persist($card);
