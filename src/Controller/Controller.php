@@ -26,7 +26,7 @@ class Controller extends AbstractController
 {
 //    home pagina
     /**
-     * @Route("/{_locale}/homepage", name="homepage")
+     * @Route("/{_locale}/home", name="home")
      */
     public function homepage(Request $request, \Swift_Mailer $mailer)
     {
@@ -46,7 +46,7 @@ class Controller extends AbstractController
             $em->persist($contact);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('home');
         }
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,

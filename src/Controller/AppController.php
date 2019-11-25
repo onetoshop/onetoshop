@@ -19,19 +19,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AppController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/app", name="app")
+     * @Route("/{_locale}/apps", name="apps")
      */
     public function app()
     {
-        $app = $this->getDoctrine()->getRepository(App::class)->findAll();
+        $apps = $this->getDoctrine()->getRepository(App::class)->findAll();
 
         return $this->render('app/app.html.twig', [
-            'app' => $app
+            'apps' => $apps
         ]);
     }
 
     /**
-     * @Route("/{_locale}/app/{slug}", name="appinfo")
+     * @Route("/{_locale}/apps/{slug}", name="appinfo")
      */
     public function appinfo($slug){
         $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findBy([
@@ -49,12 +49,11 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/app/{slug}/{naam}", name="apps")
+     * @Route("/{_locale}/app/{naam}", name="app")
      */
-    public function apps($slug, $naam)
+    public function apps($naam)
     {
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'groep' => $slug,
             'naam'  => $naam
         ]);
 
