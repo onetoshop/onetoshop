@@ -412,7 +412,6 @@
     </div>
 
 
-
     <div class="site-section" id="blog-section">
         <div class="container">
             <div class="row mb-5">
@@ -429,7 +428,9 @@
                         <h2 class="font-size-regular"><a href="#" class="text-black">3 tips om je SEO-score in Google te verbeteren</a></h2>
                         <p>Om jouw website goed te indexeren moet Google weten waar jouw website over gaat. Dit bereik je door goede teksten te schrijven voor je pagina’s.
                             Goede SEO teksten verbeteren de vindbaarheid van je website of -shop. Hieronder een aantal handvaten om optimale content te schrijven</p>
-                        <p><a href="{{ path('blog') }}">Lees...</a></p>
+
+{#                        <p><a href="{{ path('blog') }}">Lees...</a></p>#}
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
@@ -438,7 +439,7 @@
                         <h2 class="font-size-regular"><a href="#" class="text-black">Gouden formule: zie je omzet groeien met multi-channel retail</a></h2>
                         <p>Wanneer je de omzetontwikkeling van de retailbranche analyseert valt er een ding duidelijk op. Ten opzichte van het tweede kwartaal van 2017 is de omzetontwikkeling
                             voor de detailhandel (fysieke winkels) en de webwinkels voor het tweede jaar op rij iets gedaald. Multi-channel retail, daarentegen, laat juist een stijgende lijn zien.</p>
-                        <p><a href="{{ path('blog') }}">Lees...</a></p>
+{#                        <p><a href="{{ path('blog') }}">Lees...</a></p>#}
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
@@ -446,16 +447,18 @@
                         <img src="images/smallsaturday_bg.png" alt="Image" class="img-fluid">
                         <h2 class="font-size-regular"><a href="#" class="text-black">Waarom hebben we geen Small Business Saturday in Nederland?</a></h2>
                         <p>Misschien heb je hashtags wel eens voorbij zien komen. Small Business Saturday en Shop Small zijn beide een initiatief van creditcardbedrijf American Express.</p>
-                        <p><a href="{{ path('blog') }}">Lees...</a></p>
+{#                        <p><a href="    {{ path('blogshow')}}">Lees...</a></p>#}
                     </div>
                 </div>
 
             </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7 text-center">
+                    <p><a href="{{ path('blog') }}" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Naar blogs gaan</a></p>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
 
     <div class="site-section bg-light" id="contact-section">
         <div class="container">

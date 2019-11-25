@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\Aanmeld;
 use App\Entity\Aanmelding;
+use App\Entity\Blog;
 use App\Entity\Card;
 use App\Entity\Categorie;
 use App\Entity\File;
@@ -26,35 +27,28 @@ class Controller extends AbstractController
      */
     public function homepage(Request $request, \Swift_Mailer $mailer)
     {
+
         $card = $this->getDoctrine()->getRepository(Card::class)->findAll();
         $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
-//        $form = $this->createForm(ContactType::class);
-//
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-//            $contactFormData = $form->getData();
-//            $message = (new \Swift_Message('Hello'))
-//                ->setFrom($contactFormData['email'])
-//                ->setTo('jesseonetoweb@gmail.com')
-//                ->setBody(
-//                    $contactFormData['message'],
-//                    'text/plain'
-//                );
-//
-//            };
-
-//        $mailer->send($message);
-
-
 
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
-        'aanmeldingen' => $aanmeld
-//
+        'aanmeldingen' => $aanmeld,
         ]);
     }
+//    /**
+//     * @Route("/", name="homepage")
+//     */
+//    public function slug($slug)
+//    {
+//        $blogs = $this->getDoctrine()->getRepository(Blog::class)->findBy([
+//            'slug' => $slug
+//        ]);
+//        return $this->render('blog/showblog.html.twig', [
+//            'blogs' => $blogs
+//        ]);
+//
+//    }
 
 //    service pagina
     /**

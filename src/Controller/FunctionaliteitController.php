@@ -16,7 +16,6 @@ class FunctionaliteitController extends AbstractController
 {
     /**
      * @Route("/functionaliteit", name="functionaliteit")
-     *  @IsGranted("ROLE_USER")
      */
     public function index()
     {
