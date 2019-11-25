@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/{_locale}/user", name="user")
      * @IsGranted("ROLE_USER")
      */
     public function gebruiker(Request $request, UserPasswordEncoderInterface $passwordEncoder)

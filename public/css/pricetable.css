@@ -60,7 +60,7 @@ body{background-color:#eee;}
     color: #3366ff;
 }
 
-#generic_price_table .generic_content.active .generic_head_price .generic_head_content .head_bg,
+/*#generic_price_table .generic_content.active .generic_head_price .generic_head_content .head_bg,*/
 #generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg{
     border-color: #3366ff rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #3366ff;
     color: #fff;
@@ -71,8 +71,8 @@ body{background-color:#eee;}
     color: #fff;
 }
 
-#generic_price_table .generic_content:hover .generic_price_btn a,
-#generic_price_table .generic_content.active .generic_price_btn a{
+#generic_price_table .generic_content:hover .generic_price_btn a {
+/*#generic_price_table .generic_content.active .generic_price_btn a{*/
     background-color: #3366ff;
     color: #fff;
 }

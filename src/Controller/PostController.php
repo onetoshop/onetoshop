@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/admin/card_overzicht", name="card_overzicht")
+     * @Route("/{_locale}/admin/card_overzicht", name="card_overzicht")
      * @IsGranted("ROLE_USER")
      */
     public function card()
@@ -28,7 +28,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/admin/card_overzicht/card_overzicht/show_card/{slug}", name="show_card")
+     * @Route("/{_locale}/admin/card_overzicht/card_overzicht/show_card/{slug}", name="show_card")
      * @IsGranted("ROLE_USER")
      */
     public function show_card($slug)
@@ -45,7 +45,7 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("/admin/card_overzicht/delete_card/{id}", name="delete_card")
+     * @Route("/{_locale}/admin/card_overzicht/delete_card/{id}", name="delete_card")
      * @IsGranted("ROLE_USER")
      */
     public function delete_card(Request $request, $id)
@@ -62,7 +62,7 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("/admin/card_overzicht/add_card", name="add_card")
+     * @Route("/{_locale}/admin/card_overzicht/add_card", name="add_card")
      * @IsGranted("ROLE_USER")
      */
     public function indexAction(EntityManagerInterface $manager, Request $request)
@@ -102,7 +102,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/admin/card_overzicht/edit_card/{id}", name="edit_card", methods={"GET","POST"})
+     * @Route("/{_locale}/admin/card_overzicht/edit_card/{id}", name="edit_card", methods={"GET","POST"})
      */
     public function edit_card(Request $request, $id)
     {

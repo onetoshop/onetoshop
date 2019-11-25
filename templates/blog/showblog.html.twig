@@ -1,5 +1,18 @@
 {% extends 'base1.html.twig' %}
+{% block navbar %}
 
+    <div class="col-12 col-md-10 d-none d-xl-block">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+
+            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a></li>
+                <li><a href="{{ path('app') }}" class="nav-link">Apps</a></li>
+                <li><a href="{{ path('blog') }}" class="nav-link active">Blogs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+{% endblock %}
 {% block body %}
     <!-- Page Content -->
     <div class="container">
@@ -7,7 +20,7 @@
         <div class="row">
 
             <!-- Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-lg-10 offset-1"style="" >
                 <br>
                 <br>
                 <br>
@@ -20,7 +33,7 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" />
+                <img class="img-fluid rounded mb-4 mb-lg-0 offset-2"  style="text-align: center" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" />
                 <hr>
 
                 <!-- Post Content -->
@@ -38,6 +51,7 @@
                         {% endif %}
                     </div>
                 </div>
+
 
             </div>
 

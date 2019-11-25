@@ -21,7 +21,7 @@ class BackendController extends AbstractController
 {
 
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/{_locale}/admin", name="admin")
      */
     public function index()
     {
@@ -59,7 +59,7 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/aanmeldingen", name="aanmeldingen")
+     * @Route("/{_locale}/aanmeldingen", name="aanmeldingen")
      *  @IsGranted("ROLE_USER")
      */
     public function mogelijkheden(Request $request)
@@ -90,7 +90,7 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/informatie", name="informatie")
+     * @Route("/{_locale}/informatie", name="informatie")
      *  @IsGranted("ROLE_USER")
      */
     public function informatie(Request $request)

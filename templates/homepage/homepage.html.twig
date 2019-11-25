@@ -497,6 +497,16 @@
 
         </div>
     </div>
+    <script>
+        $('#generic_price_table').hover(
+            function() {
+                $('.generic_content clearfix').addClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
+            },
+            function() {
+                $('.generic_content clearfix').removeClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
+            }
+        );
+    </script>
 
 {% endblock %}
 

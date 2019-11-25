@@ -45,7 +45,7 @@ class FunctionaliteitController extends AbstractController
     }
 
     /**
-     * @Route("/admin/functionaliteit", name="functionaliteitadmin")
+     * @Route("/{_locale}/admin/functionaliteit", name="functionaliteitadmin")
      */
     public function adminfunctionaliteit(Request $request)
     {
@@ -83,7 +83,7 @@ class FunctionaliteitController extends AbstractController
 
 
     /**
-     * @Route("/admin/functionaliteit/info", name="functionaliteitinfoadmin")
+     * @Route("/{_locale}/admin/functionaliteit/info", name="functionaliteitinfoadmin")
      */
     public function functionaliteitadmininfo(Request $request)
     {
@@ -120,7 +120,7 @@ class FunctionaliteitController extends AbstractController
     }
 
     /**
-     * @Route("/admin/functionaliteit/card", name="functionaliteitcardadmin")
+     * @Route("/{_locale}/admin/functionaliteit/card", name="functionaliteitcardadmin")
      */
     public function functionaliteitadmincard(Request $request)
     {

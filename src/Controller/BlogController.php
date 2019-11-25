@@ -76,7 +76,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/admin/blog/blog_card", name="add_blog")
+     * @Route("/{_locale}/admin/blog/blog_card", name="add_blog")
      * @IsGranted("ROLE_USER")
      */
     public function indexAction(Request $request)

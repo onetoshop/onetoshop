@@ -163,7 +163,7 @@ class AppController extends AbstractController
     //admin
     //appinformatie
     /**
-     * @Route("/admin/appinformatie_overzicht", name="appinformatie_overzicht")
+     * @Route("/{_locale}/admin/appinformatie_overzicht", name="appinformatie_overzicht")
      * @IsGranted("ROLE_USER")
      */
     public function appinformatie_show()
@@ -175,7 +175,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinformatie_overzicht/delete_appinformatie/{id}", name="delete_appinformatie")
+     * @Route("/{_locale}/admin/appinformatie_overzicht/delete_appinformatie/{id}", name="delete_appinformatie")
      * @IsGranted("ROLE_USER")
      */
     public function delete_appinformatie(Request $request, $id)
@@ -191,7 +191,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinformatie_overzicht/show/{slug}", name="show_appinformatie")
+     * @Route("/{_locale}/admin/appinformatie_overzicht/show/{slug}", name="show_appinformatie")
      * @IsGranted("ROLE_USER")
      */
     public function show_appinformatie($slug)
@@ -206,7 +206,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinformatie_overzicht/add_appinformatie", name="add_appinformatie")
+     * @Route("/{_locale}/admin/appinformatie_overzicht/add_appinformatie", name="add_appinformatie")
      * @IsGranted("ROLE_USER")
      */
     public function add_appinformatie(EntityManagerInterface $manager, Request $request)
@@ -229,7 +229,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinformatie_overzicht/edit_appinformatie/{id}", name="edit_appinformatie", methods={"GET","POST"})
+     * @Route("/{_locale}/admin/appinformatie_overzicht/edit_appinformatie/{id}", name="edit_appinformatie", methods={"GET","POST"})
      */
     public function edit_appinformatie(Request $request, $id)
     {
@@ -260,7 +260,7 @@ class AppController extends AbstractController
     //admin
     //appinfo
     /**
-     * @Route("/admin/appinfo_overzicht", name="appinfo_overzicht")
+     * @Route("/{_locale}/admin/appinfo_overzicht", name="appinfo_overzicht")
      * @IsGranted("ROLE_USER")
      */
     public function appinfo_show()
@@ -288,7 +288,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinfo_overzicht/show/{slug}", name="show_appinfo")
+     * @Route("/{_locale}/admin/appinfo_overzicht/show/{slug}", name="show_appinfo")
      * @IsGranted("ROLE_USER")
      */
     public function show_appinfo($slug)
@@ -303,7 +303,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinfo_overzicht/add_appinfo", name="add_appinfo")
+     * @Route("/{_locale}/admin/appinfo_overzicht/add_appinfo", name="add_appinfo")
      * @IsGranted("ROLE_USER")
      */
     public function add_appinfo(EntityManagerInterface $manager, Request $request)
@@ -326,7 +326,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/appinfo_overzicht/edit_appinfo/{id}", name="edit_appinfo", methods={"GET","POST"})
+     * @Route("/{_locale}/admin/appinfo_overzicht/edit_appinfo/{id}", name="edit_appinfo", methods={"GET","POST"})
      */
     public function edit_appinfo(Request $request, $id)
     {
@@ -357,7 +357,7 @@ class AppController extends AbstractController
     //admin
     //apps
     /**
-     * @Route("/admin/apps_overzicht", name="apps_overzicht")
+     * @Route("/{_locale}/admin/apps_overzicht", name="apps_overzicht")
      * @IsGranted("ROLE_USER")
      */
     public function apps_show()
@@ -369,7 +369,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/apps_overzicht/delete_apps/{id}", name="delete_apps")
+     * @Route("/{_locale}/admin/apps_overzicht/delete_apps/{id}", name="delete_apps")
      * @IsGranted("ROLE_USER")
      */
     public function delete_apps(Request $request, $id)
@@ -385,7 +385,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/apps_overzicht/show/{slug}", name="show_apps")
+     * @Route("/{_locale}/admin/apps_overzicht/show/{slug}", name="show_apps")
      * @IsGranted("ROLE_USER")
      */
     public function show_apps($slug)
@@ -400,7 +400,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/admin/apps_overzicht/add_apps", name="add_apps")
+     * @Route("/{_locale}/admin/apps_overzicht/add_apps", name="add_apps")
      * @IsGranted("ROLE_USER")
      */
     public function add_apps(EntityManagerInterface $manager, Request $request)
@@ -433,7 +433,7 @@ class AppController extends AbstractController
     }
 
         /**
-         * @Route("/admin/apps_overzicht/edit_apps/{id}", name="edit_apps", methods={"GET","POST"})
+         * @Route("/{_locale}/admin/apps_overzicht/edit_apps/{id}", name="edit_apps", methods={"GET","POST"})
          */
         public function edit_apps(Request $request, $id)
     {
