@@ -27,7 +27,7 @@ class FunctionaliteitController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/functionaliteit/{slug}", name="functionaliteitinfo")
+     * @Route("/{_locale}/functies/{slug}", name="functionaliteitinfo")
      */
     public function functionaliteitinfo($slug){
         $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteitinfo::class)->findBy([

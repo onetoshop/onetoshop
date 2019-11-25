@@ -33,7 +33,7 @@
                             <h1>Welkom</h1>
                             <p class="mb-5 lead">Boost uw traffic, omzet en winst met Onetoshop.</p>
                             <div>
-                                <a href="{{ path('mogelijkheden') }}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Meld u nu aan</a>
+                                <a href="{{ path('succes') }}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Meld u nu aan</a>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h3 class="section-sub-title">Mogelijkheden</h3>
+                    <h3 class="section-sub-title">Service</h3>
                     <h2 class="section-title mb-3">Altijd een pakket die bij u past</h2>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                             <div class="col-md-4">
 
                                 <!--PRICE CONTENT START-->
-                                <div class="generic_content active clearfix">
+                                <div class="generic_content clearfix">
 
                                     <!--HEAD PRICE DETAIL START-->
                                     <div class="generic_head_price clearfix">
@@ -190,7 +190,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="#aanmelden-section">START</a>
+                                        <a class="" href="">START</a>
                                     </div>
                                     <!--//BUTTON END-->
 
@@ -205,10 +205,10 @@
                                 <div class="generic_content active clearfix">
 
                                     <!--HEAD PRICE DETAIL START-->
-                                    <div class="generic_head_price  clearfix">
+                                    <div class="generic_head_price clearfix">
 
                                         <!--HEAD CONTENT START-->
-                                        <div class="generic_head_content  clearfix">
+                                        <div class="generic_head_content clearfix">
 
                                             <!--HEAD START-->
                                             <div class="head_bg"></div>
@@ -251,7 +251,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="#aanmelden-section">START</a>
+                                        <a class="" href="">START</a>
                                     </div>
                                     <!--//BUTTON END-->
 
@@ -262,7 +262,7 @@
                             <div class="col-md-4">
 
                                 <!--PRICE CONTENT START-->
-                                <div class="generic_content  active clearfix">
+                                <div class="generic_content clearfix">
 
                                     <!--HEAD PRICE DETAIL START-->
                                     <div class="generic_head_price clearfix">
@@ -311,7 +311,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="#aanmelden-section">START</a>
+                                        <a class="" href="">START</a>
                                     </div>
                                     <!--//BUTTON END-->
 
@@ -339,7 +339,7 @@
                     <h3 class="section-sub-title"></h3>
                     <h3 class="section-title text-white mb-4">Start uw droomwinkel</h3>
                     <p class="mb-5 lead">Bent u klaar voor e-commerce?</p>
-                    <p><a href="{{ path('mogelijkheden') }}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Aanmelden</a></p>
+                    <p><a href="{{ path('succes') }}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Aanmelden</a></p>
                 </div>
             </div>
 
@@ -456,7 +456,7 @@
             </div>
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-7 text-center">
-                    <p><a href="{{ path('blog') }}" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Naar blogs gaan</a></p>
+                    <p><a href="{{ path('blogs') }}" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Naar blogs gaan</a></p>
                 </div>
             </div>
         </div>
@@ -504,10 +504,10 @@
     <script>
         $('#generic_price_table').hover(
             function() {
-                $('.generic_content active clearfix').addClass('#generic_content active clearfix');
+                $('.generic_content clearfix').addClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
             },
             function() {
-                $('.generic_content active clearfix').removeClass('#generic_content active clearfix');
+                $('.generic_content clearfix').removeClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
             }
         );
     </script>

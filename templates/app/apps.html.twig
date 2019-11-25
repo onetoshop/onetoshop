@@ -6,15 +6,15 @@
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a></li>
-                <li><a href="{{ path('app') }}" class="nav-link active">Apps</a></li>
-                <li><a href="{{ path('blog') }}" class="nav-link ">Blogs</a></li>
+                <li><a href="{{ path('apps') }}" class="nav-link active">Apps</a></li>
+                <li><a href="{{ path('blogs') }}" class="nav-link ">Blogs</a></li>
             </ul>
         </nav>
     </div>
 
 {% endblock %}
 {% block body %}
-    <div class="site-section bg-light" id="contact-section">
+    <div id="contact-section">
         <!-- Page Content -->
         <div class="container">
             <!-- Heading Row -->
@@ -45,7 +45,7 @@
                                     <p class="card-text">{{ appinfo.body | raw }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{ path('apps', {'slug' : appinfo.groep, 'naam' : appinfo.url} ) }}" class="btn btn-primary btn-sm">Lees Verder</a>
+                                    <a href="{{ path('app', {'naam' : appinfo.url} ) }}" class="btn btn-primary btn-sm">Lees Verder</a>
                                 </div>
                             </div>
                         </div>

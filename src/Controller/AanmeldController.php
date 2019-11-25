@@ -13,7 +13,7 @@ class AanmeldController extends AbstractController
 {
     // mogelijkheden pagina
     /**
-     * @Route("/{_locale}/mogelijkheden", name="mogelijkheden",)
+     * @Route("/{_locale}/succes", name="succes",)
      */
     public function mogelijkheden(Request $request)
     {
@@ -32,7 +32,7 @@ class AanmeldController extends AbstractController
             $this->addFlash('succes', 'Aanmelding succesvol! U hoort van ons');
 
 
-            return $this->redirectToRoute('mogelijkheden');
+            return $this->redirectToRoute('succes');
         }
 
             return $this->render('mogelijkheden/mogelijkheden.html.twig', [
