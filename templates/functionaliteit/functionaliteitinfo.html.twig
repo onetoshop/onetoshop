@@ -20,20 +20,18 @@
             </div>
 
             <!-- /.row -->
-{#            <!-- Content Row -->#}
                 <h2>Meer informatie</h2>
             <div class="row">
                 {% if functionaliteitcard %}
                     {% for functionaliteitcard in functionaliteitcard %}
                         <div class="col-md-4 mb-5">
                             <div class="card h-100">
-                                <div class="card-body">
+                                <div class="card-header">
                                     <h3 class="card-title">{{ functionaliteitcard.title | raw }}</h3>
-                                                                    <p class="card-text">{{ functionaliteitcard.body | raw }}</p>
                                 </div>
-{#                                <div class="card-footer">#}
-{#                                    <a href="{{ path('functionaliteitinfo', {'slug' : functionaliteit.url}) }}" class="btn btn-primary btn-sm">Lees Verder</a>#}
-{#                                </div>#}
+                                <div class="card-body">
+                                    <p class="card-text">{{ functionaliteitcard.body | raw }}</p>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -50,5 +48,4 @@
             <!-- /.row -->
         </div>
         <!-- /.container -->
-    </div>
 {% endblock %}
