@@ -6,8 +6,10 @@ use App\Entity\Aanmelding;
 use App\Entity\Blog;
 use App\Entity\Card;
 use App\Entity\Categorie;
+use App\Entity\Contact;
 use App\Entity\File;
 use App\Entity\Gegeven;
+use App\Form\AanmeldType;
 use App\Form\CardType;
 use App\Form\ContactType;
 use App\Form\UploadType;
@@ -31,24 +33,26 @@ class Controller extends AbstractController
         $card = $this->getDoctrine()->getRepository(Card::class)->findAll();
         $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
 
+        $em = $this->getDoctrine()->getManager();
+        $contact = new Contact();
+
+        $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($contact);
+            $em->flush();
+
+            return $this->redirectToRoute('homepage');
+        }
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
         'aanmeldingen' => $aanmeld,
+            'form' => $form->createView()
         ]);
     }
-//    /**
-//     * @Route("/", name="homepage")
-//     */
-//    public function slug($slug)
-//    {
-//        $blogs = $this->getDoctrine()->getRepository(Blog::class)->findBy([
-//            'slug' => $slug
-//        ]);
-//        return $this->render('blog/showblog.html.twig', [
-//            'blogs' => $blogs
-//        ]);
-//
-//    }
 
 //    service pagina
     /**
