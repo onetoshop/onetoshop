@@ -1,5 +1,3 @@
-backendController.php
-
 <?php
 
 namespace App\Controller;
@@ -63,7 +61,7 @@ class BackendController extends AbstractController
 
     /**
      * @Route("/{_locale}/admin/aanmeldingen", name="aanmeldingen")
-     *  @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_USER")
      */
     public function mogelijkheden(Request $request)
     {
@@ -74,7 +72,7 @@ class BackendController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $em->persist($aanmeld);
             $em->flush();
@@ -94,7 +92,7 @@ class BackendController extends AbstractController
 
     /**
      * @Route("/{_locale}/admin/informatie", name="informatie")
-     *  @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_USER")
      */
     public function informatie(Request $request)
     {
@@ -109,7 +107,7 @@ class BackendController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $em->persist($gegeven1);
             $em->flush();
@@ -124,11 +122,11 @@ class BackendController extends AbstractController
         ]);
 
 
-
     }
+
     /**
      * @Route("/{_locale}/admin/inbox", name="inbox")
-     *  @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_USER")
      */
     public function inbox()
     {
@@ -154,6 +152,7 @@ class BackendController extends AbstractController
             'app1' => $app1
         ]);
     }
+
     /**
      * @Route("/{_locale}/admin/inbox/delete_mail/{id}", name="delete_mail")
      * @IsGranted("ROLE_USER")
@@ -169,3 +168,4 @@ class BackendController extends AbstractController
 
         return $this->redirectToRoute('inbox');
     }
+}
