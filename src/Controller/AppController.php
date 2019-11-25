@@ -462,48 +462,4 @@ class AppController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-
-
-
-
-
-
-
-//    //apps
-//    /**
-//     * @Route("/admin/apps/add_apps", name="add_apps")
-//     * @IsGranted("ROLE_USER")
-//     */
-//    public function indexAction(Request $request)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//        $imageEn = new Apps();
-//
-//        $form = $this->createForm(AppsType::class, $imageEn);
-//
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-//            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-//
-//            $file = $form->get('image')->getData();
-//            ($imageEn->getImage());
-//            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-//            $file->move($this->getParameter('apps'), $fileName);
-//
-//
-//            $imageEn->setImage($fileName);
-//            $em->persist($imageEn);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('add_apps');
-//
-//        }
-//
-//        return $this->render('app/add_apps.html.twig', array(
-//            'form' => $form->createView()
-//        ));
-//    }
 }

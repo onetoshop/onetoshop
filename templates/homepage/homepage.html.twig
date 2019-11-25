@@ -367,11 +367,11 @@
                                         </div>
                                         <div class="user">
                                             {% if card.frimage is defined %}
-                                                <a href="{{ card.link }}" target="_blank">
-                                                <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
-                                            {% endif %}
                                             <a href="{{ card.link }}" target="_blank">
-                                            </a>
+                                                <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+                                                {% endif %}
+                                                <a href="{{ card.link }}" target="_blank">
+                                                </a>
                                         </div>
                                         <div class="content">
                                             <div class="main">
@@ -388,7 +388,7 @@
                                         <div class="content">
                                             <div class="main">
                                                 <p class="text-center">Ga naar direct naar de website!</p>
-                                                <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>
+                                                <p class="text-center"><a href="{{ path('project', {'naam' : card.title}) }}">{{ card.title }}</a></p>
                                             </div>
                                         </div>
                                         <div class="footer">

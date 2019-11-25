@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Apps;
 use App\Entity\Card;
 use App\Form\CardType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -129,6 +130,18 @@ class PostController extends AbstractController
         }
         return $this->render('upload/edit_card.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/project/{naam}", name="project")
+     */
+    public function project($naam){
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+            'naam'  => $naam
+        ]);
+        return $this->render('app/appsinfo.html.twig',[
+            'apps' => $apps
         ]);
     }
 
