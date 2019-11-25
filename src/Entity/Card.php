@@ -38,11 +38,6 @@ class Card
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $link;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
     private $footer;
 
     /**
@@ -92,18 +87,6 @@ class Card
     public function setBody(?string $body): self
     {
         $this->body = $body;
-
-        return $this;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(?string $link): self
-    {
-        $this->link = $link;
 
         return $this;
     }

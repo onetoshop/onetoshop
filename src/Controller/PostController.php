@@ -134,7 +134,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/project/{naam}", name="project")
+     * @Route("/{_locale}/project/{naam}", name="project")
      */
     public function project($naam){
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
