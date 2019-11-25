@@ -19,16 +19,16 @@
         <!-- Content Row -->
 
         <div class="row">
-            {% if app %}
-                {% for app in app %}
+            {% if apps %}
+                {% for apps in apps %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h3 class="card-title">{{ app.naam | raw }}</h3>
-                            <p class="card-text">{{ app.body | raw }}</p>
+                            <h3 class="card-title">{{ apps.naam | raw }}</h3>
+                            <p class="card-text">{{ apps.body | raw }}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ path('appinfo', {'slug' : app.url}) }}" class="btn btn-primary btn-sm">Lees Verder</a>
+                            <a href="{{ path('appinfo', {'slug' : apps.url}) }}" class="btn btn-primary btn-sm">Lees Verder</a>
                         </div>
                     </div>
                 </div>
