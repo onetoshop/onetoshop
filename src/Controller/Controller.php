@@ -75,6 +75,22 @@ class Controller extends AbstractController
         return $this->render('contact/contact.html.twig');
     }
 
+    /**
+     * @Route("/{_locale}/algemene-voorwaarden", name="algemene_voorwaarden",)
+     */
+    public function algemene_voorwaarden(Request $request)
+    {
+        return $this->render('policy/algemene_voorwaarden.html.twig');
+    }
+
+    /**
+     * @Route("/{_locale}/privacy-statement", name="privacy_statement",)
+     */
+    public function privacy_statement(Request $request)
+    {
+        return $this->render('policy/privacy_statement.html.twig');
+    }
+
 
 
 
@@ -95,11 +111,6 @@ class Controller extends AbstractController
 //        ]);
 //    }
 
-
-
-
-
-
 //    // functionaliteit
 //    /**
 //     * @Route("/functionaliteit", name="functionaliteit")
@@ -115,14 +126,14 @@ class Controller extends AbstractController
 //    }
 
     //categoriefunctionalteit
-    /**
-     *
-     */
+//    /**
+//     *
+//     */
 
     // Gegeven pagina
-    /**
-     * @Route("/functionaliteit/{slug}", name="article_show")
-     */
+//    /**
+//     * @Route("/functionaliteit/{slug}", name="article_show")
+//     */
 //    public function gegeven($slug) {
 ////
 //        $categorie = $this->getDoctrine()->getRepository(Gegeven::class)->Findby([
