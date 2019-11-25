@@ -7,6 +7,7 @@ use App\Entity\Blog;
 use App\Entity\Card;
 use App\Entity\Contact;
 use App\Entity\Gegeven;
+use App\Entity\Nieuwsbrief;
 use App\Entity\User;
 use App\Form\BlogType;
 use App\Form\UserType;
@@ -165,17 +166,21 @@ class BackendController extends AbstractController
         $em->remove($app);
         $em->flush();
 
-        return $this->redirectToRoute('inbox');
+        return $this->redirectToRoute('inbox4');
     }
+    /**
+     * @Route("/{_locale}/admin/nieuwsbrief", name="nieuwsbrief")
+     *  @IsGranted("ROLE_USER")
+     */
+    public function nieuwsbrief()
+    {
+        $gegeven = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findAll();
 
+        return $this->render('admin/nieuwsbrief.html.twig', [
+            'gegeven' => $gegeven
+        ]);
 
-
-
-
-
-
-
-
+    }
 
 
 }

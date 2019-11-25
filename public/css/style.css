@@ -1,7 +1,7 @@
 /* Base */
 body {
   line-height: 1.7;
-  color: gray;
+  color: white;
   font-weight: 400;
   font-size: 1rem; }
 
@@ -483,12 +483,12 @@ h1, h2, h3, h4, h5,
       position: relative;
       color: #212529; }
       .site-mobile-menu .site-nav-wrap a:hover {
-        color: #f16821; }
+        color: #007bff; }
     .site-mobile-menu .site-nav-wrap li {
       position: relative;
       display: block; }
       .site-mobile-menu .site-nav-wrap li .active {
-        color: #f16821; }
+        color: #007bff; }
     .site-mobile-menu .site-nav-wrap .arrow-collapse {
       position: absolute;
       right: 0px;

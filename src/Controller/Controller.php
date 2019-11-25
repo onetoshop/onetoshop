@@ -9,9 +9,11 @@ use App\Entity\Categorie;
 use App\Entity\Contact;
 use App\Entity\File;
 use App\Entity\Gegeven;
+use App\Entity\Nieuwsbrief;
 use App\Form\AanmeldType;
 use App\Form\CardType;
 use App\Form\ContactType;
+use App\Form\NieuwsbriefType;
 use App\Form\UploadType;
 use App\Repository\GegevenRepository;
 use Doctrine\DBAL\Types\TextType;
@@ -37,7 +39,10 @@ class Controller extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $contact = new Contact();
 
+
         $form = $this->createForm(ContactType::class, $contact);
+
+
 
         $form->handleRequest($request);
 
@@ -48,10 +53,26 @@ class Controller extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
+        $em = $this->getDoctrine()->getManager();
+
+        $nieuwsbrief = new Nieuwsbrief();
+
+        $form2 = $this->createForm(NieuwsbriefType::class, $nieuwsbrief);
+        $form2->handleRequest($request);
+
+
+        if($form2->isSubmitted() && $form2->isValid()) {
+
+            $em->persist($nieuwsbrief);
+            $em->flush();
+
+            return $this->redirectToRoute('homepage');
+        }
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
         'aanmeldingen' => $aanmeld,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'form2' => $form2->createView()
         ]);
     }
 
