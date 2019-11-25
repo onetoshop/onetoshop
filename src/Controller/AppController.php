@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AppController extends AbstractController
 {
     /**
-     * @Route("/app", name="app")
+     * @Route("/{_locale}/app", name="app")
      */
     public function app()
     {
@@ -31,7 +31,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/app/{slug}", name="appinfo")
+     * @Route("/{_locale}/app/{slug}", name="appinfo")
      */
     public function appinfo($slug){
         $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findBy([
@@ -49,7 +49,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/app/{slug}/{naam}", name="apps")
+     * @Route("/{_locale}/app/{slug}/{naam}", name="apps")
      */
     public function apps($slug, $naam)
     {

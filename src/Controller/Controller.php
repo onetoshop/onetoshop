@@ -20,12 +20,13 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\ApplicationHandler;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 class Controller extends AbstractController
 {
 //    home pagina
     /**
-     * @Route("/", name="homepage")
+     * @Route("/{_locale}/homepage", name="homepage")
      */
     public function homepage(Request $request, \Swift_Mailer $mailer)
     {
@@ -65,10 +66,12 @@ class Controller extends AbstractController
 
 // contact pagina
     /**
-     * @Route("/contact", name="contact",)
+     * @Route("/{_locale}/contact", name="contact",)
      */
-    public function contact()
+    public function contact(Request $request)
     {
+        $locale = $request->getLocale();
+        $request->setLocale($locale);
         return $this->render('contact/contact.html.twig');
     }
 

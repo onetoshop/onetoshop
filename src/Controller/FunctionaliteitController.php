@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class FunctionaliteitController extends AbstractController
 {
     /**
-     * @Route("/functionaliteit", name="functionaliteit")
+     * @Route("/{_locale}/functionaliteit", name="functionaliteit")
      */
     public function index()
     {
@@ -27,7 +27,7 @@ class FunctionaliteitController extends AbstractController
     }
 
     /**
-     * @Route("/functionaliteit/{slug}", name="functionaliteitinfo")
+     * @Route("/{_locale}/functionaliteit/{slug}", name="functionaliteitinfo")
      */
     public function functionaliteitinfo($slug){
         $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteitinfo::class)->findBy([
