@@ -1,0 +1,30 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Mail</li>
+            </ol>
+            <!-- Page Content -->
+            <h1>Mail</h1>
+            <div class="row">
+                {% if app1 %}
+                    {% for app1 in app1 %}
+
+                    {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
+            </div>
+            <div>
+                <a href="{{ path('inbox') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
