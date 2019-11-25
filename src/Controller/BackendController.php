@@ -1,3 +1,5 @@
+backendController.php
+
 <?php
 
 namespace App\Controller;
@@ -5,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Aanmeld;
 use App\Entity\Blog;
 use App\Entity\Card;
+use App\Entity\Contact;
 use App\Entity\Gegeven;
 use App\Entity\User;
 use App\Form\BlogType;
@@ -59,7 +62,7 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/aanmeldingen", name="aanmeldingen")
+     * @Route("/{_locale}/admin/aanmeldingen", name="aanmeldingen")
      *  @IsGranted("ROLE_USER")
      */
     public function mogelijkheden(Request $request)
@@ -90,7 +93,7 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/informatie", name="informatie")
+     * @Route("/{_locale}/admin/informatie", name="informatie")
      *  @IsGranted("ROLE_USER")
      */
     public function informatie(Request $request)
@@ -116,34 +119,53 @@ class BackendController extends AbstractController
         }
 
         return $this->render('admin/informatie.html.twig', [
-                'gegeven' => $gegeven,
-                'form' => $form->createView()
-            ]);
+            'gegeven' => $gegeven,
+            'form' => $form->createView()
+        ]);
 
 
 
     }
-//    /**
-//     * @Route("/admin/blog", name="blog")
-//     *  @IsGranted("ROLE_USER")
-//     */
-//    public function blog()
-//    {
-//        return $this->render('admin/blog.html.twig', array(
-//            'form' => $form->createView()
-//        ));
-//    }
+    /**
+     * @Route("/{_locale}/admin/inbox", name="inbox")
+     *  @IsGranted("ROLE_USER")
+     */
+    public function inbox()
+    {
+        $gegeven = $this->getDoctrine()->getRepository(Contact::class)->findAll();
 
+        return $this->render('admin/inbox.html.twig', [
+            'gegeven' => $gegeven
+        ]);
 
+    }
 
+    /**
+     * @Route("/{_locale}/admin/inbox/{slug}", name="show_mail")
+     * @IsGranted("ROLE_USER")
+     */
+    public function show_mail($slug)
+    {
+        $app1 = $this->getDoctrine()->getRepository(Contact::class)->findBy([
+            'id' => $slug
+        ]);
 
+        return $this->render('admin/show_mail.html.twig', [
+            'app1' => $app1
+        ]);
+    }
+    /**
+     * @Route("/{_locale}/admin/inbox/delete_mail/{id}", name="delete_mail")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_mail(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $app = $em->getRepository(Contact::class)->find($id);
 
+        $em->remove($app);
+        $em->flush();
 
-
-
-
-
-}
-
-
+        return $this->redirectToRoute('inbox');
+    }
