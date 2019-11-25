@@ -1,4 +1,18 @@
 {% extends 'base1.html.twig' %}
+{% block navbar %}
+
+    <div class="col-12 col-md-10 d-none d-xl-block">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+
+            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a></li>
+                <li><a href="{{ path('apps') }}" class="nav-link active">Apps</a></li>
+                <li><a href="{{ path('blogs') }}" class="nav-link ">Blogs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+{% endblock %}
 {% block body %}
 <div id="contact-section">
     <div class="container">

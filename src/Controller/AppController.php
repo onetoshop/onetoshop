@@ -61,5 +61,5 @@ class AppController extends AbstractController
             'apps' => $apps
         ]);
     }
-    
+
 }
