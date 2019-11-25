@@ -26,6 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\GegevenType;
+use App\Entity\Nieuwsbrief;
 
 class BackendController extends AbstractController
 {
@@ -574,5 +575,18 @@ class BackendController extends AbstractController
         return $this->render('admin/edit_apps.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+    /**
+     * @Route("/{_locale}/admin/nieuwsbrief", name="nieuwsbrief")
+     *  @IsGranted("ROLE_USER")
+     */
+    public function nieuwsbrief()
+    {
+        $gegeven = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findAll();
+
+        return $this->render('admin/nieuwsbrief.html.twig', [
+            'gegeven' => $gegeven
+        ]);
+
     }
 }
