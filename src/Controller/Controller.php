@@ -30,8 +30,15 @@ class Controller extends AbstractController
     /**
      * @Route("/{_locale}/home", name="home")
      */
-    public function homepage(Request $request, \Swift_Mailer $mailer)
+    public function homepage(Request $request)
     {
+
+        $blog = $this->getDoctrine()->getRepository(Blog::class)->findBy(
+            array(),
+            array('id' => 'DESC'),
+            3,
+            0);
+
 
         $card = $this->getDoctrine()->getRepository(Card::class)->findAll();
         $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
@@ -72,8 +79,10 @@ class Controller extends AbstractController
         'cards' => $card,
         'aanmeldingen' => $aanmeld,
             'form' => $form->createView(),
-            'form2' => $form2->createView()
+            'form2' => $form2->createView(),
+            'blogs' => $blog
         ]);
+
     }
 
 //    service pagina

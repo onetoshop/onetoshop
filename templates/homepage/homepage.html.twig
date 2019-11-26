@@ -424,34 +424,24 @@
             </div>
 
             <div class="row">
+                {% if blogs %}
+                    {% for blog in blogs %}
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="images/seoscore_bg.png" alt="Image" class="img-fluid">
-                        <h2 class="font-size-regular"><a href="#" class="text-black">3 tips om je SEO-score in Google te verbeteren</a></h2>
-                        <p>Om jouw website goed te indexeren moet Google weten waar jouw website over gaat. Dit bereik je door goede teksten te schrijven voor je pagina’s.
-                            Goede SEO teksten verbeteren de vindbaarheid van je website of -shop. Hieronder een aantal handvaten om optimale content te schrijven</p>
+                        <img class="img-fluid1" src="{{ asset('/image/blog/' ~ blog.image) }}" />
 
-{#                        <p><a href="{{ path('blog') }}">Lees...</a></p>#}
+                        <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug}) }}" class="text-black">{{ blog.title }}</a></h2>
+                        <p>{{ blog.beschrijving }}</p>
+
+                        <p><a href="{{ path('blogshow', {'slug' : blog.slug}) }}">Lees...</a></p>
 
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-                    <div class="h-entry">
-                        <img src="images/grafiek_bg.png" alt="Image" class="img-fluid">
-                        <h2 class="font-size-regular"><a href="#" class="text-black">Gouden formule: zie je omzet groeien met multi-channel retail</a></h2>
-                        <p>Wanneer je de omzetontwikkeling van de retailbranche analyseert valt er een ding duidelijk op. Ten opzichte van het tweede kwartaal van 2017 is de omzetontwikkeling
-                            voor de detailhandel (fysieke winkels) en de webwinkels voor het tweede jaar op rij iets gedaald. Multi-channel retail, daarentegen, laat juist een stijgende lijn zien.</p>
-{#                        <p><a href="{{ path('blog') }}">Lees...</a></p>#}
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-                    <div class="h-entry">
-                        <img src="images/smallsaturday_bg.png" alt="Image" class="img-fluid">
-                        <h2 class="font-size-regular"><a href="#" class="text-black">Waarom hebben we geen Small Business Saturday in Nederland?</a></h2>
-                        <p>Misschien heb je hashtags wel eens voorbij zien komen. Small Business Saturday en Shop Small zijn beide een initiatief van creditcardbedrijf American Express.</p>
-{#                        <p><a href="    {{ path('blogshow')}}">Lees...</a></p>#}
-                    </div>
-                </div>
+                {% endfor %}
+                {% else %}
+                    <p>Er zijn Geen Gegevens gevonden</p>
+                {% endif %}
+
 
             </div>
             <div class="row align-items-center justify-content-center">

@@ -19,7 +19,11 @@ class BlogController extends AbstractController
      */
     public function index()
     {
-        $blog = $this->getDoctrine()->getRepository(Blog::class)->findAll();
+        $blog = $this->getDoctrine()->getRepository(Blog::class)->findBy(
+            array(),
+            array('id' => 'ASC'),
+            10,
+            0);
 
 
         $form = $this->createFormBuilder()

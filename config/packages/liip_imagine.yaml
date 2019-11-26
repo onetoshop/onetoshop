@@ -24,3 +24,11 @@ liip_imagine:
                     # Will allow smaller images to take 800px of height,
                     # width will change accordingly since aspect ration is still valid.
                     allow_upscale: true
+
+        home:
+            filters:
+                relative_resize:
+                    heighten: 200
+                    # Will allow smaller images to take 800px of height,
+                    # width will change accordingly since aspect ration is still valid.
+                    allow_upscale: true
