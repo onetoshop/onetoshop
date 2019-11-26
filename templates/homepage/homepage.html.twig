@@ -190,7 +190,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="">START</a>
+                                        <a class="" href="#aanmelden-section">START</a>
                                     </div>
                                     <!--//BUTTON END-->
 
@@ -251,7 +251,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="">START</a>
+                                        <a class="" href="#aanmelden-section">START</a>
                                     </div>
                                     <!--//BUTTON END-->
 
@@ -262,7 +262,7 @@
                             <div class="col-md-4">
 
                                 <!--PRICE CONTENT START-->
-                                <div class="generic_content clearfix">
+                                <div class="generic_content  clearfix">
 
                                     <!--HEAD PRICE DETAIL START-->
                                     <div class="generic_head_price clearfix">
@@ -311,7 +311,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="">START</a>
+                                        <a class="" href="#aanmelden-section">START</a>
                                     </div>
                                     <!--//BUTTON END-->
 
@@ -502,14 +502,25 @@
         </div>
     </div>
     <script>
-        $('#generic_price_table').hover(
-            function() {
-                $('.generic_content clearfix').addClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
-            },
-            function() {
-                $('.generic_content clearfix').removeClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
-            }
-        );
+        // $('#generic_price_table').hover(
+        //     function() {
+        //         $('.generic_content clearfix').addClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
+        //     },
+        //     function() {
+        //         $('.generic_content clearfix').removeClass('#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg');
+        //     }
+        // );
+        var header = document.getElementById("generic_price_table");
+        var btns = header.getElementsByClassName("generic_content  clearfix");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("mouseover", function() {
+                var current = document.getElementsByClassName("active clearfix");
+                current[0].className = current[0].className.replace(" active clearfix", "");
+                this.className += " active clearfix";
+            });
+        }
+
+
     </script>
 
 {% endblock %}
