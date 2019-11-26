@@ -80,7 +80,7 @@ class Controller extends AbstractController
             $em->persist($nieuwsbrief);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('home');
         }
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
