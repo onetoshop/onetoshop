@@ -10,8 +10,8 @@
                     <div id="row">
                         {% if cards %}
                             {% for card in cards %}
-                                <div class="cmp-tb-hd">
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="">
+                                    <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 15px; padding-right: 15px">
                                         <div class="card-container">
                                             <div class="card">
                                                 <div class="front">
@@ -21,11 +21,10 @@
                                                         {% endif %}
                                                     </div>
                                                     <div class="user">
-                                                        <a href="{{ card.link }}" target="_blank">
-                                                            {% if card.frimage is defined %}
-                                                                <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
-                                                            {% endif %}
-                                                        </a>
+                                                        {% if card.frimage is defined %}
+                                                            <a href="{{ path('project', {'naam' : card.slug}) }}" target="_blank"></a>
+                                                            <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+                                                        {% endif %}
                                                     </div>
                                                     <div class="content">
                                                         <div class="main">
@@ -42,7 +41,7 @@
                                                     <div class="content">
                                                         <div class="main">
                                                             <p class="text-center">Ga naar direct naar de website!</p>
-                                                            <p class="text-center"><a href="{{ card.link }}" target="_blank">{{ card.link }}</a></p>
+                                                            <p class="text-center"><a href="{{ path('project', {'naam' : card.slug}) }}">{{ card.title }}</a></p>
                                                         </div>
                                                     </div>
                                                     <div class="footer">
@@ -54,7 +53,6 @@
                                             </div> <!-- end card -->
                                         </div> <!-- end card-container -->
                                         <div>
-                                            <a href="{{ path('card') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
                                         </div>
                                     </div> <!-- end col sm 3 -->
                                 </div>

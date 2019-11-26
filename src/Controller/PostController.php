@@ -22,7 +22,7 @@ class PostController extends AbstractController
     public function card()
     {
         $cards = $this->getDoctrine()->getRepository(Card::class)->findAll();
-        return $this->render('upload/card_show.html.twig', [
+        return $this->render('admin/card/card_show.html.twig', [
             'cards' => $cards
         ]);
     }
@@ -38,7 +38,7 @@ class PostController extends AbstractController
         ]);
 
 
-        return $this->render('upload/show_card.html.twig', [
+        return $this->render('admin/card/show_card.html.twig', [
             'cards' => $cards
         ]);
     }
@@ -96,7 +96,7 @@ class PostController extends AbstractController
 
             return $this->redirectToRoute('card_overzicht');
         }
-        return $this->render('upload/add_card.html.twig', [
+        return $this->render('admin/card/add_card.html.twig', [
         'form' => $form->createView(),
         ]);
     }
@@ -128,7 +128,7 @@ class PostController extends AbstractController
                 'id' => $card->getId(),
             ]);
         }
-        return $this->render('upload/edit_card.html.twig', [
+        return $this->render('admin/card/edit_card.html.twig', [
             'form' => $form->createView()
         ]);
     }
