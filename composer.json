@@ -24,7 +24,6 @@
         "symfony/swiftmailer-bundle": "^3.4",
         "symfony/twig-pack": "^1.0",
         "symfony/validator": "4.3.*",
-        "symfony/var-dumper": "4.3.*",
         "symfony/web-server-bundle": "4.3.*",
         "symfony/yaml": "4.3.*"
     },
@@ -34,8 +33,7 @@
         "symfony/debug-bundle": "*",
         "symfony/maker-bundle": "^1.14",
         "symfony/monolog-bundle": "^3.0",
-        "symfony/profiler-pack": "^1.0",
-        "symfony/var-dumper": "*"
+        "symfony/profiler-pack": "^1.0"
     },
     "config": {
         "preferred-install": {
