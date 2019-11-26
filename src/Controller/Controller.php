@@ -82,7 +82,7 @@ class Controller extends AbstractController
             $em->flush();
             $this->addFlash('nieuwsbrief', 'Succesvolle aanmelding!');
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home', ['_fragment' => 'news-section']);
         }
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
