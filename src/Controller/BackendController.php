@@ -33,6 +33,7 @@ class BackendController extends AbstractController
 
     /**
      * @Route("/{_locale}/admin", name="admin")
+     * @IsGranted("ROLE_USER")
      */
     public function index()
     {
