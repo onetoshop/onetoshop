@@ -186,7 +186,7 @@ class BackendController extends AbstractController
     public function app_show()
     {
         $app1 = $this->getDoctrine()->getRepository(App::class)->findAll();
-        return $this->render('admin/app_show.html.twig', [
+        return $this->render('admin/app/app_show.html.twig', [
             'app1' => $app1
         ]);
     }
@@ -217,7 +217,7 @@ class BackendController extends AbstractController
             'naam' => $slug
         ]);
 
-        return $this->render('admin/show_app.html.twig', [
+        return $this->render('admin/app/show_app.html.twig', [
             'app1' => $app1
         ]);
     }
@@ -240,7 +240,7 @@ class BackendController extends AbstractController
 
             return $this->redirectToRoute('app_overzicht');
         }
-        return $this->render('admin/add_app.html.twig', [
+        return $this->render('admin/app/add_app.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -269,7 +269,7 @@ class BackendController extends AbstractController
                 'id' => $app->getId(),
             ]);
         }
-        return $this->render('admin/edit_app.html.twig', [
+        return $this->render('admin/app/edit_app.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -283,7 +283,7 @@ class BackendController extends AbstractController
     public function appinformatie_show()
     {
         $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findAll();
-        return $this->render('admin/appinformatie_show.html.twig', [
+        return $this->render('admin/app/appinformatie_show.html.twig', [
             'appinformatie' => $appinformatie
         ]);
     }
@@ -314,7 +314,7 @@ class BackendController extends AbstractController
             'title' => $slug
         ]);
 
-        return $this->render('admin/show_appinformatie.html.twig', [
+        return $this->render('admin/app/show_appinformatie.html.twig', [
             'appinformatie' => $appinformatie
         ]);
     }
@@ -337,7 +337,7 @@ class BackendController extends AbstractController
 
             return $this->redirectToRoute('appinformatie_overzicht');
         }
-        return $this->render('admin/add_appinformatie.twig', [
+        return $this->render('admin/app/add_appinformatie.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -366,7 +366,7 @@ class BackendController extends AbstractController
                 'id' => $appinformatie->getId(),
             ]);
         }
-        return $this->render('admin/edit_appinformatie.html.twig', [
+        return $this->render('admin/app/edit_appinformatie.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -380,7 +380,7 @@ class BackendController extends AbstractController
     public function appinfo_show()
     {
         $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findAll();
-        return $this->render('admin/appinfo_show.html.twig', [
+        return $this->render('admin/app/appinfo_show.html.twig', [
             'appinfo' => $appinfo
         ]);
     }
@@ -411,7 +411,7 @@ class BackendController extends AbstractController
             'naam' => $slug
         ]);
 
-        return $this->render('admin/show_appinfo.html.twig', [
+        return $this->render('admin/app/show_appinfo.html.twig', [
             'appinfo' => $appinfo
         ]);
     }
@@ -434,7 +434,7 @@ class BackendController extends AbstractController
 
             return $this->redirectToRoute('appinformatie_overzicht');
         }
-        return $this->render('admin/add_appinfo.twig', [
+        return $this->render('admin/app/add_appinfo.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -463,7 +463,7 @@ class BackendController extends AbstractController
                 'id' => $appinfo->getId(),
             ]);
         }
-        return $this->render('admin/edit_appinfo.html.twig', [
+        return $this->render('admin/app/edit_appinfo.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -477,7 +477,7 @@ class BackendController extends AbstractController
     public function apps_show()
     {
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findAll();
-        return $this->render('admin/apps_show.html.twig', [
+        return $this->render('admin/app/apps_show.html.twig', [
             'apps' => $apps
         ]);
     }
@@ -508,7 +508,7 @@ class BackendController extends AbstractController
             'title' => $slug
         ]);
 
-        return $this->render('admin/show_apps.html.twig', [
+        return $this->render('admin/app/show_apps.html.twig', [
             'apps' => $apps
         ]);
     }
@@ -541,7 +541,7 @@ class BackendController extends AbstractController
 
             return $this->redirectToRoute('apps_overzicht');
         }
-        return $this->render('admin/add_apps.html.twig', [
+        return $this->render('admin/app/add_apps.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -572,7 +572,7 @@ class BackendController extends AbstractController
                 'id' => $apps->getId(),
             ]);
         }
-        return $this->render('admin/edit_apps.html.twig', [
+        return $this->render('admin/app/edit_apps.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -589,12 +589,7 @@ class BackendController extends AbstractController
         ]);
 
     }
-
-
-
-
-
-
+    
     /**
      * @Route("/{_locale}/admin/project_overzicht", name="project_overzicht")
      * @IsGranted("ROLE_USER")
