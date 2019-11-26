@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/blogs", name="blogs")
+     * @Route("/{_locale}/blog", name="blogs")
      */
     public function index()
     {
