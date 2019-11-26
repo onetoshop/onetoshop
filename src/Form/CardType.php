@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Card;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,6 +18,7 @@ class CardType extends AbstractType
             ->add('body', TextareaType::class)
             ->add('link', TextareaType::class)
             ->add('footer', TextareaType::class)
+            ->add('slug', TextType::class)
             ->add('bgimage', ImageType::class, ['label' => 'Upload Background Foto'])
             ->add('frimage', ImageType::class, ['label' => 'Upload Frond Foto'])
         ;

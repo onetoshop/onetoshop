@@ -50,6 +50,11 @@ class Card
      */
     private $frimage;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function getId()
     {
         return $this->id;
@@ -128,6 +133,18 @@ class Card
     public function __toString()
     {
         return (string)$this->getId();
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
 }

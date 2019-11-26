@@ -491,7 +491,7 @@ h1, h2, h3, h4, h5,
     .site-mobile-menu .site-nav-wrap li {
       position: relative;
       display: block; }
-      .site-mobile-menu .site-nav-wrap li .active {
+      .site-mobile-menu .site-nav-wrap li.active {
         color: #007bff; }
     .site-mobile-menu .site-nav-wrap .arrow-collapse {
       position: absolute;
