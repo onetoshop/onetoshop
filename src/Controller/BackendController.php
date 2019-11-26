@@ -589,4 +589,116 @@ class BackendController extends AbstractController
         ]);
 
     }
+
+
+
+
+
+
+    /**
+     * @Route("/{_locale}/admin/project_overzicht", name="project_overzicht")
+     * @IsGranted("ROLE_USER")
+     */
+    public function project_show()
+    {
+        $project = $this->getDoctrine()->getRepository(Apps::class)->findby(['groep' => 'project']);
+        return $this->render('admin/project/project_show.html.twig', [
+            'project' => $project
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/project_overzicht/delete_project/{id}", name="delete_project")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_project(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $project = $em->getRepository(Apps::class)->find($id);
+
+        $em->remove($project);
+        $em->flush();
+
+        return $this->redirectToRoute('project_overzicht');
+    }
+
+    /**
+     * @Route("/{_locale}/admin/project_overzicht/show/{slug}", name="show_project")
+     * @IsGranted("ROLE_USER")
+     */
+    public function show_project($slug)
+    {
+        $project = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+            'title' => $slug
+        ]);
+
+        return $this->render('admin/project/show_project.html.twig', [
+            'project' => $project
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/apps_overzicht/add_project", name="add_project")
+     * @IsGranted("ROLE_USER")
+     */
+    public function add_project(EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(AppsType::Class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $project = $form->getData();
+
+            $file = $project->getImage();
+
+            $image = $file->getFile();
+
+            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+
+            $image->move($this->getParameter('apps'), $fileName);
+
+            $file->setName($fileName);
+
+            $manager->persist($project);
+            $manager->flush();
+
+            return $this->redirectToRoute('project_overzicht');
+        }
+        return $this->render('admin/project/add_project.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/apps_overzicht/edit_project/{id}", name="edit_project", methods={"GET","POST"})
+     */
+    public function edit_project(Request $request, $id)
+    {
+        $project = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $project->setImage($project->getImage());
+
+        $form = $this->createForm(AppsType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $project = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+
+            return $this->redirectToRoute('project_overzicht',[
+                'id' => $project->getId(),
+            ]);
+        }
+        return $this->render('admin/project/edit_project.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }

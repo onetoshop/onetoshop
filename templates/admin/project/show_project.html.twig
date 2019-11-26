@@ -1,0 +1,41 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Project</li>
+                <li class="breadcrumb-item active">Show Project</li>
+            </ol>
+            <!-- Page Content -->
+            <h1>Project Show</h1>
+            <div class="row">
+                {% if project %}
+                    {% for project in project %}
+                        <div class="row align-items-center my-5">
+                            <div class="col-lg-5">
+                                <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/apps/' ~ project.image.name) }}" alt="">
+                            </div>
+                            <!-- /.col-lg-8 -->
+                            <div class="col-lg-7">
+                                <h1 class="font-weight-light">{{ project.title | raw }}</h1>
+                                <p>{{ project.body | raw }}</p>
+                            </div>
+                            <!-- /.col-md-4 -->
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
+            </div>
+            <div>
+                <a href="{{ path('project_overzicht') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
