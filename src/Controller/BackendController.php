@@ -50,6 +50,16 @@ class BackendController extends AbstractController
         $repoArticles = $em->getRepository(Gegeven::class);
         $gegeven = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
 
+        # get amount of newsletter signups
+        $em = $this->getDoctrine()->getManager();
+        $repoArticles = $em->getRepository(Nieuwsbrief::class);
+        $nieuwsbrief = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
+
+        # get amount of inbox
+        $em = $this->getDoctrine()->getManager();
+        $repoArticles = $em->getRepository(Contact::class);
+        $inbox = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
+
         # get amount of users
         $em = $this->getDoctrine()->getManager();
         $repoArticles = $em->getRepository(User::class);
@@ -65,7 +75,9 @@ class BackendController extends AbstractController
             'totaleaanmeld' => $totaleaanmeld,
             'aanmeldingen' => $aanmeld,
             'gegeven' => $gegeven,
+            'nieuwsbrief' => $nieuwsbrief,
             'users' => $users,
+            'inbox' => $inbox,
             'cards' => $cards
         ]);
     }

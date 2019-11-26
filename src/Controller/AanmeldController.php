@@ -32,13 +32,20 @@ class AanmeldController extends AbstractController
             $this->addFlash('succes', 'Aanmelding succesvol! U hoort van ons');
 
 
-            return $this->redirectToRoute('succes');
+            return $this->redirectToRoute('aangemeld');
         }
 
             return $this->render('mogelijkheden/mogelijkheden.html.twig', [
                 'form' => $form->createView(),
         ]);
 
+    }
+    /**
+     * @Route("/{_locale}/aangemeld", name="aangemeld",)
+     */
+    public function aangemeld()
+    {
+        return $this->render('mogelijkheden/aangemeld.html.twig');
     }
 
     /**
