@@ -32,7 +32,7 @@
                             {% endif %}
 
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
+                        <a class="card-footer text-white clearfix small z-1" href="{{ path('aanmeldingen') }}">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -46,13 +46,13 @@
                             <div class="card-body-icon">
                                 <i class="fas fa-fw fa-list"></i>
                             </div>
-                            {% if gegeven %}
+                            {% if nieuwsbrief %}
 
-                                <div class="mr-5">{{ gegeven }}  Artikelen
+                                <div class="mr-5">{{ nieuwsbrief }}  Aanmeldingen voor de nieuwsbrief
                                 </div>
                             {% endif %}
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
+                        <a class="card-footer text-white clearfix small z-1" href="{{ path('nieuwsbrief') }}">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -66,13 +66,13 @@
                             <div class="card-body-icon">
                                 <i class="fas fa-fw fa-user-circle"></i>
                             </div>
-                            {% if users %}
+                            {% if inbox %}
 
-                                <div class="mr-5">{{ users }}  Users
+                                <div class="mr-5">{{ inbox }}  Mails in inbox
                                 </div>
                             {% endif %}
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
+                        <a class="card-footer text-white clearfix small z-1" href="{{ path('inbox') }}">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -92,7 +92,7 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
+                        <a class="card-footer text-white clearfix small z-1" href="">
                             <span class="float-left">View Details</span>
                             <span class="float-right">
                   <i class="fas fa-angle-right"></i>
