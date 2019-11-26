@@ -66,7 +66,7 @@ class Controller extends AbstractController
             $em->flush();
             $this->addFlash('succes', 'Bericht verstuurd!');
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home', ['_fragment' => 'contact-section']);
         }
         $em = $this->getDoctrine()->getManager();
 
