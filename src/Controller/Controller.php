@@ -64,6 +64,7 @@ class Controller extends AbstractController
 
             $em->persist($contact);
             $em->flush();
+            $this->addFlash('succes', 'Bericht verstuurd!');
 
             return $this->redirectToRoute('home');
         }
@@ -79,6 +80,7 @@ class Controller extends AbstractController
 
             $em->persist($nieuwsbrief);
             $em->flush();
+            $this->addFlash('nieuwsbrief', 'Succesvolle aanmelding!');
 
             return $this->redirectToRoute('home');
         }
