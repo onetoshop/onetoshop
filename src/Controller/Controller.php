@@ -26,6 +26,13 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 class Controller extends AbstractController
 {
+
+    /**
+     * @Route("/", name="index")
+     */
+    public function index(){
+        return $this->redirectToRoute('home');
+    }
 //    home pagina
     /**
      * @Route("/{_locale}/home", name="home")
