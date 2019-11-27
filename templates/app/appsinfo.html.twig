@@ -49,9 +49,15 @@
             <!-- /.col-md-4 -->
         </div>
         <!-- /.row -->
+        <hr>
         <div>
-            <input style="margin-top: 20px;" type="button" class="btn btn-primary btn-sm" value="<-- Terug" onClick="history.back()">
+            <a onclick="goBack()"><button  class="back-button" type="button">Klik om terug te gaan</button></a>
         </div>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
     </div>
     <!-- /.container -->
 </div>
