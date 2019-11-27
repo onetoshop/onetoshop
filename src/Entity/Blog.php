@@ -32,7 +32,7 @@ class Blog
     private $image;
 
     /**
-     * @Assert\MaxLength(100)
+     * @ORM\Column(type="text")
      */
     private $beschrijving;
 
@@ -40,6 +40,8 @@ class Blog
      * @ORM\Column(type="text")
      */
     private $slug;
+
+
 
     public function getId(): ?int
     {
@@ -105,4 +107,5 @@ class Blog
 
         return $this;
     }
+
 }

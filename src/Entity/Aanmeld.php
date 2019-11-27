@@ -51,6 +51,13 @@ class Aanmeld
      */
     private $Voorkeur;
 
+    /**
+     * @var \DateTime
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
+     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     */
+    protected $createdAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +146,7 @@ class Aanmeld
 
         return $this;
     }
+
 
 
 
