@@ -5,21 +5,6 @@
         <nav class="site-navigation position-relative text-right" role="navigation">
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="{{ path('home') }}" class="nav-link">Home</a></li>
-                <li><a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a></li>
-                <li><a href="{{ path('apps') }}" class="nav-link">Apps</a></li>
-                <li><a href="{{ path('blogs') }}" class="nav-link active">Blogs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-{% endblock %}
-{% block navbar %}
-
-    <div class="col-12 col-md-10 d-none d-xl-block">
-        <nav class="site-navigation position-relative text-right" role="navigation">
-
-            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <a href="{{ path('home') }}" class="nav-link">Home</a>
                 <a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a>
                 <a href="{{ path('apps') }}" class="nav-link">Apps</a>
@@ -67,10 +52,11 @@
                     </div>
                 </div>
             </div>
-
             <!-- Categories Widget -->
-
-
         </div>
+</div>
+    <div>
+        <a href="{{ path('blogs') }}"><button  class="back-button" type="button">Klik om terug te gaan</button></a>
+    </div>
 </div>
 {% endblock %}
