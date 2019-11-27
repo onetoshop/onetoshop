@@ -434,10 +434,12 @@
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
                         {% if blog.image is defined %}
-                            <img src="{{ asset('/image/blog/' ~ blog.image.name) }}" />
+                            <img src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('small') }}" />
+{#                            {% else %}#}
+{#                            niks gevonden#}
                         {% endif %}
 
-                        <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug}) }}" class="text-black">{{ blog.title }}</a></h2>
+                        <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug }) }}" class="text-black">{{ blog.title }}</a></h2>
                         <p>{{ blog.beschrijving}}</p>
 
                         <p><a href="{{ path('blogshow', {'slug' : blog.slug}) }}">Lees...</a></p>

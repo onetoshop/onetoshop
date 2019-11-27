@@ -19,16 +19,13 @@ liip_imagine:
 
         big:
             filters:
-                relative_resize:
-                    heighten: 400
-                    # Will allow smaller images to take 800px of height,
-                    # width will change accordingly since aspect ration is still valid.
-                    allow_upscale: true
+                thumbnail: {size: [900], mode: outbound, allow_upscale: true }
 
-        home:
+
+        medium:
             filters:
-                relative_resize:
-                    heighten: 200
-                    # Will allow smaller images to take 800px of height,
-                    # width will change accordingly since aspect ration is still valid.
-                    allow_upscale: true
+                thumbnail: {size: [600], mode: outbound, allow_upscale: true }
+
+        small:
+            filters:
+                thumbnail: {size: [300], mode: outbound, }

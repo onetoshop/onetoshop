@@ -32,7 +32,7 @@ class Blog
     private $image;
 
     /**
-     * @Assert\MaxLength(100)
+     * @ORM\Column(type="text")
      */
     private $beschrijving;
 
@@ -78,7 +78,6 @@ class Blog
     public function setImage($image): void
     {
         $this->image = $image;
-
     }
 
     public function getBeschrijving(): ?string
