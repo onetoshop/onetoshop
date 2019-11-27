@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\AanmeldType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\HttpFoundation\Response;
+
 class AanmeldController extends AbstractController
 {
     // mogelijkheden pagina
@@ -33,6 +35,8 @@ class AanmeldController extends AbstractController
 
 
             return $this->redirectToRoute('aangemeld');
+
+
         }
 
             return $this->render('mogelijkheden/mogelijkheden.html.twig', [
@@ -45,17 +49,24 @@ class AanmeldController extends AbstractController
      */
     public function aangemeld()
     {
+        // redirect to homepage after form is submitted
+        $response = new Response();
+
+        $response->setStatusCode(200);
+        $response->headers->set('Refresh', '5; url=http://127.0.0.1:8000/');
+        $response->send();
+
         return $this->render('mogelijkheden/aangemeld.html.twig');
     }
 
-    /**
-     * @Route("/{_locale}/aanmeldingen", name="aanmeldingen")
-     */
-    public function index()
-    {
-        $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
-        return $this->render('mogelijkheden/aanmeldingen.html.twig', [
-            'aanmeldingen' => $aanmeld
-        ]);
-    }
+//    /**
+//     * @Route("/{_locale}/aanmeldingen", name="aanmeldingen")
+//     */
+//    public function index()
+//    {
+//        $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
+//        return $this->render('mogelijkheden/aanmeldingen.html.twig', [
+//            'aanmeldingen' => $aanmeld
+//        ]);
+//    }
 }

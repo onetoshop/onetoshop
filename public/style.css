@@ -77,7 +77,10 @@ a:hover {
 a:active, a:hover, a:focus {
     outline: 0 none;
     text-decoration: none;
+
 }
+.aeigenstyle }
+
 ul{
     list-style: outside none none;
     margin: 0;
