@@ -58,6 +58,11 @@ class Aanmeld
      */
     protected $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Beschrijving;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -143,6 +148,18 @@ class Aanmeld
     public function setVoorkeur(?string $Voorkeur): self
     {
         $this->Voorkeur = $Voorkeur;
+
+        return $this;
+    }
+
+    public function getBeschrijving(): ?string
+    {
+        return $this->Beschrijving;
+    }
+
+    public function setBeschrijving(string $Beschrijving): self
+    {
+        $this->Beschrijving = $Beschrijving;
 
         return $this;
     }

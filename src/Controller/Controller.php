@@ -23,6 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\ApplicationHandler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Twig\TwigFunction;
 
 class Controller extends AbstractController
 {
@@ -84,6 +85,8 @@ class Controller extends AbstractController
 
             return $this->redirectToRoute('home', ['_fragment' => 'news-section']);
         }
+
+
         return $this->render('homepage/homepage.html.twig',[
         'cards' => $card,
         'aanmeldingen' => $aanmeld,
@@ -92,27 +95,40 @@ class Controller extends AbstractController
             'blogs' => $blog
         ]);
 
+
+
     }
 
-//    service pagina
-    /**
-     * @Route("/service", name="service")
-     */
-    public function service()
+    // set description
+    public function getFunctions()
     {
-        return $this->render('service/service.html.twig');
+        return [
+            new TwigFunction('beschrijving', [$this, 'beschrijving']),
+        ];
     }
 
-// contact pagina
     /**
-     * @Route("/{_locale}/contact", name="contact",)
+     * create a teaser from a large text
+     *
+     * @param string  $input  large text
+     * @param integer $lenght number to cut large text down to
+     * @return string         cut down string
      */
-    public function contact(Request $request)
+    public function beschrijving($input, $length = 184) : string
     {
-        $locale = $request->getLocale();
-        $request->setLocale($locale);
-        return $this->render('contact/contact.html.twig');
+        if(strlen($input) <= $length) {
+            return str_replace(['<p>', '</p>'], '', $input);
+        }
+
+        $parts = explode(' ', $input);
+
+        while(strlen(implode(' ', $parts)) > $length) {
+            array_pop($parts);
+        }
+
+        return implode(' ', $parts);
     }
+
 
     /**
      * @Route("/{_locale}/algemene-voorwaarden", name="algemene_voorwaarden",)
@@ -129,65 +145,5 @@ class Controller extends AbstractController
     {
         return $this->render('policy/privacy_statement.html.twig');
     }
-
-
-
-
-
-//    /**
-//     * @Route("/functionaliteit/{slug}", name="article_show")
-//     */
-//    public function show($slug)
-//    {
-////
-//        $gegeven = $this->getDoctrine()->getRepository(Gegeven::class)->findOneBy([
-//            'slug' => $slug
-//        ]);
-//
-//
-//        return $this->render('show.html.twig', [
-//            'gegeven' => $gegeven
-//        ]);
-//    }
-
-//    // functionaliteit
-//    /**
-//     * @Route("/functionaliteit", name="functionaliteit")
-//     */
-//    public function functionaliteit()
-//    {
-//        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
-//
-//        return $this->render('functionaliteit/functionaliteit.html.twig', [
-//            'namen' => $categorie
-//        ]);
-//
-//    }
-
-    //categoriefunctionalteit
-//    /**
-//     *
-//     */
-
-    // Gegeven pagina
-//    /**
-//     * @Route("/functionaliteit/{slug}", name="article_show")
-//     */
-//    public function gegeven($slug) {
-////
-//        $categorie = $this->getDoctrine()->getRepository(Gegeven::class)->Findby([
-//            'groep' => $slug
-//        ]);
-//
-//
-//
-////        return $this->render('functionaliteit/klantbeheer.html.twig', [
-////            'gegevens' => $categorie
-////        ]);
-//    }
-
-
-
-
 
 }

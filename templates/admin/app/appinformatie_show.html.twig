@@ -39,13 +39,13 @@
                                     <td>{{ appinformatie.id }}</td>
                                     <td>{{ appinformatie.title }}</td>
                                     <td>
-                                        <a href="{{ path('show_appinformatie', {'slug' : appinformatie.title}) }}" class="btn btn-success" style="width: 100%;">Show</a>
+                                        <a href="{{ path('show_appinformatie', {'slug' : appinformatie.title}) }}" class="btn btn-outline-dark" style="width: 100%;">Tonen</a>
                                     </td>
                                     <td>
-                                        <a href="{{ path('edit_appinformatie', {'id' : appinformatie.id}) }}" class="btn btn-light" style="width: 100%;">Edit</a>
+                                        <a href="{{ path('edit_appinformatie', {'id' : appinformatie.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>
                                     </td>
                                     <td>
-                                        <a href="{{ path('delete_appinformatie', {'id' : appinformatie.id}) }}" class="btn btn-danger" style="width: 100%;">Delete</a>
+                                        <a href="{{ path('delete_appinformatie', {'id' : appinformatie.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijderen</a>
                                     </td>
                                 </tr>
                             {% endfor %}

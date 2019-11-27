@@ -32,7 +32,7 @@ class Blog
     private $image;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", )
      */
     private $beschrijving;
 

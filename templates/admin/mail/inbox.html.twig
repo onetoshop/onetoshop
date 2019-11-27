@@ -34,10 +34,10 @@
                             <td>{{ gegeven.email}}</td>
                             <td>{{ gegeven.onderwerp }}</td>
                             <td>
-                                <a href="{{ path('show_mail', {'slug' : gegeven.id}) }}" class="btn btn-success" style="width: 100%;">Lees</a>
+                                <a href="{{ path('show_mail', {'slug' : gegeven.id}) }}" class="btn btn-outline-dark" style="width: 100%;">Lees</a>
                             </td>
                             <td>
-                                <a href="{{ path('delete_mail', {'id' : gegeven.id}) }}" class="btn btn-danger" style="width: 100%;">Verwijder</a>
+                                <a href="{{ path('delete_mail', {'id' : gegeven.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijder</a>
                             </td>
                         </tr>
                     {% endfor %}

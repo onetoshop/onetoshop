@@ -106,7 +106,7 @@ class BackendController extends AbstractController
 
         $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
 
-        return $this->render('admin/aanmeldingen.html.twig', [
+        return $this->render('admin/aanmeldingen/aanmeldingen.html.twig', [
             'aanmeldingen' => $aanmeld,
             'form' => $form->createView()
         ]);
@@ -148,21 +148,21 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin/inbox", name="inbox")
+     * @Route("/{_locale}/admin/mail/inbox", name="inbox")
      * @IsGranted("ROLE_USER")
      */
     public function inbox()
     {
         $gegeven = $this->getDoctrine()->getRepository(Contact::class)->findAll();
 
-        return $this->render('admin/inbox.html.twig', [
+        return $this->render('admin/mail/inbox.html.twig', [
             'gegeven' => $gegeven
         ]);
 
     }
 
     /**
-     * @Route("/{_locale}/admin/inbox/{slug}", name="show_mail")
+     * @Route("/{_locale}/admin//mail/inbox/{slug}", name="show_mail")
      * @IsGranted("ROLE_USER")
      */
     public function show_mail($slug)
@@ -171,13 +171,13 @@ class BackendController extends AbstractController
             'id' => $slug
         ]);
 
-        return $this->render('admin/show_mail.html.twig', [
+        return $this->render('admin/mail/show_mail.html.twig', [
             'app1' => $app1
         ]);
     }
 
     /**
-     * @Route("/{_locale}/admin/inbox/delete_mail/{id}", name="delete_mail")
+     * @Route("/{_locale}/admin/mail/inbox/delete_mail/{id}", name="delete_mail")
      * @IsGranted("ROLE_USER")
      */
     public function delete_mail(Request $request, $id)

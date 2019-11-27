@@ -76,7 +76,7 @@ class FunctionaliteitController extends AbstractController
 
 
         }
-        return $this->render('admin/functionaliteit.html.twig', array(
+        return $this->render('admin/functionaliteit/functionaliteit.html.twig', array(
             'form' => $form->createView()
         ));
 }
@@ -151,7 +151,7 @@ class FunctionaliteitController extends AbstractController
 
 
         }
-        return $this->render('admin/functionaliteitcard.html.twig', array(
+        return $this->render('admin/functionaliteit/functionaliteitcard.html.twig', array(
             'form' => $form->createView()
         ));
     }

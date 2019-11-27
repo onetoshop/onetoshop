@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/user", name="user")
+     * @Route("/{_locale}/admin/user", name="user")
      * @IsGranted("ROLE_USER")
      */
     public function gebruiker(Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -45,7 +45,7 @@ class UserController extends AbstractController
         }
         $user = $this->getDoctrine()->getRepository(User::class)->findAll();
 
-        return $this->render('admin/user.html.twig', [
+        return $this->render('admin/user/user.html.twig', [
             'users' => $user,
             'form' => $form->createView()
         ]);
@@ -60,7 +60,7 @@ class UserController extends AbstractController
      */
     public function settings()
     {
-        return $this->render('admin/usersettings.html.twig');
+        return $this->render('admin/user/usersettings.html.twig');
     }
 
 }
