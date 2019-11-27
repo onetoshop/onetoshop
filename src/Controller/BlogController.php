@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Blog;
 use App\Form\BlogType;
 use App\Repository\BlogRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -83,43 +84,33 @@ class BlogController extends AbstractController
      * @Route("/{_locale}/admin/blog/blog_card", name="add_blog")
      * @IsGranted("ROLE_USER")
      */
-    public function indexAction(Request $request)
+    public function add_blog(EntityManagerInterface $manager, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $imageEn = new Blog();
-
-        $form = $this->createForm(BlogType::class, $imageEn);
-
+        $form = $this->createForm(BlogType::Class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $blog = $form->getData();
 
-            $file = $form->get('image')->getData();
-            ($imageEn->getImage());
+            $file = $blog->getImage();
 
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $image = $file->getFile();
 
-            $file->move($this->getParameter('blog'), $fileName);
+            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
 
-            $imageEn->setImage($fileName);
-            $em->persist($imageEn);
-            $em->flush();
+            $image->move($this->getParameter('blog'), $fileName);
 
-            $this->addFlash(
-                'info',
-                'Blog Succesvol Aangemaakt!'
+            $file->setName($fileName);
 
-            );
+            $manager->persist($blog);
+            $manager->flush();
 
             return $this->redirectToRoute('add_blog');
-
         }
-
-        return $this->render('admin/blog.html.twig', array(
+        return $this->render('admin/blog.html.twig', [
             'form' => $form->createView()
-        ));
+        ]);
     }
 
 }
