@@ -1818,3 +1818,37 @@ h1, h2, h3, h4, h5,
         font-size: 2rem; } }
     .product-item-2 .product-title-wrap h2 a {
       color: #000; }
+
+/*Go Back button*/
+.back-button{
+  color: #000000;
+  border-color: #000000;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  color: #000000;
+  border-color: #000000;
+}
+.back-button:focus, .back-button.focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+.back-button.disabled, .back-button:disabled {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #000000;
+}
+
+.back-button:not(:disabled):not(.disabled):active, .back-button:not(:disabled):not(.disabled).active,
+.show > .back-button.dropdown-toggle {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #000000;
+}
+
+.back-button:not(:disabled):not(.disabled):active:focus, .back-button:not(:disabled):not(.disabled).active:focus,
+.show > .back-button.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
