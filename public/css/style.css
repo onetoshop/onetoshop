@@ -24,6 +24,17 @@ a {
   a:hover {
     text-decoration: none; }
 
+
+.onzeeigendiv a{
+  color: black;
+
+}
+.onzeeigendiv a:active{
+  color: #007bff;
+}
+.onzeeigendiv a:hover{
+  color: #007bff;
+}
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
@@ -312,7 +323,7 @@ h1, h2, h3, h4, h5,
   .site-navbar .site-navigation .site-menu {
     margin-bottom: 0; }
     .site-navbar .site-navigation .site-menu .active {
-      color: #99ceff;
+      color: #007bff;
       display: inline-block;
       padding: 5px 20px; }
     .site-navbar .site-navigation .site-menu a {

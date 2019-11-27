@@ -32,7 +32,7 @@ class Blog
     private $image;
 
     /**
-     * @ORM\Column(type="text")
+     * @Assert\MaxLength(100)
      */
     private $beschrijving;
 

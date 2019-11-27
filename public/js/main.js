@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
 	    }
 		});
 	}; 
-	siteMenuClone();
+	//siteMenuClone();
 
 
 	var sitePlusMinus = function() {
