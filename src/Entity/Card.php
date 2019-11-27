@@ -2,11 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Illuminate\Support\Facades\App;
-
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CardRepository")
@@ -109,9 +105,9 @@ class Card
     }
 
     public function getBgimage(): ?Image
-{
+    {
     return $this->bgimage;
-}
+    }
 
     public function setBgimage($bgimage): void
     {

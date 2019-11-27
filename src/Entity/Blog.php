@@ -27,12 +27,12 @@ class Blog
     private $body;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
      */
     private $image;
 
     /**
-     * @ORM\Column(type="text")
+     * @Assert\MaxLength(100)
      */
     private $beschrijving;
 
@@ -40,8 +40,6 @@ class Blog
      * @ORM\Column(type="text")
      */
     private $slug;
-
-
 
     public function getId(): ?int
     {
@@ -72,16 +70,15 @@ class Blog
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage(): ?Image
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image): void
     {
         $this->image = $image;
 
-        return $this;
     }
 
     public function getBeschrijving(): ?string
@@ -107,5 +104,4 @@ class Blog
 
         return $this;
     }
-
 }

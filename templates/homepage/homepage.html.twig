@@ -322,9 +322,8 @@
 
                                 </div>
                                 <!--//PRICE CONTENT END-->
-                                <p style="text-decoration-style: dashed; text-align: right"><strong>*</strong>Alle prijzen zijn exclusief btw</p>
-                            </div>
 
+                            </div>
                         </div>
                         <!--//BLOCK ROW END-->
 
@@ -361,7 +360,7 @@
                 </div>
             </div>
         </div>
-        <div class="container"
+        <div class="container">
         <div id="row">
             {% if cards %}
                 {% for card in cards %}
@@ -434,7 +433,9 @@
                     {% for blog in blogs %}
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img class="img-fluid1" src="{{ asset('/image/blog/' ~ blog.image) }}" />
+                        {% if blog.image is defined %}
+                            <img src="{{ asset('/image/blog/' ~ blog.image.name) }}" />
+                        {% endif %}
 
                         <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug}) }}" class="text-black">{{ blog.title }}</a></h2>
                         <p>{{ blog.beschrijving}}</p>

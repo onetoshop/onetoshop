@@ -35,7 +35,9 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded mb-4 mb-lg-0 offset-2"  style="text-align: center" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" />
+                    <div class="card" style="width: 900px; height: 400px; margin: auto;">
+                        <img class="card-img-top" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" alt="Card image cap">
+                    </div>
                 <hr>
 
                 <!-- Post Content -->
