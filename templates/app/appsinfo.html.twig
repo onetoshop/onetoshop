@@ -3,15 +3,16 @@
 
     <div class="col-12 col-md-10 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
-            <div class="onzeeigendiv">
-                <div class="">
-                    <a href="{{ path('home') }}" class="nav-link">Home</a>
-                    <a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a>
-                    <a href="{{ path('apps') }}" class="nav-link active">Apps</a>
-                    <a href="{{ path('blogs') }}" class="nav-link ">Blogs</a>
-                </div>
-            </div>
+
+            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <a href="{{ path('home') }}" class="nav-link">Home</a>
+                <a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a>
+                <a href="{{ path('apps') }}" class="nav-link active">Apps</a>
+                <a href="{{ path('blogs') }}" class="nav-link ">Blogs</a>
+            </ul>
         </nav>
+    </div>
+
 {% endblock %}
 {% block body %}
 <div id="contact-section">
