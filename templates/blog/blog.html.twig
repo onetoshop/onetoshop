@@ -20,15 +20,15 @@
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <div class="col-md-8">
                 <h1 class="my-4">Blogs
                 </h1>
                 <!-- Blog Post -->
                 {% if blogs %}
                 {% for blog in blogs %}
-                <div class="card mb-4">
+                    <div class="my-4">
                     {% if blog.image is defined %}
-                        <img src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('medium') }}" />
+                        <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('medium') }}" alt="">
                     {% endif %}
                     <div class="card-body">
                         <h2 class="card-title">{{ blog.title }}</h2>

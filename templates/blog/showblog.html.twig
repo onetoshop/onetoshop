@@ -35,9 +35,9 @@
                 <hr>
 
                 <!-- Preview Image -->
-                    <div class="card" style="width: 900px; height: 400px; margin: auto;">
-                        <img class="card-img-top" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" alt="Card image cap">
-                    </div>
+                    {% if blogs.image is defined %}
+                        <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blogs.image.name) | imagine_filter('big') }}" alt="">
+                    {% endif %}
                 <hr>
 
                 <!-- Post Content -->
