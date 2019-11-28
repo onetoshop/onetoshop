@@ -1,5 +1,36 @@
 {% extends 'admin/adminbase.html.twig' %}
 {% block body %}
+    <style>body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+
+        input1[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        p.parajessep{
+
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }</style>
     <div id="content-wrapper">
 
         <div class="container-fluid">
@@ -11,16 +42,34 @@
                 </li>
                 <li class="breadcrumb-item active">Mail</li>
             </ol>
-            <!-- Page Content -->
-            <h1>Mail</h1>
+
             <div class="row">
                 {% if app1 %}
                     {% for app1 in app1 %}
+
+                        <div class="container">
+                                <h4 for="fname">Voornaam</h4>
+                               <p class="parajessep">{{app1.voornaam}}</p>
+
+
+                                <h4 for="fname">Achternaam</h4>
+                                <p class="parajessep">{{app1.achternaam}}</p>
+
+
+                                <h4 for="fname">Emailadres</h4>
+                                <p class="parajessep">{{app1.email}}</p>
+
+                                <h4 for="subject">Bericht</h4>
+                                <textarea id="lname"  style="height: 200px">{{app1.bericht}} </textarea>
+                        </div>
+
+
 
                     {% endfor %}
                 {% else %}
                     <p>Er Zijn Geen Gegevens Gevonden!</p>
                 {% endif %}
+
             </div>
             <div>
                 <a href="{{ path('inbox') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
