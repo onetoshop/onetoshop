@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Apps;
 use App\Entity\Card;
+use App\Entity\Project;
 use App\Form\CardType;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Env\Response;
@@ -137,11 +138,11 @@ class PostController extends AbstractController
      * @Route("/{_locale}/project/{naam}", name="project")
      */
     public function project($naam){
-        $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+        $project = $this->getDoctrine()->getRepository(Project::class)->findBy([
             'naam'  => $naam
         ]);
-        return $this->render('app/appsinfo.html.twig',[
-            'apps' => $apps
+        return $this->render('project/project.html.twig',[
+            'project' => $project
         ]);
     }
 

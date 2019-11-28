@@ -11,6 +11,7 @@ use App\Entity\Blog;
 use App\Entity\Card;
 use App\Entity\Contact;
 use App\Entity\Gegeven;
+use App\Entity\Project;
 use App\Entity\User;
 use App\Form\AppinformatieType;
 use App\Form\AppinfoType;
@@ -694,7 +695,7 @@ class BackendController extends AbstractController
      */
     public function project_show()
     {
-        $project = $this->getDoctrine()->getRepository(Apps::class)->findby(['groep' => 'project']);
+        $project = $this->getDoctrine()->getRepository(Project::class)->findall();
         return $this->render('admin/project/project_show.html.twig', [
             'project' => $project
         ]);
@@ -708,7 +709,7 @@ class BackendController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $project = $em->getRepository(Apps::class)->find($id);
+        $project = $em->getRepository(Project::class)->find($id);
 
         $em->remove($project);
         $em->flush();
@@ -722,7 +723,7 @@ class BackendController extends AbstractController
      */
     public function show_project($slug)
     {
-        $project = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+        $project = $this->getDoctrine()->getRepository(Project::class)->findBy([
             'title' => $slug
         ]);
 
