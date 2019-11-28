@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Card;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,9 +16,9 @@ class CardType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('customer', TextType::class)
-            ->add('body', TextareaType::class)
-            ->add('footer', TextareaType::class)
+            ->add('customer', TextareaType::class)
+            ->add('body', CKEditorType::class)
+            ->add('footer', Texttype::class)
             ->add('slug', TextType::class)
             ->add('bgimage', ImageType::class, ['label' => 'Upload Background Foto'])
             ->add('frimage', ImageType::class, ['label' => 'Upload Frond Foto'])

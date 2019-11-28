@@ -35,6 +35,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/sprites" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/svgs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/webfonts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofsymfony/ckeditor-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/gedmo/doctrine-extensions" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/container" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/contracts" />
