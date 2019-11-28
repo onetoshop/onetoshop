@@ -31,6 +31,11 @@ class Appinformatie
      */
     private $groep;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $tabtitle;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Appinformatie
     public function setGroep(string $groep): self
     {
         $this->groep = $groep;
+
+        return $this;
+    }
+
+    public function getTabtitle(): ?string
+    {
+        return $this->tabtitle;
+    }
+
+    public function setTabtitle(string $tabtitle): self
+    {
+        $this->tabtitle = $tabtitle;
 
         return $this;
     }

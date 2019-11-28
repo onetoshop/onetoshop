@@ -1,4 +1,10 @@
 {% extends 'base1.html.twig' %}
+
+{% block title %}
+    {% for functionaliteitinfo in functionaliteitinfo %}
+        <title>{{ functionaliteitinfo.tabtitle }}</title>
+    {% endfor %}
+{% endblock %}
 {% block navbar %}
 
     <div class="col-12 col-md-10 d-none d-xl-block">

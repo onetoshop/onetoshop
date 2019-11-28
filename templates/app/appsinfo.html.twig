@@ -1,4 +1,11 @@
 {% extends 'base1.html.twig' %}
+
+{% block title %}
+    {% for apps in apps %}
+        <title>{{ apps.title }} integratie Onetoshop</title>
+    {% endfor %}
+{% endblock %}
+
 {% block navbar %}
 
     <div class="col-12 col-md-10 d-none d-xl-block">
