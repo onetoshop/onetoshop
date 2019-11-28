@@ -21,7 +21,7 @@ class BlogType extends AbstractType
             ->add('beschrijving', TextareaType::class)
             ->add('body', TextareaType::class)
             ->add('slug', TextareaType::class)
-            ->add('image', FileType::class, array('label'=>'Upload  Image'))
+            ->add('image', ImageType::class, array('label'=>'Upload  Image'))
             ->add('Verzend', SubmitType::class)
         ;
     }
