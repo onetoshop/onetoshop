@@ -18,8 +18,11 @@ use App\Form\AppsType;
 use App\Form\AppType;
 use App\Form\BlogType;
 use App\Form\UserType;
+use App\Repository\BlogRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AanmeldType;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\GegevenType;
 use App\Entity\Nieuwsbrief;
+
 
 class BackendController extends AbstractController
 {
@@ -70,6 +74,15 @@ class BackendController extends AbstractController
         $repoArticles = $em->getRepository(Card::class);
         $cards = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
 
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('handleSearch'))
+            ->add('Zoek', TextType::class, ['label' => false])
+            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+            ->getForm()
+        ;
+
+
+
 
         return $this->render('admin/index.html.twig', [
             'totaleaanmeld' => $totaleaanmeld,
@@ -78,9 +91,81 @@ class BackendController extends AbstractController
             'nieuwsbrief' => $nieuwsbrief,
             'users' => $users,
             'inbox' => $inbox,
-            'cards' => $cards
+            'cards' => $cards,
+            'form' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/{_locale}/blogs", name="blogs")
+     */
+    public function index1()
+    {
+        $blog = $this->getDoctrine()->getRepository(Blog::class)->findBy(
+            array(),
+            array('id' => 'ASC'),
+            10,
+            0);
+
+
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('handleSearch'))
+            ->add('Zoek', TextType::class, ['label' => false])
+            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+            ->getForm()
+        ;
+
+        return $this->render('blog/blog.html.twig', [
+            'blogs' => $blog,
+            'form' => $form->createView()
+
+        ]);
+    }
+//
+//    /**
+//     * @Route("/{_locale}/admin/handleSearch", name="handleSearch")
+//     * @IsGranted("ROLE_USER")
+//     */
+//    public function handleSearch(Request $request, BlogRepository $blogRepository)
+//    {
+//        $form = $this->createFormBuilder()
+//            ->setAction($this->generateUrl('handleSearch'))
+//            ->add('Zoek', TextType::class, ['label' => false])
+//            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+//            ->getForm()
+//        ;
+//
+//        $zoek = $request->request->get('form')['Zoek'];
+//        if ($zoek) {
+//            $blog = $blogRepository->findBlogsByName($zoek);
+//        }
+//        return $this->render('blog/results.html.twig', [
+//            'form' => $form->createView(),
+//            'blogs' => $blog,
+//        ]);
+//    }
+//    /**
+//     * @Route("/{_locale}/admin/base", name="base")
+//     * @IsGranted("ROLE_USER")
+//     */
+//    public function adminbase() {
+//        $blog = $this->getDoctrine()->getRepository(Blog::class)->findBy(
+//            array(),
+//            array('id' => 'ASC'),
+//            0,
+//            0);
+//
+//
+//        $form = $this->createFormBuilder()
+//            ->setAction($this->generateUrl('handleSearch'))
+//            ->add('Zoek', TextType::class, ['label' => false])
+//            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+//            ->getForm()
+//        ;
+//        return $this->render('admin/adminbase.html.twig', [
+//            'form' => $form->createView(),
+//            'blogs' => $blog
+//            ]);
+//    }
 
     /**
      * @Route("/{_locale}/admin/aanmeldingen", name="aanmeldingen")

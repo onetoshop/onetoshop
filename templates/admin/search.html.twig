@@ -1,0 +1,50 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+                <h1 class="my-4">Resultaat
+                </h1>
+                {% if blogs %}
+                    {% for blogs in blogs %}
+                        <div class="card mb-4">
+                            <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blogs.image.name) | imagine_filter('medium') }}" alt="">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ blogs.title }}</h2>
+                                <p class="card-text">{{ blogs.beschrijving }}</p>
+                                <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Geen resultaat</p>
+                {% endif %}
+            </div>
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+{#                <!-- Search Widget -->#}
+{#                <div class="card my-4">#}
+{#                    <h5 class="card-header">Zoek</h5>#}
+{#                    <div class="card-body">#}
+{#                        <div class="input-group">#}
+
+{#                            {{ form_start(form) }}#}
+{#                            {{ form_end(form) }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+                <!-- Categories Widget -->
+            </div>
+        </div>
+        <div>
+            <a href="{{ path('blogs') }}"><button  class="back-button" type="button">Klik om terug te gaan</button></a>
+        </div>
+    </div>
+
+{% endblock %}
