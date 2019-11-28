@@ -29,18 +29,20 @@
             <h1 class="my-4">Resultaat
             </h1>
             {% if blogs %}
-{% for blogs in blogs %}
-    <div class="card mb-4">
-        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/blog/' ~ blogs.image) | imagine_filter('big') }}" />
-        <div class="card-body">
-            <h2 class="card-title">{{ blogs.title }}</h2>
-            <p class="card-text">{{ blogs.beschrijving }}</p>
-            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
-        </div>
-    </div>
-{% endfor %}
+                {% for blogs in blogs %}
+                    <div class="my-4">
+                        {% if blogs.image is defined %}
+                            <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blogs.image.name) | imagine_filter('medium') }}" alt="">
+                        {% endif %}
+                        <div class="card-body">
+                            <h2 class="card-title">{{ blogs.title }}</h2>
+                            <p class="card-text">{{ blogs.beschrijving }}</p>
+                            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
+                        </div>
+                    </div>
+                {% endfor %}
             {% else %}
-                <p>Geen resultaat</p>
+                <p>Er zijn Geen Gegevens gevonden</p>
             {% endif %}
         </div>
         <!-- Sidebar Widgets Column -->
