@@ -100,12 +100,10 @@
                         <h2>
                             {{ message }}</h2>
                     {% endfor %}
-                    <div class="d-flex mb-4">
-
-                    </div>
+           
 
                     {{ form_start(form2) }}
-                        {{ form_widget(form2) }}
+                        {{ form_row(form2.email) }}
                                             <input type="submit" class="btn btn-white btn-outline-white rounded-0" value="Abonneer">
                     {{ form_end(form2) }}
 
