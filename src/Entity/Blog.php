@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -33,6 +34,12 @@ class Blog
 
     /**
      * @ORM\Column(type="text", )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 175,
+     *      minMessage = "De beschrijving moet minimaal  {{ limit }} characters bevatten",
+     *      maxMessage = "De beschrijving max maximaal {{ limit }} characters bevatten"
+     * )
      */
     private $beschrijving;
 

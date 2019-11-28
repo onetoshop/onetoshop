@@ -597,7 +597,7 @@ class BackendController extends AbstractController
     {
         $gegeven = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findAll();
 
-        return $this->render('admin/nieuwsbrief.html.twig', [
+        return $this->render('admin/nieuwsbrief/nieuwsbrief.html.twig', [
             'gegeven' => $gegeven
         ]);
 

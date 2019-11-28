@@ -58,10 +58,6 @@ class Aanmeld
      */
     protected $createdAt;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Beschrijving;
 
     public function getId(): ?int
     {
@@ -151,11 +147,7 @@ class Aanmeld
 
         return $this;
     }
-
-    public function getBeschrijving(): ?string
-    {
-        return $this->Beschrijving;
-    }
+    
 
     public function setBeschrijving(string $Beschrijving): self
     {
