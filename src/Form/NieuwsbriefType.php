@@ -14,11 +14,12 @@ class NieuwsbriefType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class,array(
+            ->add('email', EmailType::class, [
                 'required' => true,
                 'trim' => true,
                 'label' => false,
-                'attr' => array('placeholder' => 'Uw email' )))
+                'attr' => array('placeholder' => 'Uw email' )
+            ])
 //            ->add('aanmelden', SubmitType::class)
         ;
     }
