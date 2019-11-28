@@ -15,7 +15,10 @@ class CardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, [
+                'row_attr' => ['class' => 'text-editor'],
+            ])
+
             ->add('customer', TextareaType::class)
             ->add('body', CKEditorType::class)
             ->add('footer', Texttype::class)
