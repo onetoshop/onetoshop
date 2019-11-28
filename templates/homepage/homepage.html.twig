@@ -105,7 +105,8 @@
                     </div>
 
                     {{ form_start(form2) }}
-                    {#                        <input type="submit" class="btn btn-white btn-outline-white rounded-0" value="Abonneer">#}
+                        {{ form_widget(form2) }}
+                                            <input type="submit" class="btn btn-white btn-outline-white rounded-0" value="Abonneer">
                     {{ form_end(form2) }}
 
                 </form>

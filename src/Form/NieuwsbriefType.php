@@ -19,7 +19,7 @@ class NieuwsbriefType extends AbstractType
                 'trim' => true,
                 'label' => false,
                 'attr' => array('placeholder' => 'Uw email' )))
-            ->add('aanmelden', SubmitType::class)
+//            ->add('aanmelden', SubmitType::class)
         ;
     }
 
