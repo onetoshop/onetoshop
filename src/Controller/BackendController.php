@@ -18,6 +18,7 @@ use App\Form\AppinfoType;
 use App\Form\AppsType;
 use App\Form\AppType;
 use App\Form\BlogType;
+use App\Form\ProjectType;
 use App\Form\UserType;
 use App\Repository\BlogRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -718,13 +719,13 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin/project_overzicht/show/{slug}", name="show_project")
+     * @Route("/{_locale}/admin/project_overzicht/show/{naam}", name="show_project")
      * @IsGranted("ROLE_USER")
      */
-    public function show_project($slug)
+    public function show_project($naam)
     {
         $project = $this->getDoctrine()->getRepository(Project::class)->findBy([
-            'title' => $slug
+            'naam' => $naam
         ]);
 
         return $this->render('admin/project/show_project.html.twig', [
@@ -733,12 +734,12 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin/apps_overzicht/add_project", name="add_project")
+     * @Route("/{_locale}/admin/project_overzicht/add_project", name="add_project")
      * @IsGranted("ROLE_USER")
      */
     public function add_project(EntityManagerInterface $manager, Request $request)
     {
-        $form = $this->createForm(AppsType::Class);
+        $form = $this->createForm(ProjectType::Class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -751,7 +752,7 @@ class BackendController extends AbstractController
 
             $fileName = md5(uniqid()) . '.' . $image->guessExtension();
 
-            $image->move($this->getParameter('apps'), $fileName);
+            $image->move($this->getParameter('project'), $fileName);
 
             $file->setName($fileName);
 
@@ -766,17 +767,17 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin/apps_overzicht/edit_project/{id}", name="edit_project", methods={"GET","POST"})
+     * @Route("/{_locale}/admin/project_overzicht/edit_project/{id}", name="edit_project", methods={"GET","POST"})
      */
     public function edit_project(Request $request, $id)
     {
-        $project = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+        $project = $this->getDoctrine()->getRepository(Project::class)->findOneBy([
             'id' => $id,
         ]);
 
         $project->setImage($project->getImage());
 
-        $form = $this->createForm(AppsType::class, $project);
+        $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
