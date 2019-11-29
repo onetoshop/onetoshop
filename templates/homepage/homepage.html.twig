@@ -45,7 +45,7 @@
                 <div class="col-md-6 text-center">
                 <h3 class="section-sub-title">Mogelijkheden</h3>
                 <h2 class="section-title mb-3">De meeste functionaliteit voor de laagste prijs</h2>
-                    <p>Een compleet geïntegreerde webshopservice, dat op alle fronten een oplossing biedt en geheel op maat gemaakt kan worden; waardoor u geld en tijd bespaart.</p>
+                    <p class="font-weight-light">Een compleet geïntegreerde webshopservice, dat op alle fronten een oplossing biedt en geheel op maat gemaakt kan worden; waardoor u geld en tijd bespaart.</p>
                 </div>
             </div>
             <div class="bg-white py-4 mb-4">
@@ -57,7 +57,7 @@
                     <div class="col-md-5 ml-auto product-title-wrap">
                         <span class="number">01.</span>
                         <h3 class="text-black mb-4 font-weight-bold">Daarom Onetoshop!</h3>
-                        <p class="mb-4">Het Onetoshop-platform is een volledige en veelzijdige webshopservice, die past
+                        <p class="mb-4 font-weight-light">Het Onetoshop-platform is een volledige en veelzijdige webshopservice, die past
                             binnen elk budget en alle functies en meer! bevat die je van een webshopplatform verwacht.
                             Test om te zien wat werkt, zonder grote investeringen vooraf te hoeven doen, identificeer je sterke punten met realtime informatie en rapportage, optimaliseer je bedrijf met geïntegreerde beheertools en geautomatiseerde processen en bouw je bedrijf op met onze steun en kennis, van startup tot multinational.</p>
 
@@ -75,7 +75,7 @@
                     <div class="col-md-5 mr-auto product-title-wrap order-2 order-md-1">
                         <span class="number">02.</span>
                         <h3 class="text-black mb-4 font-weight-bold">Apps</h3>
-                        <p class="mb-4">Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren,
+                        <p class="mb-4 font-weight-light">Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren,
                             snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.</p>
 
 
@@ -127,7 +127,7 @@
                                 <!--PRICE HEADING START-->
                                 <div class="price-heading clearfix">
 {#                                    <h1>Altijd een pakket die bij u past</h1>#}
-                                    <p>Onetoshop heeft alle oplossingen. Of u nu een startende webwinkelier bent, of al jaren vele producten verhandelt; wij hebben het pakket dat bij uw bedrijf past.</p>
+                                    <p class="font-weight-light">Onetoshop heeft alle oplossingen. Of u nu een startende webwinkelier bent, of al jaren vele producten verhandelt; wij hebben het pakket dat bij uw bedrijf past.</p>
                                 </div>
                                 <hr>
                                 <!--//PRICE HEADING END-->
@@ -438,7 +438,7 @@
                         {% endif %}
 
                         <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug }) }}" class="text-black">{{ blog.title }}</a></h2>
-                        <p>{{ blog.beschrijving}}</p>
+                        <p>{{ blog.beschrijving | raw }}</p>
 
                         <p><a href="{{ path('blogshow', {'slug' : blog.slug}) }}">Lees...</a></p>
 

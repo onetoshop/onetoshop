@@ -19,12 +19,12 @@ liip_imagine:
 
         big:
             filters:
-                thumbnail: {size: [900], mode: outbound, allow_upscale: true }
+                thumbnail: {size: [900], mode: outbound}
 
 
         medium:
             filters:
-                thumbnail: {size: [600, 266], mode: outbound}
+                thumbnail: {size: [800], mode: outbound}
 
         small:
             filters:

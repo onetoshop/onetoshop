@@ -37,17 +37,14 @@
                     {% endif %}
                     <div class="card-body">
                         <h2 class="card-title">{{ blog.title }}</h2>
-                        <p class="card-text">{{ blog.beschrijving }}</p>
-                        <a  href="{{ path('blogshow', {'slug' : blog.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
+                        <p class="card-text">{{ blog.beschrijving | raw }}</p>
+                        <a style="width: 100%;" href="{{ path('blogshow', {'slug' : blog.slug}) }}"  class="btn btn-outline-primary">Lees Verder</a>
                     </div>
                 </div>
                 {% endfor %}
                 {% else %}
                     <p>Er zijn Geen Gegevens gevonden</p>
                 {% endif %}
-
-
-
             </div>
 
             <!-- Sidebar Widgets Column -->
@@ -65,9 +62,6 @@
                     </div>
                 </div>
 
-            </div>
-            <div>
-                <a href="{{ path('home') }}"><button  class="back-button" type="button">Klik om terug te gaan</button></a>
             </div>
         </div>
         <!-- /.row -->

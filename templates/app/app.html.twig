@@ -23,8 +23,8 @@
         <div class="row align-items-center my-5">
             <!-- /.col-lg-8 -->
             <div class="col-12">
-                <h1 class="font-weight-light">Welke Apps kies jij?</h1>
-                <p style="margin-top: 10px;">Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren, snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.</p>
+                <h1>Welke Apps kies jij?</h1>
+                <p class="font-weight-light" style="margin-top: 10px;"> Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren, snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.</p>
             </div>
             <!-- /.col-md-4 -->
         </div>
@@ -41,7 +41,7 @@
                             <p class="card-text">{{ apps.body | raw }}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ path('appinfo', {'slug' : apps.url}) }}" class="btn btn-primary btn-sm">Lees Verder</a>
+                            <a style="width: 100%;" href="{{ path('appinfo', {'slug' : apps.url}) }}"  class="btn btn-outline-primary">Lees Verder</a>
                         </div>
                     </div>
                 </div>
@@ -50,9 +50,6 @@
                 <p>Er Zijn Geen Gegevens Gevonden!</p>
             {% endif %}
             <!-- /.col-md-4 -->
-        </div>
-        <div>
-            <a href="{{ path('home') }}"><button  class="back-button" type="button">Klik om terug te gaan</button></a>
         </div>
         <!-- /.row -->
     </div>
