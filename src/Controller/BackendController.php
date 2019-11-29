@@ -110,7 +110,6 @@ class BackendController extends AbstractController
             10,
             0);
 
-
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
             ->add('Zoek', TextType::class, ['label' => false])
@@ -124,52 +123,6 @@ class BackendController extends AbstractController
 
         ]);
     }
-//
-//    /**
-//     * @Route("/{_locale}/admin/handleSearch", name="handleSearch")
-//     * @IsGranted("ROLE_USER")
-//     */
-//    public function handleSearch(Request $request, BlogRepository $blogRepository)
-//    {
-//        $form = $this->createFormBuilder()
-//            ->setAction($this->generateUrl('handleSearch'))
-//            ->add('Zoek', TextType::class, ['label' => false])
-//            ->add('submit', SubmitType::class, ['label' => 'Ga'])
-//            ->getForm()
-//        ;
-//
-//        $zoek = $request->request->get('form')['Zoek'];
-//        if ($zoek) {
-//            $blog = $blogRepository->findBlogsByName($zoek);
-//        }
-//        return $this->render('blog/results.html.twig', [
-//            'form' => $form->createView(),
-//            'blogs' => $blog,
-//        ]);
-//    }
-//    /**
-//     * @Route("/{_locale}/admin/base", name="base")
-//     * @IsGranted("ROLE_USER")
-//     */
-//    public function adminbase() {
-//        $blog = $this->getDoctrine()->getRepository(Blog::class)->findBy(
-//            array(),
-//            array('id' => 'ASC'),
-//            0,
-//            0);
-//
-//
-//        $form = $this->createFormBuilder()
-//            ->setAction($this->generateUrl('handleSearch'))
-//            ->add('Zoek', TextType::class, ['label' => false])
-//            ->add('submit', SubmitType::class, ['label' => 'Ga'])
-//            ->getForm()
-//        ;
-//        return $this->render('admin/adminbase.html.twig', [
-//            'form' => $form->createView(),
-//            'blogs' => $blog
-//            ]);
-//    }
 
     /**
      * @Route("/{_locale}/admin/aanmeldingen", name="aanmeldingen")
@@ -273,22 +226,20 @@ class BackendController extends AbstractController
             'id' => $id,
         ]);
 
-        $form = $this->createForm(ReplyType::class, $reply);
+
+        $form = $this->createForm(ReplyType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $mijnform= $form->getData();
+            $form = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($reply);
-            $em->flush();
-
-            $message = (new \Swift_Message($mijnform['Onderwerp']))
-                ->setFrom($mijnform['Afzender'])
-                ->setTo($mijnform['Geadresseerde'])
-                ->setBody($mijnform['bericht'], 'text/plain');
-                $mailer->send($message);
+            $message = (new \Swift_Message('Bericht van Onetoshop'))
+                ->setFrom('dummyonetoshop@gmail.com')
+                ->setSubject($form['Onderwerp'])
+                ->setTo($form['Geadresseerde'])
+                ->setBody($form['Bericht'], 'text/html');
+            $mailer->send($message);
 
         return $this->redirectToRoute('inbox', [
             'id' => $reply->getId(),

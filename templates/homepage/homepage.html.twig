@@ -113,11 +113,12 @@
                         <h2>
                             {{ message }}</h2>
                     {% endfor %}
-           
+
 
                     {{ form_start(form2) }}
                        {{ form_row(form2.email) }}
                        <input type="submit" class="btn btn-white btn-outline-white rounded-0" value="Aanmelden">
+                    {{ dump(form2) }}
                     {{ form_end(form2) }}
 
                 </form>
@@ -488,8 +489,8 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="row align-items-center justify-content-center">
-                <form class="col-md-7 mb-5">
+            <div class="row justify-content-center">
+
                     <div class="p-5 bg-white">
                         {{ form_start(form) }}
                         <div class="row form-group">
@@ -504,11 +505,11 @@
                         {{ form_row(form.onderwerp) }}
                         {{ form_row(form.bericht) }}
                         <div class="text-center">
+
                             <input type="submit" style="width: 100%;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block" value="Verzend">
                         </div>
                         {{ form_end(form) }}
                     </div>
-                </form>
             </div>
         </div>
     </div>
