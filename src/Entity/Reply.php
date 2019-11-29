@@ -19,11 +19,6 @@ class Reply
     /**
      * @ORM\Column(type="text")
      */
-    private $Afzender;
-
-    /**
-     * @ORM\Column(type="text")
-     */
     private $Onderwerp;
 
     /**
@@ -41,17 +36,6 @@ class Reply
         return $this->id;
     }
 
-    public function getAfzender(): ?string
-    {
-        return $this->Afzender;
-    }
-
-    public function setAfzender(string $Afzender): self
-    {
-        $this->Afzender = $Afzender;
-
-        return $this;
-    }
 
     public function getOnderwerp(): ?string
     {

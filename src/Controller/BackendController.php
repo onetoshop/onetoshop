@@ -32,6 +32,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\GegevenType;
 use App\Entity\Nieuwsbrief;
+use App\Entity\Reply;
+use App\Form\ReplyType;
 
 
 class BackendController extends AbstractController
@@ -260,6 +262,40 @@ class BackendController extends AbstractController
 
         return $this->render('admin/mail/show_mail.html.twig', [
             'app1' => $app1
+        ]);
+    }
+    /**
+     * @Route("/{_locale}/admin//mail/reply/{id}", name="reply_mail")
+     * @IsGranted("ROLE_USER")
+     */
+    public function reply(Request $request, $id, \Swift_Mailer $mailer) {
+        $reply = $this->getDoctrine()->getRepository(Reply::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $form = $this->createForm(ReplyType::class, $reply);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $mijnform= $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($reply);
+            $em->flush();
+
+            $message = (new \Swift_Message($mijnform['Onderwerp']))
+                ->setFrom($mijnform['Afzender'])
+                ->setTo($mijnform['Geadresseerde'])
+                ->setBody($mijnform['bericht'], 'text/plain');
+                $mailer->send($message);
+
+        return $this->redirectToRoute('inbox', [
+            'id' => $reply->getId(),
+        ]);
+        }
+        return $this->render('admin/mail/reply.html.twig', [
+            'formreply' => $form->createView()
         ]);
     }
 

@@ -24,11 +24,22 @@
             margin-bottom: 16px;
             resize: vertical;
         }
+        p.parajesse2p{
+
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
 
 
         .container {
             border-radius: 5px;
-            background-color: #f2f2f2;
+            background-color: white;
             padding: 20px;
         }</style>
     <div id="content-wrapper">
@@ -60,7 +71,8 @@
                                 <p class="parajessep">{{app1.email}}</p>
 
                                 <h4 for="subject">Bericht</h4>
-                                <textarea id="lname"  style="height: 200px">{{app1.bericht}} </textarea>
+                                <p class="parajesse2p"  style="height: 200px">{{app1.bericht}} </p>
+                            <a href="{{ path('reply_mail', {'id' : app1.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Reageren</a>
                         </div>
 
 
