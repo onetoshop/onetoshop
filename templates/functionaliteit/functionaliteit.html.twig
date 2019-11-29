@@ -29,7 +29,7 @@
             <div class="col-12">
                 {% if functionaliteitinformatie %}
                     {% for functionaliteitinformatie in functionaliteitinformatie %}
-                        <p>{{ functionaliteitinformatie.body | raw }}</p>
+                        {{ functionaliteitinformatie.body | raw }}
                     {% endfor %}
                 {% else %}
                     <p>Er Zijn Geen Gegevens Gevonden!</p>
