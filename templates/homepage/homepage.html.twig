@@ -43,9 +43,7 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-6 text-center">
-                <h3 class="section-sub-title">Mogelijkheden</h3>
-                <h2 class="section-title mb-3">De meeste functionaliteit voor de laagste prijs</h2>
-                    <p class="font-weight-light">Een compleet geïntegreerde webshopservice, dat op alle fronten een oplossing biedt en geheel op maat gemaakt kan worden; waardoor u geld en tijd bespaart.</p>
+                    <h3 class="section-sub-title">Mogelijkheden</h3>
                 </div>
             </div>
             <div class="bg-white py-4 mb-4">
@@ -76,7 +74,25 @@
                         <span class="number">02.</span>
                         <h3 class="text-black mb-4 font-weight-bold">Apps</h3>
                         <p class="mb-4 font-weight-light">Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren,
-                            snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.</p>
+                            snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.
+                        </p>
+                        <p><a href="{{ path('apps') }}">Ontdek meer</a></p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white py-4 mb-4">
+                <div class="row mx-4 my-4 product-item-2 align-items-start">
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <img src="images/saas_laptop.png" alt="Image" class="img-fluid">
+                    </div>
+
+                    <div class="col-md-5 ml-auto product-title-wrap">
+                        <span class="number">03.</span>
+                        <h3 class="text-black mb-4 font-weight-bold">De meeste functionaliteit voor de laagste prijs</h3>
+                        <p class="mb-4 font-weight-light">Een compleet geïntegreerde webshopservice, dat op alle fronten een oplossing biedt en geheel op maat gemaakt kan worden; waardoor u geld en tijd bespaart.</p>
+                        <p><a href="{{ path('functionaliteit') }}">Ontdek meer</a></p>
 
 
                     </div>
@@ -488,7 +504,7 @@
                         {{ form_row(form.onderwerp) }}
                         {{ form_row(form.bericht) }}
                         <div class="text-center">
-                            <input type="submit" style="width: 100%;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block"" value="Verzend">
+                            <input type="submit" style="width: 100%;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block" value="Verzend">
                         </div>
                         {{ form_end(form) }}
                     </div>
