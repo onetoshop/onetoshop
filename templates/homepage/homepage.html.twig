@@ -472,8 +472,10 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="row justify-content-center">
-                        <div class="col-md-7 mb-5">
+            <div class="row align-items-center justify-content-center">
+                <form class="col-md-7 mb-5">
+{#            <div class="row justify-content-center">#}
+{#                        <form class="col-md-7 mb-5">#}
 
                             <div class="p-5 bg-white">
 
@@ -490,15 +492,14 @@
                                 {{ form_row(form.onderwerp) }}
                                 {{ form_row(form.bericht) }}
                                     <div class="text-center">
-                                        {{ form_row(form.Verzend) }}
+                                        <input type="submit" class="btn btn-black btn-outline-white rounded-0" value="Verzend">
                                 </div>
                                 {{ form_end(form) }}
                             </div>
-                        </div>
+                        </form>
 
                     </div>
                 </div>
-<div id="jesse">
 </div>
             </div>
 
