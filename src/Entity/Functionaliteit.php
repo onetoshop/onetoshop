@@ -26,6 +26,11 @@ class Functionaliteit
      */
     private $url;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $body;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Functionaliteit
     public function setUrl(string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getBody(): ?string
+    {
+        return $this->body;
+    }
+
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
 
         return $this;
     }

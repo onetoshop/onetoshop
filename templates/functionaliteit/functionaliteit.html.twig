@@ -27,65 +27,13 @@
         <div class="row align-items-center my-5">
             <!-- /.col-lg-8 -->
             <div class="col-12">
-                <h1>Daarom Onetoshop!</h1>
-                    <p class="font-weight-light">
-                        Het Onetoshop-platform is een volledige en veelzijdige webshopservice, die past binnen elk budget en alle functies en meer! bevat die je van een
-                        webshopplatform verwacht. Test om te zien wat werkt, zonder grote investeringen vooraf te hoeven doen, identificeer je sterke punten met realtime
-                        informatie en rapportage, optimaliseer je bedrijf met geïntegreerde beheertools en geautomatiseerde processen en bouw je bedrijf op met onze steun en
-                        kennis, van startup tot multinational.
-                    </p>
-
-                <h2>Integratie</h2>
-                     <p class="font-weight-light">
-                        Door jouw bedrijfsprocessen aan elkaar te koppelen haal je extra waarde uit je webshop. Het platform kan naadloos worden geïntegreerd met je huidige website, of een nieuwe,
-                        frisse uitstraling geven aan je huidige online omgeving. Daarnaast integreert Onetoshop alle gewenste betaal- en verzendkoppelingen met je site en automatiseert het platform
-                        het onderhoud van externe relaties. Zo houd jij tijd over om jouw bedrijf te ontwikkelen.
-                    </p>
-
-                <h2>Klantbeheer</h2>
-                    <p class="font-weight-light">
-                        Van sociale media tot e-mailcampagnes, ons platform stelt jou in staat om de betrokkenheid van klanten te vergroten. Door middel van volledige
-                        automatisering en realtime feedback leer je jouw klanten beter begrijpen en jouw producten en berichten hierop aan te passen. Ook kun je met behulp
-                        van onze klantsegmentatie optie B2B en B2C klanten scheiden en deze klantgroepen eigen kortingen, prijzen en opties toewijzen.
-                    </p>
-
-                <h2>Orderbeheer</h2>
-                    <p class="font-weight-light">
-                        Door middel van de klantsegmentatie optie van Onetoshop is het systeem geschikt voor zowel B2B als B2C verkoop (of beide). Zo wordt,
-                        na inlog, altijd het juiste BTW tarief zichtbaar. Daarnaast bespaar je tijd en geld met onze volledig geïntegreerde managementtool die jou in
-                        real-time een volledig overzicht van je orders geeft, van de eerste bestelling tot en met de levering.
-                    </p>
-
-                <h2>Voorraadbeheer</h2>
-                    <p class="font-weight-light">
-                        Zijn je producten nog op voorraad? Moet je bijbestellen? Met het Onetoshop platform heb je de volledige controle over je inventaris,
-                        zodat je nooit zonder voorraad komt te zitten. Daarnaast kun je een dropshipmentoptie toevoegen en heb je controle over de voorraad van je leveranciers.
-                    </p>
-
-                <h2>Productbeheer</h2>
-                    <p class="font-weight-light">
-                        Onetoshop geeft je inzicht in de prestaties van jouw site, door je real-time rapportages te verschaffen van elk proces: van webverkeer tot
-                        conversiepercentages, zodat je in staat bent om succes te simuleren en obstakels uit de weg te ruimen.
-                    </p>
-
-                <h2>Webshopbeheer</h2>
-                    <p class="font-weight-light">
-                        Met een webwinkel verkoop je naast producten ook een ‘merk’, namelijk jezelf, je eigen webshop. Om te zorgen dat jouw webshop opvalt tussen alle
-                        andere shops, kun je jouw webwinkel op vele manieren customizen en heb je opties om de voorpagina zo in te richten dat mensen jouw ‘brand’ herkennen.
-                        Daarnaast geef je jouw voorkeuren aan voor de afhandeling van orders, facturen, nieuwsbrieven, etc.
-                    </p>
-
-                <h2>Zoekmachine optimalisatie</h2>
-                    <p class="font-weight-light">
-                        De meeste nieuwe bezoekers komen op jouw website terecht via een zoekmachine. Een webshop of website komt echter niet zomaar in de zoekresultaten
-                        van een zoekmachine naar boven. De afgelopen jaren is er veel veranderd op het gebied van indexatie en verificatie. Ons platform is geoptimaliseerd
-                        voor SEO, zodat jouw site een hoge ranking krijgt in de zoekmachines.
-                    </p>
-                    <p class="font-weight-light">
-                        Vragen? Neem contact op om meer informatie te krijgen over hoe je jouw positie kunt verbeteren en nieuwe klanten kunt vinden die op zoek zijn naar
-                        jouw producten.
-                    </p>
-                <h2>Meer informatie:</h2>
+                {% if functionaliteitinformatie %}
+                    {% for functionaliteitinformatie in functionaliteitinformatie %}
+                        <p>{{ functionaliteitinformatie.body | raw }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
 
                     </div>
                     </div>
@@ -112,13 +60,7 @@
             <!-- /.col-md-4 -->
         </div>
         <!-- /.row -->
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-
-
-
 {% endblock body %}
 

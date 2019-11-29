@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Functionaliteit;
 use App\Entity\Functionaliteitcard;
 use App\Entity\Functionaliteitinfo;
+use App\Entity\Functionaliteitinformatie;
 use App\Form\FunctionaliteitcardType;
 use App\Form\FunctionaliteitinfoType;
 use App\Form\FunctionaliteitType;
@@ -20,9 +21,11 @@ class FunctionaliteitController extends AbstractController
     public function index()
     {
         $functionaliteit = $this->getDoctrine()->getRepository(Functionaliteit::class)->findAll();
+        $functionaliteitinformatie = $this->getDoctrine()->getRepository(Functionaliteitinformatie::class)->findAll();
 
         return $this->render('functionaliteit/functionaliteit.html.twig', [
-            'functionaliteit' => $functionaliteit
+            'functionaliteit' => $functionaliteit,
+            'functionaliteitinformatie' => $functionaliteitinformatie
         ]);
     }
 
