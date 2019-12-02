@@ -847,6 +847,16 @@ class BackendController extends AbstractController
 
             $project = $form->getData();
 
+            $file = $project->getImage();
+
+            $image = $file->getFile();
+
+            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+
+            $image->move($this->getParameter('project'), $fileName);
+
+            $file->setName($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();
