@@ -117,7 +117,7 @@ class FunctionaliteitController extends AbstractController
 
 
         }
-        return $this->render('admin/functionaliteitinfo.html.twig', array(
+        return $this->render('admin/functionaliteit/functionaliteitinfo.html.twig', array(
             'form' => $form->createView()
         ));
     }

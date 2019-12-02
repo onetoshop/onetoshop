@@ -125,6 +125,49 @@ class BackendController extends AbstractController
     }
 
     /**
+     * @Route("/{_locale}/admin/blog", name="blogoverzicht")
+     */
+    public function blogs()
+    {
+        $blogs = $this->getDoctrine()->getRepository(Blog::class)->findAll();
+
+        return $this->render('admin/blog/blogshow.html.twig', [
+            'blogs' => $blogs
+        ]);
+    }
+    /**
+     * @Route("/{_locale}/admin/blog/blogtonen/{slug}", name="show_blog1")
+     * @IsGranted("ROLE_USER")
+     */
+    public function show_blog1($slug)
+    {
+        $blog = $this->getDoctrine()->getRepository(Blog::class)->findBy([
+            'id' => $slug
+        ]);
+
+        return $this->render('admin/blog/blogtonen.html.twig', [
+            'blog' => $blog
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/blog/delete_blog/{id}", name="delete_blog")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_blog1(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $app = $em->getRepository(Blog::class)->find($id);
+
+        $em->remove($app);
+        $em->flush();
+
+        return $this->redirectToRoute('blogoverzicht');
+    }
+
+
+    /**
      * @Route("/{_locale}/admin/aanmeldingen", name="aanmeldingen")
      * @IsGranted("ROLE_USER")
      */
@@ -154,6 +197,39 @@ class BackendController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/{_locale}/admin/aanmeldingen/aanmeldingshow/{slug}", name="show_aanmeld")
+     * @IsGranted("ROLE_USER")
+     */
+    public function show_aanmeld($slug)
+    {
+        $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findBy([
+            'id' => $slug
+        ]);
+
+        return $this->render('admin/aanmeldingen/aanmeldingshow.html.twig', [
+            'aanmeldingen' => $aanmeld
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/aanmeldingen/delete_aanmelding/{id}", name="delete_aanmelding")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_aanmelding(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $app = $em->getRepository(Aanmeld::class)->find($id);
+
+        $em->remove($app);
+        $em->flush();
+
+        return $this->redirectToRoute('aanmeldingen');
+    }
+
+
 
     /**
      * @Route("/{_locale}/admin/informatie", name="informatie")

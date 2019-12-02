@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Blog;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,8 +19,8 @@ class BlogType extends AbstractType
         $builder
 
             ->add('title', TextType::class)
-            ->add('beschrijving', TextareaType::class)
-            ->add('body', TextareaType::class)
+            ->add('beschrijving', CKEditorType::class)
+            ->add('body', CKEditorType::class)
             ->add('slug', TextareaType::class)
             ->add('image', ImageType::class, array('label'=>'Upload  Image'))
             ->add('Verzend', SubmitType::class)

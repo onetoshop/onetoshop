@@ -1,0 +1,100 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <style>body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+
+        input1[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        p.parajessep{
+
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        p.parajesse2p{
+
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+
+        .container {
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+        }</style>
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Aanmelding</li>
+            </ol>
+
+            <div class="row">
+                {% if aanmeldingen %}
+                    {% for aanmeld in aanmeldingen %}
+
+                        <div class="container">
+                            <h4 for="fname">Voornaam</h4>
+                            <p class="parajessep">{{ aanmeld.voornaam }}</p>
+
+
+                            <h4 for="fname">Achternaam</h4>
+                            <p class="parajessep">{{ aanmeld.achternaam }}</p>
+
+
+                            <h4 for="fname">Telefoonnummer</h4>
+                            <p class="parajessep">{{ aanmeld.telefoon }}</p>
+
+                            <h4 for="fname">Emailadres</h4>
+                            <p class="parajessep">{{ aanmeld.email }}</p>
+
+                            <h4 for="fname">Contact opnemen?</h4>
+                            <p class="parajessep">{{ aanmeld.contact }}</p>
+
+
+                            <h4 for="subject">Doel van de webshop</h4>
+                            <p class="parajesse2p"  style="height: 200px">{{aanmeld.doel}} </p>
+
+                            <h4 for="subject">Voorkeuren</h4>
+                            <p class="parajesse2p"  style="height: 200px">{{aanmeld.voorkeur}} </p>
+                        </div>
+
+
+
+                    {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
+
+            </div>
+            <div>
+                <a href="{{ path('aanmeldingen') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

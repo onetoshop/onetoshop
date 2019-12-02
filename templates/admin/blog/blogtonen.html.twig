@@ -1,0 +1,53 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Mail</li>
+            </ol>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <!-- Post Content Column -->
+                    <div class="col-lg-10 offset-1"style="" >
+                {% if blog %}
+                    {% for blog in blog %}
+
+                        <h1 class="mt-4">{{ blog.title }}</h1>
+                        <hr>
+                        {% if blog.image is defined %}
+                            <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('big') }}" alt="">
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <p>{{ blog.beschrijving | raw }}</p>
+                    <br>
+
+                <p>{{blog.body | raw }} </p>
+                        </div>
+            </div>
+
+
+
+
+            {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
+
+            </div>
+            <div>
+                <a href="{{ path('blogoverzicht') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
