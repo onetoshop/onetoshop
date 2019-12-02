@@ -37,9 +37,9 @@ class AanmeldType extends AbstractType
             ->add('contact', TextType::class, [
                 'label' => 'Mogen wij contact opnemen?',
             ])
-            ->add('Verzend', SubmitType::class, [
-                'label' => 'Aanmelden',
-            ])
+//            ->add('Verzend', SubmitType::class, [
+//                'label' => 'Aanmelden',
+//            ])
         ;
     }
 
