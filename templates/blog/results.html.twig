@@ -36,8 +36,9 @@
                         {% endif %}
                         <div class="card-body">
                             <h2 class="card-title">{{ blogs.title }}</h2>
-                            <p class="card-text">{{ blogs.beschrijving }}</p>
-                            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>
+                            <p class="card-text">{{ blogs.beschrijving | raw }}</p>
+                            <a style="width: 100%;" href="{{ path('blogshow', {'slug' : blogs.slug}) }}"  class="btn btn-outline-primary">Lees Verder</a>
+{#                            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>#}
                         </div>
                     </div>
                 {% endfor %}

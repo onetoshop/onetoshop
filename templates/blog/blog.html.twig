@@ -33,7 +33,7 @@
                 {% for blog in blogs %}
                     <div class="my-4">
                     {% if blog.image is defined %}
-                        <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('medium') }}" alt="">
+                        <img style="padding: 1.25rem" class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('medium') }}" alt="">
                     {% endif %}
                     <div class="card-body">
                         <h2 class="card-title">{{ blog.title }}</h2>
