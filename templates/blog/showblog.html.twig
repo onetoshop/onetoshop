@@ -23,12 +23,11 @@
 {% endblock %}
 {% block body %}
     <!-- Page Content -->
+<div>
     <div class="container">
-
         <div class="row">
-
             <!-- Post Content Column -->
-            <div class="col-lg-10 offset-1"style="" >
+            <div class="col-lg-10 offset-1" style="" >
                 <br>
                 <br>
                 <br>
@@ -36,35 +35,23 @@
                 {% for blogs in blogs %}
                 <!-- Title -->
                 <h1 class="mt-4">{{ blogs.title }}</h1>
-
-
-                <hr>
-
-                <!-- Preview Image -->
+                <p class="lead">{{ blogs.beschrijving | raw }}</p>
+                    <hr>
                     {% if blogs.image is defined %}
                         <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blogs.image.name) | imagine_filter('big') }}" alt="">
                     {% endif %}
-                <hr>
-
-                <!-- Post Content -->
-                <p class="lead">{{ blogs.beschrijving | raw }}</p>
-
+                    <hr>
                 <p>{{ blogs.body | raw }}</p>
-
-
                 <hr>
-
-
-                        {% endfor %}
-                        {% else %}
-                            <p>Er zijn Geen Gegevens gevonden</p>
-                        {% endif %}
-                    </div>
-
-                </div>
-
-
+                    {% endfor %}
+                    {% else %}
+                        <p>Er zijn Geen Gegevens gevonden</p>
+                    {% endif %}
             </div>
+        </div>
     </div>
-
+</div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
