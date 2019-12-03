@@ -27,9 +27,19 @@
                                     <div style="text-align: center;">
                                         {{ form_start(form) }}
                                                 {{ form_row(form.image) }}
-{#                                                    <img src="{{ form_row(form.image) }}" />#}
+
+
+                                        {% for form in form %}
+{#                                                    <img src="{{ form_row(form.image.name) }}">#}
+{#                                                    <img src="{{ form.image.name }}">#}
+
+                                        {% endfor %}
+{#                                        {{ dump(form.image) }}#}
+{#                                                        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/project/' ~ form.image.name) }}" alt="">#}
 {#                                                    <img src="{{ form_row(form.image) }} b455c2ad910482dhH6L9Mbr5Yfscu70h.png" />#}
-                                                {{ dump(form.image) }}
+
+
+
                                                 {{ form_row(form.title) }}
                                                 {{ form_row(form.body) }}
                                                 {{ form_row(form.naam) }}
