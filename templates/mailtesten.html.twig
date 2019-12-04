@@ -1,10 +1,31 @@
 {% extends 'base1.html.twig' %}
 
 {% block body %}
-{#        <div id="div_chart"></div>#}
+<div class="col-container">
+    <div class="row">
+    {% if blogs %}
+        {% for blog in blogs %}
+            <div class=".row.row-eq-height > .col-md-4">
+                <div class="h-entry">
+{#                    {% if blog.image is defined %}#}
+{#                        <img src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('small') }}" />#}
+{#                        #}{#                            {% else %}#}
+{#                        #}{#                            niks gevonden#}
+{#                    {% endif %}#}
 
-{#        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>#}
-{#        <script type="text/javascript">#}
-{#                {{ gc_draw(piechart, 'div_chart') }}#}
-{#        </script>#}
+{#                    <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug }) }}" class="text-black">{{ blog.title }}</a></h2>#}
+                    <div class="col" style="background:orange">
+                    <p>{{ blog.beschrijving | raw }}</p>
+
+                    <p><a href="{{ path('blogshow', {'slug' : blog.slug}) }}">Lees...</a></p>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <p>Er zijn Geen Gegevens gevonden</p>
+    {% endif %}
+    </div>
+
 {% endblock %}

@@ -392,16 +392,20 @@
             <div class="row">
                 {% if blogs %}
                     {% for blog in blogs %}
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 ">
                     <div class="h-entry">
+                        <div class="border border-light" style="height: 350px;">
                         {% if blog.image is defined %}
                             <img src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('small') }}" />
 {#                            {% else %}#}
 {#                            niks gevonden#}
                         {% endif %}
-
+                            <div class="border border-light " style="height: 50px;">
                         <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug }) }}" class="text-black">{{ blog.title }}</a></h2>
+                            </div>
                         <p>{{ blog.beschrijving | raw }}</p>
+                    </div>
 
                         <p><a href="{{ path('blogshow', {'slug' : blog.slug}) }}">Lees...</a></p>
 
