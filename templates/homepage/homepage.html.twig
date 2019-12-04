@@ -1,7 +1,7 @@
 {% extends 'base1.html.twig' %}
 
 {% block navbar %}
-<div class="col-12 col-md-10 d-none d-xl-block">
+<div class="col-12 col-md-9 d-none d-xl-block">
     <nav class="site-navigation position-relative text-right" role="navigation">
         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
             <li><a href="#home-section" class="nav-link">Home</a></li>
@@ -184,7 +184,7 @@
                                     <!--//FEATURE LIST END-->
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="#aanmelden-section">START</a>
+                                        <a class="" href="{{ path('succes') }}">START</a>
                                     </div>
                                     <!--//BUTTON END-->
                                 </div>
@@ -233,7 +233,7 @@
                                     <!--//FEATURE LIST END-->
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="#aanmelden-section">START</a>
+                                        <a class="" href="{{ path('succes') }}">START</a>
                                     </div>
                                     <!--//BUTTON END-->
                                 </div>
@@ -283,7 +283,7 @@
 
                                     <!--BUTTON START-->
                                     <div class="generic_price_btn clearfix">
-                                        <a class="" href="#aanmelden-section">START</a>
+                                        <a class="" href="{{ path('succes') }}">START</a>
                                     </div>
                                     <!--//BUTTON END-->
                                 </div>
@@ -317,58 +317,57 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h3 class="section-sub-title">Klanten zeggen</h3>
-                    <h2 class="section-title mb-3">Recensies</h2>
+                    <h3 class="section-sub-title">Recensies</h3>
+                    <h2 class="section-title mb-3">Klanten zeggen</h2>
                 </div>
             </div>
         </div>
         <div class="container">
-        <div id="row">
-            {% if cards %}
-                {% for card in cards %}
-                    <div class="">
-                        <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 15px; padding-right: 15px">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="front">
-                                        <div class="cover">
-                                            {% if card.bgimage is defined %}
-                                                <img src="{{ asset('/image/card/' ~ card.bgimage.name) }}"/>
-                                            {% endif %}
-                                        </div>
-                                        <div class="user">
-                                            {% if card.frimage is defined %}
-                                                <a href="{{ path('project', {'naam' : card.slug}) }}" target="_blank"></a>
-                                                <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+            <div id="row mb-5">
+                {% if cards %}
+                    {% for card in cards %}
+                        <div class="">
+                            <div class="col-sm-6 col-xs-12 col-lg-4" style="padding-left: 15px; padding-right: 15px">
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+                                            <div class="cover">
+                                                {% if card.bgimage is defined %}
+                                                    <img src="{{ asset('/image/card/' ~ card.bgimage.name) }}"/>
                                                 {% endif %}
-                                        </div>
-                                        <div class="content">
-                                            <div class="main">
-                                                <h3 class="name">{{ card.title }}</h3>
-                                                <p class="profession">{{ card.customer }}</p>
-                                                <p class="text-center">{{ card.body }}</p>
                                             </div>
-                                        </div>
-                                    </div> <!-- end front panel -->
-                                    <div class="back">
-                                        <div class="header">
-                                            <h2 class="motto">{{ card.title }}</h2>
-                                        </div>
-                                        <div class="content">
-                                            <div class="main">
-                                                <p class="text-center">Ga naar direct naar de website!</p>
-                                                <p class="text-center"><a href="{{ path('project', {'naam' : card.slug}) }}">{{ card.title }}</a></p>
+                                            <div class="user">
+                                                {% if card.frimage is defined %}
+                                                    <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+                                                    {% endif %}
                                             </div>
-                                        </div>
-                                        <div class="footer">
-                                            <div class="social-links text-center">
-                                                {{ card.footer | raw }}
+                                            <div class="content">
+                                                <div class="main">
+                                                    <h3 class="name">{{ card.title }}</h3>
+                                                    <p class="profession">{{ card.customer }}</p>
+                                                    <p class="text-center">{{ card.body }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div> <!-- end back panel -->
-                                </div> <!-- end card -->
-                            </div> <!-- end card-container -->
-                            <div>
+                                        </div> <!-- end front panel -->
+                                        <div class="back">
+                                            <div class="header">
+                                                <h2 class="motto">{{ card.title }}</h2>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+                                                    <p class="text-center">Ga naar direct naar de website!</p>
+                                                    <p class="text-center"><a href="{{ path('project', {'naam' : card.slug}) }}">{{ card.title }}</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <div class="social-links text-center">
+                                                    {{ card.footer | raw }}
+                                                </div>
+                                            </div>
+                                        </div> <!-- end back panel -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end card-container -->
+                                <div>
                             </div>
                         </div> <!-- end col sm 3 -->
                     </div>

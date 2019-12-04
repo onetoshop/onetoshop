@@ -53,7 +53,7 @@ class AanmeldController extends AbstractController
         $response = new Response();
 
         $response->setStatusCode(200);
-        $response->headers->set('Refresh', '5; url=http://127.0.0.1:8000/');
+        $response->headers->set('Refresh', '5; url=https://onetoshop.com/nl/home');
         $response->send();
 
         return $this->render('mogelijkheden/aangemeld.html.twig');

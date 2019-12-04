@@ -866,7 +866,7 @@ class BackendController extends AbstractController
             ]);
         }
         return $this->render('admin/project/edit_project.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }

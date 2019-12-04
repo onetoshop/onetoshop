@@ -2,7 +2,7 @@
 {% block title %}<title>Uitgebreide keuze uit koppelingen met bestaande Apps | Onetoshop</title>{% endblock %}
 {% block navbar %}
 
-    <div class="col-12 col-md-10 d-none d-xl-block">
+    <div class="col-12 col-md-9 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -36,8 +36,10 @@
                 {% for apps in apps %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
+                        <div class="card-header">
+                            <h3 style="text-align: center;" class="card-title">{{ apps.naam | raw }}</h3>
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">{{ apps.naam | raw }}</h3>
                             <p class="card-text">{{ apps.body | raw }}</p>
                         </div>
                         <div class="card-footer">
