@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaTypeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AanmeldType extends AbstractType
 {
@@ -34,12 +35,15 @@ class AanmeldType extends AbstractType
             ->add('voorkeur', TextareaType::class, [
                 'label' => 'Wat voor webshops vind je mooi?',
             ])
-            ->add('contact', TextType::class, [
+            ->add('contact', ChoiceType::class, [
                 'label' => 'Mogen wij contact opnemen?',
+                'choices'  => [
+                    'Ja, Per telefoon' => 'Ja, Per telefoon',
+                    'Ja, Per email'  => 'Ja, Per email',
+                    'Nee, Liever niet' => 'Nee, Liever niet',
+                    ],
             ])
-//            ->add('Verzend', SubmitType::class, [
-//                'label' => 'Aanmelden',
-//            ])
+
         ;
     }
 
