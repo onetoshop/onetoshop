@@ -18,7 +18,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-address-card"></i>
-                    Card
+                    Project
                     <a href="{{ path('add_project') }}" type="button" class="btn btn-primary" style="float: right;">Add Project</a>
                 </div>
                 <div class="table-responsive">
@@ -45,7 +45,7 @@
                                         <a href="{{ path('edit_project', {'id' : project.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>
                                     </td>
                                     <td>
-                                        <a href="{{ path('delete_project', {'id' : project.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijderen</a>
+                                        <a class="btn btn-outline-danger" style="width: 100%;" href="{{ path('delete_project', {'id' : project.id}) }}">Verwijderen</a>
                                     </td>
                                 </tr>
                             {% endfor %}
