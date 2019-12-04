@@ -24,7 +24,7 @@
                         <tr>
                             <th>Titel</th>
                             <th>Lezen</th>
-                            <th>Verwijderen</th>
+                            <th>Bewerken</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,7 @@
                                     <a href="{{ path('show_blog1', {'slug' : blogs.id}) }}" class="btn btn-outline-dark" style="width: 100%;">Lees</a>
                                 </td>
                                 <td>
-                                    <a href="{{ path('delete_blog', {'id' : blogs.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijder</a>
+                                    <p>Bewerken</p>
                                 </td>
                             </tr>
                         {% endfor %}
