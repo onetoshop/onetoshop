@@ -1,5 +1,6 @@
 {% extends 'base1.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% form_theme form2 'bootstrap_4_layout.html.twig' %}
 {% block navbar %}
 <div class="col-12 col-md-9 d-none d-xl-block">
     <nav class="site-navigation position-relative text-right" role="navigation">
@@ -106,7 +107,7 @@
                             {{ message }}</h2>
                     {% endfor %}
                     {{ form_start(form2) }}
-                       {{ form_row(form2.email) }}
+                       {{ form_widget(form2) }}
                        <input type="submit" class="btn btn-white btn-outline-white rounded-0" value="Aanmelden">
                     {{ form_end(form2) }}
                 </form>

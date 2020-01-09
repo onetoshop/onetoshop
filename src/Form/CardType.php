@@ -17,14 +17,26 @@ class CardType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'row_attr' => ['class' => 'text-editor'],
+                'label' => false,
             ])
-
-            ->add('customer', TextareaType::class)
-            ->add('body', CKEditorType::class)
-            ->add('footer', Texttype::class)
-            ->add('slug', TextType::class)
-            ->add('bgimage', ImageType::class, ['label' => 'Upload Background Foto'])
-            ->add('frimage', ImageType::class, ['label' => 'Upload Frond Foto'])
+            ->add('customer', TextType::class,[
+                'label' => false
+            ])
+            ->add('body', CKEditorType::class, [
+                'label' => false
+            ])
+            ->add('footer', Texttype::class, [
+                'label' => false
+            ])
+            ->add('slug', TextType::class, [
+                'label' => false
+            ])
+            ->add('bgimage', ImageType::class, [
+                'label' => false
+            ])
+            ->add('frimage', ImageType::class, [
+                'label' => false
+            ])
         ;
     }
 
