@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Functionaliteitinfo;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,7 +17,7 @@ class FunctionaliteitinfoType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('body', TextareaType::class)
+            ->add('body', CKEditorType::class)
             ->add('url', TextareaType::class)
             ->add('Verzend', SubmitType::class)
         ;

@@ -14,10 +14,18 @@ class AppinfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('naam', TextType::class)
-            ->add('body', TextareaType::class)
-            ->add('url', TextType::class)
-            ->add('groep', TextType::class)
+            ->add('naam', TextType::class, [
+                'label' => false
+            ])
+            ->add('body', TextareaType::class, [
+                'label' => false
+            ])
+            ->add('url', TextType::class, [
+                'label' => false
+            ])
+            ->add('groep', TextType::class, [
+                'label' => false
+            ])
         ;
     }
 

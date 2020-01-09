@@ -15,10 +15,18 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', ImageType::class, array('label'=>'Upload Image'))
-            ->add('title', TextType::class)
-            ->add('body', CKEditorType::class)
-            ->add('naam', TextType::class)
+            ->add('image', ImageType::class, [
+                'label'=> false
+            ])
+            ->add('title', TextType::class, [
+                'label'=> false
+            ])
+            ->add('body', CKEditorType::class, [
+                'label'=> false
+            ])
+            ->add('naam', TextType::class, [
+                'label'=> false
+            ])
         ;
     }
 

@@ -24,7 +24,24 @@
                                 <div class="cmp-tb-hd">
                                     <div style="text-align: center;">
                                         {{ form_start(form) }}
-                                        {{ form_widget(form) }}
+                                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                                        <p><h3>Naam</h3></p>
+                                        <p class="font-weight-light">Naam van de koppeling die bij app is aangemaakt</p>
+                                        {{ form_row(form.naam) }}
+
+                                        <p><h3>Body</h3></p>
+                                        <p class="font-weight-light">Informatie op het kaartje</p>
+                                        {{ form_row(form.body) }}
+
+                                        <p><h3>Url</h3></p>
+                                        <p class="font-weight-light">Hier komt nog een keer de naam zonder hoofdletters</p>
+                                        {{ form_row(form.url) }}
+
+                                        <p><h3>groep</h3></p>
+                                        <p class="font-weight-light">Hier komt de groep bij welke koppeling dit kaartje hoord</p>
+                                        {{ form_row(form.groep) }}
+
+
                                         <hr>
                                         <button type="submit" style="width: 100%;" class="btn btn-primary">Add Appinfo!</button>
                                         {{ form_end(form) }}

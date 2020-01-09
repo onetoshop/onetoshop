@@ -31,7 +31,40 @@
                                 <div class="cmp-tb-hd">
                                     <div style="text-align: center;">
                                         {{ form_start(form) }}
-                                        {{ form_widget(form) }}
+                                        {#                                                    {{ form_widget(form) }}#}
+                                        <p><h3>Titel</h3></p>
+                                        <p class="font-weight-light">De naam van het bedrijf</p>
+                                        {% form_theme form.title 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.title) }}
+
+                                        <p><h3>Customer</h3></p>
+                                        <p class="font-weight-light">De baas van het bedrijf of degene die de review schrijft </p>
+                                        {% form_theme form.customer 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.customer) }}
+
+                                        <p><h3>Body</h3></p>
+                                        <p class="font-weight-light">Hier komt de rieview die geschreven is door het bedrijf</p>
+                                        {% form_theme form.body 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.body) }}
+
+                                        <p><h3>Footer</h3></p>
+                                        <p class="font-weight-light">Hier komen de social media links van het bedrijf</p>
+                                        {% form_theme form.footer 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.footer) }}
+
+                                        <p><h3>Slug</h3></p>
+                                        <p class="font-weight-light">Hier komt de link naar meer informatie over het bedrijf deze link blijft op onetoshop</p>
+                                        {% form_theme form.slug 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.slug) }}
+
+                                        <p><h3>Achtergrond Foto</h3></p>
+                                        <p class="font-weight-light">Hier komt een foto van de website van het bedrijf (formaat: breedte 600px bij hoogte 340px)</p>
+                                        {{ form_row(form.bgimage) }}
+
+                                        <p><h3>Logo</h3></p>
+                                        <p class="font-weight-light">Hier komt het logo van het bedrijf de foto moet rond zijn (formaat: breedte 160px bij hoogte 160px)</p>
+                                        {{ form_row(form.frimage) }}
+
                                         <hr>
                                         <button type="submit" style="width: 100%;" class="btn btn-primary">Edit Card!</button>
                                         {{ form_end(form) }}

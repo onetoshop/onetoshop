@@ -26,7 +26,29 @@
                                 <div class="cmp-tb-hd">
                                     <div style="text-align: center;">
                                         {{ form_start(form) }}
-                                        {{ form_widget(form) }}
+                                        <p><h3>Foto</h3></p>
+                                        <p class="font-weight-light">logo van het bedrijf waar het over gaat</p>
+                                        {{ form_row(form.image) }}
+
+                                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                                        <p><h3>Title</h3></p>
+                                        <p class="font-weight-light">Naam van het bedrijf bijvoorbeeld: PayPal</p>
+                                        {{ form_row(form.title) }}
+
+                                        <p><h3>Body</h3></p>
+                                        <p class="font-weight-light">Informatie over het bedrijf bijvoorbeeld: PayPal</p>
+                                        {{ form_row(form.body) }}
+
+                                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                                        <p><h3>Groep</h3></p>
+                                        <p class="font-weight-light">Hier komt de naam van de groep waar dit kaartje bij hoord bijvoorbeeld: betaalkoppelingen</p>
+                                        {{ form_row(form.groep) }}
+
+                                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                                        <p><h3>Naam</h3></p>
+                                        <p class="font-weight-light">Hier komt nog een keer de naam van het bedrijf alleen dan zonder hoofdletters bijvoorbeeld: paypal</p>
+                                        {{ form_row(form.naam) }}
+
                                         <hr>
                                         <button type="submit" style="width: 100%;" class="btn btn-primary">Add Apps!</button>
                                         {{ form_end(form) }}
