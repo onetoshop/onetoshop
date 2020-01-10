@@ -21,7 +21,12 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h3 class="card-title">{{ appinfo.naam | raw }}</h3>
-                                    <p class="card-text">{{ appinfo.body | raw }}</p>
+                                    <p class="card-text">
+                                        {% for i in [1,][0:144] %}
+                                            {{ appinfo.body [0:144] | raw }}...
+                                        {% endfor %}
+
+                                    </p>
                                 </div>
                                 <div class="card-footer">
                                     <a href="#" class="btn btn-primary btn-sm">Lees Verder</a>

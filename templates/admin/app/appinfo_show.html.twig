@@ -19,7 +19,7 @@
                 <div class="card-header">
                     <i class="fas fa-address-card"></i>
                     Card
-                    <a href="{{ path('add_appinfo') }}" type="button" class="btn btn-primary" style="float: right;">Add Apprinfo</a>
+                    <p style="float: right;">Voeg een extra kaartje toe bij apps</p>
                 </div>
                 <div class="table-responsive">
                     {% if appinfo %}
@@ -29,7 +29,7 @@
                                 <th>Id</th>
                                 <th>Naam</th>
                                 <th>Show</th>
-                                <th>Edit</th>
+{#                                <th>Edit</th>#}
                             </tr>
                             </thead>
                             <tbody>
@@ -40,9 +40,9 @@
                                     <td>
                                         <a href="{{ path('show_appinfo', {'slug' : appinfo.naam}) }}" class="btn btn-outline-dark" style="width: 100%;">Tonen</a>
                                     </td>
-                                    <td>
-                                        <a href="{{ path('edit_appinfo', {'id' : appinfo.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>
-                                    </td>
+{#                                    <td>#}
+{#                                        <a href="{{ path('edit_appinfo', {'id' : appinfo.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>#}
+{#                                    </td>#}
                                 </tr>
                             {% endfor %}
                             </tbody>
