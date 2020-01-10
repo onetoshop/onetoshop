@@ -24,15 +24,15 @@
                         <div class="basic-tb-hd">
                             <div class="cmp-tb-hd">
                                 <div class="cmp-tb-hd">
-                                    <div style="text-align: center;">
+                                    <div>
                                         {{ form_start(form) }}
                                         {% form_theme form 'bootstrap_4_layout.html.twig' %}
                                         <p><h3>Naam</h3></p>
-                                        <p class="font-weight-light">Naam van de koppeling</p>
+                                        <p class="font-weight-light">Naam van een groep die je wilt aanmaken</p>
                                         {{ form_row(form.naam) }}
 
                                         <p><h3>Body</h3></p>
-                                        <p class="font-weight-light">Hier komt de informatie van de koppeling te staan</p>
+                                        <p class="font-weight-light">Hier komt korte informatie te staan over de groep die je wil aanmaken</p>
                                         {{ form_row(form.body) }}
 
                                         <p><h3>Url</h3></p>

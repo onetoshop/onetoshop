@@ -24,23 +24,23 @@
                         <div class="basic-tb-hd">
                             <div class="cmp-tb-hd">
                                 <div class="cmp-tb-hd">
-                                    <div style="text-align: center;">
+                                    <div>
                                         {{ form_start(form) }}
                                         {% form_theme form 'bootstrap_4_layout.html.twig' %}
                                         <p><h3>Naam</h3></p>
-                                        <p class="font-weight-light">Naam van de koppeling die bij app is aangemaakt</p>
+                                        <p class="font-weight-light">Naam van een bedrijf wat je op een kaartje in een groep wil verwerken</p>
                                         {{ form_row(form.naam) }}
 
                                         <p><h3>Body</h3></p>
-                                        <p class="font-weight-light">Informatie op het kaartje</p>
+                                        <p class="font-weight-light">Korte informatie over het bedrijf wat je wil verwerken op het kaartje</p>
                                         {{ form_row(form.body) }}
 
                                         <p><h3>Url</h3></p>
-                                        <p class="font-weight-light">Hier komt nog een keer de naam zonder hoofdletters</p>
+                                        <p class="font-weight-light">Hier komt nogmaals de bedrijfsnaam hie je hier bij naam heb opgegeven alleen dan zonder hoofdletters</p>
                                         {{ form_row(form.url) }}
 
                                         <p><h3>groep</h3></p>
-                                        <p class="font-weight-light">Hier komt de groep bij welke koppeling dit kaartje hoord</p>
+                                        <p class="font-weight-light">Hier komt de naam van de groep te staan die je bij app hebt aangemaakt en waar dit bedrijf bij hoord</p>
                                         {{ form_row(form.groep) }}
                                         <hr>
                                         <button type="submit" style="width: 100%;" class="btn btn-primary">Edit Appinfo!</button>
