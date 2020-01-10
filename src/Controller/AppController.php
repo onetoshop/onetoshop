@@ -31,8 +31,8 @@ class AppController extends AbstractController
     }
 
     /**
- * @Route("/{_locale}/apps/{slug}", name="appinfo")
- */
+     * @Route("/{_locale}/apps/{slug}", name="appinfo")
+     */
     public function appinfo($slug){
         $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findBy([
             'groep' => $slug

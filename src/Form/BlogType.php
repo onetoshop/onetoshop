@@ -18,13 +18,22 @@ class BlogType extends AbstractType
     {
         $builder
 
-            ->add('title', TextType::class)
-            ->add('beschrijving', CKEditorType::class)
-            ->add('body', CKEditorType::class)
-            ->add('slug', TextareaType::class)
-            ->add('image', ImageType::class, array('label'=>'Upload  Image'))
-            ->add('Verzend', SubmitType::class)
-        ;
+            ->add('title', TextType::class, [
+                'label' => false
+            ])
+            ->add('beschrijving', CKEditorType::class, [
+                'label' => false
+            ])
+            ->add('body', CKEditorType::class, [
+                'label' => false
+            ])
+            ->add('slug', TextType::class, [
+                'label' => false
+            ])
+            ->add('image', ImageType::class, [
+                'label' => false
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

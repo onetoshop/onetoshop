@@ -13,15 +13,57 @@
             <li class="breadcrumb-item">
                 <a href="{{ path('admin') }}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Blog</li>
+            <li class="breadcrumb-item active">Blogs</li>
+            <li class="breadcrumb-item active">Add Blog</li>
         </ol>
+        <!-- Page Content -->
+        <h1>Add Blog</h1>
+        <!-- DataTables Example -->
+        <div class="form-element-area">
+            <div class="container">
+                <div id="row">
+                    <div class="col-xs-12">
+                        <div class="form-element-list">
+                            <div class="basic-tb-hd">
+                                <div class="cmp-tb-hd">
+                                    <div class="cmp-tb-hd">
+                                        <div>
+                                            {{ form_start(form) }}
+                                            <p><h3>Titel</h3></p>
+                                            <p class="font-weight-light">Hier komt de titel van de blog</p>
+                                            {% form_theme form.title 'bootstrap_4_layout.html.twig' %}
+                                            {{ form_row(form.title) }}
 
-        <h1>Blog aanmaken</h1>
-        <hr>
+                                            <p><h3>Beschrijving</h3></p>
+                                            <p class="font-weight-light">Hier komt een kleine inlijding van de blog</p>
+                                            {% form_theme form.beschrijving 'bootstrap_4_layout.html.twig' %}
+                                            {{ form_row(form.beschrijving) }}
 
-        {{ form_start(form) }}
-        {{ form_end(form) }}
+                                            <p><h3>Body</h3></p>
+                                            <p class="font-weight-light">Hier komt de volledige informatie over de blog</p>
+                                            {% form_theme form.body 'bootstrap_4_layout.html.twig' %}
+                                            {{ form_row(form.body) }}
 
+                                            <p><h3>Slug</h3></p>
+                                            <p class="font-weight-light">Voer hier nog een keer de titel in zonder hoofdletters en spaties worden streepjes</p>
+                                            {% form_theme form.slug 'bootstrap_4_layout.html.twig' %}
+                                            {{ form_row(form.slug) }}
+
+                                            <p><h3>Foto</h3></p>
+                                            {{ form_row(form.image) }}
+
+                                            <hr>
+                                            <button type="submit" style="width: 100%;" class="btn btn-primary">Add Blog!</button>
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
