@@ -20,26 +20,7 @@ class Apps
      * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
      */
     private $image;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $body;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $groep;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $naam;
+    
 
     public function getId(): ?int
     {
@@ -56,51 +37,4 @@ class Apps
         $this->image = $image;
     }
 
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getBody(): ?string
-    {
-        return $this->body;
-    }
-
-    public function setBody(string $body): self
-    {
-        $this->body = $body;
-
-        return $this;
-    }
-
-    public function getGroep(): ?string
-    {
-        return $this->groep;
-    }
-
-    public function setGroep(string $groep): self
-    {
-        $this->groep = $groep;
-
-        return $this;
-    }
-
-    public function getNaam(): ?string
-    {
-        return $this->naam;
-    }
-
-    public function setNaam(string $naam): self
-    {
-        $this->naam = $naam;
-
-        return $this;
-    }
 }
