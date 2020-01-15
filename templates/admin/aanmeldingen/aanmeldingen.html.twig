@@ -1,73 +1,70 @@
 {% extends 'admin/adminbase.html.twig' %}
 
 
+
 {% block body %}
 
     <div id="content-wrapper">
 
     <div class="container-fluid">
 
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{{ path('admin') }}">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">Aanmeldingen</li>
-    </ol>
-
-    <h1>Aanmeldingen</h1>
-    <hr>
-    <!-- DataTables Example -->
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ path('admin') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Blogs</li>
+        </ol>
     <div class="card mb-3">
-    <div class="card-header">
-        <i class="fas fa-table"></i>
-        Aanmeldingen</div>
-    <div class="card-body">
-        <div class="table-responsive">
-            {% if aanmeldingen %}
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>Voornaam</th>
-                        <th>Achternaam</th>
-                        <th>Telefoonnumer</th>
-                        <th>Email</th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <th>Voornaam</th>
-                        <th>Achternaam</th>
-                        <th>Telefoonnumer</th>
-                        <th>Email</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    {% for aanmeld in aanmeldingen %}
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Laatste aanmeldingen</div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                {% if aanmeld %}
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                         <tr>
-                            <td>{{ aanmeld.voornaam }}</td>
-                            <td>{{ aanmeld.achternaam }}</td>
-                            <td>{{ aanmeld.telefoon }}</td>
-                            <td>{{ aanmeld.email }}</td>
-                            <td>
-                                <a href="{{ path('show_aanmeld', {'slug' : aanmeld.id}) }}" class="btn btn-outline-dark" style="width: 100%;">Lees</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('delete_aanmelding', {'id' : aanmeld.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijder</a>
-                            </td>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>Telefoonnumer</th>
+                            <th>Email</th>
+                            <th>Lezen</th>
+                            <th>Verwijderen</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>Niks gevonden om weer te geven.</p>
-            {% endif %}
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>Telefoonnumer</th>
+                            <th>Email</th>
+                            <th>Lezen</th>
+                            <th>Verwijderen</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for aanmeld in aanmeld %}
+                            <tr>
+                                <td>{{ aanmeld.voornaam }}</td>
+                                <td>{{ aanmeld.achternaam }}</td>
+                                <td>{{ aanmeld.telefoon }}</td>
+                                <td>{{ aanmeld.email }}</td>
+                                <td>
+                                    <a href="{{ path('show_aanmeld', {'slug' : aanmeld.id}) }}" class="btn btn-outline-dark" style="width: 100%;">Lees</a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('delete_aanmelding', {'id' : aanmeld.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijder</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>Niks gevonden om weer te geven.</p>
+                {% endif %}
+            </div>
         </div>
-
     </div>
-    </div>
-    </div>
-    </div>
-
-
 {% endblock %}

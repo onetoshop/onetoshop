@@ -6,6 +6,7 @@ namespace App\Form;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,10 +19,12 @@ class ReplyType extends AbstractType
         $builder
             ->add('Onderwerp')
             ->add('Bericht', CKEditorType::class)
-            ->add('Geadresseerde', EmailType::class)
+            ->add('Geadresseerde', HiddenType::class)
             ->add('Verzenden', SubmitType::class)
+
         ;
     }
+
 
 
 

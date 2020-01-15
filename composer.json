@@ -81,5 +81,6 @@
             "allow-contrib": false,
             "require": "4.3.*"
         }
-    }
+    },
+
 }

@@ -192,7 +192,7 @@ class BackendController extends AbstractController
         $aanmeld = $this->getDoctrine()->getRepository(Aanmeld::class)->findAll();
 
         return $this->render('admin/aanmeldingen/aanmeldingen.html.twig', [
-            'aanmeldingen' => $aanmeld,
+            'aanmeld' => $aanmeld,
             'form' => $form->createView()
         ]);
 
@@ -297,14 +297,16 @@ class BackendController extends AbstractController
      * @Route("/{_locale}/admin//mail/reply/{id}", name="reply_mail")
      * @IsGranted("ROLE_USER")
      */
-    public function reply(Request $request, $id, \Swift_Mailer $mailer) {
-        $reply = $this->getDoctrine()->getRepository(Reply::class)->findOneBy([
+    public function reply(Request $request, $id,  \Swift_Mailer $mailer) {
+        $reply = $this->getDoctrine()->getRepository(Contact::class)->findOneBy([
             'id' => $id,
         ]);
 
+        $mail = $reply->getEmail();
 
         $form = $this->createForm(ReplyType::class);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -313,7 +315,7 @@ class BackendController extends AbstractController
             $message = (new \Swift_Message('Bericht van Onetoshop'))
                 ->setFrom('dummyonetoshop@gmail.com')
                 ->setSubject($form['Onderwerp'])
-                ->setTo($form['Geadresseerde'])
+                ->setTo($mail)
                 ->setBody($form['Bericht'], 'text/html');
             $mailer->send($message);
 
