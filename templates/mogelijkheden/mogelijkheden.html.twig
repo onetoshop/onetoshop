@@ -6,39 +6,82 @@
 {#        {{ message }}#}
 {#        </div>#}
 {#    {% endfor %}#}
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/util.css">
+
+
     <div class="site-section">
         <div class="container">
+
+
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center">
                 <h3 class="section-sub-title">Aanmelden</h3>
                     <h2 class="section-title ">Klaar voor uw webshop?</h2>
                 </div>
             </div>
-
-            <div class="row justify-content-center">
-                <div class="col-md-7 mb-5">
-
-
-                    <div class="p-3 bg-white">
-
+            <div class="container-contact100">
+                <div class="wrap-contact100">
+                    <div class="contact100-form validate-form">
                         {{ form_start(form) }}
-                        <div class="row form-group">
-                            <div class="col-md-6 mb-3 mb-md-0">
-                        {{ form_row(form.voornaam) }}
-                            </div>
-                            <div class="col-md-6">
-                        {{ form_row(form.achternaam) }}
-                            </div>
+                        <div class="wrap-input100 validate-input" data-validate="Name is required">
+                            <span class="label-input100">Uw voornaam</span>
+                            {{ form_widget(form.voornaam, {'attr': {'class': 'input100'}}) }}
+                            <span class="focus-input100"></span>
                         </div>
-                            {{ form_row(form.telefoon) }}
-                            {{ form_row(form.email) }}
-                            {{ form_row(form.doel) }}
-                            {{ form_row(form.voorkeur) }}
-                            {{ form_row(form.contact) }}
+
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <span class="label-input100">Uw achternaam</span>
+                            {{ form_widget(form.achternaam, {'attr': {'class': 'input100'}}) }}
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <span class="label-input100">Uw telefoonnummer</span>
+                            {{ form_widget(form.telefoon, {'attr': {'class': 'input100'}}) }}
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <span class="label-input100">Uw email</span>
+                            {{ form_widget(form.email, {'attr': {'class': 'input100'}}) }}
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <span class="label-input100">Doel van de webshop</span>
+                            {{ form_widget(form.doel, {'attr': {'class': 'input100'}}) }}
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <span class="label-input100">Voorkeur</span>
+                            {{ form_widget(form.voorkeur, {'attr': {'class': 'input100'}}) }}
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 input100-select">
+                            <span class="label-input100">Mogen wij contact opnemen?</span>
+                            <div>
+                                {{ form_widget(form.contact, {'attr': {'class': 'selection-2'}}) }}
+                            </div>
+
+                        </div>
                         <div class="text-center">
-                            <input type="submit" style="width: 100%;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block" value="AANMELDEN">
+                            <input type="submit" style="width: 100%;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block" value="Aanmelden">
                         </div>
+
                         {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+
+                </div>
+                <!--Grid column-->
+
+
+        </section>
                     </div>
                 </div>
 

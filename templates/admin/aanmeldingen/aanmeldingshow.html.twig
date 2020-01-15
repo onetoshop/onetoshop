@@ -42,6 +42,7 @@
             background-color: white;
             padding: 20px;
         }</style>
+
     <div id="content-wrapper">
 
         <div class="container-fluid">
@@ -57,32 +58,70 @@
             <div class="row">
                 {% if aanmeldingen %}
                     {% for aanmeld in aanmeldingen %}
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Aanmelding</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Voornaam</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.voornaam}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Achternaam</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.achternaam}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Telefoonnummer</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.telefoon}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Email</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.email}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Doel van de webshop</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.doel}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Voorkeur</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.voorkeur}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Contact</label>
+                                <div class="col-8">
+                                    <input id="username" name="username"  value="{{aanmeld.contact}}" class="form-control here" required="required" readonly >
+                                </div>
+                            </div>
 
-                        <div class="container">
-                            <h4 for="fname">Voornaam</h4>
-                            <p class="parajessep">{{ aanmeld.voornaam }}</p>
+                        </form>
+                    </div>
+                </div>
 
-
-                            <h4 for="fname">Achternaam</h4>
-                            <p class="parajessep">{{ aanmeld.achternaam }}</p>
-
-
-                            <h4 for="fname">Telefoonnummer</h4>
-                            <p class="parajessep">{{ aanmeld.telefoon }}</p>
-
-                            <h4 for="fname">Emailadres</h4>
-                            <p class="parajessep">{{ aanmeld.email }}</p>
-
-                            <h4 for="fname">Contact opnemen?</h4>
-                            <p class="parajessep">{{ aanmeld.contact }}</p>
-
-
-                            <h4 for="subject">Doel van de webshop</h4>
-                            <p class="parajesse2p"  style="height: 200px">{{aanmeld.doel}} </p>
-
-                            <h4 for="subject">Voorkeuren</h4>
-                            <p class="parajesse2p"  style="height: 200px">{{aanmeld.voorkeur}} </p>
-                        </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
 
 
 
