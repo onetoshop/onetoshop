@@ -1,53 +1,61 @@
 {% extends 'admin/adminbase.html.twig' %}
 {% block body %}
-
     <div id="content-wrapper">
-
         <div class="container-fluid">
-
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ path('admin') }}">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Mail</li>
+                <li class="breadcrumb-item active">Blogs</li>
+                <li class="breadcrumb-item active">Show Blog</li>
             </ol>
-
             <div class="container">
-
                 <div class="row">
-
                     <!-- Post Content Column -->
-                    <div class="col-lg-10 offset-1"style="" >
+                    <div class="col-lg-10 offset-1"style="">
                 {% if blog %}
                     {% for blog in blog %}
-
                         <h1 class="mt-4">{{ blog.title }}</h1>
                         <hr>
                         {% if blog.image is defined %}
                             <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('big') }}" alt="">
                         {% endif %}
-                    </div>
-                    <hr>
-                    <p>{{ blog.beschrijving | raw }}</p>
-                    <br>
-
-                <p>{{blog.body | raw }} </p>
-                        </div>
-            </div>
-
-
-
-
-            {% endfor %}
+                        <hr>
+                        <p>{{ blog.beschrijving | raw }}</p>
+                        <br>
+                        <p>{{blog.body | raw }} </p>
+                    {% endfor %}
                 {% else %}
                     <p>Er Zijn Geen Gegevens Gevonden!</p>
-                {% endif %}
-
-            </div>
-            <div>
-                <a href="{{ path('blogoverzicht') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+            {% endif %}
+                        <div>
+                            <a href="{{ path('blogoverzicht') }}"><button type="button" class="btn btn-outline-warning" style="color: black;">Ga Terug</button></a>
+                            <a class="btn btn-outline-danger" href="" data-toggle="modal" data-target="#delete">Verwijderen</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    {% for blog in blog %}
+        <!-- Logout Modal-->
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Zeker weten?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Weet u zeker dat u <b>{{ blog.title }}</b> wilt verwijderen?</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleer</button>
+                        <a class="btn btn-primary"  href="{{ path('delete_blog', {'id' : blog.id}) }}">Verwijderen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

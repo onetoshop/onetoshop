@@ -3,49 +3,53 @@
 
 
 {% block body %}
+    <div id="content-wrapper">
 
-<div id="content-wrapper">
+        <div class="container-fluid">
 
-    <div class="container-fluid">
-
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ path('admin') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Blogs</li>
-        </ol>
-
-        <div class="card mb-3">
-            <div class="table-responsive">
-                {% if blogs %}
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>Titel</th>
-                            <th>Lezen</th>
-                            <th>Verwijderen</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for blogs in blogs %}
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Blogs</li>
+            </ol>
+            <!-- Page Content -->
+            <h1>Blogs Overzicht</h1>
+            <!-- DataTables Example -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <a href="{{ path('add_blog') }}" type="button" class="btn btn-primary" style="float: right;">Add Blog</a>
+                </div>
+                <div class="table-responsive">
+                    {% if blogs %}
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                             <tr>
-                                <td colspan="1">{{ blogs.title}}</td>
-                                <td>
-                                    <a href="{{ path('show_blog1', {'slug' : blogs.id}) }}" class="btn btn-outline-dark" style="width: 100%;">Lees</a>
-                                </td>
-                                <td>
-                                    <a href="{{ path('delete_blog', {'id' : blogs.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijder</a>
-                                </td>
+                                <th>Titel</th>
+                                <th>Lezen</th>
+                                <th>Bewerken</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    <p>Niks gevonden om weer te geven.</p>
-                {% endif %}
-
+                            </thead>
+                            <tbody>
+                            {% for blogs in blogs %}
+                                <tr>
+                                    <td>{{ blogs.title }}</td>
+                                    <td>
+                                        <a href="{{ path('show_blog1', {'slug' : blogs.id}) }}" class="btn btn-outline-dark" style="width: 100%;">Tonen</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('edit_blog', {'id' : blogs.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Niks gevonden om weer te geven.</p>
+                    {% endif %}
+                </div>
             </div>
+        </div>
     </div>
-</div>
 {% endblock %}

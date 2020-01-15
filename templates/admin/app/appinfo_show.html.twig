@@ -19,7 +19,7 @@
                 <div class="card-header">
                     <i class="fas fa-address-card"></i>
                     Card
-                    <a href="{{ path('add_appinfo') }}" type="button" class="btn btn-primary" style="float: right;">Add Apprinfo</a>
+                    <p style="float: right;">Voeg een extra kaartje toe bij apps</p>
                 </div>
                 <div class="table-responsive">
                     {% if appinfo %}
@@ -29,8 +29,7 @@
                                 <th>Id</th>
                                 <th>Naam</th>
                                 <th>Show</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+{#                                <th>Edit</th>#}
                             </tr>
                             </thead>
                             <tbody>
@@ -39,14 +38,11 @@
                                     <td>{{ appinfo.id }}</td>
                                     <td>{{ appinfo.naam }}</td>
                                     <td>
-                                        <a href="{{ path('show_appinfo', {'slug' : appinfo.naam}) }}" class="btn btn-success" style="width: 100%;">Show</a>
+                                        <a href="{{ path('show_appinfo', {'slug' : appinfo.naam}) }}" class="btn btn-outline-dark" style="width: 100%;">Tonen</a>
                                     </td>
-                                    <td>
-                                        <a href="{{ path('edit_appinfo', {'id' : appinfo.id}) }}" class="btn btn-light" style="width: 100%;">Edit</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ path('delete_appinfo', {'id' : appinfo.id}) }}" class="btn btn-danger" style="width: 100%;">Delete</a>
-                                    </td>
+{#                                    <td>#}
+{#                                        <a href="{{ path('edit_appinfo', {'id' : appinfo.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>#}
+{#                                    </td>#}
                                 </tr>
                             {% endfor %}
                             </tbody>

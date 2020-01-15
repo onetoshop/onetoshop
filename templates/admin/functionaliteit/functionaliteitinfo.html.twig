@@ -1,5 +1,5 @@
 {% extends 'admin/adminbase.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block body %}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">

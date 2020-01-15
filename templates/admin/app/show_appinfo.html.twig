@@ -21,7 +21,12 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h3 class="card-title">{{ appinfo.naam | raw }}</h3>
-                                    <p class="card-text">{{ appinfo.body | raw }}</p>
+                                    <p class="card-text">
+                                        {% for i in [1,][0:144] %}
+                                            {{ appinfo.body [0:144] | raw }}...
+                                        {% endfor %}
+
+                                    </p>
                                 </div>
                                 <div class="card-footer">
                                     <a href="#" class="btn btn-primary btn-sm">Lees Verder</a>
@@ -34,8 +39,29 @@
                 {% endif %}
             </div>
             <div>
-                <a href="{{ path('appinfo_overzicht') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+                <a href="{{ path('appinfo_overzicht') }}"><button type="button" class="btn btn-outline-warning" style="color: black;">Ga Terug</button></a>
+                <a class="btn btn-outline-danger" href="" data-toggle="modal" data-target="#delete">Verwijderen</a>
             </div>
         </div>
     </div>
+    {% for appinfo in appinfo %}
+        <!-- Logout Modal-->
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Zeker weten?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Weet u zeker dat u <b>{{ appinfo.naam }}</b> wilt verwijderen?</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleer</button>
+                        <a class="btn btn-primary"  href="{{ path('delete_appinfo', {'id' : appinfo.id}) }}">Verwijderen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

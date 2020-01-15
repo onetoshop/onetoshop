@@ -34,7 +34,7 @@ class AppController extends AbstractController
      * @Route("/{_locale}/apps/{slug}", name="appinfo")
      */
     public function appinfo($slug){
-        $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findBy([
+        $appinfo = $this->getDoctrine()->getRepository(Apps::class)->findBy([
             'groep' => $slug
         ]);
 
@@ -43,8 +43,8 @@ class AppController extends AbstractController
         ]);
 
         return $this->render('app/apps.html.twig',[
-          'appinfo' => $appinfo,
-          'appinformatie' => $appinformatie
+            'appinfo' => $appinfo,
+            'appinformatie' => $appinformatie
         ]);
     }
 

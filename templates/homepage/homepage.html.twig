@@ -1,5 +1,6 @@
 {% extends 'base1.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% form_theme form2 'bootstrap_4_layout.html.twig' %}
 {% block navbar %}
 <div class="col-12 col-md-9 d-none d-xl-block">
     <nav class="site-navigation position-relative text-right" role="navigation">
@@ -106,7 +107,7 @@
                             {{ message }}</h2>
                     {% endfor %}
                     {{ form_start(form2) }}
-                       {{ form_row(form2.email) }}
+                       {{ form_widget(form2) }}
                        <input type="submit" class="btn btn-white btn-outline-white rounded-0" value="Aanmelden">
                     {{ form_end(form2) }}
                 </form>
@@ -355,7 +356,7 @@
                                             </div>
                                             <div class="content">
                                                 <div class="main">
-                                                    <p class="text-center">Ga naar direct naar de website!</p>
+                                                    <p class="text-center">Bekijk het project</p>
                                                     <p class="text-center"><a href="{{ path('project', {'naam' : card.slug}) }}">{{ card.title }}</a></p>
                                                 </div>
                                             </div>
@@ -394,13 +395,13 @@
 
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 ">
                     <div class="h-entry">
-                        <div class="border border-light" style="height: 400px;">
+                        <div class="border border-light" style="height: 350px;">
                         {% if blog.image is defined %}
                             <img src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('small') }}" />
 {#                            {% else %}#}
 {#                            niks gevonden#}
                         {% endif %}
-                            <div class="border border-light " style="height: 60px;">
+                            <div class="border border-light " style="height: 50px;">
                         <h2 class="font-size-regular"><a href="{{ path('blogshow', {'slug' : blog.slug }) }}" class="text-black">{{ blog.title }}</a></h2>
                             </div>
                         <p>{{ blog.beschrijving | raw }}</p>

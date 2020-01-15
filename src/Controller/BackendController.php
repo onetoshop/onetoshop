@@ -544,7 +544,7 @@ class BackendController extends AbstractController
      */
     public function appinfo_show()
     {
-        $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findAll();
+        $appinfo = $this->getDoctrine()->getRepository(Apps::class)->findAll();
         return $this->render('admin/app/appinfo_show.html.twig', [
             'appinfo' => $appinfo
         ]);
@@ -558,7 +558,7 @@ class BackendController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $appinfo = $em->getRepository(Appinfo::class)->find($id);
+        $appinfo = $em->getRepository(Apps::class)->find($id);
 
         $em->remove($appinfo);
         $em->flush();
@@ -572,64 +572,12 @@ class BackendController extends AbstractController
      */
     public function show_appinfo($slug)
     {
-        $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findBy([
-            'naam' => $slug
+        $appinfo = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+            'naam' => $slug,
         ]);
 
         return $this->render('admin/app/show_appinfo.html.twig', [
             'appinfo' => $appinfo
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinfo_overzicht/add_appinfo", name="add_appinfo")
-     * @IsGranted("ROLE_USER")
-     */
-    public function add_appinfo(EntityManagerInterface $manager, Request $request)
-    {
-        $form = $this->createForm(AppinfoType::Class);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $appinfo = $form->getData();
-
-            $manager->persist($appinfo);
-            $manager->flush();
-
-            return $this->redirectToRoute('appinformatie_overzicht');
-        }
-        return $this->render('admin/app/add_appinfo.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinfo_overzicht/edit_appinfo/{id}", name="edit_appinfo", methods={"GET","POST"})
-     */
-    public function edit_appinfo(Request $request, $id)
-    {
-        $appinfo = $this->getDoctrine()->getRepository(Appinfo::class)->findOneBy([
-            'id' => $id,
-        ]);
-
-        $form = $this->createForm(AppinfoType::class, $appinfo);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $appinfo = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($appinfo);
-            $em->flush();
-
-            return $this->redirectToRoute('appinfo_overzicht', [
-                'id' => $appinfo->getId(),
-            ]);
-        }
-        return $this->render('admin/app/edit_appinfo.html.twig', [
-            'form' => $form->createView()
         ]);
     }
 

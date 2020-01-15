@@ -30,7 +30,6 @@
                                 <th>title</th>
                                 <th>Show</th>
                                 <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -43,9 +42,6 @@
                                     </td>
                                     <td>
                                         <a href="{{ path('edit_appinformatie', {'id' : appinformatie.id}) }}" class="btn btn-outline-primary" style="width: 100%;">Bewerken</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ path('delete_appinformatie', {'id' : appinformatie.id}) }}" class="btn btn-outline-danger" style="width: 100%;">Verwijderen</a>
                                     </td>
                                 </tr>
                             {% endfor %}

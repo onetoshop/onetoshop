@@ -113,4 +113,33 @@ class BlogController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/app_overzicht/edit_blog/{id}", name="edit_blog", methods={"GET","POST"})
+     */
+    public function edit_card(Request $request, $id)
+    {
+        $app = $this->getDoctrine()->getRepository(Blog::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $form = $this->createForm(BlogType::class, $app);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $app = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($app);
+            $em->flush();
+
+            return $this->redirectToRoute('blogoverzicht', [
+                'id' => $app->getId(),
+            ]);
+        }
+        return $this->render('admin/blog/edit_blog.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
 }
