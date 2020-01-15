@@ -21,36 +21,46 @@
     <div class="container">
         <!-- Heading Row -->
         <div class="row align-items-center my-5">
-            <!-- /.col-lg-8 -->
-            <div class="col-12">
-                <h1>Welke Apps kies jij?</h1>
-                <p class="font-weight-light" style="margin-top: 10px;"> Apps kunnen aan je webshop gekoppeld worden om een aantal zaken te vereenvoudigen. Door middel van deze koppelingen kun je, bijvoorbeeld, het betaalproces en verzendproces automatiseren, snel en gemakkelijk e-mails en nieuwsbrieven versturen naar je klanten, je nieuws en producten delen op sociale media en feedback van klanten op je webshop weergeven.</p>
-            </div>
-            <!-- /.col-md-4 -->
+            {% for app in app %}
+                    <h3 CLASS="card-title">{{ app.naam | raw }}</h3>
+                {% if app.beschrijving is defined  %}
+                    {{ app.beschrijving | raw }}
+                {% else %}
+                    <p class="font-weight-light">Er is geen beschrijving gevonden.</p>
+                {% endif %}
+            {% endfor %}
+
         </div>
         <!-- /.row -->
         <!-- Content Row -->
 
         <div class="row">
-            {% if apps %}
+            {% if apps is defined %}
                 {% for apps in apps %}
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h3 style="text-align: center;" class="card-title">{{ apps.naam | raw }}</h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ apps.body | raw }}</p>
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h3 style="text-align: center;" class="card-title">{{ apps.naam | raw }}</h3>
+                            </div>
+                            <div class="card-body">
+                                {% if apps.beschrijving == true %}
+                                    {% for i in [1,][0:146] %}
+                                        {{ apps.beschrijving [0:146] | raw }}...
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
                         </div>
                         <div class="card-footer">
-                            <a style="width: 100%;" href="{{ path('appinfo', {'slug' : apps.url}) }}"  class="btn btn-outline-primary">Lees Verder</a>
+                            <a style="width: 100%;" href="{{ path('app', {'slug' : apps.slug} ) }}"  class="btn btn-outline-primary">Lees Verder</a>
                         </div>
                     </div>
-                </div>
+
                 {% endfor %}
             {% else %}
+                {{ dump(app) }}
                 <p>Er Zijn Geen Gegevens Gevonden!</p>
             {% endif %}
+        </div>
             <!-- /.col-md-4 -->
         </div>
         <!-- /.row -->

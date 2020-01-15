@@ -2,7 +2,7 @@
 
 {% block title %}
     {% for apps in apps %}
-        <title>{{ apps.title }} integratie Onetoshop</title>
+{#        <title>{{ apps.title }} integratie Onetoshop</title>#}
     {% endfor %}
 {% endblock %}
 
@@ -28,12 +28,12 @@
         {% for apps in apps %}
         <div class="row align-items-center my-5">
             <div class="col-lg-5">
-                <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/apps/' ~ apps.image.name) }}" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/apps/' ~ apps.image.name) }}" alt="">
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-7">
-                <h1 class="font-weight-light">{{ apps.title | raw }}</h1>
-                <p>{{ apps.body | raw }}</p>
+                <h1 class="font-weight-light">{{ apps.naam | raw }}</h1>
+                <p>{{ apps.beschrijving | raw }}</p>
             </div>
             <!-- /.col-md-4 -->
         </div>
