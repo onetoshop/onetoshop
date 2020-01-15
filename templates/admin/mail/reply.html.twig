@@ -16,22 +16,34 @@
             <a href="{{ path('admin') }}">Dashboard</a>
         </li>
     </ol>
-    <!-- Page Content -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Reageren</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
 
-    <!-- DataTables Example -->
-    <div class="form-element-area">
-        <div class="container">
-            <div id="row">
-                <div class="col-xs-12">
-                    <div class="form-element-list">
-                        <div class="basic-tb-hd">
-                            <div class="cmp-tb-hd">
-                                <div class="cmp-tb-hd">
-                                    <div style="text-align: center;">
                                         {{ form_start(formreply) }}
-                                        {{ form_widget(formreply) }}
-                                        <hr>
-                                        {{ form_end(formreply) }}
+                            <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Onderwerp</label>
+                                <div class="col-8">
+                                    {{ form_widget(formreply.Onderwerp, {'attr': {'class': 'form-control here'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Bericht</label>
+                                <div class="col-8">
+                            {{ form_widget(formreply.Bericht, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            {{ form_widget(formreply.Verzenden, {'attr': {'class': 'btn btn-outline-success'}}) }}
+                            <input type="button" value="Terug" class="btn btn-outline-primary"  onclick="history.back()" />
+                            {{ form_end(formreply) }}
                                     </div>
                                 </div>
                             </div>
