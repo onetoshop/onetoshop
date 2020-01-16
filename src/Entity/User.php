@@ -54,6 +54,13 @@ class User implements UserInterface
      */
     private $image;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $passwordRequestToken;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -172,6 +179,24 @@ class User implements UserInterface
     {
         $this->image = $image;
 
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getPasswordRequestToken(): ?string
+    {
+        return $this->passwordRequestToken;
+    }
+    /**
+     * @param null|string $passwordRequestToken
+     *
+     * @return User
+     */
+    public function setPasswordRequestToken(?string $passwordRequestToken): User
+    {
+        $this->passwordRequestToken = $passwordRequestToken;
         return $this;
     }
 

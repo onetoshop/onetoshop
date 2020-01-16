@@ -1,0 +1,12 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+    <div id="content-wrapper">
+
+    <div class="container-fluid">
+{{ form_start(form)}}
+        <button type="submit" class="btn btn-primary">Update</button>
+        {{ form_end(form) }}
+    </div>
+    </div>
+{% endblock %}
