@@ -25,6 +25,7 @@
         <link href='../../../../../../css/bootstrap.css' rel='stylesheet' />
         <link href="../../../../../../css/blog-post.css" rel="stylesheet">
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     {% endblock %}
 </head>
@@ -109,23 +110,10 @@
                 <a class="dropdown-item" href="{{ path('functionaliteitinfoadmin') }}">Functionaliteit info</a>
             </div>
         </li>
-{#        <li class="nav-item">#}
-{#            <a class="nav-link" href="{{ path('add_apps') }}">#}
-{#                <i class="fas fa-fw fa-apple-alt"></i>#}
-{#                <span>Apps</span></a>#}
-{#        </li>#}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('apps_admin') }}">
                 <i class="fas fa-fw fa-apple-alt"></i>
-                <span>Apps</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Opties:</h6>
-                <a class="dropdown-item" href="{{ path('app_overzicht') }}">App</a>
-                <a class="dropdown-item" href="{{ path('appinformatie_overzicht') }}">Appinformaite</a>
-                <a class="dropdown-item" href="{{ path('appinfo_overzicht') }}">Appinfo</a>
-                <a class="dropdown-item" href="{{ path('apps_overzicht') }}">Apps</a>
-            </div>
+                <span>Apps</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ path('project_overzicht') }}">
