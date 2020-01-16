@@ -38,10 +38,7 @@ class UserController extends AbstractController
             $em->persist($aanmeld);
             $em->flush();
 
-
             return  $this->redirectToRoute('user');
-
-
         }
         $user = $this->getDoctrine()->getRepository(User::class)->findAll();
 
@@ -55,12 +52,45 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/usersettings", name="usersettings")
+     * @Route("/{_locale}/admin/usersettings{id}", name="usersettings")
      * @IsGranted("ROLE_USER")
      */
-    public function settings()
+    public function settings($id)
     {
-        return $this->render('admin/user/usersettings.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
+            'id' => $id,
+        ]);
+        return $this->render('admin/user/usersettings.html.twig', [
+            'user' => $user
+        ]);
     }
+
+    /**
+     * @Route("/{_locale}/admin/useredit{id}", name="usereditten")
+     * @IsGranted("ROLE_USER")
+     */
+    public function useredit($id, User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $em = $this->getDoctrine()->getManager();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('usersettings', [
+                'id' => $user->getId(),
+            ]);
+        }
+        return $this->render('admin/user/useredit.html.twig', [
+            'form' => $form->createView()
+            ]);
+        }
+
 
 }

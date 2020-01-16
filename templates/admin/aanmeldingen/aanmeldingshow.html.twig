@@ -112,7 +112,9 @@
                                     <input id="username" name="username"  value="{{aanmeld.contact}}" class="form-control here" required="required" readonly >
                                 </div>
                             </div>
-
+                            <div>
+                                <a href="{{ path('aanmeldingen') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -131,9 +133,7 @@
                 {% endif %}
 
             </div>
-            <div>
-                <a href="{{ path('aanmeldingen') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
-            </div>
+
         </div>
     </div>
 {% endblock %}
