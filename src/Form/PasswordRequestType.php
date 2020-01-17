@@ -14,7 +14,7 @@ class PasswordRequestType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
-            ->add('send', SubmitType::class);
+            ->add('Versturen', SubmitType::class);
         ;
     }
 

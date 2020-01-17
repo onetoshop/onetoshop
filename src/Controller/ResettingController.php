@@ -25,7 +25,9 @@ class ResettingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $form->get('email')->getData();
             $token = bin2hex(random_bytes(32));
+            $bericht = 'Klik hieronder om je wachtwoord te veranderen';
             $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
+            $gebruiker = $user->Getusername();
             if ($user instanceof User) {
                 $user->setPasswordRequestToken($token);
                 $entityManager->flush();
@@ -34,9 +36,11 @@ class ResettingController extends AbstractController
                     ->setFrom('dummyonetoshop@gmail.com')
                     ->setSubject('Wachtwoord veranderen')
                     ->setTo($email)
-                    ->setBody($token);
+                    ->setBody('Hallo ' . $gebruiker  . '<br>' .
+                            $bericht  . '<br>' .
+                        'http://10.0.6.17:8000/reset_password/confirm/' . $token, 'text/html');
                 $mailer->send($message);
-                $this->addFlash('success', "An email has been sent to your address");
+                $this->addFlash('success', "Check uw inbox");
                 return $this->redirectToRoute('reset_password');
             }
         }

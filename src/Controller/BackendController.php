@@ -318,7 +318,7 @@ class BackendController extends AbstractController
                 ->setTo($mail)
                 ->setBody($form['Bericht'], 'text/html');
             $mailer->send($message);
-
+            $this->addFlash('notice', "Mail verstuurd");
         return $this->redirectToRoute('inbox', [
             'id' => $reply->getId(),
         ]);

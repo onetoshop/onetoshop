@@ -12,6 +12,11 @@
             <a href="{{ path('admin') }}">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Inbox</li>
+        {% for message in app.flashes('notice') %}
+    <li class="breadcrumb-item">
+                {{ message }} </li>
+
+        {% endfor %}
     </ol>
     <!-- Page Content -->
     <h1>Inbox</h1>
