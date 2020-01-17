@@ -14,9 +14,13 @@
         <li class="breadcrumb-item active">Nieuwsbrief</li>
     </ol>
     <!-- Page Content -->
-    <h1>Aanmeldingen</h1>
     <!-- DataTables Example -->
     <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-address-card" ></i>
+            Nieuwsbrief aanmeldingen
+            <a href="{{ path('nieuwsbriefaanmaken') }}" type="button" class="btn btn-primary" style="float: right;">Nieuwsbrief maken</a>
+        </div>
         <div class="table-responsive">
             {% if gegeven %}
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -24,8 +28,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Emailadres</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
