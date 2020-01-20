@@ -1,54 +1,54 @@
 {% extends 'admin/adminbase.html.twig' %}
 
-{% block body %}
-    {% for message in app.flashes('success') %}
 
-    {% endfor %}
+{% block body %}
+
     <div id="content-wrapper">
 
     <div class="container-fluid">
-
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{ path('admin') }}">Dashboard</a>
         </li>
+        <li class="breadcrumb-item active">
+            <a href="{{ path('nieuwsbrief') }}">Nieuwsbrief</a>
+        </li>
     </ol>
+    <!-- Page Content -->
+
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Reageren</h4>
+                            <h4>Nieuwsbrief maken</h4>
                             <hr>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
 
-                                        {{ form_start(formreply) }}
-                            <div class="form-group row">
-                                <label for="publicinfo" class="col-4 col-form-label">Onderwerp</label>
-                                <div class="col-8">
-                                    {{ form_widget(formreply.Onderwerp, {'attr': {'class': 'form-control here'}}) }}
-                                </div>
-                            </div>
+                            {{ form_start(form) }}
+
                             <div class="form-group row">
                                 <label for="publicinfo" class="col-4 col-form-label">Bericht</label>
                                 <div class="col-8">
-                            {{ form_widget(formreply.Bericht, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(form.bericht, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                            {{ form_widget(formreply.Verzenden, {'attr': {'class': 'btn btn-outline-success'}}) }}
+                            {{ form_widget(form.versturen, {'attr': {'class': 'btn btn-outline-success'}}) }}
                             <input type="button" value="Terug" class="btn btn-outline-primary"  onclick="history.back()" />
-                            {{ form_end(formreply) }}
-                                    </div>
-                                </div>
-                            </div>
+                            {{ form_end(form) }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
+    </div>
+    <!-- DataTables Example -->
+
 {% endblock %}

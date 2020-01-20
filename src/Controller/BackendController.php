@@ -309,7 +309,7 @@ class BackendController extends AbstractController
                 ->setTo($mail)
                 ->setBody($form['Bericht'], 'text/html');
             $mailer->send($message);
-
+            $this->addFlash('notice', "Mail verstuurd");
         return $this->redirectToRoute('inbox', [
             'id' => $reply->getId(),
         ]);
@@ -487,7 +487,40 @@ class BackendController extends AbstractController
         ]);
 
     }
-    
+    /**
+     * @Route("/{_locale}/admin/nieuwsbrief/aanmaken", name="nieuwsbriefaanmaken")
+     *  @IsGranted("ROLE_USER")
+     */
+    public function nieuwsbriefaanmaken(Request $request, EntityManagerInterface $entityManager, \Swift_Mailer $mailer)
+    {
+        $form = $this->createForm(NewsType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $bericht = $form->get('bericht')->getData();
+            $reply = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findBy(
+                array(),
+                array('id' => 'ASC'),
+                50,
+                0);
+
+            $mail = $reply->getEmail();
+
+            $message = (new \Swift_Message('Bericht van Onetoshop'))
+                ->setFrom('dummyonetoshop@gmail.com')
+                ->setSubject('Nieuwsbrief')
+                ->setTo($mail)
+                ->setBody($bericht, 'text/html');
+            $mailer->send($message);
+            $this->addFlash('success', "Nieuwsbrief gestuurd");
+            return $this->redirectToRoute('nieuwsbrief');
+
+        }
+        return $this->render('admin/nieuwsbrief/nieuws.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+    }
+
     /**
      * @Route("/{_locale}/admin/project_overzicht", name="project_overzicht")
      * @IsGranted("ROLE_USER")
