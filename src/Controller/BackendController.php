@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Aanmeld;
-use App\Entity\App;
-use App\Entity\Appinfo;
-use App\Entity\Appinformatie;
 use App\Entity\Apps;
 use App\Entity\Blog;
 use App\Entity\Card;
@@ -13,26 +10,20 @@ use App\Entity\Contact;
 use App\Entity\Gegeven;
 use App\Entity\Project;
 use App\Entity\User;
-use App\Form\AppinformatieType;
-use App\Form\AppinfoType;
 use App\Form\AppsType;
-use App\Form\AppType;
-use App\Form\BlogType;
 use App\Form\ProjectType;
-use App\Form\UserType;
-use App\Repository\BlogRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Tests\Compiler\D;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AanmeldType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\GegevenType;
 use App\Entity\Nieuwsbrief;
-use App\Entity\Reply;
 use App\Form\ReplyType;
 
 
@@ -344,351 +335,145 @@ class BackendController extends AbstractController
         return $this->redirectToRoute('inbox');
     }
 
-    /**
-     * @Route("/admin/app_overzicht", name="app_overzicht")
-     * @IsGranted("ROLE_USER")
-     */
-    public function app_show()
-    {
-        $app1 = $this->getDoctrine()->getRepository(App::class)->findAll();
-        return $this->render('admin/app/app_show.html.twig', [
-            'app1' => $app1
-        ]);
-    }
 
-    /**
-     * @Route("/admin/app_overzicht/delete_app/{id}", name="delete_app")
-     * @IsGranted("ROLE_USER")
-     */
-    public function delete_app(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $app = $em->getRepository(App::class)->find($id);
-
-        $em->remove($app);
-        $em->flush();
-
-        return $this->redirectToRoute('app_overzicht');
-    }
-
-    /**
-     * @Route("/admin/app_overzicht/show/{slug}", name="show_app")
-     * @IsGranted("ROLE_USER")
-     */
-    public function show_card($slug)
-    {
-        $app1 = $this->getDoctrine()->getRepository(App::class)->findBy([
-            'naam' => $slug
-        ]);
-
-        return $this->render('admin/app/show_app.html.twig', [
-            'app1' => $app1
-        ]);
-    }
-
-    /**
-     * @Route("/admin/app_overzict/add_app", name="add_app")
-     * @IsGranted("ROLE_USER")
-     */
-    public function add_app(EntityManagerInterface $manager, Request $request)
-    {
-        $form = $this->createForm(AppType::Class);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $app = $form->getData();
-
-            $manager->persist($app);
-            $manager->flush();
-
-            return $this->redirectToRoute('app_overzicht');
-        }
-        return $this->render('admin/app/add_app.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/admin/app_overzicht/edit_app/{id}", name="edit_app", methods={"GET","POST"})
-     */
-    public function edit_card(Request $request, $id)
-    {
-        $app = $this->getDoctrine()->getRepository(App::class)->findOneBy([
-            'id' => $id,
-        ]);
-
-        $form = $this->createForm(AppType::class, $app);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $app = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($app);
-            $em->flush();
-
-            return $this->redirectToRoute('app_overzicht', [
-                'id' => $app->getId(),
-            ]);
-        }
-        return $this->render('admin/app/edit_app.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    //admin
-    //appinformatie
-    /**
-     * @Route("/{_locale}/admin/appinformatie_overzicht", name="appinformatie_overzicht")
-     * @IsGranted("ROLE_USER")
-     */
-    public function appinformatie_show()
-    {
-        $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findAll();
-        return $this->render('admin/app/appinformatie_show.html.twig', [
-            'appinformatie' => $appinformatie
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinformatie_overzicht/delete_appinformatie/{id}", name="delete_appinformatie")
-     * @IsGranted("ROLE_USER")
-     */
-    public function delete_appinformatie(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $appinformatie = $em->getRepository(Appinformatie::class)->find($id);
-
-        $em->remove($appinformatie);
-        $em->flush();
-
-        return $this->redirectToRoute('appinformatie_overzicht');
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinformatie_overzicht/show/{slug}", name="show_appinformatie")
-     * @IsGranted("ROLE_USER")
-     */
-    public function show_appinformatie($slug)
-    {
-        $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findBy([
-            'title' => $slug
-        ]);
-
-        return $this->render('admin/app/show_appinformatie.html.twig', [
-            'appinformatie' => $appinformatie
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinformatie_overzicht/add_appinformatie", name="add_appinformatie")
-     * @IsGranted("ROLE_USER")
-     */
-    public function add_appinformatie(EntityManagerInterface $manager, Request $request)
-    {
-        $form = $this->createForm(AppinformatieType::Class);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $appinformatie = $form->getData();
-
-            $manager->persist($appinformatie);
-            $manager->flush();
-
-            return $this->redirectToRoute('appinformatie_overzicht');
-        }
-        return $this->render('admin/app/add_appinformatie.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinformatie_overzicht/edit_appinformatie/{id}", name="edit_appinformatie", methods={"GET","POST"})
-     */
-    public function edit_appinformatie(Request $request, $id)
-    {
-        $appinformatie = $this->getDoctrine()->getRepository(Appinformatie::class)->findOneBy([
-            'id' => $id,
-        ]);
-
-        $form = $this->createForm(AppinformatieType::class, $appinformatie);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $appinformatie = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($appinformatie);
-            $em->flush();
-
-            return $this->redirectToRoute('app_overzicht', [
-                'id' => $appinformatie->getId(),
-            ]);
-        }
-        return $this->render('admin/app/edit_appinformatie.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    //admin
-    //appinfo
-    /**
-     * @Route("/{_locale}/admin/appinfo_overzicht", name="appinfo_overzicht")
-     * @IsGranted("ROLE_USER")
-     */
-    public function appinfo_show()
-    {
-        $appinfo = $this->getDoctrine()->getRepository(Apps::class)->findAll();
-        return $this->render('admin/app/appinfo_show.html.twig', [
-            'appinfo' => $appinfo
-        ]);
-    }
-
-    /**
-     * @Route("/admin/appinfo_overzicht/delete_appinfo/{id}", name="delete_appinfo")
-     * @IsGranted("ROLE_USER")
-     */
-    public function delete_appinfo(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $appinfo = $em->getRepository(Apps::class)->find($id);
-
-        $em->remove($appinfo);
-        $em->flush();
-
-        return $this->redirectToRoute('appinfo_overzicht');
-    }
-
-    /**
-     * @Route("/{_locale}/admin/appinfo_overzicht/show/{slug}", name="show_appinfo")
-     * @IsGranted("ROLE_USER")
-     */
-    public function show_appinfo($slug)
-    {
-        $appinfo = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'naam' => $slug,
-        ]);
-
-        return $this->render('admin/app/show_appinfo.html.twig', [
-            'appinfo' => $appinfo
-        ]);
-    }
-
-    //admin
     //apps
     /**
-     * @Route("/{_locale}/admin/apps_overzicht", name="apps_overzicht")
+     * @Route("/{_locale}/admin/apps", name="apps_admin")
      * @IsGranted("ROLE_USER")
      */
-    public function apps_show()
-    {
-        $apps = $this->getDoctrine()->getRepository(Apps::class)->findAll();
-        return $this->render('admin/app/apps_show.html.twig', [
-            'apps' => $apps
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/apps_overzicht/delete_apps/{id}", name="delete_apps")
-     * @IsGranted("ROLE_USER")
-     */
-    public function delete_apps(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $apps = $em->getRepository(Apps::class)->find($id);
-
-        $em->remove($apps);
-        $em->flush();
-
-        return $this->redirectToRoute('apps_overzicht');
-    }
-
-    /**
-     * @Route("/{_locale}/admin/apps_overzicht/show/{slug}", name="show_apps")
-     * @IsGranted("ROLE_USER")
-     */
-    public function show_apps($slug)
+    public function apps_admin()
     {
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'title' => $slug
+            'apps' => NULL
         ]);
 
-        return $this->render('admin/app/show_apps.html.twig', [
+        return $this->render('admin/app/apps_admin.html.twig', [
             'apps' => $apps
         ]);
     }
 
+
+
+
     /**
-     * @Route("/{_locale}/admin/apps_overzicht/add_apps", name="add_apps")
+     * @Route("/{_locale}/admin/apps/{slug}", name="apps_slug_admin")
      * @IsGranted("ROLE_USER")
      */
-    public function add_apps(EntityManagerInterface $manager, Request $request)
+    public function apps_slug_admin($slug)
     {
-        $form = $this->createForm(AppsType::Class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $apps = $form->getData();
-
-            $file = $apps->getImage();
-
-            $image = $file->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-
-            $image->move($this->getParameter('apps'), $fileName);
-
-            $file->setName($fileName);
-
-            $manager->persist($apps);
-            $manager->flush();
-
-            return $this->redirectToRoute('apps_overzicht');
-        }
-        return $this->render('admin/app/add_apps.html.twig', [
-            'form' => $form->createView(),
+        $app = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+            'slug'  => $slug
         ]);
+
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
+            'apps'  => $app[0]->getId()
+        ]);
+
+        return $this->render('admin/app/apps_slug_admin.html.twig', [
+            'apps' => $apps
+        ]);
+
     }
 
     /**
-     * @Route("/{_locale}/admin/apps_overzicht/edit_apps/{id}", name="edit_apps", methods={"GET","POST"})
+     * @Route("/{_locale}/admin/apps_toevoegen", name="apps_toevoegen")
+     * @IsGranted("ROLE_USER")
      */
-    public function edit_apps(Request $request, $id)
+        public function apps_toevoegen(Request $request)
     {
-        $apps = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
-            'id' => $id,
-        ]);
 
-        $apps->setImage($apps->getImage());
+        $em = $this->getDoctrine()->getManager();
+        $apps = new Apps();
 
         $form = $this->createForm(AppsType::class, $apps);
+
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {
 
-            $apps = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
             $em->persist($apps);
             $em->flush();
 
-            return $this->redirectToRoute('apps_overzicht',[
-                'id' => $apps->getId(),
-            ]);
+            return $this->redirectToRoute('apps_admin');
+
         }
-        return $this->render('admin/app/edit_apps.html.twig', [
-            'form' => $form->createView()
+        return $this->render('admin/app/apps_admin_toevoegen.html.twig', [
+            'form' => $form->createView(),
         ]);
+
+
     }
+
+
+//    /**
+//     * @Route("/{_locale}/admin/apps_overzicht/add_apps", name="add_apps")
+//     * @IsGranted("ROLE_USER")
+//     */
+//    public function add_apps(EntityManagerInterface $manager, Request $request)
+//    {
+//        $form = $this->createForm(AppsType::Class);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            $apps = $form->getData();
+//
+//            $file = $apps->getImage();
+//
+//            $image = $file->getFile();
+//
+//            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+//
+//            $image->move($this->getParameter('apps'), $fileName);
+//
+//            $file->setName($fileName);
+//
+//            $manager->persist($apps);
+//            $manager->flush();
+//
+//            return $this->redirectToRoute('apps_overzicht');
+//        }
+//        return $this->render('admin/app/apps_slug_admin.html.twig', [
+//            'form' => $form->createView(),
+//        ]);
+//    }
+//
+//    /**
+//     * @Route("/{_locale}/admin/apps_overzicht/edit_apps/{id}", name="edit_apps", methods={"GET","POST"})
+//     */
+//    public function edit_apps(Request $request, $id)
+//    {
+//        $apps = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+//            'id' => $id,
+//        ]);
+//
+//        $apps->setImage($apps->getImage());
+//
+//        $form = $this->createForm(AppsType::class, $apps);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            $apps = $form->getData();
+//
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($apps);
+//            $em->flush();
+//
+//            return $this->redirectToRoute('apps_overzicht',[
+//                'id' => $apps->getId(),
+//            ]);
+//        }
+//        return $this->render('admin/app/apps_admin_toevoegen.html.twig', [
+//            'form' => $form->createView()
+//        ]);
+//    }
+    //end apps
+
+
+
+
+
     /**
      * @Route("/{_locale}/admin/nieuwsbrief", name="nieuwsbrief")
      *  @IsGranted("ROLE_USER")

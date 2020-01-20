@@ -1,0 +1,51 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+    <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+            <a href="{{ path('apps_admin') }}">Apps</a>
+        </li>
+        <li class="breadcrumb-item active">Koppeling Toevoegen</li>
+    </ol>
+    <!-- Page Content -->
+    <h1>Koppeling Toevoegen</h1>
+    <!-- DataTables Example -->
+    <div class="form-element-area">
+        <div class="container">
+            <div id="row">
+                <div class="col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd">
+                            <div class="cmp-tb-hd">
+                                <div class="cmp-tb-hd">
+                                    <div>
+                                        {{ form_start(form) }}
+                                            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                                                <p><h3>Naam</h3></p>
+                                                <p class="font-weight-light">Voer hier de naam in van  de nieuwe koppeling die je wil toevoegen denk hierbij bijvoorbeeld aan: betaalkkoppeling.</p>
+                                                {{ form_row(form.naam) }}
+
+                                                <p><h3>Beschrijving</h3></p>
+                                                <p class="font-weight-light">Voer hier de beschrijving die bij de koppeling hoord.</p>
+                                                {{ form_row(form.beschrijving) }}
+                                        <hr>
+                                        <button type="submit" style="width: 100%;" class="btn btn-primary">koppeling toevoegen</button>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

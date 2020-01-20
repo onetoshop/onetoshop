@@ -8,9 +8,14 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle;
+
 
 class Kernel extends BaseKernel
 {
+
+
+
     use MicroKernelTrait;
 
     private const CONFIG_EXTS = '.{php,xml,yaml,yml}';

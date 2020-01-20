@@ -52,7 +52,8 @@
                                     <p class="card-text">
                                         {% for i in [1,][0:239] %}
                                             {{ apps.beschrijving [0:239] | raw }}...
-                                        {% endfor %}</p>
+                                        {% endfor %}
+                                    </p>
                                 </div>
                                 <div class="card-footer">
                                     <a style="width: 100%;" href="{{ path('apps_slug', {'slug' : apps.slug} ) }}"  class="btn btn-outline-primary">Lees Verder</a>

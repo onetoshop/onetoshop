@@ -9,6 +9,7 @@
         "doctrine/annotations": "^1.8",
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "easycorp/easyadmin-bundle": "^2.3",
+        "fbeen/uniqueslugbundle": "^2.2",
         "friendsofsymfony/ckeditor-bundle": "^2.1",
         "liip/imagine-bundle": "^2.2",
         "nilportugues/sql-query-builder": "^1.7",
@@ -81,6 +82,6 @@
             "allow-contrib": false,
             "require": "4.3.*"
         }
-    },
+    }
 
 }

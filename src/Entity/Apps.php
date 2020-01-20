@@ -5,6 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Fbeen\UniqueSlugBundle\Annotation\Slug;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AppsRepository")
@@ -39,14 +44,17 @@ class Apps
     private $parent;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $naam;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @Slug("naam")
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
+
+
 
     public function __construct()
     {
@@ -140,11 +148,10 @@ class Apps
         return $this->slug;
     }
 
-    public function setSlug(?string $slug): self
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
-    
 }
