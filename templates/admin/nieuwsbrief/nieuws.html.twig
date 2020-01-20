@@ -32,6 +32,12 @@
                             {{ form_start(form) }}
 
                             <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Onderwerp</label>
+                                <div class="col-8">
+                                    {{ form_widget(form.onderwerp, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="publicinfo" class="col-4 col-form-label">Bericht</label>
                                 <div class="col-8">
                                     {{ form_widget(form.bericht, {'attr': {'class': 'form-control'}}) }}

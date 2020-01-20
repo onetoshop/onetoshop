@@ -272,7 +272,7 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin//mail/inbox/{slug}", name="show_mail")
+     * @Route("/{_locale}/admin/mail/inbox/{slug}", name="show_mail")
      * @IsGranted("ROLE_USER")
      */
     public function show_mail($slug)
@@ -286,7 +286,7 @@ class BackendController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{_locale}/admin//mail/reply/{id}", name="reply_mail")
+     * @Route("/{_locale}/admin/mail/reply/{id}", name="reply_mail")
      * @IsGranted("ROLE_USER")
      */
     public function reply(Request $request, $id,  \Swift_Mailer $mailer) {
@@ -552,7 +552,7 @@ class BackendController extends AbstractController
 
                 $message = (new \Swift_Message('Bericht van Onetoshop'))
                     ->setFrom('dummyonetoshop@gmail.com')
-                    ->setSubject('Nieuwsbrief')
+                    ->setSubject($form['onderwerp'])
                     ->setTo($mail)
                     ->setBody($bericht, 'text/html');
 

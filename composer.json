@@ -11,7 +11,7 @@
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "easycorp/easyadmin-bundle": "^2.3",
         "fbeen/uniqueslugbundle": "^2.2",
-        "friendsofsymfony/ckeditor-bundle": "^2.1",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "liip/imagine-bundle": "^2.2",
         "nilportugues/sql-query-builder": "^1.7",
         "sensio/framework-extra-bundle": "^5.5",
