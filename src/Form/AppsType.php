@@ -20,7 +20,7 @@ class AppsType extends AbstractType
 //                'label'=> false,
 //                'required'   => false,
 //            ])
-            ->add('beschrijving', TextType::class, [
+            ->add('beschrijving', CKEditorType::class, [
                 'label'=> false,
                 'required'   => false,
             ])

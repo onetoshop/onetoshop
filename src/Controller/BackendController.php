@@ -352,7 +352,22 @@ class BackendController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{_locale}/admin/apps/delete_apps/{id}", name="delete_apps")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_apps($id)
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $app = $em->getRepository(Apps::class)->find([$id]);
+
+        $em->remove($app);
+        $em->flush();
+
+
+        return $this->redirectToRoute('apps_admin');
+    }
 
 
     /**
@@ -402,6 +417,35 @@ class BackendController extends AbstractController
         ]);
 
 
+    }
+
+    /**
+     * @Route("/{_locale}/admin/apps/koppeling-bewerken/{id}", name="edit_apps", methods={"GET","POST"})
+     */
+    public function edit_apps(Request $request, $id)
+    {
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $form = $this->createForm(AppsType::class, $apps);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $apps = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($apps);
+            $em->flush();
+
+            return $this->redirectToRoute('apps_admin',[
+                'id' => $apps->getId(),
+            ]);
+        }
+        return $this->render('admin/app/edit_test.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
 
