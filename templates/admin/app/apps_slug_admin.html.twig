@@ -1,7 +1,6 @@
 {% extends 'admin/adminbase.html.twig' %}
 
 {% block body %}
-    {% if apps %}
     <div id="content-wrapper">
 {#       TODO: verander Koppeling in in een dynamics naam vanuit de database#}
 
@@ -20,14 +19,13 @@
             </ol>
             <!-- Page Content -->
         <h1>Koppeling</h1>
-
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
                     <a href="#" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan Koppeling Toe</a>
                 </div>
                 <div class="table-responsive">
-
+                    {% if apps %}
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
@@ -57,7 +55,7 @@
                             </tbody>
                         </table>
                     {% else %}
-                        <p>Niks gevonden om weer te geven.</p>
+                        <p>Er is geen informatie gevonden.</p>
                     {% endif %}
                 </div>
             </div>
