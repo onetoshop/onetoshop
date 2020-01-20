@@ -379,7 +379,7 @@ class BackendController extends AbstractController
      * @Route("/{_locale}/admin/apps_toevoegen", name="apps_toevoegen")
      * @IsGranted("ROLE_USER")
      */
-        public function apps_toevoegen(Request $request)
+    public function apps_toevoegen(Request $request)
     {
 
         $em = $this->getDoctrine()->getManager();
