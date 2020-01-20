@@ -713,11 +713,7 @@ class BackendController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $bericht = $form->get('bericht')->getData();
-            $reply = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findBy(
-                array(),
-                array('id' => 'ASC'),
-                50,
-                0);
+            $reply = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findAll();
 
             $mail = $reply->getEmail();
 
