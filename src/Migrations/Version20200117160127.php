@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200114084258 extends AbstractMigration
+final class Version20200117160127 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -23,12 +23,13 @@ final class Version20200114084258 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE aanmeld CHANGE voorkeur voorkeur VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE apps ADD slug VARCHAR(50) DEFAULT NULL, CHANGE image_id image_id INT DEFAULT NULL, CHANGE apps_id apps_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE apps CHANGE image_id image_id INT DEFAULT NULL, CHANGE apps_id apps_id INT DEFAULT NULL, CHANGE naam naam VARCHAR(255) DEFAULT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_101C7E5A989D9B62 ON apps (slug)');
         $this->addSql('ALTER TABLE blog CHANGE image_id image_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE card CHANGE bgimage_id bgimage_id INT DEFAULT NULL, CHANGE frimage_id frimage_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE categorie CHANGE naam naam VARCHAR(255) DEFAULT NULL, CHANGE categorie categorie VARCHAR(255) DEFAULT NULL');
         $this->addSql('ALTER TABLE project CHANGE image_id image_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE user CHANGE roles roles JSON NOT NULL');
+        $this->addSql('ALTER TABLE user CHANGE roles roles JSON NOT NULL, CHANGE password_request_token password_request_token VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -37,11 +38,12 @@ final class Version20200114084258 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE aanmeld CHANGE voorkeur voorkeur VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT \'NULL\' COLLATE `utf8mb4_unicode_ci`');
-        $this->addSql('ALTER TABLE apps DROP slug, CHANGE image_id image_id INT DEFAULT NULL, CHANGE apps_id apps_id INT DEFAULT NULL');
+        $this->addSql('DROP INDEX UNIQ_101C7E5A989D9B62 ON apps');
+        $this->addSql('ALTER TABLE apps CHANGE image_id image_id INT DEFAULT NULL, CHANGE apps_id apps_id INT DEFAULT NULL, CHANGE naam naam VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT \'NULL\' COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE blog CHANGE image_id image_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE card CHANGE bgimage_id bgimage_id INT DEFAULT NULL, CHANGE frimage_id frimage_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE categorie CHANGE naam naam VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT \'NULL\' COLLATE `utf8mb4_unicode_ci`, CHANGE categorie categorie VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT \'NULL\' COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE project CHANGE image_id image_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_bin`');
+        $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_bin`, CHANGE password_request_token password_request_token VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT \'NULL\' COLLATE `utf8mb4_unicode_ci`');
     }
 }

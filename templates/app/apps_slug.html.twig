@@ -22,7 +22,7 @@
         <!-- Heading Row -->
         <div class="row align-items-center my-5">
             {% for app in app %}
-                    <h3 CLASS="card-title">{{ app.naam | raw }}</h3>
+                    <h3 class="card-title">{{ app.naam | raw }}</h3>
                 {% if app.beschrijving is defined  %}
                     {{ app.beschrijving | raw }}
                 {% else %}

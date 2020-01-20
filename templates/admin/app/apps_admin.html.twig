@@ -17,7 +17,7 @@
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <a href="#" type="button" class="btn btn-primary" style="float: right;">Voeg Koppeling Toe</a>
+                    <a href="{{ path('apps_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Koppeling Toe</a>
                 </div>
                 <div class="table-responsive">
                     {% if apps %}
@@ -45,7 +45,7 @@
                                             <p>Er is geen beschrijving gevonden</p>
                                         {% endif %}
                                     </td>
-                                    <td><a style="width: 100%;" href="{{ path('apps_slug', {'slug' : apps.slug} ) }}"  class="btn btn-outline-dark">Bekijken</a></td>
+                                    <td><a style="width: 100%;" href="{{ path('apps_slug_admin', {'slug' : apps.slug} ) }}"  class="btn btn-outline-dark">Bekijken</a></td>
                                     <td><a style="width: 100%;" href="#"  class="btn btn-outline-primary">Bewerken</a></td>
                                 </tr>
                             {% endfor %}
