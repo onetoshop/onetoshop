@@ -30,16 +30,6 @@ class Apps
     private $beschrijving;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Apps", inversedBy="parent")
-     */
-    private $apps;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Apps", mappedBy="apps")
-     */
-    private $parent;
-
-    /**
      * @ORM\Column(type="string", nullable=true)
      */
     private $naam;
@@ -50,26 +40,67 @@ class Apps
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Apps", inversedBy="children")
+     */
+    private $parent;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Apps", mappedBy="parent", cascade={"persist", "remove"})
+     */
+    private $children;
 
     public function __construct()
     {
-        $this->parent = new ArrayCollection();
+        $this->children = new ArrayCollection();
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    public function addChild(self $child): self
+    {
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(self $child): self
+    {
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
+            }
+        }
+
+        return $this;
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage($image): void
-    {
-        $this->image = $image;
     }
 
     public function getBeschrijving(): ?string
@@ -80,49 +111,6 @@ class Apps
     public function setBeschrijving(?string $beschrijving): self
     {
         $this->beschrijving = $beschrijving;
-
-        return $this;
-    }
-
-    public function getApps(): ?self
-    {
-        return $this->apps;
-    }
-
-    public function setApps(?self $apps): self
-    {
-        $this->apps = $apps;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getParent(): Collection
-    {
-        return $this->parent;
-    }
-
-    public function addParent(self $parent): self
-    {
-        if (!$this->parent->contains($parent)) {
-            $this->parent[] = $parent;
-            $parent->setApps($this);
-        }
-
-        return $this;
-    }
-
-    public function removeParent(self $parent): self
-    {
-        if ($this->parent->contains($parent)) {
-            $this->parent->removeElement($parent);
-            // set the owning side to null (unless already changed)
-            if ($parent->getApps() === $this) {
-                $parent->setApps(null);
-            }
-        }
 
         return $this;
     }
@@ -147,6 +135,18 @@ class Apps
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

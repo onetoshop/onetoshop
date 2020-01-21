@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Apps;
+use App\Repository\AppsRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,30 +17,30 @@ class AppsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add('image', ImageType::class, [
-//                'label'=> false,
-//                'required'   => false,
-//            ])
+            ->add('image', ImageType::class, [
+                'label'=> false,
+                'required'   => false,
+            ])
             ->add('beschrijving', CKEditorType::class, [
                 'label'=> false,
                 'required'   => false,
             ])
-//            ->add('apps', ChoiceType::class, [
-//                'label'=> false,
-//                'choice_value' => function (apps $apps = null) {
-//                    return $apps ? $apps->getapps() : 'apps';
-//                },
-//                'required'   => false,
+//            ->add('parent', ChoiceType::class, [
+//                'choice_value'  => 'id',
+//                'required'      => true,
+//                'multiple'      => true,
+//                'expanded'      => false,
+//                'class'         => 'AppBundle\Entity\Apps',
+
 //            ])
             ->add('naam', TextType::class, [
                 'label'=> false,
-                'required'   => false,
+                'required'   => true,
             ])
 //            ->add('slug', TextType::class, [
 //                'label' => false,
 //                'required'   => false,
-//                'disabled' => true
-//
+//                'class' => 'hidden'
 //            ])
         ;
     }

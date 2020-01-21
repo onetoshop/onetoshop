@@ -22,7 +22,7 @@
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <a href="#" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan Koppeling Toe</a>
+{#                    <a href="{{ path('apps_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan Koppeling Toe</a>#}
                 </div>
                 <div class="table-responsive">
                     {% if apps %}
@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>{{ app.id }}</td>
                                     <td>{{ app.naam }}</td>
-                                    <td>{{ app.apps.naam }}</td>
+                                    <td>{{ app.parent.naam }}</td>
                                     <th>
                                         {% for i in [1,][0:239] %}
                                             {{ app.beschrijving [0:239] | raw }}...

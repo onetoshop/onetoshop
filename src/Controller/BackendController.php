@@ -344,29 +344,12 @@ class BackendController extends AbstractController
     public function apps_admin()
     {
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'apps' => NULL
+            'parent' => NULL
         ]);
 
         return $this->render('admin/app/apps_admin.html.twig', [
             'apps' => $apps
         ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/apps/delete_apps/{id}", name="delete_apps")
-     * @IsGranted("ROLE_USER")
-     */
-    public function delete_apps($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $app = $em->getRepository(Apps::class)->find([$id]);
-
-        $em->remove($app);
-        $em->flush();
-
-
-        return $this->redirectToRoute('apps_admin');
     }
 
 
@@ -381,7 +364,7 @@ class BackendController extends AbstractController
         ]);
 
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'apps'  => $app[0]->getId()
+            'parent'  => $app[0]->getId()
         ]);
 
         return $this->render('admin/app/apps_slug_admin.html.twig', [
@@ -389,6 +372,31 @@ class BackendController extends AbstractController
         ]);
 
     }
+
+    //    ToDo: als er een koppeling word verwijderd dan moeten ook de gerelateerden verwijderen
+
+    /**
+     * @Route("/{_locale}/admin/apps/delete_apps/{id}", name="delete_apps")
+     * @IsGranted("ROLE_USER")
+     */
+    public function delete_apps($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $app = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+//        dump($app->getChildren());
+//        exit;
+
+        $em->remove($app);
+        $em->flush();
+
+        return $this->redirectToRoute('apps_admin');
+    }
+
+
 
     /**
      * @Route("/{_locale}/admin/apps_toevoegen", name="apps_toevoegen")
@@ -400,7 +408,10 @@ class BackendController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $apps = new Apps();
 
-        $form = $this->createForm(AppsType::class, $apps);
+        $form = $this->createForm(AppsType::class);
+
+//        dump($form);
+//        exit;
 
         $form->handleRequest($request);
 
@@ -462,7 +473,7 @@ class BackendController extends AbstractController
 //
 //            $apps = $form->getData();
 //
-//            $file = $apps->getImage();
+ //            $file = $apps->getImage();
 //
 //            $image = $file->getFile();
 //
