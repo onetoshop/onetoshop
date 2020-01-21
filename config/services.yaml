@@ -8,6 +8,7 @@ parameters:
     blog: '%kernel.project_dir%\public\image\blog'
     apps: '%kernel.project_dir%\public\image\apps'
     project: '%kernel.project_dir%\public\image\project'
+    image: '%kernel.project_dir%\public\image'
 
 services:
     # default configuration for services in *this* file

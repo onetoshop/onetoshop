@@ -6,9 +6,6 @@
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <a href="{{ path('home') }}" class="nav-link">Home</a>
-                <a href="{{ path('functionaliteit') }}" class="nav-link">Functonaliteit</a>
-                <a href="{{ path('apps') }}" class="nav-link">Apps</a>
-                <a href="{{ path('blogs') }}" class="nav-link ">Blogs</a>
             </ul>
         </nav>
     </div>
@@ -21,7 +18,7 @@
             {% for project in project %}
                 <div class="row align-items-center my-5">
                     <div class="col-lg-5">
-                        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/project/' ~ project.image.name) }}" alt="">
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/' ~ project.image.name) }}" alt="">
                     </div>
                     <!-- /.col-lg-8 -->
                     <div class="col-lg-7">

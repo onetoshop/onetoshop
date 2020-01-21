@@ -143,6 +143,11 @@
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>Nieuwsbrief</span></a>
         </li>
+        <li class="nav-item {{ route starts with 'media' ? 'active' }}">
+            <a class="nav-link" href="{{ path('media') }}">
+                <i class="fas fa-fw fa-photo"></i>
+                <span>Media</span></a>
+        </li>
     </ul>
     {% endblock %}
     {% block body %}{% endblock %}

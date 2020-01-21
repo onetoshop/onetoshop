@@ -1,0 +1,55 @@
+{% extends 'admin/adminbase.html.twig' %}
+
+{% block body %}
+
+    <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{{ path('media') }}">Media</a>
+        </li>
+    </ol>
+    <h1>Media Overzicht</h1>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <a href="{{ path('media_add') }}" type="button" class="btn btn-primary" style="float: right;">Media toevoegen</a>
+        </div>
+        <div class="table-responsive">
+        {% if media %}
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Naam</th>
+                    <th>Foto</th>
+                    <th>Bewerken</th>
+                </tr>
+                </thead>
+                <tbody>
+        {% for media in media %}
+            <tr>
+                <td>{{ media.id }}</td>
+                <td>{{ media.name }}</td>
+                <td><img style="height: 25%; width: auto" class="img-fluid" src="{{ asset('/image/' ~ media.name) }}" alt=""></td>
+                <td>
+                    <a href="{{ path('media_edit', {'id' : media.id}) }}" class="btn btn-outline-primary" style="width: 100%; margin: auto; ">Bewerken</a>
+                </td>
+            </tr>
+{% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Er Zijn Geen Gegevens Gevonden!</p>
+        {% endif %}
+
+    </div>
+
+    </div>
+{% endblock %}

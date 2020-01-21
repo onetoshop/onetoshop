@@ -334,12 +334,12 @@
                                         <div class="front">
                                             <div class="cover">
                                                 {% if card.bgimage is defined %}
-                                                    <img src="{{ asset('/image/card/' ~ card.bgimage.name) }}"/>
+                                                    <img src="{{ asset('/image/' ~ card.bgimage.name) }}"/>
                                                 {% endif %}
                                             </div>
                                             <div class="user">
                                                 {% if card.frimage is defined %}
-                                                    <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+                                                    <img src="{{ asset('/image/' ~ card.frimage.name) }}"/>
                                                     {% endif %}
                                             </div>
                                             <div class="content">
@@ -397,7 +397,7 @@
                     <div class="h-entry">
                         <div class="border border-light" style="height: 350px;">
                         {% if blog.image is defined %}
-                            <img src="{{ asset('/image/blog/' ~ blog.image.name) | imagine_filter('small') }}" />
+                            <img src="{{ asset('/image/' ~ blog.image.name) | imagine_filter('small') }}" />
 {#                            {% else %}#}
 {#                            niks gevonden#}
                         {% endif %}

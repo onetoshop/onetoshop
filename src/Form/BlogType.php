@@ -33,6 +33,7 @@ class BlogType extends AbstractType
             ->add('image', ImageType::class, [
                 'label' => false
             ])
+
             ;
     }
 
