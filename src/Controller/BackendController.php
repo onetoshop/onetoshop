@@ -25,6 +25,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\GegevenType;
 use App\Entity\Nieuwsbrief;
 use App\Form\ReplyType;
+use App\Form\NewsType;
 
 
 class BackendController extends AbstractController
@@ -271,7 +272,7 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin//mail/inbox/{slug}", name="show_mail")
+     * @Route("/{_locale}/admin/mail/inbox/{slug}", name="show_mail")
      * @IsGranted("ROLE_USER")
      */
     public function show_mail($slug)
@@ -285,7 +286,7 @@ class BackendController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{_locale}/admin//mail/reply/{id}", name="reply_mail")
+     * @Route("/{_locale}/admin/mail/reply/{id}", name="reply_mail")
      * @IsGranted("ROLE_USER")
      */
     public function reply(Request $request, $id,  \Swift_Mailer $mailer) {
@@ -550,22 +551,29 @@ class BackendController extends AbstractController
     {
         $form = $this->createForm(NewsType::class);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+
             $bericht = $form->get('bericht')->getData();
+
             $reply = $this->getDoctrine()->getRepository(Nieuwsbrief::class)->findAll();
 
-            $mail = $reply->getEmail();
+            foreach($reply AS $subscriber) {
+                $mail = $subscriber->getEmail();
 
-            $message = (new \Swift_Message('Bericht van Onetoshop'))
-                ->setFrom('dummyonetoshop@gmail.com')
-                ->setSubject('Nieuwsbrief')
-                ->setTo($mail)
-                ->setBody($bericht, 'text/html');
-            $mailer->send($message);
+                $message = (new \Swift_Message('Bericht van Onetoshop'))
+                    ->setFrom('dummyonetoshop@gmail.com')
+                    ->setSubject($form['onderwerp'])
+                    ->setTo($mail)
+                    ->setBody($bericht, 'text/html');
+
+                $mailer->send($message);
+            }
+
             $this->addFlash('success', "Nieuwsbrief gestuurd");
             return $this->redirectToRoute('nieuwsbrief');
-
         }
+
         return $this->render('admin/nieuwsbrief/nieuws.html.twig', [
             'form' => $form->createView()
         ]);

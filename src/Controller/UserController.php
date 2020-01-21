@@ -51,24 +51,24 @@ class UserController extends AbstractController
     }
 
 
+//    /**
+//     * @Route("/{_locale}/admin/usersettings{id}", name="usersettings")
+//     * @IsGranted("ROLE_USER")
+//     */
+//    public function settings($id)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
+//            'id' => $id,
+//        ]);
+//        return $this->render('admin/user/usersettings.html.twig', [
+//            'user' => $user
+//        ]);
+//    }
+
     /**
      * @Route("/{_locale}/admin/usersettings{id}", name="usersettings")
-     * @IsGranted("ROLE_USER")
-     */
-    public function settings($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-            'id' => $id,
-        ]);
-        return $this->render('admin/user/usersettings.html.twig', [
-            'user' => $user
-        ]);
-    }
-
-    /**
-     * @Route("/{_locale}/admin/useredit{id}", name="usereditten")
      * @IsGranted("ROLE_USER")
      */
     public function useredit($id, User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder)
