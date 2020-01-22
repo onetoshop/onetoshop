@@ -38,7 +38,7 @@ class Blog
      *      min = 2,
      *      max = 175,
      *      minMessage = "De beschrijving moet minimaal  {{ limit }} characters bevatten",
-     *      maxMessage   = "De beschrijving max maximaal {{ limit }} characters bevatten"
+     *      maxMessage   = "De beschrijving mag maximaal {{ limit }} characters bevatten"
      * )
      */
     private $beschrijving;

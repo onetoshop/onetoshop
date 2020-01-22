@@ -79,17 +79,20 @@ class MediaController extends AbstractController
             $file = $media->getImage();
 
             $image = $file->getFile();
+            dump($file);
 
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+                $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+                $image->move($this->getParameter('image'), $fileName);
 
-            $image->move($this->getParameter('image'), $fileName);
+                $file->setName($fileName);
 
-            $file->setName($fileName);
 
             $manager->persist($media);
-            $manager->flush();
+                $manager->flush();
 
-            return $this->redirectToRoute('media');
+
+
+//            return $this->redirectToRoute('media');
         }
         return $this->render('admin/media/addmedia.html.twig', [
             'form' => $form->createView()
