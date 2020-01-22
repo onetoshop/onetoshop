@@ -5,7 +5,9 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+//use Gedmo\Mapping\Annotation as Gedmo;
 use Fbeen\UniqueSlugBundle\Annotation\Slug;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AppsRepository")
@@ -30,15 +32,9 @@ class Apps
     private $beschrijving;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $naam;
-
-    /**
-     * @Slug("naam")
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private $slug;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Apps", inversedBy="children")
@@ -49,6 +45,12 @@ class Apps
      * @ORM\OneToMany(targetEntity="App\Entity\Apps", mappedBy="parent", cascade={"persist", "remove"})
      */
     private $children;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false, unique=true)
+     * @Slug("naam")
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -127,18 +129,6 @@ class Apps
         return $this;
     }
 
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     public function getImage(): ?Image
     {
         return $this->image;
@@ -147,6 +137,18 @@ class Apps
     public function setImage(?Image $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

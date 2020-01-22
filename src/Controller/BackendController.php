@@ -374,7 +374,6 @@ class BackendController extends AbstractController
 
     }
 
-    //    ToDo: als er een koppeling word verwijderd dan moeten ook de gerelateerden verwijderen
 
     /**
      * @Route("/{_locale}/admin/apps/delete_apps/{id}", name="delete_apps")
@@ -403,28 +402,23 @@ class BackendController extends AbstractController
      * @Route("/{_locale}/admin/apps_toevoegen", name="apps_toevoegen")
      * @IsGranted("ROLE_USER")
      */
-    public function apps_toevoegen(Request $request)
+    public function apps_toevoegen(EntityManagerInterface $manager, Request $request)
     {
-
-        $em = $this->getDoctrine()->getManager();
-        $apps = new Apps();
-
         $form = $this->createForm(AppsType::class);
-
-//        dump($form);
-//        exit;
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
 
-            $em->persist($apps);
-            $em->flush();
+            $apps = $form->getData();
+
+            $manager->persist($apps);
+            $manager->flush();
 
             return $this->redirectToRoute('apps_admin');
 
         }
-        return $this->render('admin/app/apps_admin_toevoegen.html.twig', [
+        return $this->render('admin/app/apps_admin_koppeling_toevoegen.html.twig', [
             'form' => $form->createView(),
         ]);
 
@@ -520,7 +514,7 @@ class BackendController extends AbstractController
 //                'id' => $apps->getId(),
 //            ]);
 //        }
-//        return $this->render('admin/app/apps_admin_toevoegen.html.twig', [
+//        return $this->render('admin/app/apps_admin_koppeling_toevoegen.html.twig', [
 //            'form' => $form->createView()
 //        ]);
 //    }

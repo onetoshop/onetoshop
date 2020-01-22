@@ -3,11 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Apps;
-use App\Repository\AppsRepository;
+use Doctrine\ORM\EntityRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,23 +25,25 @@ class AppsType extends AbstractType
                 'label'=> false,
                 'required'   => false,
             ])
-//            ->add('parent', ChoiceType::class, [
-//                'choice_value'  => 'id',
-//                'required'      => true,
-//                'multiple'      => true,
-//                'expanded'      => false,
-//                'class'         => 'AppBundle\Entity\Apps',
 
-//            ])
+            ->add('parent', EntityType::class, [
+                'required' => false,
+                'class' => Apps::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                      ->orderBy('u.parent', 'ASC');
+                },
+                'choice_label' => 'naam',
+                'choice_value' => 'id',
+                'label' => false,
+            ])
             ->add('naam', TextType::class, [
                 'label'=> false,
                 'required'   => true,
             ])
-//            ->add('slug', TextType::class, [
-//                'label' => false,
-//                'required'   => false,
-//                'class' => 'hidden'
-//            ])
+            ->add('slug', HiddenType::class,[
+                'required' => true
+            ])
         ;
     }
 
