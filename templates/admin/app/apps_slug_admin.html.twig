@@ -2,10 +2,7 @@
 
 {% block body %}
     <div id="content-wrapper">
-{#       TODO: verander Koppeling in in een dynamics naam vanuit de database#}
-
         <div class="container-fluid">
-
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -14,15 +11,23 @@
                 <li class="breadcrumb-item active">
                     <a href="{{ path('apps_admin') }}">koppelingen Overzicht</a>
                 </li>
-        <li class="breadcrumb-item active">koppelingen Informatie Overzicht</li>
+                {% if info %}
+                    <li class="breadcrumb-item active">{{ info[0].naam }}</li>
+                {% endif %}
 
             </ol>
             <!-- Page Content -->
-        <h1>koppelingen Informatie Overzicht</h1>
+            {% if info %}
+                <h1>{{ info[0].naam }}</h1>
+            {% endif %}
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <a href="{{ path('apps_informatie_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan Koppeling Toe</a>
+                    <a href="{{ path('apps_informatie_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan
+                        {% if info %}
+                            {{ info[0].naam }}
+                        {% endif %}
+                        Toe</a>
                 </div>
                 <div class="table-responsive">
                     {% if apps %}

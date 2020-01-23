@@ -361,6 +361,17 @@ class BackendController extends AbstractController
      */
     public function apps_slug_admin($slug)
     {
+        # get amount of users
+        $em = $this->getDoctrine()->getManager();
+        $name = $em->getRepository(Apps::class);
+
+        $info = $name->createQueryBuilder('naam')
+            ->select('naam')
+            ->where('naam.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getResult();
+
         $app = $this->getDoctrine()->getRepository(Apps::class)->findBy([
             'slug'  => $slug
         ]);
@@ -370,7 +381,8 @@ class BackendController extends AbstractController
         ]);
 
         return $this->render('admin/app/apps_slug_admin.html.twig', [
-            'apps' => $apps
+            'apps' => $apps,
+            'info' => $info
         ]);
 
     }
