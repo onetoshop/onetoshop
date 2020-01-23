@@ -41,21 +41,21 @@
             <!-- Content Row -->
 
             <div class="row">
-                {% if apps %}
-                    {% for apps in apps %}
+                {% if app %}
+                    {% for app in apps %}
                         <div class="col-md-4 mb-5">
                             <div class="card h-100">
                                 <div class="card-header">
-                                    <h3  style="text-align: center;" class="card-title">{{ apps.naam | raw }}</h3>
+                                    <h3  style="text-align: center;" class="card-title">{{ app.naam | raw }}</h3>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
                                         {% for i in [1,][0:239] %}
-                                            {{ apps.beschrijving [0:239] | raw }}...
+                                            {{ app.beschrijving [0:239] | raw }}...
                                         {% endfor %}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a style="width: 100%;" href="{{ path('apps_slug', {'slug' : apps.slug} ) }}"  class="btn btn-outline-primary">Lees Verder</a>
+                                    <a style="width: 100%;" href="{{ path('apps_slug', {'slug' : app.slug} ) }}"  class="btn btn-outline-primary">Lees Verder</a>
                                 </div>
                             </div>
                         </div>
