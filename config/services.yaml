@@ -6,7 +6,7 @@
 parameters:
     upload: '%kernel.project_dir%\public\image\card'
     blog: '%kernel.project_dir%\public\image\blog'
-    apps: '%kernel.project_dir%\public\image\apps'
+    images: '%kernel.project_dir%\public\image\images'
     project: '%kernel.project_dir%\public\image\project'
     image: '%kernel.project_dir%\public\image'
 

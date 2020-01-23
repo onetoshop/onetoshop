@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Images;
 use App\Entity\Image;
 use App\Form\BlogType;
 use App\Form\ImageType;
@@ -24,7 +25,7 @@ class MediaController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $media = $this->getDoctrine()->getRepository(Image::class)->findAll();
+        $media = $this->getDoctrine()->getRepository(Images::class)->findAll();
 
         return $this->render('admin/media/media.html.twig', [
             'media' => $media
@@ -69,30 +70,28 @@ class MediaController extends AbstractController
      */
     public function add_blog(EntityManagerInterface $manager, Request $request)
     {
-        $form = $this->createForm(MediaType::Class);
+        $form = $this->createForm(ImageType::Class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $media = $form->getData();
-
-            $file = $media->getImage();
-
-            $image = $file->getFile();
-            dump($file);
-
-                $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-                $image->move($this->getParameter('image'), $fileName);
-
-                $file->setName($fileName);
+            $files = $request->files->get('image')['file'];
 
 
-            $manager->persist($media);
-                $manager->flush();
+            foreach ($files as $file) {
 
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
+                $file->move($this->getParameter('images'), $fileName);
+                $images = new Images();
 
-//            return $this->redirectToRoute('media');
+                $images->setName($fileName);
+                $manager->persist($images);
+//
+//                return $this->redirectToRoute('media');
+            }
+
+            $manager->flush();
         }
         return $this->render('admin/media/addmedia.html.twig', [
             'form' => $form->createView()

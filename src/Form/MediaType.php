@@ -12,7 +12,7 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', ImageType::class, [
+            ->add('images', ImageType::class, [
                 'label' => 'upload een foto of meerdere'
 
             ])

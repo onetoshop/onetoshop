@@ -16,23 +16,28 @@ class Media
      */
     private $id;
 
+
     /**
-     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Images", inversedBy="media", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $image;
+    private $images;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getImage(): ?Image
+
+    public function getImages(): ?Images
     {
-        return $this->image;
+        return $this->images;
     }
 
-    public function setImage($image): void
+    public function setImages(?Images $images): self
     {
-        $this->image = $image;
+        $this->images = $images;
+
+        return $this;
     }
 }
