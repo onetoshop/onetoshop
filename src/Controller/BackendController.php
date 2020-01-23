@@ -11,6 +11,7 @@ use App\Entity\Gegeven;
 use App\Entity\Project;
 use App\Entity\User;
 use App\Form\AppsType;
+use App\Form\AppType;
 use App\Form\ProjectType;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -387,9 +388,6 @@ class BackendController extends AbstractController
             'id' => $id,
         ]);
 
-//        dump($app->getChildren());
-//        exit;
-
         $em->remove($app);
         $em->flush();
 
@@ -404,7 +402,7 @@ class BackendController extends AbstractController
      */
     public function apps_toevoegen(EntityManagerInterface $manager, Request $request)
     {
-        $form = $this->createForm(AppsType::class);
+        $form = $this->createForm(AppType::class);
 
         $form->handleRequest($request);
 
@@ -426,7 +424,43 @@ class BackendController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin/apps/koppeling-bewerken/{id}", name="edit_apps", methods={"GET","POST"})
+     * @Route("/{_locale}/admin/apps_informatie_toevoegen", name="apps_informatie_toevoegen")
+     * @IsGranted("ROLE_USER")
+     */
+    public function apps_informatie_toevoegen(EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(AppsType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $koppeling = $form->getData();
+
+            $file = $koppeling->getImage();
+
+            $image = $file->getFile();
+
+            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+
+            $image->move($this->getParameter('image'), $fileName);
+
+            $file->setName($fileName);
+
+            $manager->persist($koppeling);
+            $manager->flush();
+
+            return $this->redirectToRoute('apps_admin');
+
+        }
+        return $this->render('admin/app/apps_admin_koppeling_informatie_toevoegen.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+
+    }
+
+    /**
+     * @Route("/{_locale}/admin/apps/koppeling_bewerken/{id}", name="edit_apps", methods={"GET","POST"})
      */
     public function edit_apps(Request $request, $id)
     {
@@ -434,7 +468,7 @@ class BackendController extends AbstractController
             'id' => $id,
         ]);
 
-        $form = $this->createForm(AppsType::class, $apps);
+        $form = $this->createForm(AppType::class, $apps);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -455,6 +489,53 @@ class BackendController extends AbstractController
     }
 
 
+
+
+
+
+
+
+//    todo image werkend krijgen.
+    /**
+     * @Route("/{_locale}/admin/apps/koppeling-informatie-bewerken/{id}", name="edit_informatie_apps", methods={"GET","POST"})
+     */
+    public function edit_informatie_apps(EntityManagerInterface $manager, Request $request, $id)
+    {
+        $apps = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $form = $this->createForm(AppsType::class, $apps);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $apps = $form->getData();
+
+            $file = $apps->getImage();
+
+            $image = $file->getFile();
+
+            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+
+            $image->move($this->getParameter('Image'), $fileName);
+
+            $file->setName($fileName);
+
+            $manager->persist($apps);
+            $manager->flush();
+
+
+            return $this->redirectToRoute('apps_admin',[
+                'id' => $apps->getId(),
+            ]);
+        }
+        return $this->render('admin/app/edit_informatie_test.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
 //    /**
 //     * @Route("/{_locale}/admin/apps_overzicht/add_apps", name="add_apps")
 //     * @IsGranted("ROLE_USER")
@@ -468,7 +549,7 @@ class BackendController extends AbstractController
 //
 //            $apps = $form->getData();
 //
- //            $file = $apps->getImage();
+//             $file = $apps->getImage();
 //
 //            $image = $file->getFile();
 //

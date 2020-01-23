@@ -14,7 +14,7 @@ class AppController extends AbstractController
      */
     public function appinfo(){
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'apps' => NULL
+            'parent' => NULL
         ]);
 
         return $this->render('app/apps.html.twig',[
@@ -33,7 +33,7 @@ class AppController extends AbstractController
         ]);
 
         $apps = $this->getDoctrine()->getRepository(Apps::class)->findBy([
-            'apps'  => $app[0]->getId()
+            'parent'  => $app[0]->getId()
         ]);
 
         return $this->render('app/apps_slug.html.twig', [

@@ -12,17 +12,17 @@
                     <a href="{{ path('admin') }}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="{{ path('apps_admin') }}">Apps</a>
+                    <a href="{{ path('apps_admin') }}">koppelingen Overzicht</a>
                 </li>
-        <li class="breadcrumb-item active">Koppeling</li>
+        <li class="breadcrumb-item active">koppelingen Informatie Overzicht</li>
 
             </ol>
             <!-- Page Content -->
-        <h1>Koppeling</h1>
+        <h1>koppelingen Informatie Overzicht</h1>
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-{#                    <a href="{{ path('apps_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan Koppeling Toe</a>#}
+                    <a href="{{ path('apps_informatie_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan Koppeling Toe</a>
                 </div>
                 <div class="table-responsive">
                     {% if apps %}
@@ -34,6 +34,7 @@
                                 <th>Parent ID</th>
                                 <th style="width: 40%;">Beschrijving</th>
                                 <th>Bewerken</th>
+                                <th>Verwijderen</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,8 +49,9 @@
                                         {% endfor %}
                                     </th>
                                     <td>
-                                        <a style="width: 100%;" href="#"  class="btn btn-outline-primary">Bewerken</a>
+                                        <a style="width: 100%;" href="{{ path('edit_informatie_apps', {'id' : app.id}) }}"  class="btn btn-outline-primary">Bewerken</a>
                                     </td>
+                                    <td><a class="btn btn-outline-danger" href="" data-toggle="modal" data-target="#delete-{{ app.id }}" style="width: 100%;">Verwijderen</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -61,4 +63,24 @@
             </div>
         </div>
     </div>
+{% for app in apps %}
+    <!-- Logout Modal-->
+    <div class="modal fade" id="delete-{{ app.id }}" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="{{ app.naam }}" id="{{ app.id }}">Zeker weten?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Weet u zeker dat u <b>{{ app.naam }}</b> wilt verwijderen?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleer</button>
+                    <a class="btn btn-primary"  href="{{ path('delete_apps', {'id' : app.id}) }}">Verwijderen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}

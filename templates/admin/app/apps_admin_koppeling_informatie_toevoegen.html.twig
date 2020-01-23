@@ -28,16 +28,25 @@
                                 <div class="cmp-tb-hd">
                                     <div>
                                         {{ form_start(form) }}
-                                                <p><h3>Naam</h3></p>
-                                                <p class="font-weight-light">Voer hier de naam in van  de nieuwe koppeling die je wil toevoegen denk hierbij bijvoorbeeld aan: betaalkkoppeling.</p>
-                                                {% form_theme form.naam 'bootstrap_4_layout.html.twig' %}
-                                                {{ form_row(form.naam) }}
+                                        <p><h3>Naam</h3></p>
+                                        <p class="font-weight-light">Voer hier de naam in van  de nieuwe koppeling die je wil toevoegen denk hierbij bijvoorbeeld aan: betaalkkoppeling.</p>
+                                        {% form_theme form.naam 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.naam) }}
 
-                                                <p><h3>Beschrijving</h3></p>
-                                                <p class="font-weight-light">Voer hier de beschrijving die bij de koppeling hoord.</p>
-                                                {{ form_row(form.beschrijving) }}
+                                        <p><h3>Beschrijving</h3></p>
+                                        <p class="font-weight-light">Voer hier de beschrijving die bij de koppeling hoord.</p>
+                                        {{ form_row(form.beschrijving) }}
 
-                                                {{ form_row(form.slug) }}
+                                        <p><h3>image</h3></p>
+                                        <p class="font-weight-light">Kies een image.</p>
+                                        {{ form_row(form.image) }}
+
+                                        <p><h3>parent</h3></p>
+                                        <p class="font-weight-light"></p>
+                                        {% form_theme form.parent 'bootstrap_4_layout.html.twig' %}
+                                        {{ form_row(form.parent) }}
+
+                                        {{ form_row(form.slug) }}
                                         <hr>
                                         <button type="submit" style="width: 100%;" class="btn btn-primary">koppeling toevoegen</button>
                                         {{ form_end(form) }}
