@@ -31,7 +31,8 @@ class AppsType extends AbstractType
                 'class' => Apps::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
-                      ->orderBy('u.parent', 'ASC');
+                    ->where('u.parent IS NULL')
+                    ->orderBy('u.parent', 'ASC');
                 },
                 'choice_label' => 'naam',
                 'choice_value' => 'id',
