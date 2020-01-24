@@ -52,11 +52,7 @@ class Blog
      */
     private $tabtitle;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Images", inversedBy="blog")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $images;
+
 
     public function getId(): ?int
     {
@@ -124,15 +120,5 @@ class Blog
         return $this;
     }
 
-    public function getImages(): ?Images
-    {
-        return $this->images;
-    }
-
-    public function setImages(?Images $images): self
-    {
-        $this->images = $images;
-
-        return $this;
-    }
+   
 }

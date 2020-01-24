@@ -382,7 +382,7 @@ class BackendController extends AbstractController
 
         return $this->render('admin/app/apps_slug_admin.html.twig', [
             'apps' => $apps,
-            'info' => $info
+            'info' => $info[0]
         ]);
 
     }
