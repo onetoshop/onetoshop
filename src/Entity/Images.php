@@ -29,12 +29,21 @@ class Images
      */
     private $media;
 
+
+
     private $file;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Images", mappedBy="blog", cascade={"persist", "remove"})
+     */
+    private $blog;
+
 
 
     public function __construct()
     {
         $this->media = new ArrayCollection();
+        $this->blog = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,5 +101,36 @@ class Images
     public function setFile(UploadedFile $file): void
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return Collection|Blog[]
+     */
+    public function getBlog(): Collection
+    {
+        return $this->blog;
+    }
+
+    public function addBlog(Blog $blog): self
+    {
+        if (!$this->blog->contains($blog)) {
+            $this->blog[] = $blog;
+            $blog->setImages($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlog(Blog $blog): self
+    {
+        if ($this->blog->contains($blog)) {
+            $this->blog->removeElement($blog);
+            // set the owning side to null (unless already changed)
+            if ($blog->getImages() === $this) {
+                $blog->setImages(null);
+            }
+        }
+
+        return $this;
     }
 }

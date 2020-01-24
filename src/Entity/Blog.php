@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -27,10 +28,8 @@ class Blog
      */
     private $body;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
-     */
-    private $image;
+
+
 
     /**
      * @ORM\Column(type="text", )
@@ -52,6 +51,12 @@ class Blog
      * @ORM\Column(type="text")
      */
     private $tabtitle;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Images", inversedBy="blog")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $images;
 
     public function getId(): ?int
     {
@@ -82,15 +87,6 @@ class Blog
         return $this;
     }
 
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage($image): void
-    {
-        $this->image = $image;
-    }
 
     public function getBeschrijving(): ?string
     {
@@ -124,6 +120,18 @@ class Blog
     public function setTabtitle(string $tabtitle): self
     {
         $this->tabtitle = $tabtitle;
+
+        return $this;
+    }
+
+    public function getImages(): ?Images
+    {
+        return $this->images;
+    }
+
+    public function setImages(?Images $images): self
+    {
+        $this->images = $images;
 
         return $this;
     }
