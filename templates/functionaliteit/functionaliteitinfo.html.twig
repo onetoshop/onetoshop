@@ -1,10 +1,10 @@
 {% extends 'base1.html.twig' %}
 
-{% block title %}
-    {% for functionaliteitinfo in functionaliteitinfo %}
-        <title>{{ functionaliteitinfo.tabtitle }}</title>
-    {% endfor %}
-{% endblock %}
+{#{% block title %}#}
+{#    {% for functionaliteitinfo in functionaliteitinfo %}#}
+{#        <title>{{ functionaliteitinfo.tabtitle }}</title>#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
 {% block navbar %}
 
     <div class="col-12 col-md-9 d-none d-xl-block">
@@ -28,10 +28,10 @@
             <div class="row align-items-center my-5">
                 <!-- /.col-lg-8 -->
                 <div class="col-12">
-                    {% if functionaliteitinfo %}
-                        {% for functionaliteitinfo in functionaliteitinfo %}
-                            <h1>{{ functionaliteitinfo.title | raw }}</h1>
-                            <p>{{ functionaliteitinfo.body | raw }}</p>
+                    {% if functionaliteit %}
+                        {% for functionaliteit in functionaliteit %}
+                            <h1>{{ functionaliteit.name | raw }}</h1>
+                            <p>{{ functionaliteit.body | raw }}</p>
                         {% endfor %}
                     {% else %}
                         <p>Er Zijn Geen Gegevens Gevonden!</p>
@@ -43,15 +43,15 @@
             <!-- /.row -->
                 <h2>Meer informatie:</h2>
             <div class="row">
-                {% if functionaliteitcard %}
-                    {% for functionaliteitcard in functionaliteitcard %}
+                {% if functionaliteitinfo %}
+                    {% for functionaliteitinfo in functionaliteitinfo %}
                         <div class="col-md-4 mb-5">
                             <div class="card h-100">
                                 <div class="card-header">
-                                    <h3 class="card-title">{{ functionaliteitcard.title | raw }}</h3>
+                                    <h3 class="card-title">{{ functionaliteitinfo.name | raw }}</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text font-weight-light">{{ functionaliteitcard.body | raw }}</p>
+                                    <p class="card-text font-weight-light">{{ functionaliteitinfo.body | raw }}</p>
                                 </div>
                             </div>
                         </div>

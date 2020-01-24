@@ -3,11 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Functionaliteit;
-use App\Entity\Functionaliteitcard;
-use App\Entity\Functionaliteitinfo;
-use App\Entity\Functionaliteitinformatie;
-use App\Form\FunctionaliteitcardType;
-use App\Form\FunctionaliteitinfoType;
 use App\Form\FunctionaliteitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,32 +15,41 @@ class FunctionaliteitController extends AbstractController
      */
     public function index()
     {
-        $functionaliteit = $this->getDoctrine()->getRepository(Functionaliteit::class)->findAll();
-        $functionaliteitinformatie = $this->getDoctrine()->getRepository(Functionaliteitinformatie::class)->findAll();
+        $functionaliteit = $this->getDoctrine()->getRepository(Functionaliteit::class)->findBy([
+            'parent' => NULL
+        ]);
+
+        $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteit::class)->findBy([
+            'parent' => 1
+        ]);
 
         return $this->render('functionaliteit/functionaliteit.html.twig', [
             'functionaliteit' => $functionaliteit,
-            'functionaliteitinformatie' => $functionaliteitinformatie
+            'functionaliteitinfo' => $functionaliteitinfo
         ]);
+
     }
 
     /**
      * @Route("/{_locale}/functies/{slug}", name="functionaliteitinfo")
      */
     public function functionaliteitinfo($slug){
-        $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteitinfo::class)->findBy([
-            'url' => $slug
+        $functionaliteit = $this->getDoctrine()->getRepository(Functionaliteit::class)->findBy([
+            'slug' => $slug
         ]);
-        $functionaliteitcard = $this->getDoctrine()->getRepository(Functionaliteitcard::class)->findBy([
-            'url' => $slug
-            ]);
 
+        $functionaliteitinfo = $this->getDoctrine()->getRepository(Functionaliteit::class)->findBy([
+            'parent'  => $functionaliteit[0]->getId()
+        ]);
 
         return $this->render('functionaliteit/functionaliteitinfo.html.twig',[
-            'functionaliteitinfo' => $functionaliteitinfo,
-            'functionaliteitcard' => $functionaliteitcard
+           'functionaliteit' => $functionaliteit,
+           'functionaliteitinfo' => $functionaliteitinfo
+
         ]);
     }
+
+
 
     /**
      * @Route("/{_locale}/admin/functionaliteit", name="functionaliteitadmin")

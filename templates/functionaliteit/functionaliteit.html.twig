@@ -27,29 +27,39 @@
         <div class="row align-items-center my-5">
             <!-- /.col-lg-8 -->
             <div class="col-12">
-                {% if functionaliteitinformatie %}
-                    {% for functionaliteitinformatie in functionaliteitinformatie %}
-                        {{ functionaliteitinformatie.body | raw }}
+                {% if functionaliteit %}
+{#                    {{ dump(functionaliteit) }}#}
+                    {% for functionaliteit in functionaliteit %}
+                        {{ functionaliteit.body | raw }}
                     {% endfor %}
                 {% else %}
                     <p>Er Zijn Geen Gegevens Gevonden!</p>
                 {% endif %}
-
                     </div>
                     </div>
 
         <!-- Content Row -->
         <br>
         <div class="row">
-            {% if functionaliteit %}
-                {% for functionaliteit in functionaliteit %}
+            {% if functionaliteitinfo %}
+                {% for functionaliteitinfo in functionaliteitinfo %}
                     <div class="col-md-4 mb-5">
                         <div class="card h-100">
                             <div class="card-header">
-                                <h3 class="card-title" style="text-align: center;">{{ functionaliteit.naam | raw }}</h3>
+                                <h3 class="card-title" style="text-align: center;">{{ functionaliteitinfo.name | raw }}</h3>
                             </div>
                             <div class="card-body">
-                                <a style="width: 100%;" href="{{ path('functionaliteitinfo', {'slug' : functionaliteit.url}) }}"  class="btn btn-outline-primary">Lees Verder</a>
+                                <p class="card-text">
+                                    {% if functionaliteitinfo.body == true %}
+                                        {% for i in [1,][0:200] %}
+                                            {{ functionaliteitinfo.body [0:200] | raw }}...
+                                        {% endfor %}</p>
+                                    {% else %}
+                                        <p></p>
+                                    {% endif %}
+                            </div>
+                            <div class="card-footer">
+                                <a style="width: 100%;" href="{{ path('functionaliteitinfo', {'slug' : functionaliteitinfo.slug}) }}"  class="btn btn-outline-primary">Lees Verder</a>
                             </div>
                         </div>
                     </div>
