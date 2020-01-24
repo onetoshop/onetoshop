@@ -27,10 +27,6 @@ class Blog
      */
     private $body;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
-     */
-    private $image;
 
     /**
      * @ORM\Column(type="text", )
@@ -80,16 +76,6 @@ class Blog
         $this->body = $body;
 
         return $this;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage($image): void
-    {
-        $this->image = $image;
     }
 
     public function getBeschrijving(): ?string

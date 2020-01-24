@@ -10,10 +10,10 @@
                 <li class="breadcrumb-item">
                     <a href="{{ path('admin') }}">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">koppelingen Overzicht</li>
+                <li class="breadcrumb-item active">koppelingen overzicht</li>
             </ol>
             <!-- Page Content -->
-            <h1>koppelingen Overzicht</h1>
+            <h1>Koppelingen Overzicht</h1>
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
@@ -60,7 +60,6 @@
             </div>
         </div>
     </div>
-{#    {{ dump(apps) }}#}
 {% for app in apps %}
     <!-- Logout Modal-->
     <div class="modal fade" id="delete-{{ app.id }}" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel">

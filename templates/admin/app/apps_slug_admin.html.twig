@@ -12,20 +12,20 @@
                     <a href="{{ path('apps_admin') }}">koppelingen Overzicht</a>
                 </li>
                 {% if info %}
-                    <li class="breadcrumb-item active">{{ info[0].naam }}</li>
+                    <li class="breadcrumb-item active">{{ info.naam|lower }}</li>
                 {% endif %}
 
             </ol>
             <!-- Page Content -->
             {% if info %}
-                <h1>{{ info[0].naam }}</h1>
+                <h1>{{ info.naam }}</h1>
             {% endif %}
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
                     <a href="{{ path('apps_informatie_toevoegen') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan
                         {% if info %}
-                            {{ info[0].naam }}
+                            {{ info.naam }}
                         {% endif %}
                         Toe</a>
                 </div>
