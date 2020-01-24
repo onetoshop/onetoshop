@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 //use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Fbeen\UniqueSlugBundle\Annotation\Slug;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -22,9 +24,11 @@ class Apps
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
+     * Many features have one product. This is the owning side.
+     * @ManyToOne(targetEntity="Images", inversedBy="apps")
+     * @JoinColumn(name="images_id", referencedColumnName="id")
      */
-    private $image;
+    private $images;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -129,14 +133,14 @@ class Apps
         return $this;
     }
 
-    public function getImage(): ?Image
+    public function getImages(): ?Images
     {
-        return $this->image;
+        return $this->images;
     }
 
-    public function setImage(?Image $image): self
+    public function setImages(?Images $images): self
     {
-        $this->image = $image;
+        $this->images = $images;
 
         return $this;
     }

@@ -40,15 +40,15 @@
             <!-- /.row -->
             <!-- Content Row -->
 
-            <div class="row">
+            <div class="row" >
                 {% if app %}
                     {% for app in apps %}
-                        <div class="col-md-4 mb-5">
+                        <div class="col-md-4 mb-5" >
                             <div class="card h-100">
                                 <div class="card-header">
                                     <h3  style="text-align: center;" class="card-title">{{ app.naam | raw }}</h3>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" >
                                     <p class="card-text">
                                         {% for i in [1,][0:239] %}
                                             {{ app.beschrijving [0:239] | raw }}...

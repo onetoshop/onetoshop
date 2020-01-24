@@ -396,8 +396,8 @@
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 ">
                     <div class="h-entry">
                         <div class="border border-light" style="height: 350px;">
-                        {% if blog.image is defined %}
-                            <img src="{{ asset('/image/' ~ blog.image.name) | imagine_filter('small') }}" />
+                        {% if blog.images is defined %}
+                            <img src="{{ asset('/image/images/' ~ blog.images.name) | imagine_filter('small') }}" />
 {#                            {% else %}#}
 {#                            niks gevonden#}
                         {% endif %}

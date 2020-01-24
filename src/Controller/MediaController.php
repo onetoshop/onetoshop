@@ -26,7 +26,7 @@ class MediaController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $media = $this->getDoctrine()->getRepository(Media::class)->findAll();
+        $media = $this->getDoctrine()->getRepository(Images::class)->findAll();
 
         return $this->render('admin/media/media.html.twig', [
             'media' => $media
@@ -35,35 +35,21 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale}/admin/media/edit/{id}", name="media_edit")
+     * @Route("/{_locale}/admin/media/delete/{id}", name="media_delete")
      * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $edit = $this->getDoctrine()->getRepository(Image::class)->findOneBy([
-            'id' => $id,
-        ]);
-        $form = $this->createForm(ImageType::class, $edit);
-        $form->handleRequest($request);
+        $image = $em->getRepository(Images::class)->find($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $em->remove($image);
+        $em->flush();
 
-            $edit = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($edit);
-            $em->flush();
 
-            return $this->redirectToRoute('media', [
-                'id' => $edit->getId(),
-            ]);
-        }
-
-        return $this->render('admin/media/editmedia.html.twig', [
-            'form' => $form->createView()
-        ]);
+        return $this->redirectToRoute('media');
     }
     /**
      * @Route("/{_locale}/admin/media/add", name="media_add")

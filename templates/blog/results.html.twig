@@ -31,8 +31,8 @@
             {% if blogs %}
                 {% for blogs in blogs %}
                     <div class="my-4">
-                        {% if blogs.image is defined %}
-                            <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blogs.image.name) | imagine_filter('medium') }}" alt="">
+                        {% if blogs.images is defined %}
+                            <img class="img-fluid rounded" src="{{ asset('/image/images/' ~ blogs.images.name) | imagine_filter('medium') }}" alt="">
                         {% endif %}
                         <div class="card-body">
                             <h2 class="card-title">{{ blogs.title }}</h2>
