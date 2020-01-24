@@ -37,9 +37,8 @@
                 <h1 class="mt-4">{{ blogs.title }}</h1>
                 <p class="lead">{{ blogs.beschrijving | raw }}</p>
                     <hr>
-                    {% if blogs.image is defined %}
-                        <img class="img-fluid rounded" src="{{ asset('/image/blog/' ~ blogs.image.name) | imagine_filter('big') }}" alt="">
-                    {% endif %}
+                        <img class="img-fluid rounded" src="{{ asset('/image/images/' ~ blogs.images.name) | imagine_filter('big') }}" alt="">
+
                     <hr>
                 <p>{{ blogs.body | raw }}</p>
                 <hr>

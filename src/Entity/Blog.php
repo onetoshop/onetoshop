@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -52,6 +55,15 @@ class Blog
      */
     private $tabtitle;
 
+    // ...
+
+
+    /**
+     * Many features have one product. This is the owning side.
+     * @ManyToOne(targetEntity="Images", inversedBy="blog")
+     * @JoinColumn(name="images_id", referencedColumnName="id")
+     */
+    private $images;
 
 
     public function getId(): ?int
@@ -120,5 +132,17 @@ class Blog
         return $this;
     }
 
-   
+    public function getImages(): ?Images
+    {
+        return $this->images;
+    }
+
+    public function setImages(?Images $images): self
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+
 }

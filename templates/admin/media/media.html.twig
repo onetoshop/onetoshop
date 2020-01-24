@@ -23,6 +23,7 @@
         </div>
         <div class="table-responsive">
         {% if media %}
+{#            {{ dump(media) }}#}
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
@@ -36,8 +37,7 @@
         {% for media in media %}
             <tr>
                 <td>{{ media.id }}</td>
-                <td>{{ media.name }}</td>
-                <td><img style="height: 25%; width: auto" class="img-fluid" src="{{ asset('/image/images/' ~ media.name) }}" alt=""></td>
+                <td><img style="height: 25%; width: auto" class="img-fluid" src="{{ asset('/image/images/' ~ media.images.name) }}" alt=""></td>
                 <td>
                     <a href="{{ path('media_edit', {'id' : media.id}) }}" class="btn btn-outline-primary" style="width: 100%; margin: auto; ">Bewerken</a>
                 </td>

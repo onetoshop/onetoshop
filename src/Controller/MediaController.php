@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Images;
 use App\Entity\Image;
+use App\Entity\Media;
 use App\Form\BlogType;
 use App\Form\ImageType;
 use App\Form\MediaType;
@@ -25,7 +26,7 @@ class MediaController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $media = $this->getDoctrine()->getRepository(Images::class)->findAll();
+        $media = $this->getDoctrine()->getRepository(Media::class)->findAll();
 
         return $this->render('admin/media/media.html.twig', [
             'media' => $media
