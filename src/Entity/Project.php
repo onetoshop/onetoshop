@@ -25,7 +25,7 @@ class Project
 
     /**
      * Many features have one product. This is the owning side.
-     * @ManyToOne(targetEntity="Images", inversedBy="card")
+     * @ManyToOne(targetEntity="Images", inversedBy="project")
      * @JoinColumn(name="images_id", referencedColumnName="id")
      */
     private $images;
