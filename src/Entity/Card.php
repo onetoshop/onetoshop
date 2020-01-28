@@ -47,6 +47,13 @@ class Card
      */
     private $images;
 
+    /**
+     * Many features have one product. This is the owning side.
+     * @ManyToOne(targetEntity="Images", inversedBy="card")
+     * @JoinColumn(name="images1_id", referencedColumnName="id")
+     */
+    private $images1;
+
 
 
     /**
@@ -119,6 +126,17 @@ class Card
         return $this;
     }
 
+    public function getImages1(): ?Images
+    {
+        return $this->images1;
+    }
+
+    public function setImages1(?Images $images1): self
+    {
+        $this->images = $images1;
+
+        return $this;
+    }
 
 
 

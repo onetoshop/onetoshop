@@ -74,11 +74,13 @@ class MediaController extends AbstractController
 
                 $images->setName($fileName);
                 $manager->persist($images);
-//
-//                return $this->redirectToRoute('media');
+
             }
 
+
             $manager->flush();
+
+            return $this->redirectToRoute('media');
         }
         return $this->render('admin/media/addmedia.html.twig', [
             'form' => $form->createView()

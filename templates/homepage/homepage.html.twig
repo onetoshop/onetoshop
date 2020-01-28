@@ -333,14 +333,14 @@
                                     <div class="card">
                                         <div class="front">
                                             <div class="cover">
-                                                {% if card.bgimage is defined %}
-                                                    <img src="{{ asset('/image/' ~ card.bgimage.name) }}"/>
+                                                {% if card.images is defined %}
+                                                    <img src="{{ asset('/image/images/' ~ card.images.name) }}"/>
                                                 {% endif %}
                                             </div>
+                                            {% if card.images1 is defined %}
                                             <div class="user">
-                                                {% if card.frimage is defined %}
-                                                    <img src="{{ asset('/image/' ~ card.frimage.name) }}"/>
-                                                    {% endif %}
+                                                    <img src="{{ asset('/image/images/' ~ card.images1.name) }}"/>
+{% endif %}
                                             </div>
                                             <div class="content">
                                                 <div class="main">

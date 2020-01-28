@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -22,9 +24,11 @@ class Project
     private $title;
 
     /**
-     * @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"})
+     * Many features have one product. This is the owning side.
+     * @ManyToOne(targetEntity="Images", inversedBy="card")
+     * @JoinColumn(name="images_id", referencedColumnName="id")
      */
-    private $image;
+    private $images;
 
     /**
      * @ORM\Column(type="text")
@@ -77,13 +81,15 @@ class Project
         return $this;
     }
 
-    public function getImage(): ?Image
+    public function getImages(): ?Images
     {
-        return $this->image;
+        return $this->images;
     }
 
-    public function setImage($image): void
+    public function setImages(?Images $images): self
     {
-        $this->image = $image;
+        $this->images = $images;
+
+        return $this;
     }
 }
