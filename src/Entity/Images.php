@@ -49,12 +49,18 @@ class Images
      */
     private $apps;
 
+    /**
+     * One product has many features. This is the inverse side.
+     * @OneToMany(targetEntity="Images", mappedBy="card")
+     */
+    private $card;
 
     public function __construct()
     {
         $this->media = new ArrayCollection();
         $this->blog = new ArrayCollection();
         $this->apps = new ArrayCollection();
+        $this->card = new ArrayCollection();
     }
 
     public function getId(): ?int
