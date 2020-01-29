@@ -17,10 +17,6 @@ class AppsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', ImageType::class, [
-                'label' => false,
-                'required'   => false,
-            ])
             ->add('beschrijving', CKEditorType::class, [
                 'label'=> false,
                 'required'   => false,
