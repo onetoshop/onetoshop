@@ -60,16 +60,14 @@
                             <span class="focus-input100"></span>
                         </div>
 
-                        <div class="wrap-input100 input100-select">
                             <span class="label-input100">Mogen wij contact opnemen?</span>
                             <div>
                                 {% form_theme form.contact 'bootstrap_4_layout.html.twig' %}
                                 {{ form_widget(form.contact, {'attr': {'class': 'selection-2'}}) }}
                             </div>
 
-                        </div>
                         <div class="text-center">
-                            <input type="submit" style="width: 100%;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block" value="Aanmelden">
+                            <input type="submit" style="width: 100%; margin-top: 30px;" class="btn btn-black btn-outline-black py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block" value="Aanmelden">
                         </div>
 
                         {{ form_end(form) }}
