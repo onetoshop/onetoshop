@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Apps;
+use App\Entity\Images;
 use Doctrine\ORM\EntityRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -31,6 +32,17 @@ class AppsType extends AbstractType
                     ->orderBy('u.parent', 'ASC');
                 },
                 'choice_label' => 'naam',
+                'choice_value' => 'id',
+                'label' => false,
+            ])
+            ->add('images', EntityType::class, [
+                'required' => false,
+                'class' => Images::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.id', 'ASC');
+                },
+                'choice_label' => 'name',
                 'choice_value' => 'id',
                 'label' => false,
             ])

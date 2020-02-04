@@ -50,16 +50,26 @@
         <div class="col-md-4">
 
             <!-- Search Widget -->
+
             <div class="card my-4">
                 <h5 class="card-header">Zoek</h5>
                 <div class="card-body">
-                    <div class="input-group">
+                    <div class="container h-100">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="searchbar">
+                                {{ form_start(form) }}
+                                {{ form_widget(form.Zoek, {'attr': {'class': 'search_input'}}) }}
+                                {{ form_widget(form.submit, {'attr': {'class': 'btn btn-secondary'}}) }}
 
-                        {{ form_start(form) }}
-                        {{ form_end(form) }}
+                                {{ form_end(form) }}
+                                {#                                    <input class="search_input" type="text" name="" placeholder="Search...">#}
+                                {#                                    <a href="#" class="search_icon"></a>#}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
             <!-- Categories Widget -->
         </div>
 </div>

@@ -389,13 +389,14 @@
                 </div>
             </div>
 
+
             <div class="row">
                 {% if blogs %}
                     {% for blog in blogs %}
 
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 ">
                     <div class="h-entry">
-                        <div class="border border-light" style="height: 350px;">
+                        <div class="border border-light" style="height: 350px; border: 0px;">
                         {% if blog.images is defined %}
                             <img src="{{ asset('/image/images/' ~ blog.images.name) | imagine_filter('small') }}" />
 {#                            {% else %}#}
