@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Functionaliteit;
+use App\Form\FunctionaliteitenType;
 use App\Form\FunctionaliteitType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -165,6 +166,60 @@ class FunctionaliteitController extends AbstractController
             ]);
         }
         return $this->render('admin/functionaliteit/edit_functionaliteit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/functionaliteit_informatie_toevoegen", name="functionaliteit_informatie_toevoegen")
+     * @IsGranted("ROLE_USER")
+     */
+    public function functionaliteit_informatie_toevoegen(EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(FunctionaliteitenType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $functionaliteiten = $form->getData();
+
+            $manager->persist($functionaliteiten);
+            $manager->flush();
+
+            return $this->redirectToRoute('functionaliteitadmin');
+
+        }
+        return $this->render('admin/functionaliteit/functionaliteit_informatie_toevoegen.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/admin/functionaliteit/edit_informatie/{id}", name="edit_informatie_functionaliteit", methods={"GET","POST"})
+     */
+    public function edit_informatie_functionaliteit(Request $request, $id)
+    {
+        $functionaliteit = $this->getDoctrine()->getRepository(Functionaliteit::class)->findOneBy([
+            'id' => $id,
+        ]);
+
+        $form = $this->createForm(FunctionaliteitenType::class, $functionaliteit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $functionaliteit = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($functionaliteit);
+            $em->flush();
+
+            return $this->redirectToRoute('functionaliteitadmin',[
+                'id' => $functionaliteit->getId(),
+            ]);
+        }
+        return $this->render('admin/functionaliteit/edit_informatie_functionaliteit.html.twig', [
             'form' => $form->createView()
         ]);
     }

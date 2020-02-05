@@ -23,7 +23,7 @@
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <a href="#" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan
+                    <a href="{{ path('functionaliteit_informatie_toevoegen')}}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan
                         {% if info %}
                             {{ info.name }}
                         {% endif %}
@@ -60,7 +60,7 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        <a style="width: 100%;" href="#"  class="btn btn-outline-primary">Bewerken</a>
+                                        <a style="width: 100%;" href="{{ path('edit_informatie_functionaliteit', {'id' : functionaliteit.id } ) }}}}"  class="btn btn-outline-primary">Bewerken</a>
                                     </td>
                                     <td><a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#delete-{{ functionaliteit.id }}" style="width: 100%;">Verwijderen</a></td>
                                 </tr>

@@ -43,7 +43,7 @@ class FunctionaliteitenType extends AbstractType
                         ->where('u.parent IS NULL')
                         ->orderBy('u.parent', 'ASC');
                 },
-                'choice_label' => 'naam',
+                'choice_label' => 'name',
                 'choice_value' => 'id',
                 'label' => false,
             ])
