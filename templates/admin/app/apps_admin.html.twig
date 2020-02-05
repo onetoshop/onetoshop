@@ -27,6 +27,7 @@
                                 <th>ID</th>
                                 <th>Koppeling</th>
                                 <th style="width: 40%">Beschrijving</th>
+                                <th>Publiceer</th>
                                 <th>Bekijken</th>
                                 <th>Bewerken</th>
                                 <th>verwijderen</th>
@@ -44,6 +45,13 @@
                                             {% endfor %}
                                         {% else %}
                                             <p>Er is geen beschrijving gevonden</p>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if app.publiceer %}
+                                            <p>Gepubliceerd</p>
+                                        {% else %}
+                                            <p>Nog niet gepubliceerd</p>
                                         {% endif %}
                                     </td>
                                     <td><a style="width: 100%;" href="{{ path('apps_slug_admin', {'slug' : app.slug} ) }}"  class="btn btn-outline-dark">Bekijken</a></td>

@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +28,11 @@ class AppType extends AbstractType
             ])
             ->add('slug', HiddenType::class,[
                 'required' => true
+            ])
+            ->add('publiceer', CheckboxType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => ['class' => 'custom-control-input']
             ])
         ;
     }

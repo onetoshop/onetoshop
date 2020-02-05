@@ -38,6 +38,7 @@
                                 <th>Naam</th>
                                 <th>Parent ID</th>
                                 <th style="width: 40%;">Beschrijving</th>
+                                <th>Publiceer</th>
                                 <th>Bewerken</th>
                                 <th>Verwijderen</th>
                             </tr>
@@ -48,11 +49,18 @@
                                     <td>{{ app.id }}</td>
                                     <td>{{ app.naam }}</td>
                                     <td>{{ app.parent.naam }}</td>
-                                    <th>
+                                    <td>
                                         {% for i in [1,][0:239] %}
                                             {{ app.beschrijving [0:239] | raw }}...
                                         {% endfor %}
-                                    </th>
+                                    </td>
+                                    <td>
+                                        {% if app.publiceer %}
+                                            <p>Gepubliceerd</p>
+                                        {% else %}
+                                            <p>Nog niet gepubliceerd</p>
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         <a style="width: 100%;" href="{{ path('edit_informatie_apps', {'id' : app.id}) }}"  class="btn btn-outline-primary">Bewerken</a>
                                     </td>

@@ -56,6 +56,11 @@ class Apps
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $publiceer;
+
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -153,6 +158,18 @@ class Apps
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPubliceer(): ?bool
+    {
+        return $this->publiceer;
+    }
+
+    public function setPubliceer(bool $publiceer): self
+    {
+        $this->publiceer = $publiceer;
 
         return $this;
     }

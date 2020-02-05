@@ -55,6 +55,14 @@
                                         {% form_theme form.parent 'bootstrap_4_layout.html.twig' %}
                                         {{ form_row(form.parent) }}
 
+                                        <p><h3>Publiceer</h3></p>
+                                        <p class="font-weight-light"></p>
+
+                                        <div class="custom-control custom-switch">
+                                            {{ form_widget(form.publiceer) }}
+                                            <label class="custom-control-label" for="apps_publiceer"></label>
+                                        </div>
+
 
 
                                         <hr>
