@@ -31,11 +31,6 @@ class Functionaliteit
     private $body;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $tabtitle;
-
-    /**
      * @Slug("name")
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -50,6 +45,11 @@ class Functionaliteit
      * @ORM\OneToMany(targetEntity="App\Entity\Functionaliteit", mappedBy="parent")
      */
     private $children;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $publiceer;
 
     public function __construct()
     {
@@ -81,18 +81,6 @@ class Functionaliteit
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getTabtitle(): ?string
-    {
-        return $this->tabtitle;
-    }
-
-    public function setTabtitle(?string $tabtitle): self
-    {
-        $this->tabtitle = $tabtitle;
 
         return $this;
     }
@@ -148,6 +136,18 @@ class Functionaliteit
                 $child->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPubliceer(): ?bool
+    {
+        return $this->publiceer;
+    }
+
+    public function setPubliceer(bool $publiceer): self
+    {
+        $this->publiceer = $publiceer;
 
         return $this;
     }

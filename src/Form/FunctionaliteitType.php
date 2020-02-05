@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Functionaliteit;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,9 +24,15 @@ class FunctionaliteitType extends AbstractType
             ->add('name', TextType::class,[
                 'required' => false,
                 'label' => false,
+                'attr' => ['class' => 'form-control']
             ])
             ->add('slug', HiddenType::class, [
                 'required' => false,
+            ])
+            ->add('publiceer', CheckboxType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => ['class' => 'custom-control-input']
             ])
         ;
     }

@@ -24,9 +24,9 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Koppeling</th>
                                 <th style="width: 40%">Beschrijving</th>
+                                <th>publiceer</th>
                                 <th>Bekijken</th>
                                 <th>Bewerken</th>
                                 <th>verwijderen</th>
@@ -34,9 +34,7 @@
                             </thead>
                             <tbody>
                             {% for functionaliteit in functionaliteit %}
-{#                                {{ dump(functionaliteit) }}#}
                                 <tr>
-                                    <td>{{ functionaliteit.id }}</td>
                                     <td>{{ functionaliteit.name }}</td>
                                     <td>
                                         {% if functionaliteit.body is defined  %}
@@ -45,6 +43,13 @@
                                             {% endfor %}
                                         {% else %}
                                             <p>Er is geen beschrijving gevonden</p>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if functionaliteit.publiceer %}
+                                            <p>Gepubliceerd</p>
+                                        {% else %}
+                                            <p>Nog niet gepubliceerd</p>
                                         {% endif %}
                                     </td>
                                     <td><a style="width: 100%;" href="{{ path('functionaliteit_slug_admin', {'slug' : functionaliteit.slug } ) }}"  class="btn btn-outline-dark">Bekijken</a></td>

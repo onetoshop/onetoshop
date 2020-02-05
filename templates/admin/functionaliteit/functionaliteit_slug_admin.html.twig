@@ -23,7 +23,7 @@
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <a href="{{ path('') }}" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan
+                    <a href="#" type="button" class="btn btn-primary" style="float: right;">Voeg Informatie Aan
                         {% if info %}
                             {{ info.name }}
                         {% endif %}
@@ -34,10 +34,10 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Naam</th>
                                     <th>Parent ID</th>
                                     <th style="width: 40%;">Beschrijving</th>
+                                    <th>publiceer</th>
                                     <th>Bewerken</th>
                                     <th>Verwijderen</th>
                                 </tr>
@@ -45,18 +45,24 @@
                             <tbody>
                             {% for functionaliteit in functionaliteit %}
                                 <tr>
-                                    <td>{{ functionaliteit.id }}</td>
                                     <td>{{ functionaliteit.name }}</td>
                                     <td>{{ functionaliteit.parent.name }}</td>
-                                    <th>
+                                    <td>
                                         {% for i in [1,][0:239] %}
                                             {{ functionaliteit.body [0:239] | raw }}...
                                         {% endfor %}
-                                    </th>
-                                    <td>
-                                        <a style="width: 100%;" href="{{ path('', {'id' : functionaliteit.id}) }}"  class="btn btn-outline-primary">Bewerken</a>
                                     </td>
-                                    <td><a class="btn btn-outline-danger" href="" data-toggle="modal" data-target="#delete-{{ functionaliteit.id }}" style="width: 100%;">Verwijderen</a></td>
+                                    <td>
+                                        {% if functionaliteit.publiceer %}
+                                            <p>Gepubliceerd</p>
+                                        {% else %}
+                                            <p>Nog niet gepubliceerd</p>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a style="width: 100%;" href="#"  class="btn btn-outline-primary">Bewerken</a>
+                                    </td>
+                                    <td><a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#delete-{{ functionaliteit.id }}" style="width: 100%;">Verwijderen</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
