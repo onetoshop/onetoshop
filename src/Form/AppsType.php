@@ -17,10 +17,6 @@ class AppsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('images', ImageType::class, [
-                'label' => false,
-                'required'   => false,
-            ])
             ->add('beschrijving', CKEditorType::class, [
                 'label'=> false,
                 'required'   => false,
@@ -35,6 +31,17 @@ class AppsType extends AbstractType
                     ->orderBy('u.parent', 'ASC');
                 },
                 'choice_label' => 'naam',
+                'choice_value' => 'id',
+                'label' => false,
+            ])
+            ->add('images', EntityType::class, [
+                'required' => false,
+                'class' => Images::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.id', 'ASC');
+                },
+                'choice_label' => 'name',
                 'choice_value' => 'id',
                 'label' => false,
             ])

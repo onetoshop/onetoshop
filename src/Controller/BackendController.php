@@ -448,16 +448,6 @@ class BackendController extends AbstractController
 
             $koppeling = $form->getData();
 
-            $file = $koppeling->getImage();
-
-            $image = $file->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-
-            $image->move($this->getParameter('image'), $fileName);
-
-            $file->setName($fileName);
-
             $manager->persist($koppeling);
             $manager->flush();
 
@@ -524,16 +514,6 @@ class BackendController extends AbstractController
 
             $apps = $form->getData();
 
-            $file = $apps->getImage();
-
-            $image = $file->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-
-            $image->move($this->getParameter('Image'), $fileName);
-
-            $file->setName($fileName);
-
             $manager->persist($apps);
             $manager->flush();
 
@@ -543,77 +523,10 @@ class BackendController extends AbstractController
             ]);
         }
         return $this->render('admin/app/edit_informatie_test.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'apps' => $apps
         ]);
     }
-
-
-//    /**
-//     * @Route("/{_locale}/admin/apps_overzicht/add_apps", name="add_apps")
-//     * @IsGranted("ROLE_USER")
-//     */
-//    public function add_apps(EntityManagerInterface $manager, Request $request)
-//    {
-//        $form = $this->createForm(AppsType::Class);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-//            $apps = $form->getData();
-//
-//             $file = $apps->getImage();
-//
-//            $image = $file->getFile();
-//
-//            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-//
-//            $image->move($this->getParameter('apps'), $fileName);
-//
-//            $file->setName($fileName);
-//
-//            $manager->persist($apps);
-//            $manager->flush();
-//
-//            return $this->redirectToRoute('apps_overzicht');
-//        }
-//        return $this->render('admin/app/apps_slug_admin.html.twig', [
-//            'form' => $form->createView(),
-//        ]);
-//    }
-//
-//    /**
-//     * @Route("/{_locale}/admin/apps_overzicht/edit_apps/{id}", name="edit_apps", methods={"GET","POST"})
-//     */
-//    public function edit_apps(Request $request, $id)
-//    {
-//        $apps = $this->getDoctrine()->getRepository(Apps::class)->findOneBy([
-//            'id' => $id,
-//        ]);
-//
-//        $apps->setImage($apps->getImage());
-//
-//        $form = $this->createForm(AppsType::class, $apps);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-//            $apps = $form->getData();
-//
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($apps);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('apps_overzicht',[
-//                'id' => $apps->getId(),
-//            ]);
-//        }
-//        return $this->render('admin/app/apps_admin_koppeling_toevoegen.html.twig', [
-//            'form' => $form->createView()
-//        ]);
-//    }
-    //end apps
-
-
 
 
 

@@ -30,7 +30,8 @@ class BlogController extends AbstractController
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
             ->add('Zoek', TextType::class, ['label' => false])
-            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+            ->add('submit', SubmitType::class, ['label' => 'Zoek',    'attr' => array(
+                'placeholder' => 'Zoek naar blogs...')])
             ->getForm()
         ;
 
@@ -49,7 +50,8 @@ class BlogController extends AbstractController
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
             ->add('Zoek', TextType::class, ['label' => false])
-            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+            ->add('submit', SubmitType::class, ['label' => 'Zoek',    'attr' => array(
+                'placeholder' => 'Zoek naar blogs...')])
             ->getForm()
         ;
 

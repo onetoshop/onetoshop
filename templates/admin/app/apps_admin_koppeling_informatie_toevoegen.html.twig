@@ -37,8 +37,9 @@
                                         <p class="font-weight-light">Voer hier de beschrijving die bij de koppeling hoord.</p>
                                         {{ form_row(form.beschrijving) }}
 
-                                        <p><h3>image</h3></p>
-                                        <p class="font-weight-light">Kies een image.</p>
+                                        <h3>Foto</h3>
+                                        <p class="font-weight-light">Kies een foto</p>
+                                        {% form_theme form.images 'bootstrap_4_layout.html.twig' %}
                                         {{ form_row(form.images) }}
 
                                         <p><h3>parent</h3></p>
