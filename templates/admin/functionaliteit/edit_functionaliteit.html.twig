@@ -1,12 +1,6 @@
 {% extends 'admin/adminbase.html.twig' %}
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-{% block body %}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
 
+{% block body %}
     <div id="content-wrapper">
 
     <div class="container-fluid">
@@ -16,8 +10,13 @@
         <li class="breadcrumb-item">
             <a href="{{ path('admin') }}">Dashboard</a>
         </li>
+        <li class="breadcrumb-item active">
+            <a href="{{ path('functionaliteitadmin') }}">Functionaliteit Overzicht</a>
+        </li>
+        <li class="breadcrumb-item active">Functionaliteit Bewerken</li>
     </ol>
     <!-- Page Content -->
+    <h1>Functionaliteit Bewerken</h1>
     <!-- DataTables Example -->
     <div class="form-element-area">
         <div class="container">
@@ -27,9 +26,20 @@
                         <div class="basic-tb-hd">
                             <div class="cmp-tb-hd">
                                 <div class="cmp-tb-hd">
-                                    <div style="text-align: center;">
+                                    <div>
                                         {{ form_start(form) }}
+                                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+                                        <p><h3>Naam</h3></p>
+                                        <p class="font-weight-light">#</p>
+                                        {{ form_row(form.name) }}
+
+                                        <p><h3>Beschrijving</h3></p>
+                                        <p class="font-weight-light">#</p>
+                                        {{ form_row(form.body) }}
+
                                         <hr>
+                                        <button type="submit" style="width: 100%;" class="btn btn-primary">Functionaliteit bewerken</button>
                                         {{ form_end(form) }}
                                     </div>
                                 </div>
