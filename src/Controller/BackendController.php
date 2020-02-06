@@ -48,7 +48,7 @@ class BackendController extends AbstractController
 
         # get amount of articles
         $em = $this->getDoctrine()->getManager();
-        $repoArticles = $em->getRepository(Gegeven::class);
+        $repoArticles = $em->getRepository(Aanmeld::class);
         $gegeven = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
 
         # get amount of newsletter signups

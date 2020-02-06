@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Apps;
+use App\Entity\Images;
 use Doctrine\ORM\EntityRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
