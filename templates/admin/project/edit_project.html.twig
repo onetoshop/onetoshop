@@ -28,7 +28,9 @@
                                         {{ form_start(form) }}
                                         <p><h3>Foto</h3></p>
                                         <p class="font-weight-light">Hier komt een foto van de website van het bedrijf (formaat: breedte 1800px bij hoogte 800px)</p>
-                                        {{ form_row(form.image) }}
+                                        {{ form_row(form.images) }}
+                                        <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ asset('/image/images/' ~ project.images.name) }}" alt="">
+
 
                                         <p><h3>Titel</h3></p>
                                         <p class="font-weight-light">Hier komt de naam van het bedrijf bijvoorbeeld: GorillaGirp</p>

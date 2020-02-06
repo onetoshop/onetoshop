@@ -11,13 +11,12 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ path('admin') }}">Dashboard</a>
+                <a href="{{ path('blogoverzicht') }}">Blogs</a>
                 </li>
-                <li class="breadcrumb-item active">Blogs</li>
                 <li class="breadcrumb-item active">Edit Blog</li>
             </ol>
-            <!-- Page Content -->
-            <h1>Add Blog</h1>
+                  <!-- Page Content -->
+            <h1>Edit Blog</h1>
             <!-- DataTables Example -->
             <div class="form-element-area">
                 <div class="container">
@@ -35,7 +34,7 @@
                                                 {{ form_row(form.title) }}
 
                                                 <p><h3>Beschrijving</h3></p>
-                                                <p class="font-weight-light">Hier komt een kleine inlijding van de blog</p>
+                                                <p class="font-weight-light">Hier komt een kleine inleiding van de blog</p>
                                                 {% form_theme form.beschrijving 'bootstrap_4_layout.html.twig' %}
                                                 {{ form_row(form.beschrijving) }}
 
@@ -50,7 +49,9 @@
                                                 {{ form_row(form.slug) }}
 
                                                 <p><h3>Foto</h3></p>
-                                                {{ form_row(form.image) }}
+                                                {{ form_row(form.images) }}
+                                                <img src="{{ asset('/image/images/' ~ blog.images.name) }}" style="width: 50%;"/>
+
 
                                                 <hr>
                                                 <button type="submit" style="width: 100%;" class="btn btn-primary">Edit Blog!</button>

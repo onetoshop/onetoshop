@@ -75,23 +75,6 @@ class PostController extends AbstractController
 
             $card = $form->getData();
 
-            $image = $card->getBgimage();
-            $image1 = $card->getFrimage();
-
-            $bgimage = $image->getFile();
-            $frimage = $image1->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $bgimage->guessExtension();
-            $fileName1 = md5(uniqid()) . '.' . $frimage->guessExtension();
-
-            $bgimage->move($this->getParameter('upload'), $fileName);
-            $frimage->move($this->getParameter('upload'), $fileName1);
-
-            $image->setName($fileName);
-            $image1->setName($fileName1);
-
-
-
             $manager->persist($card);
             $manager->flush();
 
@@ -111,8 +94,6 @@ class PostController extends AbstractController
             'id' => $id,
         ]);
 
-        $card->setBgimage($card->getBgimage());
-        $card->setFrimage($card->getFrimage());
 
         $form = $this->createForm(CardType::class, $card);
         $form->handleRequest($request);

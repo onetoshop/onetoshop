@@ -636,15 +636,6 @@ class BackendController extends AbstractController
 
             $project = $form->getData();
 
-            $file = $project->getImage();
-
-            $image = $file->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-
-            $image->move($this->getParameter('project'), $fileName);
-
-            $file->setName($fileName);
 
             $manager->persist($project);
             $manager->flush();
@@ -665,7 +656,6 @@ class BackendController extends AbstractController
             'id' => $id,
         ]);
 
-        $project->setImage($project->getImage());
 
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
@@ -673,16 +663,6 @@ class BackendController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $project = $form->getData();
-
-            $file = $project->getImage();
-
-            $image = $file->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-
-            $image->move($this->getParameter('project'), $fileName);
-
-            $file->setName($fileName);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
@@ -694,6 +674,7 @@ class BackendController extends AbstractController
         }
         return $this->render('admin/project/edit_project.html.twig', [
             'form' => $form->createView(),
+            'project' => $project
         ]);
     }
 }

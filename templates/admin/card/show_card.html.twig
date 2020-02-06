@@ -16,14 +16,14 @@
                                             <div class="card">
                                                 <div class="front">
                                                     <div class="cover">
-                                                        {% if card.bgimage is defined %}
-                                                            <img src="{{ asset('/image/card/' ~ card.bgimage.name) }}"/>
+                                                        {% if card.images is defined %}
+                                                            <img src="{{ asset('/image/images/' ~ card.images.name) }}"/>
                                                         {% endif %}
                                                     </div>
                                                     <div class="user">
-                                                        {% if card.frimage is defined %}
+                                                        {% if card.images1 is defined %}
                                                             <a href="{{ path('project', {'naam' : card.slug}) }}" target="_blank"></a>
-                                                            <img src="{{ asset('/image/card/' ~ card.frimage.name) }}"/>
+                                                            <img src="{{ asset('/image/images/' ~ card.images1.name) }}"/>
                                                         {% endif %}
                                                     </div>
                                                     <div class="content">

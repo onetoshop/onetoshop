@@ -95,16 +95,6 @@ class BlogController extends AbstractController
 
             $blog = $form->getData();
 
-            $file = $blog->getImage();
-
-            $image = $file->getFile();
-
-            $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-
-            $image->move($this->getParameter('blog'), $fileName);
-
-            $file->setName($fileName);
-
             $manager->persist($blog);
             $manager->flush();
 
@@ -120,27 +110,28 @@ class BlogController extends AbstractController
      */
     public function edit_card(Request $request, $id)
     {
-        $app = $this->getDoctrine()->getRepository(Blog::class)->findOneBy([
+        $blog = $this->getDoctrine()->getRepository(Blog::class)->findOneBy([
             'id' => $id,
         ]);
 
-        $form = $this->createForm(BlogType::class, $app);
+        $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $app = $form->getData();
+            $blog = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($app);
+            $em->persist($blog);
             $em->flush();
 
             return $this->redirectToRoute('blogoverzicht', [
-                'id' => $app->getId(),
+                'id' => $blog->getId(),
             ]);
         }
         return $this->render('admin/blog/edit_blog.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'blog' => $blog
         ]);
     }
 
